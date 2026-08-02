@@ -47,3 +47,17 @@ before committing (see `docs/design-system.md` → *Adding a primitive*).
 Run the frontend `check` and `build` scripts plus `vitest`, and
 `go vet ./...` / `go test ./...` (the embed test compiles against `dist/`). No
 amber in the built CSS.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues on `rengwu/chartr` (via the `gh` CLI). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default five-role vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` and `docs/adr/` at the repo root (created lazily as decisions land). See `docs/agents/domain.md`.
