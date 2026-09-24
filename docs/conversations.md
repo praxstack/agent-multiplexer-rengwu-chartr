@@ -72,7 +72,8 @@ live verification with functioning installations.
 
 Inbox always lists conversations from all spaces, including Free sessions,
 with newest conversations first. Sidebar and Inbox have no title-bar space
-picker. Each compact row shows its status, title, and timestamp on one line.
+picker. Each row shows its status, title, and timestamp on the first line, with
+the space name (or **Free sessions**) in a smaller, muted label below the title.
 Hover for the full title, agent adapter, owning space, and working directory.
 
 Ordinary shells, lazygit, and other tools keep running without becoming history

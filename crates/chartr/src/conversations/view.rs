@@ -216,8 +216,7 @@ impl Conversations {
             .w_full()
             .min_w_0()
             .flex_none()
-            // Match the space-mode session wrapper, including its reserved
-            // outline, so switching modes keeps the same row height and inset.
+            // Keep the same reserved outline and inset as space-mode sessions.
             .rounded_sm()
             .border_1()
             .border_color(if is_selected {
@@ -230,7 +229,7 @@ impl Conversations {
                 selection_row(format!("history-{id}"), is_selected)
                     .backgrounds(row_backgrounds)
                     .aria_role(Role::Tab)
-                    .aria_label(title.clone())
+                    .aria_label(format!("{title}, {space_label}"))
                     .on_click(cx.listener(move |this, _, window, cx| {
                         this.new_agent = None;
                         this.new_space = None;
@@ -244,16 +243,53 @@ impl Conversations {
                         cx.emit(Event::SelectionChanged);
                         cx.notify();
                     }))
-                    .start_slot(h_flex().size(px(12.)).flex_none().justify_center().child(
-                        Icon::from_path(provider_icon).size(IconSize::XSmall).color(Color::Muted),
-                    ))
-                    .child(Label::new(title).size(UI_LABEL_DEFAULT).truncate())
-                    .when_some(status, |row, status| row.child(status))
-                    .end_slot(
-                        Label::new(relative_time(row.updated))
-                            .size(UI_LABEL_SMALL)
-                            .color(Color::Muted)
-                            .flex_none(),
+                    .child(
+                        v_flex()
+                            .w_full()
+                            .min_w_0()
+                            .gap_0p5()
+                            .child(
+                                h_flex()
+                                    .w_full()
+                                    .min_w_0()
+                                    .gap(DynamicSpacing::Base06.rems(cx))
+                                    .child(
+                                        h_flex().size(px(12.)).flex_none().justify_center().child(
+                                            Icon::from_path(provider_icon)
+                                                .size(IconSize::XSmall)
+                                                .color(Color::Muted),
+                                        ),
+                                    )
+                                    .child(
+                                        h_flex()
+                                            .flex_1()
+                                            .min_w_0()
+                                            .gap(DynamicSpacing::Base06.rems(cx))
+                                            .child(
+                                                Label::new(title).size(UI_LABEL_DEFAULT).truncate(),
+                                            )
+                                            .when_some(status, |row, status| row.child(status)),
+                                    )
+                                    .child(
+                                        Label::new(relative_time(row.updated))
+                                            .size(UI_LABEL_SMALL)
+                                            .color(Color::Muted)
+                                            .flex_none(),
+                                    ),
+                            )
+                            .child(
+                                h_flex()
+                                    .w_full()
+                                    .min_w_0()
+                                    .gap(DynamicSpacing::Base06.rems(cx))
+                                    .child(div().w(px(12.)).flex_none())
+                                    .child(
+                                        Label::new(space_label)
+                                            .size(UI_LABEL_SMALL)
+                                            .color(Color::Muted)
+                                            .truncate(),
+                                    ),
+                            ),
                     ),
             )
             .into_any_element()
