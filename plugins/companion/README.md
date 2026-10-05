@@ -23,7 +23,7 @@ The desktop remains the only Herdr attachment. Mobile never spawns a competing t
 
 ## Verification
 
-See [the protocol](../../docs/companion-protocol.md). Transport tests cover open-access TLS, framing, request ordering, separate connection lifetimes, and revocation. GPUI tests cover plugin shutdown and saved sharing state. Android instrumentation exercises the real host and PTY.
+See [the protocol](../../docs/wiki/archive/companion-protocol.md). Transport tests cover open-access TLS, framing, request ordering, separate connection lifetimes, and revocation. GPUI tests cover plugin shutdown and saved sharing state. Android instrumentation exercises the real host and PTY.
 
 The desktop `companion-test-host` feature is also removed while Companion is
 excluded. The standalone transport crate remains a workspace member for source

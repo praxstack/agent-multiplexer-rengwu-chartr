@@ -1,0 +1,16 @@
+Offline reader browser observation — 2026-10-05
+
+Browser: Helium on macOS, controlled through native UI.
+Opened: file:///Users/rengwu/Desktop/Projects/chartr/docs/wiki/index.html#/archive/research/2026-09-10-rich-chat-mode
+Selected the contents link “Appendix: owner-preferred interface” and scrolled to it.
+Observed: the original History/chat screenshot rendered inline beneath the heading;
+its full width stayed within the article column with aspect ratio preserved.
+The accessibility tree exposed its descriptive alt text, “Owner-preferred History
+and rich-chat interface”. Internal route navigation and the surrounding article
+and backlinks remained available. The image loaded from a local attachment with
+no server. No chartr app interaction was performed.
+
+Scope: visual smoke check of one real PNG in the offline reader. This does not
+claim every browser, viewport, image format or historical product behavior was
+exercised. Automated reader tests separately cover encoded nested paths,
+attachment hashes/freshness, invalid image targets, symlinks and raw-HTML bypasses.

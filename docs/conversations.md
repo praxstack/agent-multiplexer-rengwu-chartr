@@ -175,23 +175,10 @@ on Unix. Legacy cached messages, drafts, and receipts remain in the existing
 index for compatibility; Inbox never displays or sends those drafts/receipts.
 Archiving hides an entry without deleting it. There is no bulk export/delete UI.
 
-## Verification
+## Development verification
 
-```sh
-cargo fmt --all --check
-cargo test --workspace --locked --no-fail-fast
-cargo build -p chartr --locked
-```
-
-Optional local checks (require installed tools and existing sessions; do not start
-an agent or open an editor):
-
-```sh
-cargo test -p chartr-conversations installed_opencode_exports_a_real_session -- --ignored
-cargo test -p chartr-conversations installed_grok_log_matches_its_directory_identity -- --ignored
-```
-
-Coverage includes session identity/promotion, ownership and archive persistence,
-legacy preference/data compatibility, registered launch arguments, and rejection
-of stale terminal bindings. The former chat transport integration fixtures were
-removed along with rich chat.
+The [Agent and Inbox feature record](wiki/features/agents-inbox.md) contains the
+current development baseline, recipe and coverage limits. Shared build/test and
+isolation instructions live in [verification setup](wiki/verification/setup.md).
+The former rich-chat transport fixtures were removed with that implementation;
+its historical results do not establish current Inbox behavior.

@@ -10,10 +10,9 @@ Click a service to open its settings. Right-click the bar and choose Hide Status
 
 Bundled native plugins can contribute a status with `Plugin::background_status`. The host refreshes these once per second and redraws only when their reported values change. See [plugin documentation](plugins.md#background-status).
 
-## Verification
+## Development verification
 
-Check hiding and restoration from Settings and the command palette, saved
-visibility after restart, and opening a contributed service's settings. A plugin
-without `background_status` contributes no button. Historical Companion counts
-and connection tests do not establish current desktop behavior because Companion
-is excluded. See the [release checklist](acceptance.md).
+See the [status-bar feature record](wiki/features/status-bar.md) for the recipe
+and coverage limits, and the [release matrix](wiki/verification/acceptance.md)
+for broader acceptance. Historical Companion counts do not establish current
+status-bar behavior.

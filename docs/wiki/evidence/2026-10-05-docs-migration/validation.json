@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-05",
+  "scope": "Documentation migration and shared wiki reader; no chartr execution",
+  "jstackTests": {
+    "command": "node --test scripts/*.test.mjs",
+    "passed": 32,
+    "failed": 0
+  },
+  "pluginValidation": {
+    "manifest": "Passed",
+    "skillFrontmattersPassed": 7
+  },
+  "browserSmoke": {
+    "browser": "Helium on macOS",
+    "mode": "file URL, no server",
+    "result": "Passed",
+    "observation": "reader-browser-check.txt"
+  },
+  "chartrProductTests": "Not run by agreed scope",
+  "migrationAudit": {
+    "markdownFilesChecked": 104,
+    "localLinksChecked": 577,
+    "currentRepositoryLinksChecked": 123,
+    "unchangedAttachments": 16,
+    "historicalBodiesPreservedExceptLinksAndNotices": 16,
+    "preexistingSourceFilesUnchanged": 5,
+    "storyNumbersCovered": 97,
+    "errors": []
+  },
+  "diffWhitespaceChecks": "Passed in both repositories",
+  "standaloneWikiCheck": {
+    "result": "Passed",
+    "output": "Checked 56 pages and internal links; index.html is current."
+  }
+}

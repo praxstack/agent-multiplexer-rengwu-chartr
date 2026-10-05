@@ -263,6 +263,6 @@ crates/chartr-companion/    retained transport; excluded from the desktop app
 plugins/                   bundled and separately installable first-party plugins
 examples/plugins/          optional native and web reference examples
 vendor/herdr/              pinned sidecar fetch and licence
-docs/adr/                  architectural decisions
-.plan/maps/                durable product specification
+docs/wiki/                 development decisions, features, recipes and history
+.plan/maps/                Wayfinder product maps and tickets
 ```

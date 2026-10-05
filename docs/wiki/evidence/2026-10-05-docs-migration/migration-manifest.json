@@ -1,0 +1,277 @@
+{
+  "date": "2026-10-05",
+  "chartrRevision": "c853533cbe9ae03879f45a40528f1738548a577f",
+  "preexistingPatchSha256": "069514ced329c4bf051c4874b0f4b35c15042c3033e1d924947a2758a1dbed93",
+  "preexistingModifiedFiles": {
+    "crates/chartr/src/actions.rs": "4ccece88051386c59d72ad51b116f43e9c6c45a80c736192310cd439acebf76e",
+    "crates/chartr/src/app.rs": "0c3e788383ede8de5a89c3e1023ed2c1d9ea936f22f0cf1b73e0984b92bc0623",
+    "crates/chartr/src/app/command_palette.rs": "107ad139b2afffbbca40b952f64f3c1254e4f222c57a71837dc48525c6087cf4",
+    "crates/chartr/src/app/view.rs": "0c2f2e25bd4aa879074d5094d643321b14d77a98cc879c44bc5b7088d8f4fe5e",
+    "crates/chartr/src/keymap.rs": "d8605c89db68d47f4c759c22b371c54b2870d1afc7efcf0a04a208ba54720003"
+  },
+  "records": [
+    {
+      "from": "docs/code-map.md",
+      "to": "docs/wiki/development/code-map.md",
+      "originalSha256": "e7842e89e22036e8f63a9f9acdbf2a50272ed4dc7dc460e34ce7a62fc1b78a3e",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/releasing.md",
+      "to": "docs/wiki/development/releasing.md",
+      "originalSha256": "d4712267d0c3d36031b352c08cb11ae195abe6e5973a21f96608721d4fcf30cb",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/acceptance.md",
+      "to": "docs/wiki/verification/acceptance.md",
+      "originalSha256": "116d8ebfb4e4f73810a843500adef54cae6c94068091378eea0393018a690d6d",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/companion-protocol.md",
+      "to": "docs/wiki/archive/companion-protocol.md",
+      "originalSha256": "8b688861c61af5e259f7a491de99dd66685132b0b80c0e4a3f266c23b42c5cfe",
+      "kind": "markdown"
+    },
+    {
+      "from": ".plan/maps/chartr-workspace/spec.md",
+      "to": "docs/wiki/archive/workspace-rewrite-spec.md",
+      "originalSha256": "9a2fc3eb879725d3adcf52ad6a867ca25ec37946c8fef9c8b150df2135f7f256",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/adr/0004-the-zed-terminal-stack.md",
+      "to": "docs/wiki/decisions/adr/0004-the-zed-terminal-stack.md",
+      "originalSha256": "36fdd90027f3c3ce6b28441f2d5e1df32790d275b3f823a34d9b577dd4929a72",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/adr/0007-prebuilt-native-surfaces.md",
+      "to": "docs/wiki/decisions/adr/0007-prebuilt-native-surfaces.md",
+      "originalSha256": "3a26bd8635004d20b1251321ac1aebc6063ef0738a499969c0b155e32b3bcffa",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/adr/0006-native-plugin-services-and-wayfinder.md",
+      "to": "docs/wiki/decisions/adr/0006-native-plugin-services-and-wayfinder.md",
+      "originalSha256": "bbacdd9d0ef4af4cc7c7294d939fecf983114f8737cdc047cbb606578f993a5d",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/adr/0005-spaces-follow-zed-multi-workspace.md",
+      "to": "docs/wiki/decisions/adr/0005-spaces-follow-zed-multi-workspace.md",
+      "originalSha256": "ef6d8d92873a688bf6c68923462d1a536448dace09ff7f531f9cdeea644661a5",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/adr/README.md",
+      "to": "docs/wiki/decisions/adr/index.md",
+      "originalSha256": "e1ec534fe78a803ed18ff89f12e90041bec089d78a4d21ed268df5982ff9fd67",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/adr/0001-a-private-herdr.md",
+      "to": "docs/wiki/decisions/adr/0001-a-private-herdr.md",
+      "originalSha256": "502042133469f6253c2405ecb558141d00b58fb1a0672d2358fa9709ada99474",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/adr/0003-two-plugin-tiers.md",
+      "to": "docs/wiki/decisions/adr/0003-two-plugin-tiers.md",
+      "originalSha256": "e6d6b5ba635d7c07d42c503a5f79b96784378f2ef2f16c67c7a0792d6dfba7bd",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/adr/0002-the-zed-layer.md",
+      "to": "docs/wiki/decisions/adr/0002-the-zed-layer.md",
+      "originalSha256": "87b68f581042caa4137d07089f0aa6093f15d5d139be405b2cea2a67bf15b5ee",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-17-documentation-audit.md",
+      "to": "docs/wiki/archive/research/2026-09-17-documentation-audit.md",
+      "originalSha256": "31920f06e97af4c7185fc85d757699a8829bb5981d92a4d8320f5f62f17c9d39",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-10-conversation-mode-implementation.md",
+      "to": "docs/wiki/archive/research/2026-09-10-conversation-mode-implementation.md",
+      "originalSha256": "ef2109be25adfc534771e50f8db9d7d57fd0104de2054fe3fd95c5e389066b04",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/competitors.json",
+      "to": "docs/wiki/attachments/research/competitors.json",
+      "originalSha256": "0d645ba9b54657afbf347010ca27de502124bc4197b8f9d3cc7fc73f6751d704",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/2026-09-10-rich-chat-mode.md",
+      "to": "docs/wiki/archive/research/2026-09-10-rich-chat-mode.md",
+      "originalSha256": "243d1a06888565ecc13f6c2cb03f7bcb5bd5444d61ed9d2e6d70184e6973c6da",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-11-drift-audit.md",
+      "to": "docs/wiki/archive/research/2026-09-11-drift-audit.md",
+      "originalSha256": "80139d543849426f21c4dcf1eaca3fddc3ae92e03819726da10ad34156ebdd9f",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-10-design-prototype-publication.json",
+      "to": "docs/wiki/attachments/research/2026-09-10-design-prototype-publication.json",
+      "originalSha256": "0c631379e03b797c3e0a2502d03d3581d4145c003724360066db87f52c059152",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/2026-09-10-design-system-next-milestone.md",
+      "to": "docs/wiki/archive/research/2026-09-10-design-system-next-milestone.md",
+      "originalSha256": "5e35d21c97547e7a7b0b101fd570c8951a0e557a85360dd876e24b47c881ca8a",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-10-rich-chat-mode-publication.json",
+      "to": "docs/wiki/attachments/research/2026-09-10-rich-chat-mode-publication.json",
+      "originalSha256": "b742964ac5f62acd69ada0b7faf029fe8ebb63889140eefd5c5bde0796a55921",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/2026-09-09-design-elaboration.md",
+      "to": "docs/wiki/archive/research/2026-09-09-design-elaboration.md",
+      "originalSha256": "0a042f328f39ca9bcfd965a8b8eccd5b84d668b158708b3e0c37a8436d5e3399",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-09-design-elaboration-publication.json",
+      "to": "docs/wiki/attachments/research/2026-09-09-design-elaboration-publication.json",
+      "originalSha256": "a4ec3906c50656074d2cfcada590a10969190af9eaa1bfe85982c19b319c56e0",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/2026-09-16-inline-form-audit.md",
+      "to": "docs/wiki/archive/research/2026-09-16-inline-form-audit.md",
+      "originalSha256": "2cc85738f78bd23718618cc324e755326535319f28ca4f03c2e5000d020a6339",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/slopchan-thread.json",
+      "to": "docs/wiki/attachments/research/slopchan-thread.json",
+      "originalSha256": "079ae4f03628487d3e180085aaf6657680f9acc2924c67eedd4e2663b4d7a02b",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/2026-09-09-source-ledger.json",
+      "to": "docs/wiki/attachments/research/2026-09-09-source-ledger.json",
+      "originalSha256": "8d67d06e4cc6c45a165631f735b524b9553709ca6c25f17487c282423f8c885f",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/README.md",
+      "to": "docs/wiki/archive/research/index.md",
+      "originalSha256": "72ae8be4512fa158b3083200e84022cc91f7645e5d5426768478bded0d232059",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-10-design-calibration-02.md",
+      "to": "docs/wiki/archive/research/2026-09-10-design-calibration-02.md",
+      "originalSha256": "cb6cdd9daadc1a144029d1e1a313e926b2c5d6d37896c304c6b68cc52e4c7f11",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-10-design-calibration-02-publication.json",
+      "to": "docs/wiki/attachments/research/2026-09-10-design-calibration-02-publication.json",
+      "originalSha256": "f6d4cd6a6724424efd478f778aeba838aa420f18cc7e4c4ce1f9be2ba7a518e8",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/2026-09-09-chartr-competitive-strategy.md",
+      "to": "docs/wiki/archive/research/2026-09-09-chartr-competitive-strategy.md",
+      "originalSha256": "b91c0ab1ecc1586bf69cb59c9d458dc07df9168e6ca564781b3e642da7666617",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-17-wayfinder-launch-claims.md",
+      "to": "docs/wiki/archive/research/2026-09-17-wayfinder-launch-claims.md",
+      "originalSha256": "e2304bbcd3f07a7ce2c6ff25964a430559816e8f10e65b497f60cfb3f3dec555",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-10-conversation-mode-publication.json",
+      "to": "docs/wiki/attachments/research/2026-09-10-conversation-mode-publication.json",
+      "originalSha256": "2ab6c75dd27d6b75a40087b88718880c17f2cea3de361a745a9572c63a177cde",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/2026-09-10-design-prototype.md",
+      "to": "docs/wiki/archive/research/2026-09-10-design-prototype.md",
+      "originalSha256": "cbe464e94901f6e9d64b96ab254ef21b1656dbc0bbcfcd66b625ed963e0eee9b",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-09-source-audit.md",
+      "to": "docs/wiki/archive/research/2026-09-09-source-audit.md",
+      "originalSha256": "505644c9f9a929b0741b4257f269a2cd3fe314bd74d279782652831b39b7589c",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/2026-09-09-design-discussion.md",
+      "to": "docs/wiki/archive/research/2026-09-09-design-discussion.md",
+      "originalSha256": "f66498cf0143bf886784b0588b8ed6138bfe771e07eb4585be53b0c8bb2012e9",
+      "kind": "markdown"
+    },
+    {
+      "from": "docs/research/assets/conversation-codex-send-2026-09-10.jpg",
+      "to": "docs/wiki/attachments/research/assets/conversation-codex-send-2026-09-10.jpg",
+      "originalSha256": "879a86472c3996518a751d7b6bac2ec9122003c8a832b474ed97510c3a7424b3",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/assets/conversation-registered-agents-2026-09-10.jpg",
+      "to": "docs/wiki/attachments/research/assets/conversation-registered-agents-2026-09-10.jpg",
+      "originalSha256": "d83c14f30bcdcd89a8d495b11a37ddaa1d7e26c3578542b13e84b4766eb51057",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/assets/conversation-claude-send-2026-09-10.jpg",
+      "to": "docs/wiki/attachments/research/assets/conversation-claude-send-2026-09-10.jpg",
+      "originalSha256": "11159c73012a560c99f66b9010cddb305e710e5b81b9b324062f5e768360b013",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/assets/conversation-mode-native-2026-09-10.jpg",
+      "to": "docs/wiki/attachments/research/assets/conversation-mode-native-2026-09-10.jpg",
+      "originalSha256": "6fc0146df5b5baa18da8ff7e4db4ae57118c2c7323318e4e24889c32728aae42",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/assets/conversation-all-spaces-launcher-2026-09-10.jpg",
+      "to": "docs/wiki/attachments/research/assets/conversation-all-spaces-launcher-2026-09-10.jpg",
+      "originalSha256": "7ae2b57d15eeab91dc0aea565ccfcd8dae7ad0eba5b6c706ad9c627547603af6",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/assets/rich-chat-owner-preference-2026-09-10.png",
+      "to": "docs/wiki/attachments/research/assets/rich-chat-owner-preference-2026-09-10.png",
+      "originalSha256": "5fd41792e5485ed0e6a99e48c9836cf0c9e11269a1ec49e2b5709ca07790e76e",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/assets/git-plugin-sketch-2026-09-09.png",
+      "to": "docs/wiki/attachments/research/assets/git-plugin-sketch-2026-09-09.png",
+      "originalSha256": "f126926c1b8663fba86da4aa120980c4de6e4bf19de8e9c9d18d0c5035c7acb1",
+      "kind": "attachment"
+    },
+    {
+      "from": "docs/research/assets/conversation-single-space-launcher-2026-09-11.jpg",
+      "to": "docs/wiki/attachments/research/assets/conversation-single-space-launcher-2026-09-11.jpg",
+      "originalSha256": "fdb4082320e21e256953a040cd4eacb31818bcdc3870d0e3f0e6ea55f8326918",
+      "kind": "attachment"
+    }
+  ],
+  "jstack": {
+    "baseRevision": "29816b87aada33104f97c859e46afe90b577fe03",
+    "readerIncludesUncommittedInlineImageChange": true,
+    "readerSha256": "59543e4192415471ee025d8e38bc0329cf22928d2105574c2b9c9ccee909430a"
+  }
+}

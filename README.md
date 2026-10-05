@@ -8,6 +8,7 @@
 - [Installation](docs/installation.md)
 - [Getting started](docs/getting-started.md)
 - [Documentation](docs/README.md)
+- [Development wiki](docs/wiki/index.md)
 
 Keep your projects, tools, workflows, and agents together. chartr is an
 open-source native desktop app built with Rust and GPUI. Organize projects into

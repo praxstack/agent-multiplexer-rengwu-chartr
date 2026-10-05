@@ -452,7 +452,7 @@ and no project Markdown executes in the web document.
 
 [Companion](../plugins/companion/README.md) is excluded from current desktop
 builds, including its listener dependency and host bridge. Its source and the
-[wire protocol](companion-protocol.md) are retained for future development of
+[wire protocol](wiki/archive/companion-protocol.md) are retained for future development of
 the Android app in `../chartr-mobile`.
 
 

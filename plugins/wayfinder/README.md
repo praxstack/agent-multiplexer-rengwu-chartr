@@ -123,7 +123,7 @@ smoke tests cover responsive geometry and the complete preview/launch flow with
 a fixture host. Real Herdr smoke
 tests cover direct attachment and backend recovery. The original implementation
 and the role simplification are discussed in
-[ADR 0006](../../docs/adr/0006-native-plugin-services-and-wayfinder.md).
+[ADR 0006](../../docs/wiki/decisions/adr/0006-native-plugin-services-and-wayfinder.md).
 
 The tab and interface icons use Hugeicons' free Stroke Rounded collection.
 `icons/ui.svg` packages the original named exports from
@@ -140,7 +140,9 @@ the resizable bottom dock. Overflowing reading panes keep visible scrollbars.
 Map labels also follow the interface font and scale. Blocker and frontier rows
 keep ticket numbers and statuses in fixed columns while titles wrap.
 
-Run `cargo test --workspace --locked --no-fail-fast` and `node --test plugins/wayfinder/tests/layout.test.mjs`.
+Use the [Wayfinder feature record](../../docs/wiki/features/wayfinder.md) for the
+development recipe and [shared setup](../../docs/wiki/verification/setup.md) for
+test commands and evidence. Those recipes were not executed during migration.
 For browser QA, install Playwright in a separate dev environment and run
 `node plugins/wayfinder/tests/browser.mjs`; `PLAYWRIGHT_MODULE` can point to its
 `index.mjs` and `SCREENSHOT_DIR` to an existing output directory. These tests use

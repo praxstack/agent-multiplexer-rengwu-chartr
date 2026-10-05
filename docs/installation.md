@@ -4,7 +4,7 @@ The [v0.3.0 release](https://github.com/rengwu/chartr/releases/tag/v0.3.0)
 provides stable packages for the Rust rewrite.
 The [v0.2.4 downloads](https://github.com/rengwu/chartr/releases/tag/v0.2.4) remain
 available for the legacy Go/Svelte app. You can also build a
-[development DMG](releasing.md#macos-development-dmg) locally on macOS.
+[development DMG](wiki/development/releasing.md#macos-development-dmg) locally on macOS.
 
 | Platform | Current support                                                    |
 | -------- | ------------------------------------------------------------------ |
@@ -139,7 +139,7 @@ An explicit `WEBKIT_DMABUF_RENDERER_FORCE_SHM` or
 Avoid setting `WEBKIT_DISABLE_DMABUF_RENDERER=1` in launchers: it disables the
 renderer instead of selecting its shared-memory transport.
 
-See [Release builds](releasing.md) for the local commands, cache behavior,
+See [Release builds](wiki/development/releasing.md) for the local commands, cache behavior,
 and timing reports.
 
 Once chartr is running, follow [Getting started](getting-started.md).
