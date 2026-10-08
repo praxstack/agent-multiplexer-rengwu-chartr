@@ -10,7 +10,6 @@ These guides describe the current Rust working tree. Start with
 | Source builds, supported platforms, and package installation | [Installation](installation.md) |
 | First space, agent setup, and the Wayfinder workflow | [Getting started](getting-started.md) |
 | Spaces, panes, terminals, settings, persistence, and data locations | [Workspace](workspace.md) |
-| Chats view, Inbox/Archive, agent discovery, and session logs | [Inbox](conversations.md) |
 | Package installation, prerequisites, permissions, and SDK contracts | [Plugins](plugins.md) |
 | Persistent plugin activity | [Status bar](status-bar.md) |
 | Ordered local and Git skill sources | [Skill sources](../plugins/skills/README.md) |
@@ -47,7 +46,8 @@ offline reader. Public guides above remain outside the development wiki.
 [Research](wiki/archive/research/index.md) contains dated proposals, experiments, screenshots,
 and verification receipts. Its older feature descriptions and test counts are
 historical, not current availability or release guarantees. Rich chat has been
-replaced by Inbox's original-terminal view.
+replaced by Inbox's original-terminal view. [Inbox](conversations.md) is retained
+as a reference; Chats view is currently disabled, with existing history preserved.
 
 [Mobile Companion](../plugins/companion/README.md) and its
 [development protocol](wiki/archive/companion-protocol.md) are retained for future work;

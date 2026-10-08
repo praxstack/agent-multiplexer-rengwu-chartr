@@ -21,7 +21,6 @@ pub enum KeymapAction {
     Ungroup,
     SidebarMode,
     TabbedMode,
-    ConversationMode,
     CycleViewMode,
     NewSpace,
     CloseSpace,
@@ -40,7 +39,7 @@ pub enum KeymapAction {
 }
 
 impl KeymapAction {
-    pub const ALL: [Self; 24] = [
+    pub const ALL: [Self; 23] = [
         Self::CloseItem,
         Self::NewTerminal,
         Self::NewTerminalPane,
@@ -49,7 +48,6 @@ impl KeymapAction {
         Self::Ungroup,
         Self::SidebarMode,
         Self::TabbedMode,
-        Self::ConversationMode,
         Self::CycleViewMode,
         Self::NewSpace,
         Self::CloseSpace,
@@ -77,7 +75,6 @@ impl KeymapAction {
             Self::Ungroup => "workspace.ungroup",
             Self::SidebarMode => "workspace.sidebar_mode",
             Self::TabbedMode => "workspace.tabbed_mode",
-            Self::ConversationMode => "workspace.conversation_mode",
             Self::CycleViewMode => "workspace.cycle_view_mode",
             Self::NewSpace => "workspace.new_space",
             Self::CloseSpace => "workspace.close_space",
@@ -106,7 +103,6 @@ impl KeymapAction {
             Self::Ungroup => "Ungroup current group",
             Self::SidebarMode => "Switch to Spaces view",
             Self::TabbedMode => "Switch to Tabs view",
-            Self::ConversationMode => "Switch to Chats view",
             Self::CycleViewMode => "Cycle view modes",
             Self::NewSpace => "Open new space",
             Self::CloseSpace => "Close current space",
@@ -139,7 +135,6 @@ impl KeymapAction {
             Self::Ungroup => "cmd-shift-g",
             Self::SidebarMode => "cmd-@",
             Self::TabbedMode => "cmd-!",
-            Self::ConversationMode => "cmd-#",
             Self::CycleViewMode => "cmd-~",
             Self::NewSpace => "cmd-o",
             Self::CloseSpace => "cmd-shift-w",
@@ -167,7 +162,6 @@ impl KeymapAction {
             Self::Ungroup => "ctrl-shift-g",
             Self::SidebarMode => "ctrl-@",
             Self::TabbedMode => "ctrl-!",
-            Self::ConversationMode => "ctrl-#",
             // Ctrl+~ already opens a terminal on Linux.
             Self::CycleViewMode => "ctrl-alt-~",
             Self::NewSpace => "ctrl-o",
@@ -393,6 +387,22 @@ mod tests {
         let loaded = KeymapStore::load(file);
         assert_eq!(loaded.key(KeymapAction::CloseItem), "ctrl-alt-w");
         assert_eq!(loaded.key(KeymapAction::FocusLeft), KeymapAction::FocusLeft.default_key());
+    }
+
+    #[test]
+    fn disabled_chats_shortcuts_are_preserved_without_reserving_the_key() {
+        let temp = tempfile::tempdir().unwrap();
+        let file = temp.path().join(KEYMAP_FILE);
+        fs::write(&file, "[bindings]\n\"workspace.conversation_mode\" = \"ctrl-alt-z\"\n").unwrap();
+        let mut store = KeymapStore::load(&file);
+        assert!(store.problem().is_none());
+        assert!(
+            KeymapAction::ALL.iter().all(|action| action.id() != "workspace.conversation_mode")
+        );
+        store.set(KeymapAction::TabbedMode, "ctrl-alt-z".into()).unwrap();
+        let loaded = KeymapStore::load(&file);
+        assert_eq!(loaded.key(KeymapAction::TabbedMode), "ctrl-alt-z");
+        assert_eq!(loaded.content.bindings["workspace.conversation_mode"], "ctrl-alt-z");
     }
 
     #[test]

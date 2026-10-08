@@ -40,18 +40,17 @@ pane-local tab bars, while a standalone has no duplicate inner bar. Switching
 presentation never reparents or recreates an item. The sidebar presents one
 scrollable tree, including Free sessions. Click a space name or chevron to
 collapse or expand its indented sessions; this state survives relaunch. Empty
-spaces show a muted **Space is empty** message; the heading's plus and surface
-buttons remain available. Drag any space
+spaces show only their heading, with no placeholder row. The heading's plus and
+surface buttons remain available, and a small gap separates spaces. Drag any space
 heading, including Free sessions, to reorder the whole space. It stays locked
 to the sidebar's X axis, continues tracking vertically outside the sidebar,
 autoscrolls at the list edges, and settles into the closest legal slot at release.
 Space order survives relaunch.
 
-The title-bar selector labels these views **Spaces** and **Tabs**. **Chats**
-opens Inbox, a third projection with searchable agent history beside the
-selected session's original terminal. It preserves the running sessions and saved
-pane layout. See [Inbox](conversations.md) for discovery, archive behavior,
-launching, and provider log access.
+The title-bar selector and Settings offer **Tabs** and **Spaces**. Cycle view
+modes alternates between them. **Chats** is disabled, including its command and
+shortcut; saved Chats preferences reopen in Spaces. Existing conversation history
+is retained. See [Inbox](conversations.md) for the retained history reference.
 
 Terminal titles follow Herdr's live view of the PTY, as in chartr-rs: a detected
 agent wins, otherwise the non-shell foreground process is shown, and an idle

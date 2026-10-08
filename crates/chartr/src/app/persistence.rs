@@ -11,7 +11,9 @@ pub(super) fn restore_state(
     path: anyhow::Result<PathBuf>,
 ) -> (Option<StateStore>, Snapshot, Option<String>) {
     match path.and_then(StateStore::open).and_then(|store| {
-        let snapshot = store.load()?;
+        let mut snapshot = store.load()?;
+        snapshot.window.chrome = snapshot.window.chrome.available();
+        snapshot.window.terminal_mode = snapshot.window.terminal_mode.available();
         Ok((store, snapshot))
     }) {
         Ok((store, snapshot)) => (Some(store), snapshot, None),
@@ -108,6 +110,34 @@ mod tests {
         changed.window.sidebar_width += 10.;
         StateWriter::new(store.unwrap(), saved).request(changed.clone()).save().unwrap();
         assert_eq!(StateStore::open(&path).unwrap().load().unwrap(), changed);
+    }
+
+    #[test]
+    fn disabled_chats_restore_as_spaces_without_losing_workspace_or_history_selection() {
+        for legacy_mode in ["inbox", "conversations"] {
+            let directory = tempfile::tempdir().unwrap();
+            let path = directory.path().join("state.sqlite");
+            let mut snapshot = saved_workspace();
+            snapshot.window.chrome = Mode::Inbox;
+            snapshot.window.terminal_mode = Mode::Inbox;
+            snapshot.window.selected_conversation = Some("saved-chat".into());
+            StateStore::open(&path).unwrap().save(&snapshot).unwrap();
+            // Exercise both names found in existing state databases.
+            let window =
+                serde_json::to_string(&snapshot.window).unwrap().replace("inbox", legacy_mode);
+            rusqlite::Connection::open(&path)
+                .unwrap()
+                .execute("UPDATE app_state SET value_json = ?1 WHERE key = 'window'", [window])
+                .unwrap();
+
+            let (store, restored, problem) = restore_state(Ok(path.clone()));
+            assert!(store.is_some());
+            assert!(problem.is_none());
+            assert_eq!(StateStore::open(&path).unwrap().load().unwrap(), snapshot);
+            snapshot.window.chrome = Mode::Sidebar;
+            snapshot.window.terminal_mode = Mode::Sidebar;
+            assert_eq!(restored, snapshot);
+        }
     }
 }
 

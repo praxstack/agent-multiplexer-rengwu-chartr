@@ -73,11 +73,11 @@ impl SettingsWindow {
         }
         fields.push(setting_field(
             "Hide view mode picker",
-            "Hide the Tabs/Spaces/Chats picker in the workspace title bar.",
+            "Hide the Tabs/Spaces picker in the workspace title bar.",
             Switch::new("hide-view-mode-picker", hide_view_mode_picker.into())
                 .tab_index(0isize)
                 .aria_label("Hide view mode picker")
-                .aria_description("Hide the Tabs/Spaces/Chats picker in the workspace title bar.")
+                .aria_description("Hide the Tabs/Spaces picker in the workspace title bar.")
                 .on_click(move |state, _, cx| {
                     let show = !state.selected();
                     let _ = view_mode_picker_setting
@@ -98,13 +98,12 @@ impl SettingsWindow {
         ));
         fields.push(setting_field(
             "View mode",
-            "Choose how to browse sessions: Tabs, Spaces, or Chats.",
+            "Choose how to browse sessions: Tabs or Spaces.",
             SegmentedControl::new(
                 "Workspace view mode",
                 [
                     ("presentation-tabs", "Tabs", Mode::Tabs),
                     ("presentation-sidebar", "Spaces", Mode::Sidebar),
-                    ("presentation-conversations", "Chats", Mode::Inbox),
                 ]
                 .map(|(id, label, target)| {
                     SegmentedControlOption::new(

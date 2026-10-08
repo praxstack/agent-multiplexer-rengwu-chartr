@@ -434,8 +434,7 @@ impl WorkspaceWindow {
 
     fn presentation_toggle(&self, on: chrome::Emit) -> AnyElement {
         let use_sidebar = on.clone();
-        let use_tabs = on.clone();
-        let use_conversations = on;
+        let use_tabs = on;
         SegmentedControl::new(
             "Session list presentation",
             [
@@ -450,14 +449,6 @@ impl WorkspaceWindow {
                     "Spaces",
                     self.mode == Mode::Sidebar,
                     move |_, window, cx| use_sidebar(Action::SwitchToSidebar, window, cx),
-                ),
-                SegmentedControlOption::new(
-                    "presentation-conversations",
-                    "Chats",
-                    self.mode == Mode::Inbox,
-                    move |_, window, cx| {
-                        use_conversations(Action::SwitchToConversations, window, cx)
-                    },
                 ),
             ],
         )
@@ -657,7 +648,7 @@ mod responsive_controls_tests {
                         row.child(div().debug_selector(|| "VIEW_PICKER".into()).child(
                             SegmentedControl::new(
                                 "Session list presentation",
-                                ["Tabs", "Spaces", "Chats"].map(|label| {
+                                ["Tabs", "Spaces"].map(|label| {
                                     SegmentedControlOption::new(
                                         label,
                                         label,
@@ -685,13 +676,13 @@ mod responsive_controls_tests {
             theme::init(theme::LoadThemes::JustBase, cx);
             crate::fonts::install(&crate::settings::ResolvedSettings::default(), cx);
         });
-        let (view, cx) = cx.add_window_view(|_, _| Harness { width: px(500.), rem_size: px(14.) });
+        let (view, cx) = cx.add_window_view(|_, _| Harness { width: px(300.), rem_size: px(14.) });
         for (width, rem_size, visible) in [
-            (500., 14., true),
+            (300., 14., true),
             (80., 14., false),
-            (500., 14., true),
-            (500., 42., false),
-            (500., 14., true),
+            (300., 14., true),
+            (300., 42., false),
+            (300., 14., true),
         ] {
             view.update(cx, |view, cx| {
                 view.width = px(width);

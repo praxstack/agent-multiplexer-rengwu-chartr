@@ -27,7 +27,7 @@ spaces, arrange terminals and tools side by side, and make the workspace your ow
 
 - **Folders as spaces** — Keep each project's terminals and tools together, with
   Free sessions for work outside a project.
-- **Flexible views** — Switch between Tabs, Spaces, and Chats with your sessions
+- **Flexible views** — Switch between Tabs and Spaces with your sessions
   and pane arrangements intact.
 - **Tabs and split panes** — Move tabs, split them into columns or rows, and
   group terminals and plugin tools within each space.

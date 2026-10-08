@@ -1,5 +1,5 @@
-//! Presentation modes. Sidebar and Tabs project the existing terminal layout;
-//! Inbox projects durable provider identities over the same runtimes.
+//! Presentation modes. Sidebar and Tabs project the existing terminal layout.
+//! The disabled Inbox view is retained for saved-state compatibility.
 //! Switching presentation never starts or stops a session.
 
 use serde::{Deserialize, Serialize};
@@ -16,9 +16,26 @@ pub enum Mode {
     /// A horizontal strip across the top. Familiar, and denser per session —
     /// the mode for a handful of things you are switching between quickly.
     Tabs,
-    /// Agent session history beside the selected session terminal.
+    /// Disabled agent history view, retained for saved-state compatibility.
     #[serde(alias = "conversations")]
     Inbox,
+}
+
+impl Mode {
+    /// Chats is disabled; old preferences and requests fall back to Spaces.
+    pub fn available(self) -> Self {
+        match self {
+            Self::Inbox => Self::Sidebar,
+            mode => mode,
+        }
+    }
+
+    pub fn next(self) -> Self {
+        match self {
+            Self::Tabs => Self::Sidebar,
+            Self::Sidebar | Self::Inbox => Self::Tabs,
+        }
+    }
 }
 
 const TRANSITION_DURATION: Duration = Duration::from_millis(500);
@@ -320,5 +337,17 @@ mod inbox_migration_tests {
     fn conversations_preferences_migrate_to_inbox() {
         assert_eq!(serde_json::from_str::<Mode>("\"conversations\"").unwrap(), Mode::Inbox);
         assert_eq!(serde_json::to_string(&Mode::Inbox).unwrap(), "\"inbox\"");
+    }
+
+    #[test]
+    fn cycling_only_visits_enabled_views() {
+        for mode in [Mode::Tabs, Mode::Sidebar, Mode::Inbox] {
+            let first = mode.next();
+            let second = first.next();
+            assert_ne!(first, Mode::Inbox);
+            assert_ne!(second, Mode::Inbox);
+            assert_ne!(first, second);
+            assert_eq!(second, mode.available());
+        }
     }
 }

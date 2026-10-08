@@ -1,7 +1,7 @@
 ---
 title: Agent launching and Inbox history
 section: Features
-updated: 2026-10-05
+updated: 2026-10-08
 basis: Source-reviewed migration baseline
 ---
 # Agent launching and Inbox history
@@ -23,7 +23,13 @@ Legacy story references: 94. See the [complete crosswalk](story-crosswalk.md).
 
 ## Entry points and prerequisites
 
-Configure Agent through Settings → Plugins, open its surface, or switch to Chats for searchable Inbox/Archive and the original terminal.
+Configure Agent through Settings → Plugins and open its surface.
+
+Chats was disabled by the accepted 2026-10-08 UI change. Saved Chats preferences
+reopen in Spaces; existing history and selected-history state remain stored.
+The Inbox-specific outcomes and recipe steps below describe the retained
+implementation and are inactive while the view is disabled. Agent launching
+remains available from its surface in Tabs and Spaces.
 
 Use [shared setup](../verification/setup.md) and a disposable profile/project for
 stateful recipes. Related areas are linked from the [feature index](index.md).

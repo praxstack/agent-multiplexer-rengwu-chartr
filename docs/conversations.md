@@ -1,8 +1,13 @@
 # Inbox
 
-Choose **Chats** in the window’s view selector, or **Switch to Chats view** in the command palette
-(`Cmd+Shift+3` on macOS, `Ctrl+Shift+3` on Linux). Existing Conversations view
-preferences migrate to Inbox with the same selected history entry. Existing custom `workspace.conversation_mode` shortcuts remain valid.
+**Chats is disabled as of 2026-10-08.** The view selector, Settings, command
+palette, and view-cycling shortcut offer only Tabs and Spaces. Saved Inbox or
+Conversations view preferences reopen in Spaces. The former Chats shortcut and
+custom `workspace.conversation_mode` bindings are inactive; their stored settings
+and existing history remain intact. Launch agents through the Agent surface.
+
+The remaining sections describe the retained Inbox implementation for reference;
+its history UI is currently unavailable.
 
 Inbox keeps a history sidebar with **Inbox** and **Archive** tabs, the agent
 launcher, and automatically detected conversation titles. Conversation renaming

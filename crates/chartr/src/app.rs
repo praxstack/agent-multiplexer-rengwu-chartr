@@ -126,7 +126,6 @@ enum PaletteCommand {
     Ungroup,
     SidebarMode,
     TabbedMode,
-    ConversationMode,
     CycleViewMode,
     ToggleStatusBar,
     NewSpace,
@@ -158,7 +157,7 @@ enum RenameKind {
 }
 
 impl PaletteCommand {
-    const ALL: [(Self, &'static str, &'static str); 30] = [
+    const ALL: [(Self, &'static str, &'static str); 29] = [
         (Self::NewTerminal, "Workspace: New Terminal", "Ctrl+~"),
         (Self::NewTerminalPane, "Workspace: New terminal pane", ""),
         (Self::NewSurface, "Workspace: New surface tab", ""),
@@ -166,7 +165,6 @@ impl PaletteCommand {
         (Self::Ungroup, "Workspace: Ungroup current group", ""),
         (Self::SidebarMode, "Workspace: Switch to Spaces view", ""),
         (Self::TabbedMode, "Workspace: Switch to Tabs view", ""),
-        (Self::ConversationMode, "Workspace: Switch to Chats view", ""),
         (Self::CycleViewMode, "Workspace: Cycle view modes", ""),
         (Self::ToggleStatusBar, "Workspace: Toggle status bar", ""),
         (Self::NewSpace, "Workspace: Open new space", ""),
@@ -758,7 +756,6 @@ impl WorkspaceWindow {
             }
             Action::SwitchToTabs => self.settings_set_mode(Mode::Tabs, cx),
             Action::SwitchToSidebar => self.settings_set_mode(Mode::Sidebar, cx),
-            Action::SwitchToConversations => self.settings_set_mode(Mode::Inbox, cx),
             Action::OpenSettings => self.open_settings(window, cx),
             Action::NewSpace => self.pick_a_folder(window, cx),
             Action::New => {

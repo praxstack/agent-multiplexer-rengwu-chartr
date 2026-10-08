@@ -1,7 +1,7 @@
 ---
 title: Release acceptance
 section: Verification
-updated: 2026-10-05
+updated: 2026-10-08
 recipe: Unvalidated
 ---
 # Release acceptance
@@ -12,6 +12,11 @@ complements each feature's bounded recipe. It describes checks to perform, not
 results. **No chartr acceptance scenario was executed during the documentation
 migration.** Use [shared setup](setup.md) for isolation, build identity, evidence
 and cleanup. Dated [audits](../archive/research/index.md) retain their original limits.
+
+As of 2026-10-08, Chats is disabled. Scenarios below that require the Inbox UI
+are retained for reference and are inactive until it is re-enabled. Current view
+checks cover Tabs and Spaces, including restoration of old Chats preferences to
+Spaces without losing history; see [view behavior](../features/workspace-views.md).
 
 ## Feature coverage
 
@@ -170,7 +175,7 @@ stale viewport, focus loss, or interaction that works only in one pane shape.
 
 In Tabbed mode, confirm the space picker sits in the macOS title bar immediately
 after the traffic lights. At the far-right corner in both chrome modes, confirm the
-`Tabs` / `Spaces` / `Chats` segmented control reflects and changes the presentation,
+`Tabs` / `Spaces` segmented control reflects and changes the presentation,
 and the adjacent gear button opens Settings without the workspace reclaiming
 window focus. With a web or native plugin pane visible, test clicking the gear
 both before its tooltip appears and while the tooltip is already visible. Leave

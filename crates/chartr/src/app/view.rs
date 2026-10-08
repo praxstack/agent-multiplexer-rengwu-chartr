@@ -386,18 +386,8 @@ impl Render for WorkspaceWindow {
             .on_action(cx.listener(|this, _: &actions::workspace::TabbedMode, _, cx| {
                 this.settings_set_mode(Mode::Tabs, cx)
             }))
-            .on_action(cx.listener(|this, _: &actions::workspace::ConversationMode, _, cx| {
-                this.settings_set_mode(Mode::Inbox, cx)
-            }))
             .on_action(cx.listener(|this, _: &actions::workspace::CycleViewMode, _, cx| {
-                this.settings_set_mode(
-                    match this.mode {
-                        Mode::Tabs => Mode::Sidebar,
-                        Mode::Sidebar => Mode::Inbox,
-                        Mode::Inbox => Mode::Tabs,
-                    },
-                    cx,
-                )
+                this.settings_set_mode(this.mode.next(), cx)
             }))
             .on_action(cx.listener(|this, _: &actions::workspace::NewSpace, window, cx| {
                 this.act(Action::NewSpace, window, cx)

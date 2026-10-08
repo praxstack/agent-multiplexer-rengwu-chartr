@@ -651,7 +651,6 @@ impl Space {
             | Action::OpenSpaceFolder { .. }
             | Action::LocateSpace { .. }
             | Action::SwitchToTabs
-            | Action::SwitchToConversations
             | Action::SwitchToSidebar
             | Action::BeginSpaceDrag { .. }
             | Action::OpenSettings => {}

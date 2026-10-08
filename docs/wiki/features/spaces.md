@@ -1,7 +1,7 @@
 ---
 title: Spaces and folder ownership
 section: Features
-updated: 2026-10-05
+updated: 2026-10-07
 basis: Source-reviewed migration baseline
 ---
 # Spaces and folder ownership
@@ -34,6 +34,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 - Folder identity uses canonical paths; aliases do not create duplicate spaces. Renaming changes the label, and removing a space leaves its folder untouched.
 - Each live item belongs to one space. Creating from an inactive space activates the intended owner. Missing folders retain unavailable state and can be recovered.
 - The complete sidebar order includes Free sessions. Dragging uses variable-height midpoints, edge autoscroll, release position, cancel/rollback, and Reduce Motion behavior.
+- Empty spaces show only their heading, with no placeholder session row or tree guide. A 0.5rem gap separates adjacent spaces, including collapsed ones (accepted UI change, 2026-10-07; source-observed, not live-verified).
 
 ## Verification recipe
 

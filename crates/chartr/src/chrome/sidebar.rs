@@ -15,8 +15,8 @@ use crate::components::{ContextMenu, SelectionRowBackgrounds, selection_list, se
 use crate::fonts::{UI_LABEL_DEFAULT, UI_LABEL_SMALL};
 use crate::settings::{SettingsStore, sidebar_theme_colors};
 
-/// Keep the compact space gap shared by layout and drag-sort animation.
-pub(crate) const CARD_GAP: Rems = Rems(0.125);
+/// Keep the space gap shared by layout and drag-sort animation.
+pub(crate) const CARD_GAP: Rems = Rems(0.5);
 pub type SpaceSorter = crate::components::ListSorter<EntityId>;
 
 pub fn render(
@@ -189,7 +189,7 @@ pub fn render(
             title_bar.into_any_element()
         };
         contents.push(title_bar);
-        if !space.collapsed {
+        if !space.collapsed && !space.entries.is_empty() {
             let mut tabs = Vec::with_capacity(space.entries.len());
             for (target_index, entry) in space.entries.iter().enumerate() {
                 let dragged = DraggedItem {
@@ -248,19 +248,7 @@ pub fn render(
                             .w(px(1.))
                             .bg(colors.border_variant),
                     )
-                    .when(space.entries.is_empty(), |tree| {
-                        tree.child(
-                            div().ml(px(9.)).child(
-                                div().px_1p5().py_1().child(
-                                    Label::new("Space is empty")
-                                        .size(UI_LABEL_SMALL)
-                                        .color(Color::Muted)
-                                        .truncate(),
-                                ),
-                            ),
-                        )
-                    })
-                    .when(!space.entries.is_empty(), |tree| tree.child(sessions))
+                    .child(sessions)
                     .into_any_element(),
             );
         }

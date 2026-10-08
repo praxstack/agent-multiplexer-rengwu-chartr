@@ -34,6 +34,7 @@ impl WorkspaceWindow {
     }
 
     pub(crate) fn settings_set_mode(&mut self, mode: Mode, cx: &mut Context<Self>) {
+        let mode = mode.available();
         if self.mode == mode {
             return;
         }
