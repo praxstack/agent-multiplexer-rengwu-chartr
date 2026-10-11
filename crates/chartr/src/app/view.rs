@@ -333,6 +333,9 @@ impl Render for WorkspaceWindow {
             .on_action(cx.listener(|this, _: &actions::pane::CloseAllItems, window, cx| {
                 this.request_close_active_pane(window, cx)
             }))
+            .on_action(cx.listener(|this, _: &actions::workspace::CloseAllSessions, window, cx| {
+                this.request_close_all_sessions(window, cx)
+            }))
             .on_action(cx.listener(|this, _: &actions::pane::MoveLeft, _, cx| {
                 this.move_active_to_pane(SplitDirection::Left, cx)
             }))

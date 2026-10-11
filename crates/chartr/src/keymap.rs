@@ -24,6 +24,7 @@ pub enum KeymapAction {
     CycleViewMode,
     NewSpace,
     CloseSpace,
+    CloseAllSessions,
     ZoomIn,
     ZoomOut,
     TerminalZoomIn,
@@ -39,7 +40,7 @@ pub enum KeymapAction {
 }
 
 impl KeymapAction {
-    pub const ALL: [Self; 23] = [
+    pub const ALL: [Self; 24] = [
         Self::CloseItem,
         Self::NewTerminal,
         Self::NewTerminalPane,
@@ -51,6 +52,7 @@ impl KeymapAction {
         Self::CycleViewMode,
         Self::NewSpace,
         Self::CloseSpace,
+        Self::CloseAllSessions,
         Self::ZoomIn,
         Self::ZoomOut,
         Self::TerminalZoomIn,
@@ -78,6 +80,7 @@ impl KeymapAction {
             Self::CycleViewMode => "workspace.cycle_view_mode",
             Self::NewSpace => "workspace.new_space",
             Self::CloseSpace => "workspace.close_space",
+            Self::CloseAllSessions => "workspace.close_all_sessions",
             Self::ZoomIn => "workspace.zoom_in",
             Self::ZoomOut => "workspace.zoom_out",
             Self::TerminalZoomIn => "workspace.terminal_zoom_in",
@@ -106,6 +109,7 @@ impl KeymapAction {
             Self::CycleViewMode => "Cycle view modes",
             Self::NewSpace => "Open new space",
             Self::CloseSpace => "Close current space",
+            Self::CloseAllSessions => "Close all sessions",
             Self::ZoomIn => "Zoom in interface",
             Self::ZoomOut => "Zoom out interface",
             Self::TerminalZoomIn => "Zoom in terminal",
@@ -138,6 +142,7 @@ impl KeymapAction {
             Self::CycleViewMode => "cmd-~",
             Self::NewSpace => "cmd-o",
             Self::CloseSpace => "cmd-shift-w",
+            Self::CloseAllSessions => "",
             Self::ZoomIn => "cmd-=",
             Self::ZoomOut => "cmd--",
             Self::TerminalZoomIn => "cmd-+",
@@ -166,6 +171,7 @@ impl KeymapAction {
             Self::CycleViewMode => "ctrl-alt-~",
             Self::NewSpace => "ctrl-o",
             Self::CloseSpace => "ctrl-shift-w",
+            Self::CloseAllSessions => "",
             Self::ZoomIn => "ctrl-=",
             Self::ZoomOut => "ctrl--",
             Self::TerminalZoomIn => "ctrl-+",
@@ -343,7 +349,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn defaults_are_valid_unique_chords_with_two_unbound_commands() {
+    fn defaults_are_valid_unique_chords_with_three_unbound_commands() {
         let mut keys = std::collections::HashSet::new();
         let mut ids = std::collections::HashSet::new();
         for action in KeymapAction::ALL {
@@ -352,14 +358,16 @@ mod tests {
             if key.is_empty() {
                 assert!(matches!(
                     action,
-                    KeymapAction::NewFreeTerminal | KeymapAction::NewFreeSurface
+                    KeymapAction::NewFreeTerminal
+                        | KeymapAction::NewFreeSurface
+                        | KeymapAction::CloseAllSessions
                 ));
             } else {
                 validate_chord(key).unwrap();
                 assert!(keys.insert(key), "duplicate default: {key}");
             }
         }
-        assert_eq!(keys.len(), KeymapAction::ALL.len() - 2);
+        assert_eq!(keys.len(), KeymapAction::ALL.len() - 3);
     }
 
     #[test]
@@ -367,7 +375,11 @@ mod tests {
         let temp = tempfile::tempdir().unwrap();
         let file = temp.path().join(KEYMAP_FILE);
         let mut store = KeymapStore::load(&file);
-        for action in [KeymapAction::NewFreeTerminal, KeymapAction::NewFreeSurface] {
+        for action in [
+            KeymapAction::NewFreeTerminal,
+            KeymapAction::NewFreeSurface,
+            KeymapAction::CloseAllSessions,
+        ] {
             assert_eq!(store.shortcut_label(action), "Unbound");
             store.set(action, "ctrl-alt-z".into()).unwrap();
             assert_eq!(KeymapStore::load(&file).key(action), "ctrl-alt-z");

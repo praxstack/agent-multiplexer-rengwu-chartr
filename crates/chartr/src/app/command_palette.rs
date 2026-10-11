@@ -65,6 +65,7 @@ impl WorkspaceWindow {
             PaletteCommand::CycleViewMode => Box::new(actions::workspace::CycleViewMode),
             PaletteCommand::NewSpace => Box::new(actions::workspace::NewSpace),
             PaletteCommand::CloseSpace => Box::new(actions::workspace::CloseSpace),
+            PaletteCommand::CloseAllSessions => Box::new(actions::workspace::CloseAllSessions),
             PaletteCommand::ZoomIn => Box::new(actions::workspace::ZoomIn),
             PaletteCommand::ZoomOut => Box::new(actions::workspace::ZoomOut),
             PaletteCommand::TerminalZoomIn => Box::new(actions::workspace::TerminalZoomIn),
@@ -331,6 +332,16 @@ mod tests {
         popup.simulate_keystrokes("enter");
         popup.run_until_parked();
         assert_eq!(*events.borrow(), vec![Some(PaletteCommand::OpenSettings)]);
+        assert_eq!(popup.windows().len(), 1);
+    }
+
+    #[gpui::test]
+    fn close_all_sessions_is_available_from_the_palette(cx: &mut gpui::TestAppContext) {
+        let (mut popup, events) = open(cx);
+        popup.simulate_input("close all sessions");
+        popup.simulate_keystrokes("enter");
+        popup.run_until_parked();
+        assert_eq!(*events.borrow(), vec![Some(PaletteCommand::CloseAllSessions)]);
         assert_eq!(popup.windows().len(), 1);
     }
 

@@ -34,6 +34,7 @@ pub mod workspace {
             ToggleStatusBar,
             NewSpace,
             CloseSpace,
+            CloseAllSessions,
             ZoomIn,
             ZoomOut,
             TerminalZoomIn,
@@ -134,6 +135,9 @@ fn binding(action: KeymapAction, key: &str, context: &str) -> KeyBinding {
         KeymapAction::CycleViewMode => KeyBinding::new(key, workspace::CycleViewMode, context),
         KeymapAction::NewSpace => KeyBinding::new(key, workspace::NewSpace, context),
         KeymapAction::CloseSpace => KeyBinding::new(key, workspace::CloseSpace, context),
+        KeymapAction::CloseAllSessions => {
+            KeyBinding::new(key, workspace::CloseAllSessions, context)
+        }
         KeymapAction::ZoomIn => KeyBinding::new(key, workspace::ZoomIn, context),
         KeymapAction::ZoomOut => KeyBinding::new(key, workspace::ZoomOut, context),
         KeymapAction::TerminalZoomIn => KeyBinding::new(key, workspace::TerminalZoomIn, context),

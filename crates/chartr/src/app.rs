@@ -130,6 +130,7 @@ enum PaletteCommand {
     ToggleStatusBar,
     NewSpace,
     CloseSpace,
+    CloseAllSessions,
     ZoomIn,
     ZoomOut,
     TerminalZoomIn,
@@ -157,7 +158,7 @@ enum RenameKind {
 }
 
 impl PaletteCommand {
-    const ALL: [(Self, &'static str, &'static str); 29] = [
+    const ALL: [(Self, &'static str, &'static str); 30] = [
         (Self::NewTerminal, "Workspace: New Terminal", "Ctrl+~"),
         (Self::NewTerminalPane, "Workspace: New terminal pane", ""),
         (Self::NewSurface, "Workspace: New surface tab", ""),
@@ -169,6 +170,7 @@ impl PaletteCommand {
         (Self::ToggleStatusBar, "Workspace: Toggle status bar", ""),
         (Self::NewSpace, "Workspace: Open new space", ""),
         (Self::CloseSpace, "Workspace: Close current space", ""),
+        (Self::CloseAllSessions, "Workspace: Close All Sessions", ""),
         (Self::ZoomIn, "Workspace: Zoom in interface", ""),
         (Self::ZoomOut, "Workspace: Zoom out interface", ""),
         (Self::TerminalZoomIn, "Workspace: Zoom in terminal", ""),
@@ -1010,6 +1012,47 @@ impl WorkspaceWindow {
         }
         let ids = space.read(cx).all_item_ids();
         self.request_bulk_close(space, ids, true, "space", window, cx);
+    }
+
+    fn request_close_all_sessions(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+        let targets: Vec<_> = self
+            .spaces
+            .iter()
+            .filter_map(|space| {
+                let state = space.read(cx);
+                let ids: Vec<_> = state
+                    .close_targets(&state.all_item_ids())
+                    .into_iter()
+                    .filter_map(|(item, backend)| backend.is_some().then_some(item))
+                    .collect();
+                (!ids.is_empty()).then(|| (space.clone(), ids))
+            })
+            .collect();
+        let terminal_count: usize = targets.iter().map(|(_, ids)| ids.len()).sum();
+        if terminal_count <= 1 {
+            for (space, ids) in targets {
+                self.start_bulk_close(space, ids, false, cx);
+            }
+            return;
+        }
+
+        let prompt = window.prompt(
+            gpui::PromptLevel::Critical,
+            &format!("Close all {terminal_count} sessions across all spaces?"),
+            Some("Every underlying shell or agent process is terminated. Spaces remain open."),
+            &["Close and Terminate", "Cancel"],
+            cx,
+        );
+        cx.spawn(async move |this, cx| {
+            if prompt.await == Ok(0) {
+                let _ = this.update(cx, |this, cx| {
+                    for (space, ids) in targets {
+                        this.start_bulk_close(space, ids, false, cx);
+                    }
+                });
+            }
+        })
+        .detach();
     }
 
     fn request_bulk_close(
