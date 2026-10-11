@@ -1,0 +1,149 @@
+{
+  "exception": {
+    "codes": "0x0000000000000001, 0x0000000000000020",
+    "rawCodes": [
+      1,
+      32
+    ],
+    "type": "EXC_BAD_ACCESS",
+    "signal": "SIGSEGV",
+    "subtype": "KERN_INVALID_ADDRESS at 0x0000000000000020"
+  },
+  "termination": {
+    "flags": 0,
+    "code": 11,
+    "namespace": "SIGNAL",
+    "indicator": "Segmentation fault: 11",
+    "byProc": "exc handler",
+    "byPid": 86614
+  },
+  "faulting_thread_frames": [
+    {
+      "imageOffset": 2966364,
+      "symbol": "CAMetalLayerSetMetalLinkToken",
+      "symbolLocation": 32,
+      "imageIndex": 3
+    },
+    {
+      "imageOffset": 954964,
+      "symbol": "CA::Display::MetalLinkItem::invalidate()",
+      "symbolLocation": 44,
+      "imageIndex": 3
+    },
+    {
+      "imageOffset": 9068,
+      "symbol": "__main_block_invoke_3.22",
+      "symbolLocation": 40,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 6708,
+      "symbol": "_dispatch_call_block_and_release",
+      "symbolLocation": 32,
+      "imageIndex": 4
+    },
+    {
+      "imageOffset": 112116,
+      "symbol": "_dispatch_client_callout",
+      "symbolLocation": 16,
+      "imageIndex": 4
+    },
+    {
+      "imageOffset": 235896,
+      "symbol": "_dispatch_main_queue_drain.cold.6",
+      "symbolLocation": 832,
+      "imageIndex": 4
+    },
+    {
+      "imageOffset": 68452,
+      "symbol": "_dispatch_main_queue_drain",
+      "symbolLocation": 176,
+      "imageIndex": 4
+    },
+    {
+      "imageOffset": 68260,
+      "symbol": "_dispatch_main_queue_callback_4CF",
+      "symbolLocation": 44,
+      "imageIndex": 4
+    },
+    {
+      "imageOffset": 779772,
+      "symbol": "__CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__",
+      "symbolLocation": 16,
+      "imageIndex": 5
+    },
+    {
+      "imageOffset": 525256,
+      "symbol": "__CFRunLoopRun",
+      "symbolLocation": 2124,
+      "imageIndex": 5
+    },
+    {
+      "imageOffset": 1416028,
+      "symbol": "_CFRunLoopRunSpecificWithOptions",
+      "symbolLocation": 536,
+      "imageIndex": 5
+    },
+    {
+      "imageOffset": 767300,
+      "symbol": "RunCurrentEventLoopInMode",
+      "symbolLocation": 320,
+      "imageIndex": 6
+    },
+    {
+      "imageOffset": 780496,
+      "symbol": "ReceiveNextEventCommon",
+      "symbolLocation": 492,
+      "imageIndex": 6
+    },
+    {
+      "imageOffset": 2362940,
+      "symbol": "_BlockUntilNextEventMatchingListInMode",
+      "symbolLocation": 48,
+      "imageIndex": 6
+    },
+    {
+      "imageOffset": 3653416,
+      "symbol": "_DPSBlockUntilNextEventMatchingListInMode",
+      "symbolLocation": 292,
+      "imageIndex": 7
+    },
+    {
+      "imageOffset": 235492,
+      "symbol": "_DPSNextEvent",
+      "symbolLocation": 580,
+      "imageIndex": 7
+    },
+    {
+      "imageOffset": 9063872,
+      "symbol": "-[NSApplication(NSEventRouting) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]",
+      "symbolLocation": 780,
+      "imageIndex": 7
+    },
+    {
+      "imageOffset": 9062628,
+      "symbol": "-[NSApplication(NSEventRouting) nextEventMatchingMask:untilDate:inMode:dequeue:]",
+      "symbolLocation": 244,
+      "imageIndex": 7
+    },
+    {
+      "imageOffset": 182688,
+      "symbol": "-[NSApplication run]",
+      "symbolLocation": 396,
+      "imageIndex": 7
+    },
+    {
+      "imageOffset": 7408,
+      "symbol": "main",
+      "symbolLocation": 2432,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 203300,
+      "symbol": "start",
+      "symbolLocation": 6688,
+      "imageIndex": 8
+    }
+  ],
+  "interpretation": "The first lifecycle program invalidated the same link in its 9-second phase and again in final cleanup. Removing final repeated invalidation produced exit 0. The initial phase log was not flushed before the crash; do not infer that phase was unexecuted from its absence in raw data. This demonstrates a teardown constraint in the diagnostic on this OS, not a Chartr crash."
+}

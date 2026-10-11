@@ -1,7 +1,7 @@
 ---
 title: Verification setup
 section: Verification
-updated: 2026-10-05
+updated: 2026-10-11
 recipe: Unvalidated
 ---
 # Verification setup
@@ -75,6 +75,30 @@ performing destructive lifecycle scenarios. Record exact instance identity and
 observations; do not mistake a launch request for readiness.
 
 ## Interaction tools and fixtures
+
+### macOS frame-source checks
+
+The October 11 implementation executed `sh scripts/check-metal-display-link.sh`
+on macOS 27, both AC and battery/Low Power Mode. It compiles the production
+frame-source module with the small native example, runs its policy unit test,
+and opens one disposable AppKit window for lifetime assertions. It uses a
+temporary Cargo manifest and the root lockfile offline; artifacts are under
+`target/metal-display-link-check`. It is not an end-to-end Chartr latency test.
+
+For isolated desktop runs, keep the profile directly under a **short `/tmp`
+directory** as in the example above. macOS's default `$TMPDIR` can be long enough
+that `<profile>/config/chartr/herdr/herdr.sock` exceeds the Unix socket name
+limit. The October 11 first launch encountered that setup error; a short root
+resolved it. Also confirm the screen is unlocked before driving native windows:
+the UI tool reported `cgWindowNotFound` for both Chartr and Finder while the
+screen was locked. Such captures cannot prove interaction responsiveness.
+
+An isolated `.app` can use a unique bundle identifier and `LSEnvironment` for
+the three XDG roots so later UI-tool launches cannot accidentally use the normal
+profile. Record the actual signed executable's hash, since ad hoc bundle signing
+changes its bytes. Do not replace the installed app to perform these checks.
+
+### General interaction coverage
 
 Use available native desktop automation or hands-on pointer/keyboard interaction
 against the real GPUI window. Browser tools can exercise the offline wiki and

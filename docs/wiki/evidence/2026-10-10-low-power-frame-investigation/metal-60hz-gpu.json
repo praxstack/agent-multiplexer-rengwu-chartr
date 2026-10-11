@@ -1,0 +1,5227 @@
+[
+  {
+    "type": "config",
+    "low_power": true,
+    "thermal_state": 0,
+    "display_sync": true,
+    "drawable_count": 3,
+    "per_frame_autorelease_pool": true,
+    "drawable_timeout": true,
+    "duration_s": 5
+  },
+  {
+    "type": "frame",
+    "n": 1,
+    "t_ms": 34.825792,
+    "wait_ms": 0.982917,
+    "encode_commit_ms": 1.067458
+  },
+  {
+    "type": "presented",
+    "n": 1,
+    "presented_s": 0.0
+  },
+  {
+    "type": "gpu",
+    "n": 1,
+    "gpu_ms": 0.387833
+  },
+  {
+    "type": "frame",
+    "n": 2,
+    "t_ms": 50.659875,
+    "wait_ms": 0.488292,
+    "encode_commit_ms": 0.075292
+  },
+  {
+    "type": "gpu",
+    "n": 2,
+    "gpu_ms": 0.0265
+  },
+  {
+    "type": "frame",
+    "n": 3,
+    "t_ms": 67.218875,
+    "wait_ms": 0.462667,
+    "encode_commit_ms": 0.056625
+  },
+  {
+    "type": "gpu",
+    "n": 3,
+    "gpu_ms": 0.027375
+  },
+  {
+    "type": "presented",
+    "n": 2,
+    "presented_s": 196485.008723458
+  },
+  {
+    "type": "frame",
+    "n": 4,
+    "t_ms": 83.985959,
+    "wait_ms": 0.04775,
+    "encode_commit_ms": 0.057083
+  },
+  {
+    "type": "gpu",
+    "n": 4,
+    "gpu_ms": 0.020583
+  },
+  {
+    "type": "frame",
+    "n": 5,
+    "t_ms": 100.745875,
+    "wait_ms": 0.033292,
+    "encode_commit_ms": 0.051
+  },
+  {
+    "type": "gpu",
+    "n": 5,
+    "gpu_ms": 0.020958
+  },
+  {
+    "type": "presented",
+    "n": 3,
+    "presented_s": 196485.042056583
+  },
+  {
+    "type": "frame",
+    "n": 6,
+    "t_ms": 117.034959,
+    "wait_ms": 0.027708,
+    "encode_commit_ms": 0.053208
+  },
+  {
+    "type": "gpu",
+    "n": 6,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 4,
+    "presented_s": 196485.058723125
+  },
+  {
+    "type": "frame",
+    "n": 7,
+    "t_ms": 134.063709,
+    "wait_ms": 0.029125,
+    "encode_commit_ms": 0.05225
+  },
+  {
+    "type": "gpu",
+    "n": 7,
+    "gpu_ms": 0.019583
+  },
+  {
+    "type": "presented",
+    "n": 5,
+    "presented_s": 196485.075389708
+  },
+  {
+    "type": "frame",
+    "n": 8,
+    "t_ms": 150.657125,
+    "wait_ms": 0.046209,
+    "encode_commit_ms": 0.078708
+  },
+  {
+    "type": "gpu",
+    "n": 8,
+    "gpu_ms": 0.020375
+  },
+  {
+    "type": "presented",
+    "n": 6,
+    "presented_s": 196485.092056208
+  },
+  {
+    "type": "frame",
+    "n": 9,
+    "t_ms": 167.322667,
+    "wait_ms": 0.02175,
+    "encode_commit_ms": 0.041083
+  },
+  {
+    "type": "gpu",
+    "n": 9,
+    "gpu_ms": 0.021375
+  },
+  {
+    "type": "presented",
+    "n": 7,
+    "presented_s": 196485.10872275
+  },
+  {
+    "type": "frame",
+    "n": 10,
+    "t_ms": 184.041584,
+    "wait_ms": 0.02675,
+    "encode_commit_ms": 0.052958
+  },
+  {
+    "type": "gpu",
+    "n": 10,
+    "gpu_ms": 0.020667
+  },
+  {
+    "type": "presented",
+    "n": 8,
+    "presented_s": 196485.125389292
+  },
+  {
+    "type": "frame",
+    "n": 11,
+    "t_ms": 200.663209,
+    "wait_ms": 0.0275,
+    "encode_commit_ms": 0.056041
+  },
+  {
+    "type": "gpu",
+    "n": 11,
+    "gpu_ms": 0.022708
+  },
+  {
+    "type": "presented",
+    "n": 9,
+    "presented_s": 196485.142055875
+  },
+  {
+    "type": "frame",
+    "n": 12,
+    "t_ms": 220.87475,
+    "wait_ms": 0.026625,
+    "encode_commit_ms": 0.055625
+  },
+  {
+    "type": "gpu",
+    "n": 12,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 10,
+    "presented_s": 196485.158722375
+  },
+  {
+    "type": "frame",
+    "n": 13,
+    "t_ms": 233.998209,
+    "wait_ms": 0.0365,
+    "encode_commit_ms": 0.091291
+  },
+  {
+    "type": "gpu",
+    "n": 13,
+    "gpu_ms": 0.020917
+  },
+  {
+    "type": "presented",
+    "n": 11,
+    "presented_s": 196485.175388917
+  },
+  {
+    "type": "frame",
+    "n": 14,
+    "t_ms": 250.38375,
+    "wait_ms": 0.023209,
+    "encode_commit_ms": 0.057708
+  },
+  {
+    "type": "gpu",
+    "n": 14,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 12,
+    "presented_s": 196485.1920555
+  },
+  {
+    "type": "frame",
+    "n": 15,
+    "t_ms": 266.813375,
+    "wait_ms": 0.033292,
+    "encode_commit_ms": 0.069542
+  },
+  {
+    "type": "gpu",
+    "n": 15,
+    "gpu_ms": 0.0215
+  },
+  {
+    "type": "presented",
+    "n": 13,
+    "presented_s": 196485.208722
+  },
+  {
+    "type": "frame",
+    "n": 16,
+    "t_ms": 283.610667,
+    "wait_ms": 0.025583,
+    "encode_commit_ms": 0.055084
+  },
+  {
+    "type": "gpu",
+    "n": 16,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 14,
+    "presented_s": 196485.225388542
+  },
+  {
+    "type": "frame",
+    "n": 17,
+    "t_ms": 300.138167,
+    "wait_ms": 0.0265,
+    "encode_commit_ms": 0.051333
+  },
+  {
+    "type": "gpu",
+    "n": 17,
+    "gpu_ms": 0.022458
+  },
+  {
+    "type": "presented",
+    "n": 15,
+    "presented_s": 196485.242055167
+  },
+  {
+    "type": "frame",
+    "n": 18,
+    "t_ms": 317.31575,
+    "wait_ms": 0.02725,
+    "encode_commit_ms": 0.056542
+  },
+  {
+    "type": "gpu",
+    "n": 18,
+    "gpu_ms": 0.019
+  },
+  {
+    "type": "presented",
+    "n": 16,
+    "presented_s": 196485.258721667
+  },
+  {
+    "type": "frame",
+    "n": 19,
+    "t_ms": 333.527042,
+    "wait_ms": 0.032792,
+    "encode_commit_ms": 0.064708
+  },
+  {
+    "type": "gpu",
+    "n": 19,
+    "gpu_ms": 0.019625
+  },
+  {
+    "type": "presented",
+    "n": 17,
+    "presented_s": 196485.27538825
+  },
+  {
+    "type": "frame",
+    "n": 20,
+    "t_ms": 350.657417,
+    "wait_ms": 0.023167,
+    "encode_commit_ms": 0.047875
+  },
+  {
+    "type": "gpu",
+    "n": 20,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 18,
+    "presented_s": 196485.292054708
+  },
+  {
+    "type": "frame",
+    "n": 21,
+    "t_ms": 367.326334,
+    "wait_ms": 0.030583,
+    "encode_commit_ms": 0.053917
+  },
+  {
+    "type": "gpu",
+    "n": 21,
+    "gpu_ms": 0.021042
+  },
+  {
+    "type": "presented",
+    "n": 19,
+    "presented_s": 196485.308721292
+  },
+  {
+    "type": "frame",
+    "n": 22,
+    "t_ms": 383.988334,
+    "wait_ms": 0.023041,
+    "encode_commit_ms": 0.039625
+  },
+  {
+    "type": "gpu",
+    "n": 22,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 20,
+    "presented_s": 196485.325387792
+  },
+  {
+    "type": "frame",
+    "n": 23,
+    "t_ms": 400.667667,
+    "wait_ms": 0.032625,
+    "encode_commit_ms": 0.058125
+  },
+  {
+    "type": "gpu",
+    "n": 23,
+    "gpu_ms": 0.01975
+  },
+  {
+    "type": "presented",
+    "n": 21,
+    "presented_s": 196485.342054375
+  },
+  {
+    "type": "frame",
+    "n": 24,
+    "t_ms": 417.333375,
+    "wait_ms": 0.025292,
+    "encode_commit_ms": 0.053083
+  },
+  {
+    "type": "gpu",
+    "n": 24,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 22,
+    "presented_s": 196485.358720875
+  },
+  {
+    "type": "frame",
+    "n": 25,
+    "t_ms": 433.460459,
+    "wait_ms": 0.02775,
+    "encode_commit_ms": 0.05825
+  },
+  {
+    "type": "gpu",
+    "n": 25,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 23,
+    "presented_s": 196485.375387417
+  },
+  {
+    "type": "frame",
+    "n": 26,
+    "t_ms": 450.652084,
+    "wait_ms": 0.02775,
+    "encode_commit_ms": 0.064375
+  },
+  {
+    "type": "gpu",
+    "n": 26,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 24,
+    "presented_s": 196485.392053958
+  },
+  {
+    "type": "frame",
+    "n": 27,
+    "t_ms": 466.535709,
+    "wait_ms": 0.0465,
+    "encode_commit_ms": 0.074375
+  },
+  {
+    "type": "gpu",
+    "n": 27,
+    "gpu_ms": 0.0195
+  },
+  {
+    "type": "presented",
+    "n": 25,
+    "presented_s": 196485.4087205
+  },
+  {
+    "type": "frame",
+    "n": 28,
+    "t_ms": 483.996084,
+    "wait_ms": 0.019083,
+    "encode_commit_ms": 0.041875
+  },
+  {
+    "type": "gpu",
+    "n": 28,
+    "gpu_ms": 0.020417
+  },
+  {
+    "type": "presented",
+    "n": 26,
+    "presented_s": 196485.425387042
+  },
+  {
+    "type": "frame",
+    "n": 29,
+    "t_ms": 500.649584,
+    "wait_ms": 0.03425,
+    "encode_commit_ms": 0.054125
+  },
+  {
+    "type": "gpu",
+    "n": 29,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 27,
+    "presented_s": 196485.442053583
+  },
+  {
+    "type": "frame",
+    "n": 30,
+    "t_ms": 517.32025,
+    "wait_ms": 0.023875,
+    "encode_commit_ms": 0.053917
+  },
+  {
+    "type": "gpu",
+    "n": 30,
+    "gpu_ms": 0.022083
+  },
+  {
+    "type": "presented",
+    "n": 28,
+    "presented_s": 196485.458720167
+  },
+  {
+    "type": "frame",
+    "n": 31,
+    "t_ms": 533.981,
+    "wait_ms": 0.025875,
+    "encode_commit_ms": 0.043709
+  },
+  {
+    "type": "gpu",
+    "n": 31,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 29,
+    "presented_s": 196485.475386667
+  },
+  {
+    "type": "frame",
+    "n": 32,
+    "t_ms": 550.646625,
+    "wait_ms": 0.030667,
+    "encode_commit_ms": 0.056042
+  },
+  {
+    "type": "gpu",
+    "n": 32,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 30,
+    "presented_s": 196485.492053208
+  },
+  {
+    "type": "frame",
+    "n": 33,
+    "t_ms": 567.306792,
+    "wait_ms": 0.023667,
+    "encode_commit_ms": 0.047958
+  },
+  {
+    "type": "gpu",
+    "n": 33,
+    "gpu_ms": 0.0215
+  },
+  {
+    "type": "presented",
+    "n": 31,
+    "presented_s": 196485.50871975
+  },
+  {
+    "type": "frame",
+    "n": 34,
+    "t_ms": 583.986709,
+    "wait_ms": 0.023,
+    "encode_commit_ms": 0.0495
+  },
+  {
+    "type": "gpu",
+    "n": 34,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 32,
+    "presented_s": 196485.525386333
+  },
+  {
+    "type": "frame",
+    "n": 35,
+    "t_ms": 600.207042,
+    "wait_ms": 0.029125,
+    "encode_commit_ms": 0.058833
+  },
+  {
+    "type": "gpu",
+    "n": 35,
+    "gpu_ms": 0.021083
+  },
+  {
+    "type": "presented",
+    "n": 33,
+    "presented_s": 196485.542052833
+  },
+  {
+    "type": "frame",
+    "n": 36,
+    "t_ms": 617.320209,
+    "wait_ms": 0.042208,
+    "encode_commit_ms": 0.068042
+  },
+  {
+    "type": "gpu",
+    "n": 36,
+    "gpu_ms": 0.023792
+  },
+  {
+    "type": "presented",
+    "n": 34,
+    "presented_s": 196485.558719333
+  },
+  {
+    "type": "frame",
+    "n": 37,
+    "t_ms": 634.060167,
+    "wait_ms": 0.029167,
+    "encode_commit_ms": 0.055791
+  },
+  {
+    "type": "gpu",
+    "n": 37,
+    "gpu_ms": 0.021292
+  },
+  {
+    "type": "presented",
+    "n": 35,
+    "presented_s": 196485.575385958
+  },
+  {
+    "type": "frame",
+    "n": 38,
+    "t_ms": 650.650542,
+    "wait_ms": 0.023583,
+    "encode_commit_ms": 0.041334
+  },
+  {
+    "type": "gpu",
+    "n": 38,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 36,
+    "presented_s": 196485.5920525
+  },
+  {
+    "type": "frame",
+    "n": 39,
+    "t_ms": 667.318125,
+    "wait_ms": 0.027125,
+    "encode_commit_ms": 0.052834
+  },
+  {
+    "type": "gpu",
+    "n": 39,
+    "gpu_ms": 0.019708
+  },
+  {
+    "type": "presented",
+    "n": 37,
+    "presented_s": 196485.608719
+  },
+  {
+    "type": "frame",
+    "n": 40,
+    "t_ms": 683.112875,
+    "wait_ms": 0.02775,
+    "encode_commit_ms": 0.066125
+  },
+  {
+    "type": "gpu",
+    "n": 40,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 38,
+    "presented_s": 196485.625385583
+  },
+  {
+    "type": "frame",
+    "n": 41,
+    "t_ms": 700.635167,
+    "wait_ms": 0.025958,
+    "encode_commit_ms": 0.051375
+  },
+  {
+    "type": "gpu",
+    "n": 41,
+    "gpu_ms": 0.021208
+  },
+  {
+    "type": "presented",
+    "n": 39,
+    "presented_s": 196485.642052125
+  },
+  {
+    "type": "frame",
+    "n": 42,
+    "t_ms": 717.067167,
+    "wait_ms": 0.032125,
+    "encode_commit_ms": 0.067292
+  },
+  {
+    "type": "gpu",
+    "n": 42,
+    "gpu_ms": 0.0185
+  },
+  {
+    "type": "presented",
+    "n": 40,
+    "presented_s": 196485.658718667
+  },
+  {
+    "type": "frame",
+    "n": 43,
+    "t_ms": 733.989875,
+    "wait_ms": 0.036209,
+    "encode_commit_ms": 0.071958
+  },
+  {
+    "type": "gpu",
+    "n": 43,
+    "gpu_ms": 0.018875
+  },
+  {
+    "type": "presented",
+    "n": 41,
+    "presented_s": 196485.67538525
+  },
+  {
+    "type": "frame",
+    "n": 44,
+    "t_ms": 750.648292,
+    "wait_ms": 0.021833,
+    "encode_commit_ms": 0.043542
+  },
+  {
+    "type": "gpu",
+    "n": 44,
+    "gpu_ms": 0.02175
+  },
+  {
+    "type": "presented",
+    "n": 42,
+    "presented_s": 196485.69205175
+  },
+  {
+    "type": "frame",
+    "n": 45,
+    "t_ms": 767.315875,
+    "wait_ms": 0.025792,
+    "encode_commit_ms": 0.047625
+  },
+  {
+    "type": "gpu",
+    "n": 45,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 43,
+    "presented_s": 196485.708718333
+  },
+  {
+    "type": "frame",
+    "n": 46,
+    "t_ms": 783.513542,
+    "wait_ms": 0.038458,
+    "encode_commit_ms": 0.072125
+  },
+  {
+    "type": "gpu",
+    "n": 46,
+    "gpu_ms": 0.019417
+  },
+  {
+    "type": "presented",
+    "n": 44,
+    "presented_s": 196485.725384875
+  },
+  {
+    "type": "frame",
+    "n": 47,
+    "t_ms": 800.304834,
+    "wait_ms": 0.025958,
+    "encode_commit_ms": 0.050167
+  },
+  {
+    "type": "gpu",
+    "n": 47,
+    "gpu_ms": 0.018625
+  },
+  {
+    "type": "presented",
+    "n": 45,
+    "presented_s": 196485.742051375
+  },
+  {
+    "type": "frame",
+    "n": 48,
+    "t_ms": 816.762459,
+    "wait_ms": 0.034625,
+    "encode_commit_ms": 0.063708
+  },
+  {
+    "type": "gpu",
+    "n": 48,
+    "gpu_ms": 0.024333
+  },
+  {
+    "type": "presented",
+    "n": 46,
+    "presented_s": 196485.758717958
+  },
+  {
+    "type": "frame",
+    "n": 49,
+    "t_ms": 833.9665,
+    "wait_ms": 0.019375,
+    "encode_commit_ms": 0.038
+  },
+  {
+    "type": "gpu",
+    "n": 49,
+    "gpu_ms": 0.020667
+  },
+  {
+    "type": "presented",
+    "n": 47,
+    "presented_s": 196485.775384458
+  },
+  {
+    "type": "frame",
+    "n": 50,
+    "t_ms": 850.726125,
+    "wait_ms": 0.033625,
+    "encode_commit_ms": 0.064042
+  },
+  {
+    "type": "gpu",
+    "n": 50,
+    "gpu_ms": 0.017
+  },
+  {
+    "type": "presented",
+    "n": 48,
+    "presented_s": 196485.792051
+  },
+  {
+    "type": "frame",
+    "n": 51,
+    "t_ms": 867.311084,
+    "wait_ms": 0.021916,
+    "encode_commit_ms": 0.044084
+  },
+  {
+    "type": "gpu",
+    "n": 51,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 49,
+    "presented_s": 196485.808717542
+  },
+  {
+    "type": "frame",
+    "n": 52,
+    "t_ms": 883.780125,
+    "wait_ms": 0.027667,
+    "encode_commit_ms": 0.056167
+  },
+  {
+    "type": "gpu",
+    "n": 52,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 50,
+    "presented_s": 196485.825384083
+  },
+  {
+    "type": "frame",
+    "n": 53,
+    "t_ms": 900.721292,
+    "wait_ms": 0.020292,
+    "encode_commit_ms": 0.044291
+  },
+  {
+    "type": "gpu",
+    "n": 53,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 51,
+    "presented_s": 196485.842050625
+  },
+  {
+    "type": "frame",
+    "n": 54,
+    "t_ms": 917.316292,
+    "wait_ms": 0.027542,
+    "encode_commit_ms": 0.073875
+  },
+  {
+    "type": "gpu",
+    "n": 54,
+    "gpu_ms": 0.020958
+  },
+  {
+    "type": "presented",
+    "n": 52,
+    "presented_s": 196485.858717167
+  },
+  {
+    "type": "frame",
+    "n": 55,
+    "t_ms": 934.052292,
+    "wait_ms": 0.024292,
+    "encode_commit_ms": 0.045333
+  },
+  {
+    "type": "gpu",
+    "n": 55,
+    "gpu_ms": 0.019792
+  },
+  {
+    "type": "presented",
+    "n": 53,
+    "presented_s": 196485.875383667
+  },
+  {
+    "type": "frame",
+    "n": 56,
+    "t_ms": 950.66425,
+    "wait_ms": 0.033125,
+    "encode_commit_ms": 0.070834
+  },
+  {
+    "type": "gpu",
+    "n": 56,
+    "gpu_ms": 0.022792
+  },
+  {
+    "type": "presented",
+    "n": 54,
+    "presented_s": 196485.892050208
+  },
+  {
+    "type": "frame",
+    "n": 57,
+    "t_ms": 967.312917,
+    "wait_ms": 0.020292,
+    "encode_commit_ms": 0.038291
+  },
+  {
+    "type": "gpu",
+    "n": 57,
+    "gpu_ms": 0.021125
+  },
+  {
+    "type": "presented",
+    "n": 55,
+    "presented_s": 196485.908716833
+  },
+  {
+    "type": "frame",
+    "n": 58,
+    "t_ms": 983.98275,
+    "wait_ms": 0.032959,
+    "encode_commit_ms": 0.061833
+  },
+  {
+    "type": "gpu",
+    "n": 58,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 56,
+    "presented_s": 196485.925383292
+  },
+  {
+    "type": "frame",
+    "n": 59,
+    "t_ms": 1000.646584,
+    "wait_ms": 0.038708,
+    "encode_commit_ms": 0.068042
+  },
+  {
+    "type": "gpu",
+    "n": 59,
+    "gpu_ms": 0.019417
+  },
+  {
+    "type": "presented",
+    "n": 57,
+    "presented_s": 196485.942049833
+  },
+  {
+    "type": "frame",
+    "n": 60,
+    "t_ms": 1017.309917,
+    "wait_ms": 0.024917,
+    "encode_commit_ms": 0.052083
+  },
+  {
+    "type": "gpu",
+    "n": 60,
+    "gpu_ms": 0.021167
+  },
+  {
+    "type": "presented",
+    "n": 58,
+    "presented_s": 196485.958716458
+  },
+  {
+    "type": "frame",
+    "n": 61,
+    "t_ms": 1033.974667,
+    "wait_ms": 0.020458,
+    "encode_commit_ms": 0.061667
+  },
+  {
+    "type": "gpu",
+    "n": 61,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 59,
+    "presented_s": 196485.975383
+  },
+  {
+    "type": "frame",
+    "n": 62,
+    "t_ms": 1050.733709,
+    "wait_ms": 0.04175,
+    "encode_commit_ms": 0.07275
+  },
+  {
+    "type": "gpu",
+    "n": 62,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 60,
+    "presented_s": 196485.992049458
+  },
+  {
+    "type": "frame",
+    "n": 63,
+    "t_ms": 1067.328084,
+    "wait_ms": 0.046708,
+    "encode_commit_ms": 0.085375
+  },
+  {
+    "type": "gpu",
+    "n": 63,
+    "gpu_ms": 0.018875
+  },
+  {
+    "type": "presented",
+    "n": 61,
+    "presented_s": 196486.008716042
+  },
+  {
+    "type": "frame",
+    "n": 64,
+    "t_ms": 1083.979084,
+    "wait_ms": 0.028791,
+    "encode_commit_ms": 0.058542
+  },
+  {
+    "type": "gpu",
+    "n": 64,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 62,
+    "presented_s": 196486.025382583
+  },
+  {
+    "type": "frame",
+    "n": 65,
+    "t_ms": 1100.643375,
+    "wait_ms": 0.030042,
+    "encode_commit_ms": 0.064042
+  },
+  {
+    "type": "gpu",
+    "n": 65,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 63,
+    "presented_s": 196486.042049125
+  },
+  {
+    "type": "frame",
+    "n": 66,
+    "t_ms": 1117.313417,
+    "wait_ms": 0.039667,
+    "encode_commit_ms": 0.073208
+  },
+  {
+    "type": "gpu",
+    "n": 66,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 64,
+    "presented_s": 196486.058715667
+  },
+  {
+    "type": "frame",
+    "n": 67,
+    "t_ms": 1133.300875,
+    "wait_ms": 0.028084,
+    "encode_commit_ms": 0.057916
+  },
+  {
+    "type": "gpu",
+    "n": 67,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 65,
+    "presented_s": 196486.075382208
+  },
+  {
+    "type": "frame",
+    "n": 68,
+    "t_ms": 1150.638584,
+    "wait_ms": 0.02975,
+    "encode_commit_ms": 0.063041
+  },
+  {
+    "type": "gpu",
+    "n": 68,
+    "gpu_ms": 0.020958
+  },
+  {
+    "type": "presented",
+    "n": 66,
+    "presented_s": 196486.09204875
+  },
+  {
+    "type": "frame",
+    "n": 69,
+    "t_ms": 1167.308584,
+    "wait_ms": 0.029041,
+    "encode_commit_ms": 0.058792
+  },
+  {
+    "type": "gpu",
+    "n": 69,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 67,
+    "presented_s": 196486.108715292
+  },
+  {
+    "type": "frame",
+    "n": 70,
+    "t_ms": 1183.177792,
+    "wait_ms": 0.042458,
+    "encode_commit_ms": 0.0705
+  },
+  {
+    "type": "gpu",
+    "n": 70,
+    "gpu_ms": 0.013875
+  },
+  {
+    "type": "presented",
+    "n": 68,
+    "presented_s": 196486.125381917
+  },
+  {
+    "type": "frame",
+    "n": 71,
+    "t_ms": 1200.63375,
+    "wait_ms": 0.031625,
+    "encode_commit_ms": 0.065959
+  },
+  {
+    "type": "gpu",
+    "n": 71,
+    "gpu_ms": 0.01375
+  },
+  {
+    "type": "presented",
+    "n": 69,
+    "presented_s": 196486.142048417
+  },
+  {
+    "type": "frame",
+    "n": 72,
+    "t_ms": 1217.313292,
+    "wait_ms": 0.026625,
+    "encode_commit_ms": 0.067708
+  },
+  {
+    "type": "gpu",
+    "n": 72,
+    "gpu_ms": 0.015625
+  },
+  {
+    "type": "presented",
+    "n": 70,
+    "presented_s": 196486.158714958
+  },
+  {
+    "type": "frame",
+    "n": 73,
+    "t_ms": 1233.989292,
+    "wait_ms": 0.027,
+    "encode_commit_ms": 0.057042
+  },
+  {
+    "type": "gpu",
+    "n": 73,
+    "gpu_ms": 0.016875
+  },
+  {
+    "type": "presented",
+    "n": 71,
+    "presented_s": 196486.175381458
+  },
+  {
+    "type": "frame",
+    "n": 74,
+    "t_ms": 1250.705375,
+    "wait_ms": 0.021917,
+    "encode_commit_ms": 0.0435
+  },
+  {
+    "type": "gpu",
+    "n": 74,
+    "gpu_ms": 0.020917
+  },
+  {
+    "type": "presented",
+    "n": 72,
+    "presented_s": 196486.192048042
+  },
+  {
+    "type": "frame",
+    "n": 75,
+    "t_ms": 1266.991209,
+    "wait_ms": 0.052708,
+    "encode_commit_ms": 0.089875
+  },
+  {
+    "type": "gpu",
+    "n": 75,
+    "gpu_ms": 0.0195
+  },
+  {
+    "type": "presented",
+    "n": 73,
+    "presented_s": 196486.208714583
+  },
+  {
+    "type": "frame",
+    "n": 76,
+    "t_ms": 1283.96725,
+    "wait_ms": 0.022417,
+    "encode_commit_ms": 0.056792
+  },
+  {
+    "type": "gpu",
+    "n": 76,
+    "gpu_ms": 0.021542
+  },
+  {
+    "type": "presented",
+    "n": 74,
+    "presented_s": 196486.225381083
+  },
+  {
+    "type": "frame",
+    "n": 77,
+    "t_ms": 1300.653959,
+    "wait_ms": 0.035,
+    "encode_commit_ms": 0.059791
+  },
+  {
+    "type": "gpu",
+    "n": 77,
+    "gpu_ms": 0.020958
+  },
+  {
+    "type": "presented",
+    "n": 75,
+    "presented_s": 196486.242047625
+  },
+  {
+    "type": "frame",
+    "n": 78,
+    "t_ms": 1317.30875,
+    "wait_ms": 0.03575,
+    "encode_commit_ms": 0.063417
+  },
+  {
+    "type": "gpu",
+    "n": 78,
+    "gpu_ms": 0.021042
+  },
+  {
+    "type": "presented",
+    "n": 76,
+    "presented_s": 196486.258714208
+  },
+  {
+    "type": "frame",
+    "n": 79,
+    "t_ms": 1333.966959,
+    "wait_ms": 0.027375,
+    "encode_commit_ms": 0.072416
+  },
+  {
+    "type": "gpu",
+    "n": 79,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 77,
+    "presented_s": 196486.27538075
+  },
+  {
+    "type": "frame",
+    "n": 80,
+    "t_ms": 1350.639209,
+    "wait_ms": 0.021708,
+    "encode_commit_ms": 0.049625
+  },
+  {
+    "type": "gpu",
+    "n": 80,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 78,
+    "presented_s": 196486.292047292
+  },
+  {
+    "type": "frame",
+    "n": 81,
+    "t_ms": 1366.435334,
+    "wait_ms": 0.031125,
+    "encode_commit_ms": 0.068125
+  },
+  {
+    "type": "gpu",
+    "n": 81,
+    "gpu_ms": 0.020917
+  },
+  {
+    "type": "presented",
+    "n": 79,
+    "presented_s": 196486.308713833
+  },
+  {
+    "type": "frame",
+    "n": 82,
+    "t_ms": 1384.00075,
+    "wait_ms": 0.024542,
+    "encode_commit_ms": 0.045667
+  },
+  {
+    "type": "gpu",
+    "n": 82,
+    "gpu_ms": 0.024
+  },
+  {
+    "type": "presented",
+    "n": 80,
+    "presented_s": 196486.325380458
+  },
+  {
+    "type": "frame",
+    "n": 83,
+    "t_ms": 1400.650167,
+    "wait_ms": 0.035875,
+    "encode_commit_ms": 0.067833
+  },
+  {
+    "type": "gpu",
+    "n": 83,
+    "gpu_ms": 0.019375
+  },
+  {
+    "type": "presented",
+    "n": 81,
+    "presented_s": 196486.342046917
+  },
+  {
+    "type": "frame",
+    "n": 84,
+    "t_ms": 1416.492625,
+    "wait_ms": 0.025459,
+    "encode_commit_ms": 0.05475
+  },
+  {
+    "type": "gpu",
+    "n": 84,
+    "gpu_ms": 0.020667
+  },
+  {
+    "type": "presented",
+    "n": 82,
+    "presented_s": 196486.358713417
+  },
+  {
+    "type": "frame",
+    "n": 85,
+    "t_ms": 1434.053,
+    "wait_ms": 0.026209,
+    "encode_commit_ms": 0.053
+  },
+  {
+    "type": "gpu",
+    "n": 85,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 83,
+    "presented_s": 196486.375379958
+  },
+  {
+    "type": "frame",
+    "n": 86,
+    "t_ms": 1450.439167,
+    "wait_ms": 0.025917,
+    "encode_commit_ms": 0.040541
+  },
+  {
+    "type": "gpu",
+    "n": 86,
+    "gpu_ms": 0.021458
+  },
+  {
+    "type": "presented",
+    "n": 84,
+    "presented_s": 196486.392046542
+  },
+  {
+    "type": "frame",
+    "n": 87,
+    "t_ms": 1467.387459,
+    "wait_ms": 0.037791,
+    "encode_commit_ms": 0.061042
+  },
+  {
+    "type": "gpu",
+    "n": 87,
+    "gpu_ms": 0.019458
+  },
+  {
+    "type": "presented",
+    "n": 85,
+    "presented_s": 196486.408713042
+  },
+  {
+    "type": "frame",
+    "n": 88,
+    "t_ms": 1483.974,
+    "wait_ms": 0.026167,
+    "encode_commit_ms": 0.039792
+  },
+  {
+    "type": "gpu",
+    "n": 88,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 86,
+    "presented_s": 196486.425379625
+  },
+  {
+    "type": "frame",
+    "n": 89,
+    "t_ms": 1500.656375,
+    "wait_ms": 0.02925,
+    "encode_commit_ms": 0.058959
+  },
+  {
+    "type": "gpu",
+    "n": 89,
+    "gpu_ms": 0.020917
+  },
+  {
+    "type": "presented",
+    "n": 87,
+    "presented_s": 196486.442046083
+  },
+  {
+    "type": "frame",
+    "n": 90,
+    "t_ms": 1517.217,
+    "wait_ms": 0.031209,
+    "encode_commit_ms": 0.0655
+  },
+  {
+    "type": "gpu",
+    "n": 90,
+    "gpu_ms": 0.023292
+  },
+  {
+    "type": "presented",
+    "n": 88,
+    "presented_s": 196486.458712708
+  },
+  {
+    "type": "frame",
+    "n": 91,
+    "t_ms": 1534.042917,
+    "wait_ms": 0.04025,
+    "encode_commit_ms": 0.069958
+  },
+  {
+    "type": "gpu",
+    "n": 91,
+    "gpu_ms": 0.01925
+  },
+  {
+    "type": "presented",
+    "n": 89,
+    "presented_s": 196486.475379208
+  },
+  {
+    "type": "frame",
+    "n": 92,
+    "t_ms": 1550.648042,
+    "wait_ms": 0.037292,
+    "encode_commit_ms": 0.0655
+  },
+  {
+    "type": "gpu",
+    "n": 92,
+    "gpu_ms": 0.020833
+  },
+  {
+    "type": "presented",
+    "n": 90,
+    "presented_s": 196486.492045792
+  },
+  {
+    "type": "frame",
+    "n": 93,
+    "t_ms": 1566.978292,
+    "wait_ms": 0.028458,
+    "encode_commit_ms": 0.058875
+  },
+  {
+    "type": "gpu",
+    "n": 93,
+    "gpu_ms": 0.021375
+  },
+  {
+    "type": "presented",
+    "n": 91,
+    "presented_s": 196486.508712333
+  },
+  {
+    "type": "frame",
+    "n": 94,
+    "t_ms": 1583.969084,
+    "wait_ms": 0.02725,
+    "encode_commit_ms": 0.059708
+  },
+  {
+    "type": "gpu",
+    "n": 94,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 92,
+    "presented_s": 196486.525378917
+  },
+  {
+    "type": "frame",
+    "n": 95,
+    "t_ms": 1600.656792,
+    "wait_ms": 0.024292,
+    "encode_commit_ms": 0.041625
+  },
+  {
+    "type": "gpu",
+    "n": 95,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 93,
+    "presented_s": 196486.542045417
+  },
+  {
+    "type": "frame",
+    "n": 96,
+    "t_ms": 1617.385167,
+    "wait_ms": 0.030708,
+    "encode_commit_ms": 0.057125
+  },
+  {
+    "type": "gpu",
+    "n": 96,
+    "gpu_ms": 0.020917
+  },
+  {
+    "type": "presented",
+    "n": 94,
+    "presented_s": 196486.558711958
+  },
+  {
+    "type": "frame",
+    "n": 97,
+    "t_ms": 1633.981917,
+    "wait_ms": 0.026375,
+    "encode_commit_ms": 0.049667
+  },
+  {
+    "type": "gpu",
+    "n": 97,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 95,
+    "presented_s": 196486.575378542
+  },
+  {
+    "type": "frame",
+    "n": 98,
+    "t_ms": 1650.674292,
+    "wait_ms": 0.027542,
+    "encode_commit_ms": 0.05425
+  },
+  {
+    "type": "gpu",
+    "n": 98,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 96,
+    "presented_s": 196486.592045
+  },
+  {
+    "type": "frame",
+    "n": 99,
+    "t_ms": 1667.318917,
+    "wait_ms": 0.022375,
+    "encode_commit_ms": 0.04525
+  },
+  {
+    "type": "gpu",
+    "n": 99,
+    "gpu_ms": 0.022208
+  },
+  {
+    "type": "presented",
+    "n": 97,
+    "presented_s": 196486.608711542
+  },
+  {
+    "type": "frame",
+    "n": 100,
+    "t_ms": 1683.983167,
+    "wait_ms": 0.038417,
+    "encode_commit_ms": 0.070208
+  },
+  {
+    "type": "gpu",
+    "n": 100,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 98,
+    "presented_s": 196486.625378125
+  },
+  {
+    "type": "frame",
+    "n": 101,
+    "t_ms": 1700.631459,
+    "wait_ms": 0.023916,
+    "encode_commit_ms": 0.0475
+  },
+  {
+    "type": "gpu",
+    "n": 101,
+    "gpu_ms": 0.023792
+  },
+  {
+    "type": "presented",
+    "n": 99,
+    "presented_s": 196486.642044667
+  },
+  {
+    "type": "frame",
+    "n": 102,
+    "t_ms": 1717.28775,
+    "wait_ms": 0.034834,
+    "encode_commit_ms": 0.072083
+  },
+  {
+    "type": "gpu",
+    "n": 102,
+    "gpu_ms": 0.0215
+  },
+  {
+    "type": "presented",
+    "n": 100,
+    "presented_s": 196486.658711208
+  },
+  {
+    "type": "frame",
+    "n": 103,
+    "t_ms": 1734.001125,
+    "wait_ms": 0.02775,
+    "encode_commit_ms": 0.054584
+  },
+  {
+    "type": "gpu",
+    "n": 103,
+    "gpu_ms": 0.01925
+  },
+  {
+    "type": "presented",
+    "n": 101,
+    "presented_s": 196486.67537775
+  },
+  {
+    "type": "frame",
+    "n": 104,
+    "t_ms": 1750.677209,
+    "wait_ms": 0.027958,
+    "encode_commit_ms": 0.06175
+  },
+  {
+    "type": "gpu",
+    "n": 104,
+    "gpu_ms": 0.021208
+  },
+  {
+    "type": "presented",
+    "n": 102,
+    "presented_s": 196486.692044292
+  },
+  {
+    "type": "frame",
+    "n": 105,
+    "t_ms": 1766.924459,
+    "wait_ms": 0.021375,
+    "encode_commit_ms": 0.042291
+  },
+  {
+    "type": "gpu",
+    "n": 105,
+    "gpu_ms": 0.025
+  },
+  {
+    "type": "presented",
+    "n": 103,
+    "presented_s": 196486.708710833
+  },
+  {
+    "type": "frame",
+    "n": 106,
+    "t_ms": 1784.058167,
+    "wait_ms": 0.024125,
+    "encode_commit_ms": 0.054833
+  },
+  {
+    "type": "gpu",
+    "n": 106,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 104,
+    "presented_s": 196486.725377417
+  },
+  {
+    "type": "frame",
+    "n": 107,
+    "t_ms": 1800.712834,
+    "wait_ms": 0.028208,
+    "encode_commit_ms": 0.051542
+  },
+  {
+    "type": "gpu",
+    "n": 107,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 105,
+    "presented_s": 196486.742043958
+  },
+  {
+    "type": "frame",
+    "n": 108,
+    "t_ms": 1816.714709,
+    "wait_ms": 0.023333,
+    "encode_commit_ms": 0.052667
+  },
+  {
+    "type": "gpu",
+    "n": 108,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 106,
+    "presented_s": 196486.7587105
+  },
+  {
+    "type": "frame",
+    "n": 109,
+    "t_ms": 1833.925167,
+    "wait_ms": 0.025417,
+    "encode_commit_ms": 0.044625
+  },
+  {
+    "type": "gpu",
+    "n": 109,
+    "gpu_ms": 0.020833
+  },
+  {
+    "type": "presented",
+    "n": 107,
+    "presented_s": 196486.775377
+  },
+  {
+    "type": "frame",
+    "n": 110,
+    "t_ms": 1850.638292,
+    "wait_ms": 0.027792,
+    "encode_commit_ms": 0.076375
+  },
+  {
+    "type": "gpu",
+    "n": 110,
+    "gpu_ms": 0.019625
+  },
+  {
+    "type": "presented",
+    "n": 108,
+    "presented_s": 196486.792043583
+  },
+  {
+    "type": "frame",
+    "n": 111,
+    "t_ms": 1867.311,
+    "wait_ms": 0.028584,
+    "encode_commit_ms": 0.053583
+  },
+  {
+    "type": "gpu",
+    "n": 111,
+    "gpu_ms": 0.020125
+  },
+  {
+    "type": "presented",
+    "n": 109,
+    "presented_s": 196486.808710083
+  },
+  {
+    "type": "frame",
+    "n": 112,
+    "t_ms": 1883.968417,
+    "wait_ms": 0.036792,
+    "encode_commit_ms": 0.083375
+  },
+  {
+    "type": "gpu",
+    "n": 112,
+    "gpu_ms": 0.020917
+  },
+  {
+    "type": "presented",
+    "n": 110,
+    "presented_s": 196486.825376667
+  },
+  {
+    "type": "frame",
+    "n": 113,
+    "t_ms": 1900.643042,
+    "wait_ms": 0.028708,
+    "encode_commit_ms": 0.05325
+  },
+  {
+    "type": "gpu",
+    "n": 113,
+    "gpu_ms": 0.021083
+  },
+  {
+    "type": "presented",
+    "n": 111,
+    "presented_s": 196486.842043167
+  },
+  {
+    "type": "frame",
+    "n": 114,
+    "t_ms": 1916.858875,
+    "wait_ms": 0.034334,
+    "encode_commit_ms": 0.074291
+  },
+  {
+    "type": "gpu",
+    "n": 114,
+    "gpu_ms": 0.021375
+  },
+  {
+    "type": "presented",
+    "n": 112,
+    "presented_s": 196486.858709708
+  },
+  {
+    "type": "frame",
+    "n": 115,
+    "t_ms": 1933.973334,
+    "wait_ms": 0.032875,
+    "encode_commit_ms": 0.072625
+  },
+  {
+    "type": "gpu",
+    "n": 115,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 113,
+    "presented_s": 196486.875376333
+  },
+  {
+    "type": "frame",
+    "n": 116,
+    "t_ms": 1950.458,
+    "wait_ms": 0.032292,
+    "encode_commit_ms": 0.066417
+  },
+  {
+    "type": "gpu",
+    "n": 116,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 114,
+    "presented_s": 196486.892042833
+  },
+  {
+    "type": "frame",
+    "n": 117,
+    "t_ms": 1967.3055,
+    "wait_ms": 0.024334,
+    "encode_commit_ms": 0.064
+  },
+  {
+    "type": "gpu",
+    "n": 117,
+    "gpu_ms": 0.023958
+  },
+  {
+    "type": "presented",
+    "n": 115,
+    "presented_s": 196486.908709333
+  },
+  {
+    "type": "frame",
+    "n": 118,
+    "t_ms": 1983.875417,
+    "wait_ms": 0.033583,
+    "encode_commit_ms": 0.076709
+  },
+  {
+    "type": "gpu",
+    "n": 118,
+    "gpu_ms": 0.018875
+  },
+  {
+    "type": "presented",
+    "n": 116,
+    "presented_s": 196486.925375833
+  },
+  {
+    "type": "frame",
+    "n": 119,
+    "t_ms": 2000.632834,
+    "wait_ms": 0.025083,
+    "encode_commit_ms": 0.044333
+  },
+  {
+    "type": "gpu",
+    "n": 119,
+    "gpu_ms": 0.024917
+  },
+  {
+    "type": "presented",
+    "n": 117,
+    "presented_s": 196486.942042375
+  },
+  {
+    "type": "frame",
+    "n": 120,
+    "t_ms": 2017.310625,
+    "wait_ms": 0.044375,
+    "encode_commit_ms": 0.070375
+  },
+  {
+    "type": "gpu",
+    "n": 120,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 118,
+    "presented_s": 196486.958709
+  },
+  {
+    "type": "frame",
+    "n": 121,
+    "t_ms": 2033.968917,
+    "wait_ms": 0.04025,
+    "encode_commit_ms": 0.076917
+  },
+  {
+    "type": "gpu",
+    "n": 121,
+    "gpu_ms": 0.021292
+  },
+  {
+    "type": "presented",
+    "n": 119,
+    "presented_s": 196486.975375542
+  },
+  {
+    "type": "frame",
+    "n": 122,
+    "t_ms": 2050.635959,
+    "wait_ms": 0.042791,
+    "encode_commit_ms": 0.077792
+  },
+  {
+    "type": "gpu",
+    "n": 122,
+    "gpu_ms": 0.022
+  },
+  {
+    "type": "presented",
+    "n": 120,
+    "presented_s": 196486.992042042
+  },
+  {
+    "type": "frame",
+    "n": 123,
+    "t_ms": 2067.31125,
+    "wait_ms": 0.03125,
+    "encode_commit_ms": 0.07775
+  },
+  {
+    "type": "gpu",
+    "n": 123,
+    "gpu_ms": 0.02025
+  },
+  {
+    "type": "presented",
+    "n": 121,
+    "presented_s": 196487.008708583
+  },
+  {
+    "type": "frame",
+    "n": 124,
+    "t_ms": 2083.394417,
+    "wait_ms": 0.024458,
+    "encode_commit_ms": 0.05225
+  },
+  {
+    "type": "gpu",
+    "n": 124,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 122,
+    "presented_s": 196487.025375125
+  },
+  {
+    "type": "frame",
+    "n": 125,
+    "t_ms": 2100.633917,
+    "wait_ms": 0.02475,
+    "encode_commit_ms": 0.065333
+  },
+  {
+    "type": "gpu",
+    "n": 125,
+    "gpu_ms": 0.024083
+  },
+  {
+    "type": "presented",
+    "n": 123,
+    "presented_s": 196487.042041667
+  },
+  {
+    "type": "frame",
+    "n": 126,
+    "t_ms": 2117.302292,
+    "wait_ms": 0.030542,
+    "encode_commit_ms": 0.071666
+  },
+  {
+    "type": "gpu",
+    "n": 126,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 124,
+    "presented_s": 196487.058708208
+  },
+  {
+    "type": "frame",
+    "n": 127,
+    "t_ms": 2133.99325,
+    "wait_ms": 0.036625,
+    "encode_commit_ms": 0.072084
+  },
+  {
+    "type": "gpu",
+    "n": 127,
+    "gpu_ms": 0.02275
+  },
+  {
+    "type": "presented",
+    "n": 125,
+    "presented_s": 196487.07537475
+  },
+  {
+    "type": "frame",
+    "n": 128,
+    "t_ms": 2150.638042,
+    "wait_ms": 0.025583,
+    "encode_commit_ms": 0.059542
+  },
+  {
+    "type": "gpu",
+    "n": 128,
+    "gpu_ms": 0.022458
+  },
+  {
+    "type": "presented",
+    "n": 126,
+    "presented_s": 196487.092041292
+  },
+  {
+    "type": "frame",
+    "n": 129,
+    "t_ms": 2166.800459,
+    "wait_ms": 0.026875,
+    "encode_commit_ms": 0.069416
+  },
+  {
+    "type": "gpu",
+    "n": 129,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 127,
+    "presented_s": 196487.108707833
+  },
+  {
+    "type": "frame",
+    "n": 130,
+    "t_ms": 2183.931625,
+    "wait_ms": 0.024209,
+    "encode_commit_ms": 0.059958
+  },
+  {
+    "type": "gpu",
+    "n": 130,
+    "gpu_ms": 0.019125
+  },
+  {
+    "type": "presented",
+    "n": 128,
+    "presented_s": 196487.125374458
+  },
+  {
+    "type": "frame",
+    "n": 131,
+    "t_ms": 2200.629625,
+    "wait_ms": 0.040375,
+    "encode_commit_ms": 0.069542
+  },
+  {
+    "type": "gpu",
+    "n": 131,
+    "gpu_ms": 0.02025
+  },
+  {
+    "type": "presented",
+    "n": 129,
+    "presented_s": 196487.142040958
+  },
+  {
+    "type": "frame",
+    "n": 132,
+    "t_ms": 2217.301834,
+    "wait_ms": 0.027083,
+    "encode_commit_ms": 0.05625
+  },
+  {
+    "type": "gpu",
+    "n": 132,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 130,
+    "presented_s": 196487.1587075
+  },
+  {
+    "type": "frame",
+    "n": 133,
+    "t_ms": 2233.970459,
+    "wait_ms": 0.0265,
+    "encode_commit_ms": 0.056
+  },
+  {
+    "type": "gpu",
+    "n": 133,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 131,
+    "presented_s": 196487.175374
+  },
+  {
+    "type": "frame",
+    "n": 134,
+    "t_ms": 2250.6275,
+    "wait_ms": 0.025375,
+    "encode_commit_ms": 0.044
+  },
+  {
+    "type": "gpu",
+    "n": 134,
+    "gpu_ms": 0.021708
+  },
+  {
+    "type": "presented",
+    "n": 132,
+    "presented_s": 196487.192040542
+  },
+  {
+    "type": "frame",
+    "n": 135,
+    "t_ms": 2267.34625,
+    "wait_ms": 0.048084,
+    "encode_commit_ms": 0.067541
+  },
+  {
+    "type": "gpu",
+    "n": 135,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 133,
+    "presented_s": 196487.208707125
+  },
+  {
+    "type": "frame",
+    "n": 136,
+    "t_ms": 2283.967584,
+    "wait_ms": 0.022333,
+    "encode_commit_ms": 0.045792
+  },
+  {
+    "type": "gpu",
+    "n": 136,
+    "gpu_ms": 0.021125
+  },
+  {
+    "type": "presented",
+    "n": 134,
+    "presented_s": 196487.225373625
+  },
+  {
+    "type": "frame",
+    "n": 137,
+    "t_ms": 2300.637167,
+    "wait_ms": 0.02225,
+    "encode_commit_ms": 0.045875
+  },
+  {
+    "type": "gpu",
+    "n": 137,
+    "gpu_ms": 0.020542
+  },
+  {
+    "type": "presented",
+    "n": 135,
+    "presented_s": 196487.242040208
+  },
+  {
+    "type": "frame",
+    "n": 138,
+    "t_ms": 2317.37175,
+    "wait_ms": 0.025709,
+    "encode_commit_ms": 0.044458
+  },
+  {
+    "type": "gpu",
+    "n": 138,
+    "gpu_ms": 0.0195
+  },
+  {
+    "type": "presented",
+    "n": 136,
+    "presented_s": 196487.258706792
+  },
+  {
+    "type": "frame",
+    "n": 139,
+    "t_ms": 2333.984792,
+    "wait_ms": 0.045833,
+    "encode_commit_ms": 0.084959
+  },
+  {
+    "type": "gpu",
+    "n": 139,
+    "gpu_ms": 0.019125
+  },
+  {
+    "type": "presented",
+    "n": 137,
+    "presented_s": 196487.275373333
+  },
+  {
+    "type": "frame",
+    "n": 140,
+    "t_ms": 2350.6345,
+    "wait_ms": 0.020792,
+    "encode_commit_ms": 0.040542
+  },
+  {
+    "type": "gpu",
+    "n": 140,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 138,
+    "presented_s": 196487.292039833
+  },
+  {
+    "type": "frame",
+    "n": 141,
+    "t_ms": 2367.304042,
+    "wait_ms": 0.027125,
+    "encode_commit_ms": 0.055167
+  },
+  {
+    "type": "gpu",
+    "n": 141,
+    "gpu_ms": 0.020833
+  },
+  {
+    "type": "presented",
+    "n": 139,
+    "presented_s": 196487.308706375
+  },
+  {
+    "type": "frame",
+    "n": 142,
+    "t_ms": 2383.465459,
+    "wait_ms": 0.026,
+    "encode_commit_ms": 0.059041
+  },
+  {
+    "type": "gpu",
+    "n": 142,
+    "gpu_ms": 0.022625
+  },
+  {
+    "type": "presented",
+    "n": 140,
+    "presented_s": 196487.325372958
+  },
+  {
+    "type": "frame",
+    "n": 143,
+    "t_ms": 2400.705584,
+    "wait_ms": 0.021041,
+    "encode_commit_ms": 0.036625
+  },
+  {
+    "type": "gpu",
+    "n": 143,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 141,
+    "presented_s": 196487.3420395
+  },
+  {
+    "type": "frame",
+    "n": 144,
+    "t_ms": 2417.294625,
+    "wait_ms": 0.024375,
+    "encode_commit_ms": 0.059292
+  },
+  {
+    "type": "gpu",
+    "n": 144,
+    "gpu_ms": 0.022458
+  },
+  {
+    "type": "presented",
+    "n": 142,
+    "presented_s": 196487.358706
+  },
+  {
+    "type": "frame",
+    "n": 145,
+    "t_ms": 2433.9615,
+    "wait_ms": 0.020584,
+    "encode_commit_ms": 0.043958
+  },
+  {
+    "type": "gpu",
+    "n": 145,
+    "gpu_ms": 0.022333
+  },
+  {
+    "type": "presented",
+    "n": 143,
+    "presented_s": 196487.375372583
+  },
+  {
+    "type": "frame",
+    "n": 146,
+    "t_ms": 2449.722709,
+    "wait_ms": 0.027625,
+    "encode_commit_ms": 0.052708
+  },
+  {
+    "type": "gpu",
+    "n": 146,
+    "gpu_ms": 0.019167
+  },
+  {
+    "type": "presented",
+    "n": 144,
+    "presented_s": 196487.392039042
+  },
+  {
+    "type": "frame",
+    "n": 147,
+    "t_ms": 2467.2895,
+    "wait_ms": 0.024209,
+    "encode_commit_ms": 0.062708
+  },
+  {
+    "type": "gpu",
+    "n": 147,
+    "gpu_ms": 0.020458
+  },
+  {
+    "type": "presented",
+    "n": 145,
+    "presented_s": 196487.408705625
+  },
+  {
+    "type": "frame",
+    "n": 148,
+    "t_ms": 2484.050084,
+    "wait_ms": 0.028,
+    "encode_commit_ms": 0.060625
+  },
+  {
+    "type": "gpu",
+    "n": 148,
+    "gpu_ms": 0.020667
+  },
+  {
+    "type": "presented",
+    "n": 146,
+    "presented_s": 196487.425372208
+  },
+  {
+    "type": "frame",
+    "n": 149,
+    "t_ms": 2500.663667,
+    "wait_ms": 0.026042,
+    "encode_commit_ms": 0.06525
+  },
+  {
+    "type": "gpu",
+    "n": 149,
+    "gpu_ms": 0.020958
+  },
+  {
+    "type": "presented",
+    "n": 147,
+    "presented_s": 196487.44203875
+  },
+  {
+    "type": "frame",
+    "n": 150,
+    "t_ms": 2517.302959,
+    "wait_ms": 0.028208,
+    "encode_commit_ms": 0.04975
+  },
+  {
+    "type": "gpu",
+    "n": 150,
+    "gpu_ms": 0.022
+  },
+  {
+    "type": "presented",
+    "n": 148,
+    "presented_s": 196487.458705208
+  },
+  {
+    "type": "frame",
+    "n": 151,
+    "t_ms": 2533.964209,
+    "wait_ms": 0.027125,
+    "encode_commit_ms": 0.052375
+  },
+  {
+    "type": "gpu",
+    "n": 151,
+    "gpu_ms": 0.020917
+  },
+  {
+    "type": "presented",
+    "n": 149,
+    "presented_s": 196487.475371792
+  },
+  {
+    "type": "frame",
+    "n": 152,
+    "t_ms": 2550.631125,
+    "wait_ms": 0.02325,
+    "encode_commit_ms": 0.060584
+  },
+  {
+    "type": "gpu",
+    "n": 152,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 150,
+    "presented_s": 196487.492038292
+  },
+  {
+    "type": "frame",
+    "n": 153,
+    "t_ms": 2567.299125,
+    "wait_ms": 0.0345,
+    "encode_commit_ms": 0.065875
+  },
+  {
+    "type": "gpu",
+    "n": 153,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 151,
+    "presented_s": 196487.508704833
+  },
+  {
+    "type": "frame",
+    "n": 154,
+    "t_ms": 2583.958334,
+    "wait_ms": 0.026166,
+    "encode_commit_ms": 0.045167
+  },
+  {
+    "type": "gpu",
+    "n": 154,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 152,
+    "presented_s": 196487.525371375
+  },
+  {
+    "type": "frame",
+    "n": 155,
+    "t_ms": 2599.973042,
+    "wait_ms": 0.029917,
+    "encode_commit_ms": 0.059875
+  },
+  {
+    "type": "gpu",
+    "n": 155,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 153,
+    "presented_s": 196487.542037958
+  },
+  {
+    "type": "frame",
+    "n": 156,
+    "t_ms": 2617.293875,
+    "wait_ms": 0.0315,
+    "encode_commit_ms": 0.087042
+  },
+  {
+    "type": "gpu",
+    "n": 156,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 154,
+    "presented_s": 196487.558704458
+  },
+  {
+    "type": "frame",
+    "n": 157,
+    "t_ms": 2633.965334,
+    "wait_ms": 0.028083,
+    "encode_commit_ms": 0.056542
+  },
+  {
+    "type": "gpu",
+    "n": 157,
+    "gpu_ms": 0.020833
+  },
+  {
+    "type": "presented",
+    "n": 155,
+    "presented_s": 196487.575371042
+  },
+  {
+    "type": "frame",
+    "n": 158,
+    "t_ms": 2650.625375,
+    "wait_ms": 0.025792,
+    "encode_commit_ms": 0.04625
+  },
+  {
+    "type": "gpu",
+    "n": 158,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 156,
+    "presented_s": 196487.592037583
+  },
+  {
+    "type": "frame",
+    "n": 159,
+    "t_ms": 2667.117334,
+    "wait_ms": 0.026583,
+    "encode_commit_ms": 0.052458
+  },
+  {
+    "type": "gpu",
+    "n": 159,
+    "gpu_ms": 0.021667
+  },
+  {
+    "type": "presented",
+    "n": 157,
+    "presented_s": 196487.608704125
+  },
+  {
+    "type": "frame",
+    "n": 160,
+    "t_ms": 2684.042625,
+    "wait_ms": 0.034125,
+    "encode_commit_ms": 0.070917
+  },
+  {
+    "type": "gpu",
+    "n": 160,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 158,
+    "presented_s": 196487.625370667
+  },
+  {
+    "type": "frame",
+    "n": 161,
+    "t_ms": 2700.628417,
+    "wait_ms": 0.030667,
+    "encode_commit_ms": 0.052375
+  },
+  {
+    "type": "gpu",
+    "n": 161,
+    "gpu_ms": 0.021083
+  },
+  {
+    "type": "presented",
+    "n": 159,
+    "presented_s": 196487.642037208
+  },
+  {
+    "type": "frame",
+    "n": 162,
+    "t_ms": 2717.08825,
+    "wait_ms": 0.025625,
+    "encode_commit_ms": 0.056917
+  },
+  {
+    "type": "gpu",
+    "n": 162,
+    "gpu_ms": 0.021292
+  },
+  {
+    "type": "presented",
+    "n": 160,
+    "presented_s": 196487.658703792
+  },
+  {
+    "type": "frame",
+    "n": 163,
+    "t_ms": 2734.029125,
+    "wait_ms": 0.021417,
+    "encode_commit_ms": 0.056
+  },
+  {
+    "type": "gpu",
+    "n": 163,
+    "gpu_ms": 0.022292
+  },
+  {
+    "type": "presented",
+    "n": 161,
+    "presented_s": 196487.675370292
+  },
+  {
+    "type": "frame",
+    "n": 164,
+    "t_ms": 2749.927334,
+    "wait_ms": 0.030708,
+    "encode_commit_ms": 0.0595
+  },
+  {
+    "type": "gpu",
+    "n": 164,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 162,
+    "presented_s": 196487.692036875
+  },
+  {
+    "type": "frame",
+    "n": 165,
+    "t_ms": 2767.286917,
+    "wait_ms": 0.020708,
+    "encode_commit_ms": 0.052042
+  },
+  {
+    "type": "gpu",
+    "n": 165,
+    "gpu_ms": 0.02225
+  },
+  {
+    "type": "presented",
+    "n": 163,
+    "presented_s": 196487.708703417
+  },
+  {
+    "type": "frame",
+    "n": 166,
+    "t_ms": 2783.967542,
+    "wait_ms": 0.023042,
+    "encode_commit_ms": 0.0625
+  },
+  {
+    "type": "gpu",
+    "n": 166,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 164,
+    "presented_s": 196487.725369958
+  },
+  {
+    "type": "frame",
+    "n": 167,
+    "t_ms": 2799.744292,
+    "wait_ms": 0.029,
+    "encode_commit_ms": 0.052667
+  },
+  {
+    "type": "gpu",
+    "n": 167,
+    "gpu_ms": 0.019208
+  },
+  {
+    "type": "presented",
+    "n": 165,
+    "presented_s": 196487.7420365
+  },
+  {
+    "type": "frame",
+    "n": 168,
+    "t_ms": 2817.370292,
+    "wait_ms": 0.027208,
+    "encode_commit_ms": 0.056417
+  },
+  {
+    "type": "gpu",
+    "n": 168,
+    "gpu_ms": 0.021083
+  },
+  {
+    "type": "presented",
+    "n": 166,
+    "presented_s": 196487.758703
+  },
+  {
+    "type": "frame",
+    "n": 169,
+    "t_ms": 2833.956792,
+    "wait_ms": 0.019375,
+    "encode_commit_ms": 0.036417
+  },
+  {
+    "type": "gpu",
+    "n": 169,
+    "gpu_ms": 0.023208
+  },
+  {
+    "type": "presented",
+    "n": 167,
+    "presented_s": 196487.775369583
+  },
+  {
+    "type": "frame",
+    "n": 170,
+    "t_ms": 2850.702459,
+    "wait_ms": 0.025208,
+    "encode_commit_ms": 0.051083
+  },
+  {
+    "type": "gpu",
+    "n": 170,
+    "gpu_ms": 0.018417
+  },
+  {
+    "type": "presented",
+    "n": 168,
+    "presented_s": 196487.792036125
+  },
+  {
+    "type": "frame",
+    "n": 171,
+    "t_ms": 2867.292417,
+    "wait_ms": 0.022708,
+    "encode_commit_ms": 0.044334
+  },
+  {
+    "type": "gpu",
+    "n": 171,
+    "gpu_ms": 0.025125
+  },
+  {
+    "type": "presented",
+    "n": 169,
+    "presented_s": 196487.808702667
+  },
+  {
+    "type": "frame",
+    "n": 172,
+    "t_ms": 2883.863834,
+    "wait_ms": 0.033625,
+    "encode_commit_ms": 0.070416
+  },
+  {
+    "type": "gpu",
+    "n": 172,
+    "gpu_ms": 0.021208
+  },
+  {
+    "type": "presented",
+    "n": 170,
+    "presented_s": 196487.825369208
+  },
+  {
+    "type": "frame",
+    "n": 173,
+    "t_ms": 2900.699625,
+    "wait_ms": 0.019667,
+    "encode_commit_ms": 0.039708
+  },
+  {
+    "type": "gpu",
+    "n": 173,
+    "gpu_ms": 0.02225
+  },
+  {
+    "type": "presented",
+    "n": 171,
+    "presented_s": 196487.84203575
+  },
+  {
+    "type": "frame",
+    "n": 174,
+    "t_ms": 2917.291709,
+    "wait_ms": 0.034708,
+    "encode_commit_ms": 0.0645
+  },
+  {
+    "type": "gpu",
+    "n": 174,
+    "gpu_ms": 0.019042
+  },
+  {
+    "type": "presented",
+    "n": 172,
+    "presented_s": 196487.85870225
+  },
+  {
+    "type": "frame",
+    "n": 175,
+    "t_ms": 2934.002542,
+    "wait_ms": 0.024625,
+    "encode_commit_ms": 0.051792
+  },
+  {
+    "type": "gpu",
+    "n": 175,
+    "gpu_ms": 0.021792
+  },
+  {
+    "type": "presented",
+    "n": 173,
+    "presented_s": 196487.875368875
+  },
+  {
+    "type": "frame",
+    "n": 176,
+    "t_ms": 2950.626042,
+    "wait_ms": 0.031375,
+    "encode_commit_ms": 0.066417
+  },
+  {
+    "type": "gpu",
+    "n": 176,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 174,
+    "presented_s": 196487.892035417
+  },
+  {
+    "type": "frame",
+    "n": 177,
+    "t_ms": 2967.135542,
+    "wait_ms": 0.027375,
+    "encode_commit_ms": 0.05825
+  },
+  {
+    "type": "gpu",
+    "n": 177,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 175,
+    "presented_s": 196487.908701875
+  },
+  {
+    "type": "frame",
+    "n": 178,
+    "t_ms": 2983.951625,
+    "wait_ms": 0.021125,
+    "encode_commit_ms": 0.041709
+  },
+  {
+    "type": "gpu",
+    "n": 178,
+    "gpu_ms": 0.021375
+  },
+  {
+    "type": "presented",
+    "n": 176,
+    "presented_s": 196487.925368458
+  },
+  {
+    "type": "frame",
+    "n": 179,
+    "t_ms": 3000.624625,
+    "wait_ms": 0.0285,
+    "encode_commit_ms": 0.044084
+  },
+  {
+    "type": "gpu",
+    "n": 179,
+    "gpu_ms": 0.02375
+  },
+  {
+    "type": "presented",
+    "n": 177,
+    "presented_s": 196487.942035
+  },
+  {
+    "type": "frame",
+    "n": 180,
+    "t_ms": 3017.29975,
+    "wait_ms": 0.035875,
+    "encode_commit_ms": 0.0705
+  },
+  {
+    "type": "gpu",
+    "n": 180,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 178,
+    "presented_s": 196487.958701583
+  },
+  {
+    "type": "frame",
+    "n": 181,
+    "t_ms": 3033.95675,
+    "wait_ms": 0.020542,
+    "encode_commit_ms": 0.045375
+  },
+  {
+    "type": "gpu",
+    "n": 181,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 179,
+    "presented_s": 196487.975368083
+  },
+  {
+    "type": "frame",
+    "n": 182,
+    "t_ms": 3050.699459,
+    "wait_ms": 0.032625,
+    "encode_commit_ms": 0.075833
+  },
+  {
+    "type": "gpu",
+    "n": 182,
+    "gpu_ms": 0.01975
+  },
+  {
+    "type": "presented",
+    "n": 180,
+    "presented_s": 196487.992034583
+  },
+  {
+    "type": "frame",
+    "n": 183,
+    "t_ms": 3067.293584,
+    "wait_ms": 0.022875,
+    "encode_commit_ms": 0.055083
+  },
+  {
+    "type": "gpu",
+    "n": 183,
+    "gpu_ms": 0.018042
+  },
+  {
+    "type": "presented",
+    "n": 181,
+    "presented_s": 196488.008701125
+  },
+  {
+    "type": "frame",
+    "n": 184,
+    "t_ms": 3083.966084,
+    "wait_ms": 0.034125,
+    "encode_commit_ms": 0.065791
+  },
+  {
+    "type": "gpu",
+    "n": 184,
+    "gpu_ms": 0.014625
+  },
+  {
+    "type": "presented",
+    "n": 182,
+    "presented_s": 196488.025367625
+  },
+  {
+    "type": "frame",
+    "n": 185,
+    "t_ms": 3099.943042,
+    "wait_ms": 0.021708,
+    "encode_commit_ms": 0.051667
+  },
+  {
+    "type": "gpu",
+    "n": 185,
+    "gpu_ms": 0.016042
+  },
+  {
+    "type": "presented",
+    "n": 183,
+    "presented_s": 196488.04203425
+  },
+  {
+    "type": "frame",
+    "n": 186,
+    "t_ms": 3117.2875,
+    "wait_ms": 0.029709,
+    "encode_commit_ms": 0.067083
+  },
+  {
+    "type": "gpu",
+    "n": 186,
+    "gpu_ms": 0.018375
+  },
+  {
+    "type": "presented",
+    "n": 184,
+    "presented_s": 196488.05870075
+  },
+  {
+    "type": "frame",
+    "n": 187,
+    "t_ms": 3133.966084,
+    "wait_ms": 0.023625,
+    "encode_commit_ms": 0.050041
+  },
+  {
+    "type": "gpu",
+    "n": 187,
+    "gpu_ms": 0.015583
+  },
+  {
+    "type": "presented",
+    "n": 185,
+    "presented_s": 196488.075367333
+  },
+  {
+    "type": "frame",
+    "n": 188,
+    "t_ms": 3150.629,
+    "wait_ms": 0.032917,
+    "encode_commit_ms": 0.066042
+  },
+  {
+    "type": "gpu",
+    "n": 188,
+    "gpu_ms": 0.019
+  },
+  {
+    "type": "presented",
+    "n": 186,
+    "presented_s": 196488.092033833
+  },
+  {
+    "type": "frame",
+    "n": 189,
+    "t_ms": 3167.191917,
+    "wait_ms": 0.023208,
+    "encode_commit_ms": 0.054542
+  },
+  {
+    "type": "gpu",
+    "n": 189,
+    "gpu_ms": 0.020958
+  },
+  {
+    "type": "presented",
+    "n": 187,
+    "presented_s": 196488.108700417
+  },
+  {
+    "type": "frame",
+    "n": 190,
+    "t_ms": 3183.981542,
+    "wait_ms": 0.02675,
+    "encode_commit_ms": 0.053875
+  },
+  {
+    "type": "gpu",
+    "n": 190,
+    "gpu_ms": 0.023
+  },
+  {
+    "type": "presented",
+    "n": 188,
+    "presented_s": 196488.125367
+  },
+  {
+    "type": "frame",
+    "n": 191,
+    "t_ms": 3200.613167,
+    "wait_ms": 0.023375,
+    "encode_commit_ms": 0.049375
+  },
+  {
+    "type": "gpu",
+    "n": 191,
+    "gpu_ms": 0.022958
+  },
+  {
+    "type": "presented",
+    "n": 189,
+    "presented_s": 196488.142033458
+  },
+  {
+    "type": "frame",
+    "n": 192,
+    "t_ms": 3217.16325,
+    "wait_ms": 0.032917,
+    "encode_commit_ms": 0.056833
+  },
+  {
+    "type": "gpu",
+    "n": 192,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 190,
+    "presented_s": 196488.158700042
+  },
+  {
+    "type": "frame",
+    "n": 193,
+    "t_ms": 3234.002834,
+    "wait_ms": 0.025125,
+    "encode_commit_ms": 0.051208
+  },
+  {
+    "type": "gpu",
+    "n": 193,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 191,
+    "presented_s": 196488.175366625
+  },
+  {
+    "type": "frame",
+    "n": 194,
+    "t_ms": 3250.6325,
+    "wait_ms": 0.017084,
+    "encode_commit_ms": 0.050708
+  },
+  {
+    "type": "gpu",
+    "n": 194,
+    "gpu_ms": 0.021083
+  },
+  {
+    "type": "presented",
+    "n": 192,
+    "presented_s": 196488.192033083
+  },
+  {
+    "type": "frame",
+    "n": 195,
+    "t_ms": 3267.360875,
+    "wait_ms": 0.0295,
+    "encode_commit_ms": 0.055
+  },
+  {
+    "type": "gpu",
+    "n": 195,
+    "gpu_ms": 0.021208
+  },
+  {
+    "type": "presented",
+    "n": 193,
+    "presented_s": 196488.208699667
+  },
+  {
+    "type": "frame",
+    "n": 196,
+    "t_ms": 3283.954292,
+    "wait_ms": 0.019875,
+    "encode_commit_ms": 0.039625
+  },
+  {
+    "type": "gpu",
+    "n": 196,
+    "gpu_ms": 0.020542
+  },
+  {
+    "type": "presented",
+    "n": 194,
+    "presented_s": 196488.225366167
+  },
+  {
+    "type": "frame",
+    "n": 197,
+    "t_ms": 3300.627625,
+    "wait_ms": 0.026625,
+    "encode_commit_ms": 0.055709
+  },
+  {
+    "type": "gpu",
+    "n": 197,
+    "gpu_ms": 0.02225
+  },
+  {
+    "type": "presented",
+    "n": 195,
+    "presented_s": 196488.242032708
+  },
+  {
+    "type": "frame",
+    "n": 198,
+    "t_ms": 3317.290584,
+    "wait_ms": 0.015416,
+    "encode_commit_ms": 0.029584
+  },
+  {
+    "type": "gpu",
+    "n": 198,
+    "gpu_ms": 0.0225
+  },
+  {
+    "type": "presented",
+    "n": 196,
+    "presented_s": 196488.258699292
+  },
+  {
+    "type": "frame",
+    "n": 199,
+    "t_ms": 3333.973542,
+    "wait_ms": 0.025875,
+    "encode_commit_ms": 0.058
+  },
+  {
+    "type": "gpu",
+    "n": 199,
+    "gpu_ms": 0.020917
+  },
+  {
+    "type": "presented",
+    "n": 197,
+    "presented_s": 196488.275365833
+  },
+  {
+    "type": "frame",
+    "n": 200,
+    "t_ms": 3350.619792,
+    "wait_ms": 0.022375,
+    "encode_commit_ms": 0.046542
+  },
+  {
+    "type": "gpu",
+    "n": 200,
+    "gpu_ms": 0.023833
+  },
+  {
+    "type": "presented",
+    "n": 198,
+    "presented_s": 196488.292032417
+  },
+  {
+    "type": "frame",
+    "n": 201,
+    "t_ms": 3367.284375,
+    "wait_ms": 0.021709,
+    "encode_commit_ms": 0.052875
+  },
+  {
+    "type": "gpu",
+    "n": 201,
+    "gpu_ms": 0.020583
+  },
+  {
+    "type": "presented",
+    "n": 199,
+    "presented_s": 196488.308698917
+  },
+  {
+    "type": "frame",
+    "n": 202,
+    "t_ms": 3383.956584,
+    "wait_ms": 0.037166,
+    "encode_commit_ms": 0.049709
+  },
+  {
+    "type": "gpu",
+    "n": 202,
+    "gpu_ms": 0.022125
+  },
+  {
+    "type": "presented",
+    "n": 200,
+    "presented_s": 196488.325365458
+  },
+  {
+    "type": "frame",
+    "n": 203,
+    "t_ms": 3400.702542,
+    "wait_ms": 0.037,
+    "encode_commit_ms": 0.072833
+  },
+  {
+    "type": "gpu",
+    "n": 203,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 201,
+    "presented_s": 196488.342032042
+  },
+  {
+    "type": "frame",
+    "n": 204,
+    "t_ms": 3417.286959,
+    "wait_ms": 0.023125,
+    "encode_commit_ms": 0.042291
+  },
+  {
+    "type": "gpu",
+    "n": 204,
+    "gpu_ms": 0.025375
+  },
+  {
+    "type": "presented",
+    "n": 202,
+    "presented_s": 196488.358698583
+  },
+  {
+    "type": "frame",
+    "n": 205,
+    "t_ms": 3433.956625,
+    "wait_ms": 0.025042,
+    "encode_commit_ms": 0.071083
+  },
+  {
+    "type": "gpu",
+    "n": 205,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 203,
+    "presented_s": 196488.375365125
+  },
+  {
+    "type": "frame",
+    "n": 206,
+    "t_ms": 3450.615917,
+    "wait_ms": 0.022292,
+    "encode_commit_ms": 0.054291
+  },
+  {
+    "type": "gpu",
+    "n": 206,
+    "gpu_ms": 0.022542
+  },
+  {
+    "type": "presented",
+    "n": 204,
+    "presented_s": 196488.392031625
+  },
+  {
+    "type": "frame",
+    "n": 207,
+    "t_ms": 3467.093959,
+    "wait_ms": 0.024875,
+    "encode_commit_ms": 0.053
+  },
+  {
+    "type": "gpu",
+    "n": 207,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 205,
+    "presented_s": 196488.408698208
+  },
+  {
+    "type": "frame",
+    "n": 208,
+    "t_ms": 3483.956542,
+    "wait_ms": 0.021583,
+    "encode_commit_ms": 0.040042
+  },
+  {
+    "type": "gpu",
+    "n": 208,
+    "gpu_ms": 0.022458
+  },
+  {
+    "type": "presented",
+    "n": 206,
+    "presented_s": 196488.425364708
+  },
+  {
+    "type": "frame",
+    "n": 209,
+    "t_ms": 3500.631792,
+    "wait_ms": 0.027208,
+    "encode_commit_ms": 0.07025
+  },
+  {
+    "type": "gpu",
+    "n": 209,
+    "gpu_ms": 0.023708
+  },
+  {
+    "type": "presented",
+    "n": 207,
+    "presented_s": 196488.44203125
+  },
+  {
+    "type": "frame",
+    "n": 210,
+    "t_ms": 3517.283334,
+    "wait_ms": 0.019833,
+    "encode_commit_ms": 0.040958
+  },
+  {
+    "type": "gpu",
+    "n": 210,
+    "gpu_ms": 0.024917
+  },
+  {
+    "type": "presented",
+    "n": 208,
+    "presented_s": 196488.458697792
+  },
+  {
+    "type": "frame",
+    "n": 211,
+    "t_ms": 3533.975042,
+    "wait_ms": 0.029542,
+    "encode_commit_ms": 0.07125
+  },
+  {
+    "type": "gpu",
+    "n": 211,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 209,
+    "presented_s": 196488.475364375
+  },
+  {
+    "type": "frame",
+    "n": 212,
+    "t_ms": 3549.760292,
+    "wait_ms": 0.017542,
+    "encode_commit_ms": 0.0415
+  },
+  {
+    "type": "gpu",
+    "n": 212,
+    "gpu_ms": 0.021042
+  },
+  {
+    "type": "presented",
+    "n": 210,
+    "presented_s": 196488.492030875
+  },
+  {
+    "type": "frame",
+    "n": 213,
+    "t_ms": 3567.280917,
+    "wait_ms": 0.023125,
+    "encode_commit_ms": 0.047708
+  },
+  {
+    "type": "gpu",
+    "n": 213,
+    "gpu_ms": 0.022
+  },
+  {
+    "type": "presented",
+    "n": 211,
+    "presented_s": 196488.508697458
+  },
+  {
+    "type": "frame",
+    "n": 214,
+    "t_ms": 3584.027334,
+    "wait_ms": 0.019958,
+    "encode_commit_ms": 0.042625
+  },
+  {
+    "type": "gpu",
+    "n": 214,
+    "gpu_ms": 0.021167
+  },
+  {
+    "type": "presented",
+    "n": 212,
+    "presented_s": 196488.525364
+  },
+  {
+    "type": "frame",
+    "n": 215,
+    "t_ms": 3600.633459,
+    "wait_ms": 0.03025,
+    "encode_commit_ms": 0.068916
+  },
+  {
+    "type": "gpu",
+    "n": 215,
+    "gpu_ms": 0.020458
+  },
+  {
+    "type": "presented",
+    "n": 213,
+    "presented_s": 196488.5420305
+  },
+  {
+    "type": "frame",
+    "n": 216,
+    "t_ms": 3616.515042,
+    "wait_ms": 0.017875,
+    "encode_commit_ms": 0.042667
+  },
+  {
+    "type": "gpu",
+    "n": 216,
+    "gpu_ms": 0.02225
+  },
+  {
+    "type": "presented",
+    "n": 214,
+    "presented_s": 196488.558697083
+  },
+  {
+    "type": "frame",
+    "n": 217,
+    "t_ms": 3633.983584,
+    "wait_ms": 0.03375,
+    "encode_commit_ms": 0.069958
+  },
+  {
+    "type": "gpu",
+    "n": 217,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 215,
+    "presented_s": 196488.575363542
+  },
+  {
+    "type": "frame",
+    "n": 218,
+    "t_ms": 3650.633417,
+    "wait_ms": 0.026542,
+    "encode_commit_ms": 0.062208
+  },
+  {
+    "type": "gpu",
+    "n": 218,
+    "gpu_ms": 0.025625
+  },
+  {
+    "type": "presented",
+    "n": 216,
+    "presented_s": 196488.592030167
+  },
+  {
+    "type": "frame",
+    "n": 219,
+    "t_ms": 3667.284084,
+    "wait_ms": 0.033291,
+    "encode_commit_ms": 0.070292
+  },
+  {
+    "type": "gpu",
+    "n": 219,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 217,
+    "presented_s": 196488.608696625
+  },
+  {
+    "type": "frame",
+    "n": 220,
+    "t_ms": 3683.376292,
+    "wait_ms": 0.032625,
+    "encode_commit_ms": 0.060875
+  },
+  {
+    "type": "gpu",
+    "n": 220,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 218,
+    "presented_s": 196488.62536325
+  },
+  {
+    "type": "frame",
+    "n": 221,
+    "t_ms": 3700.632459,
+    "wait_ms": 0.02475,
+    "encode_commit_ms": 0.05275
+  },
+  {
+    "type": "gpu",
+    "n": 221,
+    "gpu_ms": 0.022125
+  },
+  {
+    "type": "presented",
+    "n": 219,
+    "presented_s": 196488.642029792
+  },
+  {
+    "type": "frame",
+    "n": 222,
+    "t_ms": 3717.288,
+    "wait_ms": 0.021042,
+    "encode_commit_ms": 0.038125
+  },
+  {
+    "type": "gpu",
+    "n": 222,
+    "gpu_ms": 0.02225
+  },
+  {
+    "type": "presented",
+    "n": 220,
+    "presented_s": 196488.65869625
+  },
+  {
+    "type": "frame",
+    "n": 223,
+    "t_ms": 3733.95375,
+    "wait_ms": 0.02975,
+    "encode_commit_ms": 0.072292
+  },
+  {
+    "type": "gpu",
+    "n": 223,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 221,
+    "presented_s": 196488.675362833
+  },
+  {
+    "type": "frame",
+    "n": 224,
+    "t_ms": 3750.6135,
+    "wait_ms": 0.019875,
+    "encode_commit_ms": 0.051459
+  },
+  {
+    "type": "gpu",
+    "n": 224,
+    "gpu_ms": 0.022333
+  },
+  {
+    "type": "presented",
+    "n": 222,
+    "presented_s": 196488.692029375
+  },
+  {
+    "type": "frame",
+    "n": 225,
+    "t_ms": 3767.327459,
+    "wait_ms": 0.033666,
+    "encode_commit_ms": 0.064209
+  },
+  {
+    "type": "gpu",
+    "n": 225,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 223,
+    "presented_s": 196488.708695917
+  },
+  {
+    "type": "frame",
+    "n": 226,
+    "t_ms": 3783.946375,
+    "wait_ms": 0.022417,
+    "encode_commit_ms": 0.049167
+  },
+  {
+    "type": "gpu",
+    "n": 226,
+    "gpu_ms": 0.0215
+  },
+  {
+    "type": "presented",
+    "n": 224,
+    "presented_s": 196488.7253625
+  },
+  {
+    "type": "frame",
+    "n": 227,
+    "t_ms": 3800.652792,
+    "wait_ms": 0.032292,
+    "encode_commit_ms": 0.069458
+  },
+  {
+    "type": "gpu",
+    "n": 227,
+    "gpu_ms": 0.020375
+  },
+  {
+    "type": "presented",
+    "n": 225,
+    "presented_s": 196488.742029042
+  },
+  {
+    "type": "frame",
+    "n": 228,
+    "t_ms": 3817.282667,
+    "wait_ms": 0.022875,
+    "encode_commit_ms": 0.047458
+  },
+  {
+    "type": "gpu",
+    "n": 228,
+    "gpu_ms": 0.022583
+  },
+  {
+    "type": "presented",
+    "n": 226,
+    "presented_s": 196488.758695542
+  },
+  {
+    "type": "frame",
+    "n": 229,
+    "t_ms": 3833.363167,
+    "wait_ms": 0.022333,
+    "encode_commit_ms": 0.052792
+  },
+  {
+    "type": "gpu",
+    "n": 229,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 227,
+    "presented_s": 196488.775362083
+  },
+  {
+    "type": "frame",
+    "n": 230,
+    "t_ms": 3850.604,
+    "wait_ms": 0.022,
+    "encode_commit_ms": 0.050792
+  },
+  {
+    "type": "gpu",
+    "n": 230,
+    "gpu_ms": 0.021042
+  },
+  {
+    "type": "presented",
+    "n": 228,
+    "presented_s": 196488.792028667
+  },
+  {
+    "type": "frame",
+    "n": 231,
+    "t_ms": 3867.289042,
+    "wait_ms": 0.033875,
+    "encode_commit_ms": 0.064667
+  },
+  {
+    "type": "gpu",
+    "n": 231,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 229,
+    "presented_s": 196488.808695208
+  },
+  {
+    "type": "frame",
+    "n": 232,
+    "t_ms": 3883.524125,
+    "wait_ms": 0.023084,
+    "encode_commit_ms": 0.056958
+  },
+  {
+    "type": "gpu",
+    "n": 232,
+    "gpu_ms": 0.025167
+  },
+  {
+    "type": "presented",
+    "n": 230,
+    "presented_s": 196488.825361708
+  },
+  {
+    "type": "frame",
+    "n": 233,
+    "t_ms": 3900.610292,
+    "wait_ms": 0.020083,
+    "encode_commit_ms": 0.048834
+  },
+  {
+    "type": "gpu",
+    "n": 233,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 231,
+    "presented_s": 196488.842028292
+  },
+  {
+    "type": "frame",
+    "n": 234,
+    "t_ms": 3917.287209,
+    "wait_ms": 0.021916,
+    "encode_commit_ms": 0.056542
+  },
+  {
+    "type": "gpu",
+    "n": 234,
+    "gpu_ms": 0.022333
+  },
+  {
+    "type": "presented",
+    "n": 232,
+    "presented_s": 196488.858694792
+  },
+  {
+    "type": "frame",
+    "n": 235,
+    "t_ms": 3933.81125,
+    "wait_ms": 0.017792,
+    "encode_commit_ms": 0.0425
+  },
+  {
+    "type": "gpu",
+    "n": 235,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 233,
+    "presented_s": 196488.875361375
+  },
+  {
+    "type": "frame",
+    "n": 236,
+    "t_ms": 3950.619334,
+    "wait_ms": 0.032791,
+    "encode_commit_ms": 0.062042
+  },
+  {
+    "type": "gpu",
+    "n": 236,
+    "gpu_ms": 0.023042
+  },
+  {
+    "type": "presented",
+    "n": 234,
+    "presented_s": 196488.892027917
+  },
+  {
+    "type": "frame",
+    "n": 237,
+    "t_ms": 3967.274334,
+    "wait_ms": 0.02325,
+    "encode_commit_ms": 0.037625
+  },
+  {
+    "type": "gpu",
+    "n": 237,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 235,
+    "presented_s": 196488.908694417
+  },
+  {
+    "type": "frame",
+    "n": 238,
+    "t_ms": 3984.025959,
+    "wait_ms": 0.030791,
+    "encode_commit_ms": 0.06275
+  },
+  {
+    "type": "gpu",
+    "n": 238,
+    "gpu_ms": 0.02225
+  },
+  {
+    "type": "presented",
+    "n": 236,
+    "presented_s": 196488.925361
+  },
+  {
+    "type": "frame",
+    "n": 239,
+    "t_ms": 4000.621125,
+    "wait_ms": 0.038,
+    "encode_commit_ms": 0.067709
+  },
+  {
+    "type": "gpu",
+    "n": 239,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 237,
+    "presented_s": 196488.942027542
+  },
+  {
+    "type": "frame",
+    "n": 240,
+    "t_ms": 4017.30025,
+    "wait_ms": 0.032542,
+    "encode_commit_ms": 0.053917
+  },
+  {
+    "type": "gpu",
+    "n": 240,
+    "gpu_ms": 0.021333
+  },
+  {
+    "type": "presented",
+    "n": 238,
+    "presented_s": 196488.958694042
+  },
+  {
+    "type": "frame",
+    "n": 241,
+    "t_ms": 4033.953959,
+    "wait_ms": 0.025583,
+    "encode_commit_ms": 0.063458
+  },
+  {
+    "type": "gpu",
+    "n": 241,
+    "gpu_ms": 0.0205
+  },
+  {
+    "type": "presented",
+    "n": 239,
+    "presented_s": 196488.975360583
+  },
+  {
+    "type": "frame",
+    "n": 242,
+    "t_ms": 4050.115459,
+    "wait_ms": 0.031666,
+    "encode_commit_ms": 0.0735
+  },
+  {
+    "type": "gpu",
+    "n": 242,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 240,
+    "presented_s": 196488.992027208
+  },
+  {
+    "type": "frame",
+    "n": 243,
+    "t_ms": 4067.272667,
+    "wait_ms": 0.024292,
+    "encode_commit_ms": 0.05025
+  },
+  {
+    "type": "gpu",
+    "n": 243,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 241,
+    "presented_s": 196489.008693708
+  },
+  {
+    "type": "frame",
+    "n": 244,
+    "t_ms": 4083.969292,
+    "wait_ms": 0.027625,
+    "encode_commit_ms": 0.061958
+  },
+  {
+    "type": "gpu",
+    "n": 244,
+    "gpu_ms": 0.021417
+  },
+  {
+    "type": "presented",
+    "n": 242,
+    "presented_s": 196489.02536025
+  },
+  {
+    "type": "frame",
+    "n": 245,
+    "t_ms": 4100.613417,
+    "wait_ms": 0.023667,
+    "encode_commit_ms": 0.053666
+  },
+  {
+    "type": "gpu",
+    "n": 245,
+    "gpu_ms": 0.02025
+  },
+  {
+    "type": "presented",
+    "n": 243,
+    "presented_s": 196489.042026792
+  },
+  {
+    "type": "frame",
+    "n": 246,
+    "t_ms": 4117.285834,
+    "wait_ms": 0.024458,
+    "encode_commit_ms": 0.050917
+  },
+  {
+    "type": "gpu",
+    "n": 246,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 244,
+    "presented_s": 196489.058693333
+  },
+  {
+    "type": "frame",
+    "n": 247,
+    "t_ms": 4134.033042,
+    "wait_ms": 0.020792,
+    "encode_commit_ms": 0.042541
+  },
+  {
+    "type": "gpu",
+    "n": 247,
+    "gpu_ms": 0.02025
+  },
+  {
+    "type": "presented",
+    "n": 245,
+    "presented_s": 196489.075359833
+  },
+  {
+    "type": "frame",
+    "n": 248,
+    "t_ms": 4150.285959,
+    "wait_ms": 0.026625,
+    "encode_commit_ms": 0.059958
+  },
+  {
+    "type": "gpu",
+    "n": 248,
+    "gpu_ms": 0.021375
+  },
+  {
+    "type": "presented",
+    "n": 246,
+    "presented_s": 196489.092026417
+  },
+  {
+    "type": "frame",
+    "n": 249,
+    "t_ms": 4167.368167,
+    "wait_ms": 0.023292,
+    "encode_commit_ms": 0.045958
+  },
+  {
+    "type": "gpu",
+    "n": 249,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 247,
+    "presented_s": 196489.108692958
+  },
+  {
+    "type": "frame",
+    "n": 250,
+    "t_ms": 4183.33025,
+    "wait_ms": 0.022167,
+    "encode_commit_ms": 0.047208
+  },
+  {
+    "type": "gpu",
+    "n": 250,
+    "gpu_ms": 0.021208
+  },
+  {
+    "type": "presented",
+    "n": 248,
+    "presented_s": 196489.125359458
+  },
+  {
+    "type": "frame",
+    "n": 251,
+    "t_ms": 4200.619042,
+    "wait_ms": 0.021208,
+    "encode_commit_ms": 0.040917
+  },
+  {
+    "type": "gpu",
+    "n": 251,
+    "gpu_ms": 0.022375
+  },
+  {
+    "type": "presented",
+    "n": 249,
+    "presented_s": 196489.142026
+  },
+  {
+    "type": "frame",
+    "n": 252,
+    "t_ms": 4217.283042,
+    "wait_ms": 0.032083,
+    "encode_commit_ms": 0.067959
+  },
+  {
+    "type": "gpu",
+    "n": 252,
+    "gpu_ms": 0.021542
+  },
+  {
+    "type": "presented",
+    "n": 250,
+    "presented_s": 196489.158692542
+  },
+  {
+    "type": "frame",
+    "n": 253,
+    "t_ms": 4233.947834,
+    "wait_ms": 0.022541,
+    "encode_commit_ms": 0.044917
+  },
+  {
+    "type": "gpu",
+    "n": 253,
+    "gpu_ms": 0.02225
+  },
+  {
+    "type": "presented",
+    "n": 251,
+    "presented_s": 196489.175359167
+  },
+  {
+    "type": "frame",
+    "n": 254,
+    "t_ms": 4250.6095,
+    "wait_ms": 0.022792,
+    "encode_commit_ms": 0.041375
+  },
+  {
+    "type": "gpu",
+    "n": 254,
+    "gpu_ms": 0.022542
+  },
+  {
+    "type": "presented",
+    "n": 252,
+    "presented_s": 196489.192025667
+  },
+  {
+    "type": "frame",
+    "n": 255,
+    "t_ms": 4267.31725,
+    "wait_ms": 0.02725,
+    "encode_commit_ms": 0.055834
+  },
+  {
+    "type": "gpu",
+    "n": 255,
+    "gpu_ms": 0.022292
+  },
+  {
+    "type": "presented",
+    "n": 253,
+    "presented_s": 196489.208692208
+  },
+  {
+    "type": "frame",
+    "n": 256,
+    "t_ms": 4283.944,
+    "wait_ms": 0.02075,
+    "encode_commit_ms": 0.053834
+  },
+  {
+    "type": "gpu",
+    "n": 256,
+    "gpu_ms": 0.021167
+  },
+  {
+    "type": "presented",
+    "n": 254,
+    "presented_s": 196489.225358792
+  },
+  {
+    "type": "frame",
+    "n": 257,
+    "t_ms": 4300.607042,
+    "wait_ms": 0.020208,
+    "encode_commit_ms": 0.045
+  },
+  {
+    "type": "gpu",
+    "n": 257,
+    "gpu_ms": 0.022417
+  },
+  {
+    "type": "presented",
+    "n": 255,
+    "presented_s": 196489.24202525
+  },
+  {
+    "type": "frame",
+    "n": 258,
+    "t_ms": 4317.275417,
+    "wait_ms": 0.022625,
+    "encode_commit_ms": 0.058792
+  },
+  {
+    "type": "gpu",
+    "n": 258,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 256,
+    "presented_s": 196489.258691875
+  },
+  {
+    "type": "frame",
+    "n": 259,
+    "t_ms": 4333.940834,
+    "wait_ms": 0.019333,
+    "encode_commit_ms": 0.035667
+  },
+  {
+    "type": "gpu",
+    "n": 259,
+    "gpu_ms": 0.021917
+  },
+  {
+    "type": "presented",
+    "n": 257,
+    "presented_s": 196489.275358375
+  },
+  {
+    "type": "frame",
+    "n": 260,
+    "t_ms": 4350.609625,
+    "wait_ms": 0.021375,
+    "encode_commit_ms": 0.049709
+  },
+  {
+    "type": "gpu",
+    "n": 260,
+    "gpu_ms": 0.021083
+  },
+  {
+    "type": "presented",
+    "n": 258,
+    "presented_s": 196489.292024958
+  },
+  {
+    "type": "frame",
+    "n": 261,
+    "t_ms": 4367.274,
+    "wait_ms": 0.020709,
+    "encode_commit_ms": 0.04975
+  },
+  {
+    "type": "gpu",
+    "n": 261,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 259,
+    "presented_s": 196489.3086915
+  },
+  {
+    "type": "frame",
+    "n": 262,
+    "t_ms": 4383.612584,
+    "wait_ms": 0.026708,
+    "encode_commit_ms": 0.060875
+  },
+  {
+    "type": "gpu",
+    "n": 262,
+    "gpu_ms": 0.021
+  },
+  {
+    "type": "presented",
+    "n": 260,
+    "presented_s": 196489.325358
+  },
+  {
+    "type": "frame",
+    "n": 263,
+    "t_ms": 4400.618084,
+    "wait_ms": 0.031958,
+    "encode_commit_ms": 0.04975
+  },
+  {
+    "type": "gpu",
+    "n": 263,
+    "gpu_ms": 0.020125
+  },
+  {
+    "type": "presented",
+    "n": 261,
+    "presented_s": 196489.342024542
+  },
+  {
+    "type": "frame",
+    "n": 264,
+    "t_ms": 4417.288459,
+    "wait_ms": 0.033458,
+    "encode_commit_ms": 0.052625
+  },
+  {
+    "type": "gpu",
+    "n": 264,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 262,
+    "presented_s": 196489.358691083
+  },
+  {
+    "type": "frame",
+    "n": 265,
+    "t_ms": 4433.580959,
+    "wait_ms": 0.0215,
+    "encode_commit_ms": 0.043
+  },
+  {
+    "type": "gpu",
+    "n": 265,
+    "gpu_ms": 0.023958
+  },
+  {
+    "type": "presented",
+    "n": 263,
+    "presented_s": 196489.375357708
+  },
+  {
+    "type": "frame",
+    "n": 266,
+    "t_ms": 4450.619709,
+    "wait_ms": 0.03425,
+    "encode_commit_ms": 0.066416
+  },
+  {
+    "type": "gpu",
+    "n": 266,
+    "gpu_ms": 0.021083
+  },
+  {
+    "type": "presented",
+    "n": 264,
+    "presented_s": 196489.392024167
+  },
+  {
+    "type": "frame",
+    "n": 267,
+    "t_ms": 4467.276834,
+    "wait_ms": 0.029583,
+    "encode_commit_ms": 0.066625
+  },
+  {
+    "type": "gpu",
+    "n": 267,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 265,
+    "presented_s": 196489.408690708
+  },
+  {
+    "type": "frame",
+    "n": 268,
+    "t_ms": 4483.954542,
+    "wait_ms": 0.030625,
+    "encode_commit_ms": 0.070292
+  },
+  {
+    "type": "gpu",
+    "n": 268,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 266,
+    "presented_s": 196489.425357292
+  },
+  {
+    "type": "frame",
+    "n": 269,
+    "t_ms": 4500.607959,
+    "wait_ms": 0.021208,
+    "encode_commit_ms": 0.042542
+  },
+  {
+    "type": "gpu",
+    "n": 269,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 267,
+    "presented_s": 196489.442023833
+  },
+  {
+    "type": "frame",
+    "n": 270,
+    "t_ms": 4516.58875,
+    "wait_ms": 0.0235,
+    "encode_commit_ms": 0.044209
+  },
+  {
+    "type": "gpu",
+    "n": 270,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 268,
+    "presented_s": 196489.458690375
+  },
+  {
+    "type": "frame",
+    "n": 271,
+    "t_ms": 4533.708542,
+    "wait_ms": 0.028708,
+    "encode_commit_ms": 0.057125
+  },
+  {
+    "type": "gpu",
+    "n": 271,
+    "gpu_ms": 0.022
+  },
+  {
+    "type": "presented",
+    "n": 269,
+    "presented_s": 196489.475356875
+  },
+  {
+    "type": "frame",
+    "n": 272,
+    "t_ms": 4549.728334,
+    "wait_ms": 0.021791,
+    "encode_commit_ms": 0.042125
+  },
+  {
+    "type": "gpu",
+    "n": 272,
+    "gpu_ms": 0.021125
+  },
+  {
+    "type": "presented",
+    "n": 270,
+    "presented_s": 196489.492023458
+  },
+  {
+    "type": "frame",
+    "n": 273,
+    "t_ms": 4567.158625,
+    "wait_ms": 0.025292,
+    "encode_commit_ms": 0.058917
+  },
+  {
+    "type": "gpu",
+    "n": 273,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 271,
+    "presented_s": 196489.50869
+  },
+  {
+    "type": "frame",
+    "n": 274,
+    "t_ms": 4583.936167,
+    "wait_ms": 0.02025,
+    "encode_commit_ms": 0.038917
+  },
+  {
+    "type": "gpu",
+    "n": 274,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 272,
+    "presented_s": 196489.5253565
+  },
+  {
+    "type": "frame",
+    "n": 275,
+    "t_ms": 4600.508584,
+    "wait_ms": 0.02675,
+    "encode_commit_ms": 0.064875
+  },
+  {
+    "type": "gpu",
+    "n": 275,
+    "gpu_ms": 0.020667
+  },
+  {
+    "type": "presented",
+    "n": 273,
+    "presented_s": 196489.542023083
+  },
+  {
+    "type": "frame",
+    "n": 276,
+    "t_ms": 4617.275292,
+    "wait_ms": 0.02325,
+    "encode_commit_ms": 0.058833
+  },
+  {
+    "type": "gpu",
+    "n": 276,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 274,
+    "presented_s": 196489.558689667
+  },
+  {
+    "type": "frame",
+    "n": 277,
+    "t_ms": 4633.938084,
+    "wait_ms": 0.031791,
+    "encode_commit_ms": 0.067792
+  },
+  {
+    "type": "gpu",
+    "n": 277,
+    "gpu_ms": 0.022
+  },
+  {
+    "type": "presented",
+    "n": 275,
+    "presented_s": 196489.575356208
+  },
+  {
+    "type": "frame",
+    "n": 278,
+    "t_ms": 4650.637,
+    "wait_ms": 0.020417,
+    "encode_commit_ms": 0.04425
+  },
+  {
+    "type": "gpu",
+    "n": 278,
+    "gpu_ms": 0.024625
+  },
+  {
+    "type": "presented",
+    "n": 276,
+    "presented_s": 196489.592022667
+  },
+  {
+    "type": "frame",
+    "n": 279,
+    "t_ms": 4667.2885,
+    "wait_ms": 0.024042,
+    "encode_commit_ms": 0.052625
+  },
+  {
+    "type": "gpu",
+    "n": 279,
+    "gpu_ms": 0.02475
+  },
+  {
+    "type": "presented",
+    "n": 277,
+    "presented_s": 196489.60868925
+  },
+  {
+    "type": "frame",
+    "n": 280,
+    "t_ms": 4683.9545,
+    "wait_ms": 0.021084,
+    "encode_commit_ms": 0.043416
+  },
+  {
+    "type": "gpu",
+    "n": 280,
+    "gpu_ms": 0.022
+  },
+  {
+    "type": "presented",
+    "n": 278,
+    "presented_s": 196489.625355708
+  },
+  {
+    "type": "frame",
+    "n": 281,
+    "t_ms": 4700.604459,
+    "wait_ms": 0.023416,
+    "encode_commit_ms": 0.05775
+  },
+  {
+    "type": "gpu",
+    "n": 281,
+    "gpu_ms": 0.020875
+  },
+  {
+    "type": "presented",
+    "n": 279,
+    "presented_s": 196489.642022292
+  },
+  {
+    "type": "frame",
+    "n": 282,
+    "t_ms": 4717.275584,
+    "wait_ms": 0.024875,
+    "encode_commit_ms": 0.047708
+  },
+  {
+    "type": "gpu",
+    "n": 282,
+    "gpu_ms": 0.021208
+  },
+  {
+    "type": "presented",
+    "n": 280,
+    "presented_s": 196489.658688875
+  },
+  {
+    "type": "frame",
+    "n": 283,
+    "t_ms": 4733.943084,
+    "wait_ms": 0.0235,
+    "encode_commit_ms": 0.0545
+  },
+  {
+    "type": "gpu",
+    "n": 283,
+    "gpu_ms": 0.020792
+  },
+  {
+    "type": "presented",
+    "n": 281,
+    "presented_s": 196489.675355417
+  },
+  {
+    "type": "frame",
+    "n": 284,
+    "t_ms": 4750.682167,
+    "wait_ms": 0.027458,
+    "encode_commit_ms": 0.057709
+  },
+  {
+    "type": "gpu",
+    "n": 284,
+    "gpu_ms": 0.022708
+  },
+  {
+    "type": "presented",
+    "n": 282,
+    "presented_s": 196489.692021958
+  },
+  {
+    "type": "frame",
+    "n": 285,
+    "t_ms": 4767.289917,
+    "wait_ms": 0.05125,
+    "encode_commit_ms": 0.068917
+  },
+  {
+    "type": "gpu",
+    "n": 285,
+    "gpu_ms": 0.021167
+  },
+  {
+    "type": "presented",
+    "n": 283,
+    "presented_s": 196489.7086885
+  },
+  {
+    "type": "frame",
+    "n": 286,
+    "t_ms": 4783.795542,
+    "wait_ms": 0.025417,
+    "encode_commit_ms": 0.052166
+  },
+  {
+    "type": "gpu",
+    "n": 286,
+    "gpu_ms": 0.024708
+  },
+  {
+    "type": "presented",
+    "n": 284,
+    "presented_s": 196489.725355042
+  },
+  {
+    "type": "frame",
+    "n": 287,
+    "t_ms": 4800.614334,
+    "wait_ms": 0.043666,
+    "encode_commit_ms": 0.07825
+  },
+  {
+    "type": "gpu",
+    "n": 287,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "presented",
+    "n": 285,
+    "presented_s": 196489.742021583
+  },
+  {
+    "type": "frame",
+    "n": 288,
+    "t_ms": 4817.141375,
+    "wait_ms": 0.020584,
+    "encode_commit_ms": 0.03975
+  },
+  {
+    "type": "gpu",
+    "n": 288,
+    "gpu_ms": 0.021125
+  },
+  {
+    "type": "presented",
+    "n": 286,
+    "presented_s": 196489.758688083
+  },
+  {
+    "type": "frame",
+    "n": 289,
+    "t_ms": 4833.093709,
+    "wait_ms": 0.032625,
+    "encode_commit_ms": 0.06825
+  },
+  {
+    "type": "gpu",
+    "n": 289,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 287,
+    "presented_s": 196489.775354625
+  },
+  {
+    "type": "frame",
+    "n": 290,
+    "t_ms": 4850.438709,
+    "wait_ms": 0.019916,
+    "encode_commit_ms": 0.040709
+  },
+  {
+    "type": "gpu",
+    "n": 290,
+    "gpu_ms": 0.021792
+  },
+  {
+    "type": "presented",
+    "n": 288,
+    "presented_s": 196489.792021208
+  },
+  {
+    "type": "frame",
+    "n": 291,
+    "t_ms": 4867.320042,
+    "wait_ms": 0.027292,
+    "encode_commit_ms": 0.058875
+  },
+  {
+    "type": "gpu",
+    "n": 291,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 289,
+    "presented_s": 196489.808687792
+  },
+  {
+    "type": "frame",
+    "n": 292,
+    "t_ms": 4883.5505,
+    "wait_ms": 0.022834,
+    "encode_commit_ms": 0.050041
+  },
+  {
+    "type": "gpu",
+    "n": 292,
+    "gpu_ms": 0.022375
+  },
+  {
+    "type": "presented",
+    "n": 290,
+    "presented_s": 196489.82535425
+  },
+  {
+    "type": "frame",
+    "n": 293,
+    "t_ms": 4900.374125,
+    "wait_ms": 0.02175,
+    "encode_commit_ms": 0.055
+  },
+  {
+    "type": "gpu",
+    "n": 293,
+    "gpu_ms": 0.022375
+  },
+  {
+    "type": "presented",
+    "n": 291,
+    "presented_s": 196489.842020833
+  },
+  {
+    "type": "frame",
+    "n": 294,
+    "t_ms": 4917.268917,
+    "wait_ms": 0.023708,
+    "encode_commit_ms": 0.038875
+  },
+  {
+    "type": "gpu",
+    "n": 294,
+    "gpu_ms": 0.022125
+  },
+  {
+    "type": "presented",
+    "n": 292,
+    "presented_s": 196489.858687375
+  },
+  {
+    "type": "frame",
+    "n": 295,
+    "t_ms": 4933.942375,
+    "wait_ms": 0.028584,
+    "encode_commit_ms": 0.068916
+  },
+  {
+    "type": "gpu",
+    "n": 295,
+    "gpu_ms": 0.023875
+  },
+  {
+    "type": "presented",
+    "n": 293,
+    "presented_s": 196489.875353875
+  },
+  {
+    "type": "frame",
+    "n": 296,
+    "t_ms": 4950.615042,
+    "wait_ms": 0.024917,
+    "encode_commit_ms": 0.065208
+  },
+  {
+    "type": "gpu",
+    "n": 296,
+    "gpu_ms": 0.02125
+  },
+  {
+    "type": "presented",
+    "n": 294,
+    "presented_s": 196489.892020417
+  },
+  {
+    "type": "frame",
+    "n": 297,
+    "t_ms": 4967.28525,
+    "wait_ms": 0.025834,
+    "encode_commit_ms": 0.056458
+  },
+  {
+    "type": "gpu",
+    "n": 297,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 295,
+    "presented_s": 196489.908686958
+  },
+  {
+    "type": "frame",
+    "n": 298,
+    "t_ms": 4983.935792,
+    "wait_ms": 0.020833,
+    "encode_commit_ms": 0.054709
+  },
+  {
+    "type": "gpu",
+    "n": 298,
+    "gpu_ms": 0.025125
+  },
+  {
+    "type": "presented",
+    "n": 296,
+    "presented_s": 196489.925353583
+  },
+  {
+    "type": "frame",
+    "n": 299,
+    "t_ms": 5000.610167,
+    "wait_ms": 0.032375,
+    "encode_commit_ms": 0.065667
+  },
+  {
+    "type": "gpu",
+    "n": 299,
+    "gpu_ms": 0.020625
+  },
+  {
+    "type": "presented",
+    "n": 297,
+    "presented_s": 196489.942020125
+  },
+  {
+    "type": "frame",
+    "n": 300,
+    "t_ms": 5016.929542,
+    "wait_ms": 0.036458,
+    "encode_commit_ms": 0.07275
+  },
+  {
+    "type": "gpu",
+    "n": 300,
+    "gpu_ms": 0.025208
+  },
+  {
+    "type": "presented",
+    "n": 298,
+    "presented_s": 196489.958686583
+  },
+  {
+    "type": "frame",
+    "n": 301,
+    "t_ms": 5033.938667,
+    "wait_ms": 0.026292,
+    "encode_commit_ms": 0.055625
+  },
+  {
+    "type": "gpu",
+    "n": 301,
+    "gpu_ms": 0.021125
+  },
+  {
+    "type": "presented",
+    "n": 299,
+    "presented_s": 196489.975353208
+  },
+  {
+    "type": "frame",
+    "n": 302,
+    "t_ms": 5050.599542,
+    "wait_ms": 0.022833,
+    "encode_commit_ms": 0.054542
+  },
+  {
+    "type": "gpu",
+    "n": 302,
+    "gpu_ms": 0.024625
+  },
+  {
+    "type": "presented",
+    "n": 300,
+    "presented_s": 196489.99201975
+  },
+  {
+    "type": "frame",
+    "n": 303,
+    "t_ms": 5067.011292,
+    "wait_ms": 0.029167,
+    "encode_commit_ms": 0.069625
+  },
+  {
+    "type": "gpu",
+    "n": 303,
+    "gpu_ms": 0.020542
+  },
+  {
+    "type": "presented",
+    "n": 301,
+    "presented_s": 196490.008686292
+  },
+  {
+    "type": "frame",
+    "n": 304,
+    "t_ms": 5083.930125,
+    "wait_ms": 0.020834,
+    "encode_commit_ms": 0.049375
+  },
+  {
+    "type": "gpu",
+    "n": 304,
+    "gpu_ms": 0.0225
+  },
+  {
+    "type": "presented",
+    "n": 302,
+    "presented_s": 196490.025352792
+  },
+  {
+    "type": "frame",
+    "n": 305,
+    "t_ms": 5100.604292,
+    "wait_ms": 0.029917,
+    "encode_commit_ms": 0.06525
+  },
+  {
+    "type": "gpu",
+    "n": 305,
+    "gpu_ms": 0.020708
+  },
+  {
+    "type": "presented",
+    "n": 303,
+    "presented_s": 196490.042019292
+  },
+  {
+    "type": "frame",
+    "n": 306,
+    "t_ms": 5117.265459,
+    "wait_ms": 0.025541,
+    "encode_commit_ms": 0.065875
+  },
+  {
+    "type": "gpu",
+    "n": 306,
+    "gpu_ms": 0.022375
+  },
+  {
+    "type": "presented",
+    "n": 304,
+    "presented_s": 196490.058685875
+  },
+  {
+    "type": "frame",
+    "n": 307,
+    "t_ms": 5133.933167,
+    "wait_ms": 0.02775,
+    "encode_commit_ms": 0.053208
+  },
+  {
+    "type": "gpu",
+    "n": 307,
+    "gpu_ms": 0.02075
+  },
+  {
+    "type": "end",
+    "elapsed_ms": 5140.379625,
+    "ticks": 616,
+    "frames": 307
+  },
+  {
+    "type": "presented",
+    "n": 305,
+    "presented_s": 196490.075352417
+  }
+]

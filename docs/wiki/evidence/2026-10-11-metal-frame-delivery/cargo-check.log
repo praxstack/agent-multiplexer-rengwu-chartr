@@ -1,0 +1,7 @@
+   Compiling gpui_apple v0.1.0 (/Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/gpui_apple)
+    Checking gpui_macos v0.1.0 (/Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/gpui_macos)
+    Checking gpui_platform v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+    Checking chartr v0.3.0 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.39s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`

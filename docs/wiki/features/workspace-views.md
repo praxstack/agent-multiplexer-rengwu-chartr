@@ -1,7 +1,7 @@
 ---
 title: Views, chrome and navigation
 section: Features
-updated: 2026-10-08
+updated: 2026-10-11
 basis: Source-reviewed migration baseline
 ---
 # Views, chrome and navigation
@@ -36,6 +36,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 - Native Settings remains in front when opened, including while the gear tooltip is active. Geometry, sidebar width and mode persist.
 - Cycle view modes (Cmd+~ on macOS, Ctrl+Alt+~ on Linux) alternates between Tabs and Spaces.
 - Chats is disabled by the accepted 2026-10-08 UI change: selectors, Settings, the command palette and Hotkeys offer only the two enabled views. Saved `inbox` or `conversations` preferences fall back to Spaces, while history and stored legacy shortcut entries remain intact. Legacy Chats shortcuts are inactive.
+- Scrolling and view switching must remain responsive on battery with Low Power Mode enabled. Reduced rendering throughput must not monopolize input dispatch; this requirement was confirmed by the user on 2026-10-10.
 
 ## Verification recipe
 
@@ -47,6 +48,7 @@ setup first; use actual UI entry points and observe underlying state where relev
 3. Open Settings using the gear and platform shortcut while hovering the gear; expect Settings to retain focus. Repeat with a web pane visible.
 4. Change mode/sidebar width, relaunch, and inspect the same state. Exercise the current cycle-view binding and its Hotkeys entry.
 5. Restore a disposable profile saved in Chats (`inbox` or legacy `conversations`). Expect Spaces, with existing spaces, pane layout and history retained. Confirm Chats is absent from both selectors, the command palette and Hotkeys, and its old shortcut cannot enter the disabled view.
+6. On macOS, repeat sidebar scrolling and view switching on battery with Low Power Mode both enabled and disabled, then on AC and across a live power-source transition. Expect responsive input in each condition; record frame waits and input latency separately from CPU utilization.
 
 Preserve the selected scenario's logs/screenshots/file observations and exact
 build identity before [cleanup](../verification/setup.md#cleanup). Record a fresh
@@ -61,6 +63,41 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+2026-10-11: The [first implementation run](../verification/runs/2026-10-11-metal-frame-delivery.md)
+eliminated sampled acquisition waits in two active captures, but failed on
+reactivation: pausing the link did not allow direct AppKit acquisition. The
+transaction-specific invalidation/recreation correction builds; its
+[recheck](../verification/runs/2026-10-11-metal-frame-delivery-recheck.md) passed
+the selected rendering scenarios on battery with Low Power Mode: zero acquisition
+samples in three complete active captures (12,539 main-thread samples), plus
+native lifecycle and actual-window checks. Both runs have aggregate result Failed:
+the recheck's exercised same-process last-window reopen failed, despite the
+passing rendering scenarios. This
+bounded pass does not certify input-to-presentation percentiles, power transitions
+or the full platform/release matrix. App Hide and same-process last-window reopen
+were not established; the latter lacks an app reopen handler. Fresh-process
+relaunch restored the disposable session.
+
+2026-10-10 design continuation: The [concrete fix design](../journal/2026-10-10-low-power-fix-design.md)
+selects supplied-drawable frame delivery for macOS 14+. A standalone lifecycle
+probe passed skip/resume/pause/resize and exactly-once invalidation after exposing
+a double-invalidation crash in its first version. This is API evidence; Chartr
+has not been patched or validated with the proposed change.
+
+2026-10-10 follow-up: [Standalone Metal timing and the resolution plan](../journal/2026-10-10-low-power-frame-investigation.md)
+reproduced drawable backpressure under battery/Low Power Mode without application
+content. Request pacing reduced the wait with variation; supplied-drawable
+callbacks avoided synchronous acquisition in the diagnostic. No Chartr fix or
+end-to-end input-latency validation was executed.
+
+2026-10-10: A user-driven [running-build investigation](../journal/2026-10-10-running-build-lag.md)
+reproduced delayed scrolling and view switching in installed build 755 on battery
+with Low Power Mode enabled. Main-thread Metal drawable acquisition accounted for
+70.59% of samples, compared with 16.24% on AC when the user reported normal
+responsiveness. This is an observed failure on that installed build, not a fixed
+or passing result for the current checkout. Battery with Low Power Mode disabled
+and a corrected build remain untested.
 
 2026-10-08: On the working tree with Chats disabled, 25 targeted tests passed
 using `cargo test -p chartr --bin chartr --locked` with the filters `mode::`,

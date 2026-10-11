@@ -1,0 +1,9 @@
+import sys
+import time
+
+# Bounded terminal workload: one visible counter update every 20 ms.
+for frame in range(15000):
+    sys.stdout.write(f"\rCHARTR_FRAME_TEST {frame:05d}")
+    sys.stdout.flush()
+    time.sleep(0.02)
+print("\nCHARTR_OUTPUT_DONE")

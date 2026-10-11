@@ -1,0 +1,4 @@
+#import <Foundation/Foundation.h>
+int main(void) { @autoreleasepool {
+  printf("{\"low_power\":%s}\n", NSProcessInfo.processInfo.lowPowerModeEnabled ? "true" : "false");
+} return 0; }

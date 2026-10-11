@@ -1,0 +1,8 @@
+{
+  "time": "2026-10-11T19:02:55.252855+08:00",
+  "battery": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=7340131)\t55%; discharging; (no estimate) present: true\n",
+  "power": {
+    "low_power": true
+  },
+  "process": "  PID  ELAPSED COMMAND\n52063 03:25:08 /var/folders/00/h_k67s0j5dq0qvg6ylqysk2w0000gn/T/chartr-metal-implementation.mtp67_4y/Chartr Metal Check.app/Contents/MacOS/chartr /tmp/chartr-mtl.4b5cch8e/project/Space-01\n"
+}

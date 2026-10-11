@@ -1,0 +1,28 @@
+{
+  "first_launch": {
+    "pid": 46952,
+    "outcome": "setup failure: private socket path exceeded sockaddr_un capacity",
+    "gui_stopped": true
+  },
+  "second_launch": {
+    "pid": 47002,
+    "profile": "/tmp/chartr-mtl.3gmmv47y",
+    "outcome": "backend started; copied fixture state duplicated space records; reset before testing",
+    "gui_stopped": true,
+    "backend_pid": 47005,
+    "backend_stop_exit": 0
+  },
+  "current": {
+    "gui_pid": 47972,
+    "backend_pid": 47998,
+    "profile": "/tmp/chartr-mtl.4b5cch8e",
+    "space_count": 33,
+    "fixture_folder_spaces": 32,
+    "native_driver": "cgWindowNotFound for both app and Finder while CGSSessionScreenIsLocked=Yes",
+    "interaction_checks": "pending unlocked desktop"
+  },
+  "untouched_user_processes": [
+    1121,
+    1123
+  ]
+}

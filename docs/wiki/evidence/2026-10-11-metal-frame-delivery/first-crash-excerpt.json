@@ -1,0 +1,230 @@
+{
+  "exception": {
+    "codes": "0x0000000000000000, 0x0000000000000000",
+    "rawCodes": [
+      0,
+      0
+    ],
+    "type": "EXC_CRASH",
+    "signal": "SIGABRT"
+  },
+  "termination": {
+    "flags": 0,
+    "code": 6,
+    "namespace": "SIGNAL",
+    "indicator": "Abort trap: 6",
+    "byProc": "chartr",
+    "byPid": 47972
+  },
+  "asi": {
+    "libsystem_c.dylib": [
+      "abort() called"
+    ]
+  },
+  "frames": [
+    {
+      "imageOffset": 38484,
+      "symbol": "__pthread_kill",
+      "symbolLocation": 8,
+      "imageIndex": 3
+    },
+    {
+      "imageOffset": 26992,
+      "symbol": "pthread_kill",
+      "symbolLocation": 296,
+      "imageIndex": 4
+    },
+    {
+      "imageOffset": 506700,
+      "symbol": "abort",
+      "symbolLocation": 148,
+      "imageIndex": 5
+    },
+    {
+      "imageOffset": 70387456,
+      "symbol": "_RNvNtNtNtCsaLOjE9VYtxK_3std3sys3pal4unix14abort_internal",
+      "symbolLocation": 12,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 70386816,
+      "symbol": "_RNvNtCsaLOjE9VYtxK_3std7process5abort",
+      "symbolLocation": 12,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 68622120,
+      "symbol": "_RNvNtCsaLOjE9VYtxK_3std9panicking15panic_with_hook",
+      "symbolLocation": 796,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 68528256,
+      "symbol": "_RNCNvNtCsaLOjE9VYtxK_3std9panicking13panic_handler0B5_",
+      "symbolLocation": 112,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 68483252,
+      "symbol": "_RINvNtNtCsaLOjE9VYtxK_3std3sys9backtrace26___rust_end_short_backtraceNCNvNtB6_9panicking13panic_handler0zEB6_",
+      "symbolLocation": 12,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 68531428,
+      "symbol": "_RNvCsGIExRX8pES_7___rustc17rust_begin_unwind",
+      "symbolLocation": 32,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 70389244,
+      "symbol": "_RNvNtCs6sq8b9ugfBC_4core9panicking18panic_nounwind_fmt",
+      "symbolLocation": 40,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 70389124,
+      "symbol": "_RNvNtCs6sq8b9ugfBC_4core9panicking14panic_nounwind",
+      "symbolLocation": 32,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 70389464,
+      "symbol": "_RNvNtCs6sq8b9ugfBC_4core9panicking19panic_cannot_unwind",
+      "symbolLocation": 24,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 61662096,
+      "symbol": "gpui_macos::window::window_did_change_key_status::he9406f9c5981f85b",
+      "symbolLocation": 1888,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 482932,
+      "symbol": "__CFNOTIFICATIONCENTER_IS_CALLING_OUT_TO_AN_OBSERVER__",
+      "symbolLocation": 148,
+      "imageIndex": 6
+    },
+    {
+      "imageOffset": 1068416,
+      "symbol": "___CFXRegistrationPost_block_invoke",
+      "symbolLocation": 92,
+      "imageIndex": 6
+    },
+    {
+      "imageOffset": 1068228,
+      "symbol": "_CFXRegistrationPost",
+      "symbolLocation": 440,
+      "imageIndex": 6
+    },
+    {
+      "imageOffset": 271024,
+      "symbol": "_CFXNotificationPost",
+      "symbolLocation": 688,
+      "imageIndex": 6
+    },
+    {
+      "imageOffset": 37904,
+      "symbol": "-[NSNotificationCenter postNotificationName:object:userInfo:]",
+      "symbolLocation": 88,
+      "imageIndex": 7
+    },
+    {
+      "imageOffset": 1597028,
+      "symbol": "-[NSWindow becomeKeyWindow]",
+      "symbolLocation": 856,
+      "imageIndex": 8
+    },
+    {
+      "imageOffset": 1592648,
+      "symbol": "_NXShowKeyAndMain",
+      "symbolLocation": 132,
+      "imageIndex": 8
+    },
+    {
+      "imageOffset": 11499996,
+      "symbol": "-[NSWindow _handleLeftMouseDownEvent:isDelayedEvent:]",
+      "symbolLocation": 2424,
+      "imageIndex": 8
+    },
+    {
+      "imageOffset": 1439488,
+      "symbol": "-[NSWindow(NSEventRouting) _reallySendEvent:isDelayedEvent:]",
+      "symbolLocation": 496,
+      "imageIndex": 8
+    },
+    {
+      "imageOffset": 1438576,
+      "symbol": "-[NSWindow(NSEventRouting) sendEvent:]",
+      "symbolLocation": 328,
+      "imageIndex": 8
+    },
+    {
+      "imageOffset": 9057356,
+      "symbol": "-[NSApplication(NSEventRouting) sendEvent:]",
+      "symbolLocation": 1296,
+      "imageIndex": 8
+    },
+    {
+      "imageOffset": 4026628,
+      "symbol": "-[NSApplication _handleEvent:]",
+      "symbolLocation": 60,
+      "imageIndex": 8
+    },
+    {
+      "imageOffset": 182768,
+      "symbol": "-[NSApplication run]",
+      "symbolLocation": 476,
+      "imageIndex": 8
+    },
+    {
+      "imageOffset": 61761600,
+      "symbol": "_$LT$gpui_macos..platform..MacPlatform$u20$as$u20$gpui..platform..Platform$GT$::run::h3c0210cca89c3b85",
+      "symbolLocation": 412,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 185532,
+      "symbol": "gpui::app::Application::run::hb3c6f5e220408f5b",
+      "symbolLocation": 216,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 1415596,
+      "symbol": "chartr::main::h2f298a8b1002a036",
+      "symbolLocation": 1020,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 4281032,
+      "symbol": "std::sys::backtrace::__rust_begin_short_backtrace::hed8996be75d44fd1",
+      "symbolLocation": 12,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 3207884,
+      "symbol": "std::rt::lang_start::_$u7b$$u7b$closure$u7d$$u7d$::h363da1a064abe00e",
+      "symbolLocation": 16,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 68615132,
+      "symbol": "_RNvNtCsaLOjE9VYtxK_3std2rt19lang_start_internal",
+      "symbolLocation": 952,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 1512692,
+      "symbol": "main",
+      "symbolLocation": 52,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 203300,
+      "symbol": "start",
+      "symbolLocation": 6688,
+      "imageIndex": 9
+    }
+  ]
+}

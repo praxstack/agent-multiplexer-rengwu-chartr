@@ -1,0 +1,87 @@
+{
+  "method": "Read-only SQLite paths; five isdir calls each",
+  "spaces": 12,
+  "folders": 11,
+  "view": "sidebar",
+  "sidebar_width": 221.58203,
+  "first_pass_total_ms": 0.036,
+  "checks": [
+    {
+      "index": 0,
+      "available": true,
+      "first_ms": 0.0065,
+      "max_ms": 0.0065,
+      "median_ms": 0.002
+    },
+    {
+      "index": 1,
+      "available": true,
+      "first_ms": 0.0033,
+      "max_ms": 0.0033,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 2,
+      "available": true,
+      "first_ms": 0.0022,
+      "max_ms": 0.0022,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 3,
+      "available": true,
+      "first_ms": 0.0028,
+      "max_ms": 0.0028,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 4,
+      "available": true,
+      "first_ms": 0.0031,
+      "max_ms": 0.0031,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 5,
+      "available": true,
+      "first_ms": 0.0027,
+      "max_ms": 0.0027,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 6,
+      "available": true,
+      "first_ms": 0.0026,
+      "max_ms": 0.0026,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 7,
+      "available": true,
+      "first_ms": 0.003,
+      "max_ms": 0.003,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 8,
+      "available": true,
+      "first_ms": 0.0035,
+      "max_ms": 0.0035,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 9,
+      "available": true,
+      "first_ms": 0.003,
+      "max_ms": 0.003,
+      "median_ms": 0.0017
+    },
+    {
+      "index": 10,
+      "available": true,
+      "first_ms": 0.0033,
+      "max_ms": 0.0033,
+      "median_ms": 0.0018
+    }
+  ]
+}

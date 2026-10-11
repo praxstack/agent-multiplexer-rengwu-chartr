@@ -1,6 +1,6 @@
 ---
 title: Decisions
-updated: 2026-10-05
+updated: 2026-10-11
 ---
 # Decisions
 
@@ -27,6 +27,22 @@ The [question register](../discussions/open-questions.md) preserves the resolved
 questions. No consequential migration-scope question remains open after round 2.
 
 ## Product architecture decisions
+
+2026-10-10 accepted requirement: scrolling, view switching and terminal input
+must remain responsive on battery with Low Power Mode enabled. The user requested
+investigation and a lean plan, with no implementation yet. The
+[rendering investigation](../journal/2026-10-10-low-power-frame-investigation.md)
+records the evidence. After the user rejected a conditional trial plan, the
+[concrete design](../journal/2026-10-10-low-power-fix-design.md) selects
+supplied-drawable frame delivery as the recommended implementation. This remains
+an agent proposal, not user approval to implement or a verified product fix.
+
+2026-10-11: The user authorized implementation with `work-until-grill`. The
+[implementation record](../journal/2026-10-11-low-power-implementation.md) carries
+that scope forward: supplied-drawable delivery on modern macOS, the pinned
+renderer extraction, preserved legacy/transaction paths, and isolated native
+verification. This supersedes the earlier restriction on implementing the fix;
+verification results remain separate from the accepted design.
 
 Original files and numeric identities are preserved in the [ADR register](adr/index.md).
 Their original prose supplies context and rationale; no missing original decision

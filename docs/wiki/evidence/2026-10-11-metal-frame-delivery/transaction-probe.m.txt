@@ -1,0 +1,26 @@
+#import <AppKit/AppKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <Metal/Metal.h>
+int main(void) { @autoreleasepool {
+  CAMetalLayer *layer=[CAMetalLayer layer];
+  layer.device=MTLCreateSystemDefaultDevice();
+  layer.drawableSize=CGSizeMake(320,200);
+  CAMetalDisplayLink *link=[[CAMetalDisplayLink alloc] initWithMetalLayer:layer];
+  [link addToRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
+  for (int paused=0;paused<2;paused++) {
+    link.paused=paused;
+    @try { layer.presentsWithTransaction=YES; printf("paused=%d transaction=YES accepted\n",paused); }
+    @catch(NSException *e) { printf("paused=%d exception=%s reason=%s\n",paused,e.name.UTF8String,e.reason.UTF8String); }
+    layer.presentsWithTransaction=NO;
+  }
+  link.paused=YES;
+  @try { id<CAMetalDrawable> drawable=[layer nextDrawable]; printf("paused nextDrawable=%p\n",drawable); }
+  @catch(NSException *e) { printf("drawable exception=%s reason=%s\n",e.name.UTF8String,e.reason.UTF8String); }
+  [link invalidate];
+  @try { id<CAMetalDrawable> drawable=[layer nextDrawable]; printf("invalidated nextDrawable=%p\n",drawable); }
+  @catch(NSException *e) { printf("invalidated exception=%s reason=%s\n",e.name.UTF8String,e.reason.UTF8String); }
+  link=nil;
+  @try { id<CAMetalDrawable> drawable=[layer nextDrawable]; printf("released nextDrawable=%p\n",drawable); }
+  @catch(NSException *e) { printf("released exception=%s reason=%s\n",e.name.UTF8String,e.reason.UTF8String); }
+
+} return 0; }

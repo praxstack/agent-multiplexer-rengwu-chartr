@@ -1,0 +1,6 @@
+low_power=true
+unused_callbacks=60
+submitted_after_idle=61
+resize_resume_callbacks=60
+paused_callbacks=0 post_drop_callbacks=0 reentrant_drop_callbacks=1
+PASS: unused updates, presentation, pause, resize/resume, drop, callback-owned drop

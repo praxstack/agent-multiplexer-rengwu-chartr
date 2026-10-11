@@ -1,0 +1,80 @@
+#import <Foundation/Foundation.h>
+#import <CoreVideo/CoreVideo.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <CoreFoundation/CoreFoundation.h>
+#import <dispatch/dispatch.h>
+#include <stdatomic.h>
+#include <time.h>
+#include <unistd.h>
+
+// Diagnostic only: mirrors Chartr's CVDisplayLink -> DATA_ADD main-queue source.
+// The synthetic callback delays are workload controls, not a proposed fix.
+static double started, work_ms;
+static _Atomic bool recording;
+static _Atomic unsigned tick_count;
+static double tick_times[4096], frame_times[4096], heartbeat_times[4096];
+static unsigned frame_count, heartbeat_count;
+static dispatch_source_t frame_source;
+static double now(void) { return (double)clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW) / 1e9; }
+static CVReturn tick(CVDisplayLinkRef link, const CVTimeStamp *in, const CVTimeStamp *out, CVOptionFlags a, CVOptionFlags *b, void *ctx) {
+    if (atomic_load(&recording)) {
+        unsigned i = atomic_load(&tick_count);
+        if (i < 4096) tick_times[i] = now() - started;
+        atomic_store(&tick_count, i + 1);
+        if (frame_source) dispatch_source_merge_data(frame_source, 1);
+    }
+    return kCVReturnSuccess;
+}
+static void frame(void *ctx) {
+    if (!atomic_load(&recording)) return;
+    if (frame_count < 4096) frame_times[frame_count] = now() - started;
+    frame_count++;
+    if (work_ms > 0) usleep((useconds_t)(work_ms * 1000));
+}
+static void heartbeat(CFRunLoopTimerRef timer, void *ctx) {
+    if (heartbeat_count < 4096) heartbeat_times[heartbeat_count] = now() - started;
+    heartbeat_count++;
+}
+static void print_times(const char *name, double *values, unsigned count) {
+    printf("\"%s\":[", name);
+    for (unsigned i=0;i<count && i<4096;i++) printf("%s%.6f", i?",":"", values[i]*1000);
+    printf("]");
+}
+int main(int argc, char **argv) {
+    @autoreleasepool {
+        work_ms = argc > 1 ? atof(argv[1]) : 0;
+        double seconds = argc > 2 ? atof(argv[2]) : 3;
+        BOOL low = NSProcessInfo.processInfo.lowPowerModeEnabled;
+        NSInteger thermal = NSProcessInfo.processInfo.thermalState;
+        CGDirectDisplayID display = CGMainDisplayID();
+        CGDisplayModeRef mode = CGDisplayCopyDisplayMode(display);
+        double nominal = mode ? CGDisplayModeGetRefreshRate(mode) : 0;
+        CVDisplayLinkRef link;
+        CVReturn create = CVDisplayLinkCreateWithActiveCGDisplays(&link);
+        if (create != kCVReturnSuccess) return 2;
+        CVDisplayLinkSetCurrentCGDisplay(link, display);
+        CVDisplayLinkSetOutputCallback(link, tick, NULL);
+        frame_source=dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD,0,0,dispatch_get_main_queue());
+        dispatch_source_set_event_handler_f(frame_source,frame);
+        dispatch_resume(frame_source);
+        CFRunLoopTimerRef timer=CFRunLoopTimerCreate(kCFAllocatorDefault,CFAbsoluteTimeGetCurrent()+0.02,0.02,0,0,heartbeat,NULL);
+        CFRunLoopAddTimer(CFRunLoopGetMain(),timer,kCFRunLoopCommonModes);
+        started=now(); atomic_store(&recording,true);
+        CVDisplayLinkStart(link);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(seconds*1e9)),dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0),^{
+            atomic_store(&recording,false);
+            CVDisplayLinkStop(link);
+            CFRunLoopStop(CFRunLoopGetMain());
+        });
+        CFRunLoopRun();
+        CFRunLoopTimerInvalidate(timer); CFRelease(timer);
+        // Do not release the link/source before process exit: mirrors the known
+        // CVDisplayLink teardown constraint and avoids a straggling callback.
+        printf("{\"synthetic_work_ms\":%.3f,\"duration_s\":%.3f,\"low_power\":%s,\"thermal_state\":%ld,\"display_mode_hz\":%.4f,\"cv_actual_period_s\":%.9f,",work_ms,seconds,low?"true":"false",(long)thermal,nominal,CVDisplayLinkGetActualOutputVideoRefreshPeriod(link));
+        print_times("display_ticks_ms",tick_times,atomic_load(&tick_count));printf(",");
+        print_times("frame_starts_ms",frame_times,frame_count);printf(",");
+        print_times("runloop_heartbeats_ms",heartbeat_times,heartbeat_count);printf("}\n");
+        if (mode) CGDisplayModeRelease(mode);
+    }
+    return 0;
+}

@@ -1,0 +1,179 @@
+{
+  "scope": "Standalone API/ownership investigation; no product fixes",
+  "results": [
+    {
+      "run": "metal-mrc-no-pool",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": false,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": [
+        {
+          "type": "end",
+          "elapsed_ms": 5014.877041,
+          "ticks": 599,
+          "frames": 301
+        }
+      ],
+      "frame_count": 301,
+      "lifecycle": [],
+      "phases": [],
+      "mean_frame_encode_commit_ms": 0.053222601328903656,
+      "next_drawable_mean_wait_ms": 16.40345553820598,
+      "next_drawable_max_wait_ms": 29.307041,
+      "exit_code": 0
+    },
+    {
+      "run": "metal-mrc-pool",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": [
+        {
+          "type": "end",
+          "elapsed_ms": 5027.951083,
+          "ticks": 601,
+          "frames": 303
+        }
+      ],
+      "frame_count": 303,
+      "lifecycle": [],
+      "phases": [],
+      "mean_frame_encode_commit_ms": 0.05385810891089109,
+      "next_drawable_mean_wait_ms": 16.295910336633664,
+      "next_drawable_max_wait_ms": 17.615666,
+      "exit_code": 0
+    },
+    {
+      "run": "metal-lifecycle",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 10
+      },
+      "end": [],
+      "frame_count": 377,
+      "lifecycle": [],
+      "phases": [
+        {
+          "type": "phase",
+          "name": "idle_skip",
+          "t_ms": 2100.061
+        },
+        {
+          "type": "phase",
+          "name": "resume_drawing",
+          "t_ms": 4199.963
+        },
+        {
+          "type": "phase",
+          "name": "pause",
+          "t_ms": 6300.056
+        },
+        {
+          "type": "phase",
+          "name": "resize_and_resume",
+          "t_ms": 7352.415
+        }
+      ],
+      "mean_frame_encode_commit_ms": 0.07114082493368701,
+      "next_drawable_mean_wait_ms": null,
+      "next_drawable_max_wait_ms": null,
+      "exit_code": 139
+    },
+    {
+      "run": "metal-lifecycle-once",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 10
+      },
+      "end": [
+        {
+          "type": "end",
+          "elapsed_ms": 10499.703166,
+          "ticks": 501,
+          "frames": 379
+        }
+      ],
+      "frame_count": 379,
+      "lifecycle": [
+        {
+          "type": "lifecycle",
+          "skipped_unused_drawables": 122,
+          "callbacks_after_invalidation": 0
+        }
+      ],
+      "phases": [
+        {
+          "type": "phase",
+          "name": "idle_skip",
+          "t_ms": 2099.908
+        },
+        {
+          "type": "phase",
+          "name": "resume_drawing",
+          "t_ms": 4136.304
+        },
+        {
+          "type": "phase",
+          "name": "pause",
+          "t_ms": 6299.778
+        },
+        {
+          "type": "phase",
+          "name": "resize_and_resume",
+          "t_ms": 7347.099
+        },
+        {
+          "type": "phase",
+          "name": "invalidate",
+          "t_ms": 9451.039
+        }
+      ],
+      "mean_frame_encode_commit_ms": 0.06689643799472296,
+      "next_drawable_mean_wait_ms": null,
+      "next_drawable_max_wait_ms": null,
+      "exit_code": 0,
+      "frames_per_phase": {
+        "initial": 123,
+        "idle_skip": 0,
+        "resume_drawing": 130,
+        "pause": 0,
+        "resize_and_resume": 126,
+        "invalidate": 0
+      }
+    }
+  ],
+  "probe_notes": [
+    "MRC variants compile the same render source with -fno-objc-arc to approximate metal-rs borrowed autoreleased returns. This is not the exact Rust renderer.",
+    "Changing only per-frame pool presence did not eliminate drawable waiting in either MRC variant.",
+    "Lifecycle tests use supplied drawables; local wait_ms is timer/assignment overhead and is not a measured acquisition wait.",
+    "First lifecycle run crashed from repeated invalidation; corrected exactly-once run preserved skip/resume/pause/resize behavior.",
+    "Phase timers ran later than requested; phase counts use logged actual timestamps.",
+    "Actual Chartr lifecycle and end-to-end input latency remain future implementation validation."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "time": "2026-10-11T19:04:35.241127+08:00",
+  "battery": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=7340131)\t55%; discharging; (no estimate) present: true\n",
+  "power": {
+    "low_power": true
+  },
+  "process": "  PID  ELAPSED COMMAND\n52063 03:26:48 /var/folders/00/h_k67s0j5dq0qvg6ylqysk2w0000gn/T/chartr-metal-implementation.mtp67_4y/Chartr Metal Check.app/Contents/MacOS/chartr /tmp/chartr-mtl.4b5cch8e/project/Space-01\n",
+  "samples": [
+    {
+      "file": "active-1.sample.txt",
+      "main_samples": 4119,
+      "next_drawable": 0,
+      "metal_callback": 818,
+      "runloop_wait": 3223
+    },
+    {
+      "file": "active-2.sample.txt",
+      "main_samples": 4207,
+      "next_drawable": 0,
+      "metal_callback": 877,
+      "runloop_wait": 3249
+    },
+    {
+      "file": "active-3.sample.txt",
+      "main_samples": 4213,
+      "next_drawable": 0,
+      "metal_callback": 909,
+      "runloop_wait": 3228
+    }
+  ]
+}

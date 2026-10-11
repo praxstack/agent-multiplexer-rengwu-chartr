@@ -1,0 +1,407 @@
+{
+  "experiment": "Standalone API investigation; not a Chartr fix or input-latency benchmark",
+  "date": "2026-10-10",
+  "timezone": "Asia/Kuala_Lumpur",
+  "limitations": [
+    "All programs run sequentially on battery with effective Low Power Mode true; thermal state nominal.",
+    "320x180 point window, three drawables, vsync on, single clear pass, per-frame autorelease pool.",
+    "Drawable timeout enabled for diagnostic safety, unlike Chartr; no timeout occurred.",
+    "Zero wait for supplied-drawable variants means no nextDrawable call, not a measured zero-cost OS callback. Raw wait_ms in these variants only measures local assignment/timer overhead.",
+    "Presented callbacks may be incomplete at process exit; nonzero presentation intervals are not input latency.",
+    "An app render rate or exact event-starvation mechanism cannot be inferred directly from standalone experiments."
+  ],
+  "variants": [
+    {
+      "name": "CVDisplayLink baseline, early run",
+      "data_file": "metal-probe.json",
+      "source_file": null,
+      "source_note": "The two early sources were subsequently instrumented with GPU/presented callbacks; exact earlier source was not separately retained.",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": {
+        "type": "end",
+        "elapsed_ms": 5029.602042,
+        "ticks": 601,
+        "frames": 302
+      },
+      "callbacks_per_elapsed_second": 119.49255527203,
+      "submitted_frames_per_elapsed_second": 60.044511966976806,
+      "uses_supplied_drawable": false,
+      "next_drawable_wait_ms": {
+        "count": 302,
+        "mean": 16.254920662251656,
+        "p50": 16.520625,
+        "p95": 17.075625,
+        "max": 19.860167,
+        "sum": 4908.98604
+      },
+      "wait_share_of_elapsed_percent": 97.60187782268281,
+      "cpu_encode_and_commit_ms": {
+        "count": 302,
+        "mean": 0.07327329801324503,
+        "p50": 0.056916,
+        "p95": 0.078416,
+        "max": 4.952458,
+        "sum": 22.128536
+      },
+      "gpu_ms": null,
+      "presented_callback_count": 0,
+      "presented_positive_time_count": 0,
+      "presented_zero_time_count": 0,
+      "positive_presented_intervals_ms": null,
+      "timeouts": 0
+    },
+    {
+      "name": "CVDisplayLink baseline",
+      "data_file": "metal-baseline-gpu.json",
+      "source_file": "metal_probe.m.txt",
+      "source_note": "Exact executed source retained.",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": {
+        "type": "end",
+        "elapsed_ms": 5018.202709,
+        "ticks": 600,
+        "frames": 302
+      },
+      "callbacks_per_elapsed_second": 119.56471964034404,
+      "submitted_frames_per_elapsed_second": 60.18090888563983,
+      "uses_supplied_drawable": false,
+      "next_drawable_wait_ms": {
+        "count": 302,
+        "mean": 16.318343397350993,
+        "p50": 16.521958,
+        "p95": 17.060542,
+        "max": 17.234708,
+        "sum": 4928.139706
+      },
+      "wait_share_of_elapsed_percent": 98.20527371605625,
+      "cpu_encode_and_commit_ms": {
+        "count": 302,
+        "mean": 0.06537472847682119,
+        "p50": 0.063708,
+        "p95": 0.07975,
+        "max": 1.025125,
+        "sum": 19.743168
+      },
+      "gpu_ms": {
+        "count": 302,
+        "mean": 0.025718685430463576,
+        "p50": 0.0205,
+        "p95": 0.026792,
+        "max": 0.652792,
+        "sum": 7.767043
+      },
+      "presented_callback_count": 299,
+      "presented_positive_time_count": 297,
+      "presented_zero_time_count": 2,
+      "positive_presented_intervals_ms": {
+        "count": 296,
+        "mean": 16.722848256806074,
+        "p50": 16.66654198197648,
+        "p95": 16.666625015204772,
+        "max": 33.33308399305679,
+        "sum": 4949.963084014598
+      },
+      "timeouts": 0
+    },
+    {
+      "name": "CVDisplayLink every second tick, early run",
+      "data_file": "metal-60hz.json",
+      "source_file": null,
+      "source_note": "The two early sources were subsequently instrumented with GPU/presented callbacks; exact earlier source was not separately retained.",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": {
+        "type": "end",
+        "elapsed_ms": 5120.604125,
+        "ticks": 614,
+        "frames": 307
+      },
+      "callbacks_per_elapsed_second": 119.9077267079302,
+      "submitted_frames_per_elapsed_second": 59.9538633539651,
+      "uses_supplied_drawable": false,
+      "next_drawable_wait_ms": {
+        "count": 307,
+        "mean": 4.264251068403909,
+        "p50": 4.225541,
+        "p95": 4.77025,
+        "max": 12.347042,
+        "sum": 1309.125078
+      },
+      "wait_share_of_elapsed_percent": 25.565832586208764,
+      "cpu_encode_and_commit_ms": {
+        "count": 307,
+        "mean": 0.061469899022801304,
+        "p50": 0.057958,
+        "p95": 0.079333,
+        "max": 1.140958,
+        "sum": 18.871259
+      },
+      "gpu_ms": null,
+      "presented_callback_count": 0,
+      "presented_positive_time_count": 0,
+      "presented_zero_time_count": 0,
+      "positive_presented_intervals_ms": null,
+      "timeouts": 0
+    },
+    {
+      "name": "CVDisplayLink every second tick",
+      "data_file": "metal-60hz-gpu.json",
+      "source_file": "metal_probe.m.txt",
+      "source_note": "Exact executed source retained.",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": {
+        "type": "end",
+        "elapsed_ms": 5140.379625,
+        "ticks": 616,
+        "frames": 307
+      },
+      "callbacks_per_elapsed_second": 119.83550728512586,
+      "submitted_frames_per_elapsed_second": 59.72321548138578,
+      "uses_supplied_drawable": false,
+      "next_drawable_wait_ms": {
+        "count": 307,
+        "mean": 0.03382900651465798,
+        "p50": 0.026625,
+        "p95": 0.042208,
+        "max": 0.982917,
+        "sum": 10.385505
+      },
+      "wait_share_of_elapsed_percent": 0.20203770455961217,
+      "cpu_encode_and_commit_ms": {
+        "count": 307,
+        "mean": 0.060264947882736154,
+        "p50": 0.056041,
+        "p95": 0.075292,
+        "max": 1.067458,
+        "sum": 18.501339
+      },
+      "gpu_ms": {
+        "count": 307,
+        "mean": 0.02233971009771987,
+        "p50": 0.020958,
+        "p95": 0.024625,
+        "max": 0.387833,
+        "sum": 6.858291
+      },
+      "presented_callback_count": 305,
+      "presented_positive_time_count": 304,
+      "presented_zero_time_count": 1,
+      "positive_presented_intervals_ms": {
+        "count": 303,
+        "mean": 16.721547719474618,
+        "p50": 16.66654198197648,
+        "p95": 16.666624986100942,
+        "max": 33.3331250003539,
+        "sum": 5066.628959000809
+      },
+      "timeouts": 0
+    },
+    {
+      "name": "CVDisplayLink drops ticks while callback pending/running",
+      "data_file": "metal-gated-gpu.json",
+      "source_file": "metal_probe.m.txt",
+      "source_note": "Exact executed source retained.",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": {
+        "type": "end",
+        "elapsed_ms": 5004.8835,
+        "ticks": 600,
+        "frames": 301
+      },
+      "callbacks_per_elapsed_second": 119.88291036144997,
+      "submitted_frames_per_elapsed_second": 60.141260031327405,
+      "uses_supplied_drawable": false,
+      "next_drawable_wait_ms": {
+        "count": 301,
+        "mean": 12.605494292358804,
+        "p50": 12.8205,
+        "p95": 13.299458,
+        "max": 14.135125,
+        "sum": 3794.2537820000002
+      },
+      "wait_share_of_elapsed_percent": 75.81103100601642,
+      "cpu_encode_and_commit_ms": {
+        "count": 301,
+        "mean": 0.0648060830564784,
+        "p50": 0.062333,
+        "p95": 0.077541,
+        "max": 1.073542,
+        "sum": 19.506631
+      },
+      "gpu_ms": {
+        "count": 301,
+        "mean": 0.021484926910299004,
+        "p50": 0.020375,
+        "p95": 0.024375,
+        "max": 0.1255,
+        "sum": 6.466963
+      },
+      "presented_callback_count": 297,
+      "presented_positive_time_count": 294,
+      "presented_zero_time_count": 3,
+      "positive_presented_intervals_ms": {
+        "count": 293,
+        "mean": 16.66654251875839,
+        "p50": 16.66654198197648,
+        "p95": 16.66658400790766,
+        "max": 24.999875022331253,
+        "sum": 4883.296957996208
+      },
+      "timeouts": 0
+    },
+    {
+      "name": "CAMetalDisplayLink system defaults",
+      "data_file": "metal-displaylink-default-gpu.json",
+      "source_file": "metal_displaylink_probe.m.txt",
+      "source_note": "Exact executed source retained.",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": {
+        "type": "end",
+        "elapsed_ms": 5249.155375,
+        "ticks": 624,
+        "frames": 624
+      },
+      "callbacks_per_elapsed_second": 118.8762677843195,
+      "submitted_frames_per_elapsed_second": 118.8762677843195,
+      "uses_supplied_drawable": true,
+      "next_drawable_wait_ms": null,
+      "wait_share_of_elapsed_percent": 0,
+      "cpu_encode_and_commit_ms": {
+        "count": 624,
+        "mean": 0.0458533125,
+        "p50": 0.044292,
+        "p95": 0.063458,
+        "max": 1.262042,
+        "sum": 28.612467
+      },
+      "gpu_ms": {
+        "count": 624,
+        "mean": 0.04491378365384616,
+        "p50": 0.020875,
+        "p95": 0.134125,
+        "max": 0.685792,
+        "sum": 28.026201
+      },
+      "presented_callback_count": 620,
+      "presented_positive_time_count": 308,
+      "presented_zero_time_count": 312,
+      "positive_presented_intervals_ms": {
+        "count": 307,
+        "mean": 16.829407573313564,
+        "p50": 16.66654198197648,
+        "p95": 16.666624986100942,
+        "max": 33.33304199622944,
+        "sum": 5166.628125007264
+      },
+      "timeouts": 0
+    },
+    {
+      "name": "CAMetalDisplayLink preferred range 30\u201360 Hz",
+      "data_file": "metal-displaylink-60-gpu.json",
+      "source_file": "metal_displaylink_60_probe.m.txt",
+      "source_note": "Exact executed source retained.",
+      "config": {
+        "type": "config",
+        "low_power": true,
+        "thermal_state": 0,
+        "display_sync": true,
+        "drawable_count": 3,
+        "per_frame_autorelease_pool": true,
+        "drawable_timeout": true,
+        "duration_s": 5
+      },
+      "end": {
+        "type": "end",
+        "elapsed_ms": 5109.30775,
+        "ticks": 306,
+        "frames": 306
+      },
+      "callbacks_per_elapsed_second": 59.89069654299058,
+      "submitted_frames_per_elapsed_second": 59.89069654299058,
+      "uses_supplied_drawable": true,
+      "next_drawable_wait_ms": null,
+      "wait_share_of_elapsed_percent": 0,
+      "cpu_encode_and_commit_ms": {
+        "count": 306,
+        "mean": 0.06179013725490196,
+        "p50": 0.059334,
+        "p95": 0.076166,
+        "max": 1.035709,
+        "sum": 18.907782
+      },
+      "gpu_ms": {
+        "count": 306,
+        "mean": 0.03217485620915033,
+        "p50": 0.0205,
+        "p95": 0.029958,
+        "max": 0.645167,
+        "sum": 9.845506
+      },
+      "presented_callback_count": 302,
+      "presented_positive_time_count": 301,
+      "presented_zero_time_count": 1,
+      "positive_presented_intervals_ms": {
+        "count": 300,
+        "mean": 16.77765250002267,
+        "p50": 16.66654198197648,
+        "p95": 16.666624986100942,
+        "max": 49.999582988675684,
+        "sum": 5033.2957500068005
+      },
+      "timeouts": 0
+    }
+  ]
+}

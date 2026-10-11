@@ -1,0 +1,23 @@
+[
+  {
+    "file": "active-1.sample.txt",
+    "main": 4189,
+    "nextDrawable": 0,
+    "metal_callback": 937,
+    "normal_wait": 3181
+  },
+  {
+    "file": "active-2.sample.txt",
+    "main": 4141,
+    "nextDrawable": 0,
+    "metal_callback": 909,
+    "normal_wait": 3087
+  },
+  {
+    "file": "active-3.sample.txt",
+    "main": 225,
+    "nextDrawable": 1,
+    "metal_callback": 34,
+    "normal_wait": 186
+  }
+]

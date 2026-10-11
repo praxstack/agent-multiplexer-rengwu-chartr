@@ -1,0 +1,39 @@
+{
+  "scratch_root": "/tmp/chartr-lowpower-goal.zlFx2w",
+  "outcome": "No new user-confirmed lag reproduction in these captures; do not use them as a passing result.",
+  "attempts": [
+    {
+      "trace": "battery-system.trace",
+      "requested_seconds": 15,
+      "observed_export_seconds": 10,
+      "main_thread_running_ms": 19.4,
+      "main_thread_blocked_ms": 9880,
+      "interpretation": "normal event loop wait; no drawable wait captured"
+    },
+    {
+      "trace": "battery-active-system.trace",
+      "requested_seconds": 45,
+      "interpretation": "native UI attempts did not establish sustained rendering; not used to diagnose lag"
+    },
+    {
+      "trace": "battery-user-system.trace",
+      "requested_seconds": 60,
+      "interpretation": "no user confirmation; syscall export showed no nextDrawable wait; one 322.267625 ms potential microhang at 22.031 seconds is unattributed"
+    },
+    {
+      "trace": "battery-visible-system.trace",
+      "requested_seconds": 20,
+      "parallel_sample": "battery-visible.sample.txt",
+      "main_thread_samples": 3473,
+      "normal_event_loop_wait_samples": 3450,
+      "interpretation": "no drawable wait captured; AX/window visibility did not establish a lag reproduction"
+    }
+  ],
+  "raw_export_sha256": {
+    "system-events.xml": "8e699ee0eb36a66422abec10ebca721441736fcab042855843ff563b669eb26b",
+    "user-events.xml": "3deb49bfd77ae1c5e4898e695cb7dd03142f5ed1f080fc71c6e0ad743007c7fa",
+    "visible-events.xml": "c0ffe842753a3cb65cf9b6536f9dee604083ac492de5990393ca16b28b5ae439",
+    "visible-lifecycle.xml": "494ed11070c3e47522136980a4a6b0b3b8d5af75de5097aebe87239d23b4d1ff"
+  },
+  "raw_trace_retention": "Instruments bundles and XML exports retained only at local scratch path; not checked into repository; scratch may be ephemeral."
+}

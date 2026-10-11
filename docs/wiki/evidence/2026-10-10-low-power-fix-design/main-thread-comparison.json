@@ -1,0 +1,24 @@
+[
+  {
+    "name": "baseline",
+    "main_thread_samples": 2650,
+    "nextDrawable_samples": 2568,
+    "nextDrawable_percent": 96.90566037735849,
+    "normal_runloop_wait_samples": 3,
+    "normal_runloop_wait_percent": 0.11320754716981132,
+    "raw_sample": "baseline-main.sample.txt",
+    "note": "Four-second stack sample of a standalone five-second clear-only diagnostic, not Chartr. Both diagnostics and samplers exited 0.",
+    "effective_low_power": true
+  },
+  {
+    "name": "supplied",
+    "main_thread_samples": 2775,
+    "nextDrawable_samples": 0,
+    "nextDrawable_percent": 0.0,
+    "normal_runloop_wait_samples": 2610,
+    "normal_runloop_wait_percent": 94.05405405405405,
+    "raw_sample": "supplied-main.sample.txt",
+    "note": "Four-second stack sample of a standalone five-second clear-only diagnostic, not Chartr. Both diagnostics and samplers exited 0.",
+    "effective_low_power": true
+  }
+]

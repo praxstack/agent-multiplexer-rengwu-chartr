@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-10",
+  "source_revision": "1ea16c1ab9dd6d36649e002dc60995634da04daf",
+  "effective_low_power": true,
+  "product_patch_sha256": "6e346819aca02946a579074fcfd0ce66e7e68260116fc35db96084ed71da00bf",
+  "files": {
+    "baseline-main.sample.txt": "cc391a36a765dfa652c4e56513e99ca8a711e4c8ecccf60ee1aedb38f6f9c785",
+    "baseline-sample-run.json": "9d89f6e499f2f4cddf3ab76f6910c9503f1f0079123f8d7e4e94248121335d20",
+    "double-invalidate-crash-excerpt.json": "3820c1693bb69e0380a2b8ddb536f9b84e0e1f7a8b41fa63368747eb83601e84",
+    "main-thread-comparison.json": "89c35b8e40fd7f4bcad36d732737fa45a8f46d13e70703363b137d441d85633d",
+    "metal-lifecycle-once.json": "22cd562e07e5e35c5a117b14b41ec51b27b75ba1f58643b1e3500793ffecdfcb",
+    "metal-lifecycle.json": "9d5e26ff328ec6155cc7c8b24dd754358b2dd8e2f9dcb80d45b1114ac7e58ffc",
+    "metal-mrc-no-pool.json": "59b8d3928a3e3e77e77214377f0682d34369334037d8f522b720872cb47c4cf1",
+    "metal-mrc-pool.json": "8698dfcb2c6e9162466db152b5404dc45c4caae8860b7c28d5f55acfdf8fd606",
+    "metal_lifecycle_double_invalidate_probe.m.txt": "11b8663aa7f6f8433087e74c55280689e89753fa0fdbbb38b7dfd3bd8f62ebaf",
+    "metal_lifecycle_probe.m.txt": "625425bfc4952e6cd20009753c3d0aa8f612facb92b45eca9cddaf7fd4fa3f55",
+    "metal_no_pool_probe.m.txt": "2dc107413a7f4ae22f7d068542f23ba5f780d4a54c0dde5894042939e8d847bf",
+    "metal_probe.m.txt": "7c4cee6aa895840d149f1948aa17d54b9ad295803af09a6939f904f1e7f2ba04",
+    "summary.json": "ec68c4dd247a2c25c9a9e7edb6a6a5cf3e83ae6bf3e4148b6447e76c215b95ef",
+    "supplied-main.sample.txt": "47723ad62ef8aa93cd41f8698e12b09443131d7d939f987a7cf03689827b1e23",
+    "supplied-sample-run.json": "c2c33314d421d62507d4b81bdd9523a8c7b7b601faf257b65e7c12635decdb24"
+  }
+}

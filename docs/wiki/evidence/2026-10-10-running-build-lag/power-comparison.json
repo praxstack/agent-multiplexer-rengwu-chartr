@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-10",
+  "timezone": "Asia/Kuala_Lumpur",
+  "identity": "identity.json",
+  "gui_pid": 1121,
+  "backend_pid": 1123,
+  "operation": "User scrolls sidebar and switches Tabs/Spaces in existing process; no application modifications or restart",
+  "comparison_limit": "Manual interaction, not identical replay. Battery source plus enabled low-power policy compared with AC source plus disabled low-power policy; battery with low-power mode off not separately tested. No per-event latency or frame-rate measurement.",
+  "captures": [
+    {
+      "condition": "battery",
+      "power_state": "Battery; Low Power Mode enabled, confirmed by user after capture",
+      "user_outcome": "Lag present, confirmed by user",
+      "sample_start": "2026-10-10 2:55:44.017\u202fAM +0800",
+      "duration_seconds": 30,
+      "sample_interval_ms": 5,
+      "main_thread_samples": 3870,
+      "next_drawable_samples": 2732,
+      "next_drawable_percent": 70.59,
+      "drawable_semaphore_wait_samples": 2719,
+      "normal_event_loop_wait_samples": 4,
+      "frame_callback_samples": 3768,
+      "cpu_percent": {
+        "1121": {
+          "min": 24.0,
+          "max": 28.2,
+          "mean": 26.51
+        },
+        "1123": {
+          "min": 56.6,
+          "max": 61.3,
+          "mean": 59.42
+        }
+      },
+      "sample_file": "chartr-confirmed-reproduction.sample.txt",
+      "sample_sha256": "a0ac9745bfcc12d14ddffd0fc81b4d0ce004e987f2eb3af87ae9c5ac5e2add23",
+      "cpu_file": "reproduction-top.txt",
+      "cpu_sha256": "1901045fa25cd0331d3f3c5626493f4686c3a4b6bca21e115c146e71836a6ab4"
+    },
+    {
+      "condition": "ac",
+      "power_state": "AC power; Low Power Mode disabled for AC, read via pmset",
+      "user_outcome": "Fast, reported by user",
+      "sample_start": "2026-10-10 2:57:44.257\u202fAM +0800",
+      "duration_seconds": 30,
+      "sample_interval_ms": 5,
+      "main_thread_samples": 4057,
+      "next_drawable_samples": 659,
+      "next_drawable_percent": 16.24,
+      "drawable_semaphore_wait_samples": 643,
+      "normal_event_loop_wait_samples": 1562,
+      "frame_callback_samples": 2297,
+      "cpu_percent": {
+        "1121": {
+          "min": 42.4,
+          "max": 47.8,
+          "mean": 45.43
+        },
+        "1123": {
+          "min": 49.0,
+          "max": 54.8,
+          "mean": 50.75
+        }
+      },
+      "sample_file": "chartr-ac-reproduction.sample.txt",
+      "sample_sha256": "1c9a0ba17401abcaaceaf9b038a7934053489b67f32a11cc8b235ffe34b9d123",
+      "cpu_file": "ac-reproduction-top.txt",
+      "cpu_sha256": "48405d19d4616c495c4a9b4feac9eca6666a8b2395fd89f3989fa54b2305d70b"
+    }
+  ],
+  "battery_backend_sample": {
+    "file": "herdr-confirmed-reproduction.sample.txt",
+    "interval_ms": 10,
+    "duration_seconds": 30,
+    "main_thread_samples": 1882,
+    "render_and_stream_samples": 1491,
+    "sha256": "271efc6c073db989f08a605f07c7dc3dd5a59289a1ade8541e03b13955b7e82c"
+  },
+  "observed_ac_power": {
+    "file": "ac-power-state.txt",
+    "sha256": "b6e2fbc1f93b0233b994f4fa742154f72066d5fc1916018dc1e7959871626724"
+  }
+}

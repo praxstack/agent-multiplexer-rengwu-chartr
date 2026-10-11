@@ -1,0 +1,12 @@
+{
+  "gui_stopped": 72781,
+  "backend_command": [
+    "target/release/herdr",
+    "server",
+    "stop"
+  ],
+  "private_socket": "/tmp/chartr-mtl.4b5cch8e/config/chartr/herdr/herdr.sock",
+  "exit": 0,
+  "stdout": "",
+  "stderr": ""
+}

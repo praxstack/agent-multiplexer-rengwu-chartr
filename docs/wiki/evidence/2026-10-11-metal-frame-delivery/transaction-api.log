@@ -1,0 +1,5 @@
+paused=0 transaction=YES accepted
+paused=1 transaction=YES accepted
+drawable exception=CAMetalLayerInvalidOperation reason=-nextDrawable should not be called when using CAMetalDisplayLink.
+invalidated nextDrawable=0x7877110000
+released nextDrawable=0x78771100e0

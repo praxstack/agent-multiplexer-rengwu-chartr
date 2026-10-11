@@ -1,0 +1,30 @@
+#import <AppKit/AppKit.h>
+#import <QuartzCore/QuartzCore.h>
+#include <time.h>
+static double start;
+static double timestamps[4096], durations[4096], targets[4096];
+static unsigned count;
+static double clockNow(void) { return clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW) / 1e9; }
+@interface Probe: NSObject
+- (void)tick:(CADisplayLink *)link;
+@end
+@implementation Probe
+- (void)tick:(CADisplayLink *)link {
+ if(count<4096){timestamps[count]=(clockNow()-start)*1000;durations[count]=link.duration*1000;targets[count]=(link.targetTimestamp-link.timestamp)*1000; count++;}
+}
+@end
+int main(int argc,char **argv){@autoreleasepool{
+ BOOL low=NSProcessInfo.processInfo.lowPowerModeEnabled;
+ NSScreen *screen=NSScreen.mainScreen;
+ if(!screen){fprintf(stderr,"No main screen\n");return 2;}
+ Probe *target=[Probe new]; CADisplayLink *link=[screen displayLinkWithTarget:target selector:@selector(tick:)];
+ // Default OS-selected cadence; this probe requests no rate override.
+ [link addToRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
+ start=clockNow(); NSDate *end=[NSDate dateWithTimeIntervalSinceNow:3];
+ while([end timeIntervalSinceNow]>0) [NSRunLoop.mainRunLoop runMode:NSDefaultRunLoopMode beforeDate:end];
+ [link invalidate];
+ printf("{\"low_power\":%s,\"screen_maximum_fps\":%ld,\"display_ticks_ms\":[",low?"true":"false",(long)screen.maximumFramesPerSecond);
+ for(unsigned i=0;i<count;i++)printf("%s%.6f",i?",":"",timestamps[i]);
+ printf("],\"duration_ms\":[");for(unsigned i=0;i<count;i++)printf("%s%.6f",i?",":"",durations[i]);
+ printf("],\"target_interval_ms\":[");for(unsigned i=0;i<count;i++)printf("%s%.6f",i?",":"",targets[i]);printf("]}\n");
+}return 0;}

@@ -1,0 +1,56 @@
+#import <AppKit/AppKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <Metal/Metal.h>
+#import <CoreVideo/CoreVideo.h>
+#import <CoreGraphics/CoreGraphics.h>
+#include <stdatomic.h>
+#include <time.h>
+#include <unistd.h>
+static CAMetalLayer *layer;
+static id<MTLCommandQueue> queue;
+static dispatch_source_t source;
+static CVDisplayLinkRef display_link;
+static _Atomic bool collecting;
+static _Atomic unsigned ticks;
+static double start;
+static FILE *out;
+static unsigned frames;
+static unsigned divisor=1;
+static bool gate=false;
+static _Atomic bool pending;
+static double now(void){return clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW)/1e9;}
+static CVReturn tick(CVDisplayLinkRef l,const CVTimeStamp*a,const CVTimeStamp*b,CVOptionFlags c,CVOptionFlags*d,void*e){if(atomic_load(&collecting)){unsigned n=atomic_fetch_add(&ticks,1)+1; if(n%divisor==0 && (!gate || !atomic_exchange(&pending,true))) dispatch_source_merge_data(source,1);}return kCVReturnSuccess;}
+static void draw(void *context){
+ if(!atomic_load(&collecting))return;
+ {
+  double t=now();id<CAMetalDrawable> drawable=[layer nextDrawable];double ready=now();
+  if(!drawable){fprintf(out,"{\"type\":\"timeout\",\"t_ms\":%.6f,\"wait_ms\":%.6f}\n",(t-start)*1000,(ready-t)*1000);fflush(out);return;}
+  MTLRenderPassDescriptor *pass=[MTLRenderPassDescriptor renderPassDescriptor];
+  pass.colorAttachments[0].texture=drawable.texture;pass.colorAttachments[0].loadAction=MTLLoadActionClear;pass.colorAttachments[0].storeAction=MTLStoreActionStore;
+  pass.colorAttachments[0].clearColor=MTLClearColorMake(0.12,0.16,0.20,1);
+  id<MTLCommandBuffer> command=[queue commandBuffer];id<MTLRenderCommandEncoder> encoder=[command renderCommandEncoderWithDescriptor:pass];[encoder endEncoding];
+  unsigned frame_id=frames+1;
+  [command addCompletedHandler:^(id<MTLCommandBuffer> completed){fprintf(out,"{\"type\":\"gpu\",\"n\":%u,\"gpu_ms\":%.6f}\n",frame_id,(completed.GPUEndTime-completed.GPUStartTime)*1000);}];
+  [drawable addPresentedHandler:^(id<MTLDrawable> shown){fprintf(out,"{\"type\":\"presented\",\"n\":%u,\"presented_s\":%.9f}\n",frame_id,shown.presentedTime);}];
+  [command presentDrawable:drawable];[command commit];frames++;
+  fprintf(out,"{\"type\":\"frame\",\"n\":%u,\"t_ms\":%.6f,\"wait_ms\":%.6f,\"encode_commit_ms\":%.6f}\n",frames,(t-start)*1000,(ready-t)*1000,(now()-ready)*1000);fflush(out);
+ }
+ atomic_store(&pending,false);
+}
+int main(int argc,char**argv){@autoreleasepool{
+ divisor=argc>1?atoi(argv[1]):1;gate=argc>2?atoi(argv[2]):false;out=stdout; [NSApplication sharedApplication];[NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+ NSWindow *window=[[NSWindow alloc]initWithContentRect:NSMakeRect(80,80,320,180) styleMask:NSWindowStyleMaskTitled backing:NSBackingStoreBuffered defer:NO];window.title=@"Chartr rendering diagnostic — closes automatically";
+ id<MTLDevice> device=MTLCreateSystemDefaultDevice();queue=[device newCommandQueue];layer=[CAMetalLayer layer];layer.device=device;layer.pixelFormat=MTLPixelFormatBGRA8Unorm;layer.maximumDrawableCount=3;layer.opaque=YES;
+ // Bounded default timeout prevents a diagnostic-only window hanging forever.
+ // No app properties/settings are modified; Chartr disables this timeout.
+ layer.allowsNextDrawableTimeout=YES;layer.contentsScale=window.backingScaleFactor;layer.drawableSize=CGSizeMake(320*window.backingScaleFactor,180*window.backingScaleFactor);window.contentView.wantsLayer=YES;window.contentView.layer=layer;
+ [window orderFrontRegardless];
+ printf("{\"type\":\"config\",\"low_power\":%s,\"thermal_state\":%ld,\"display_sync\":%s,\"drawable_count\":%lu,\"per_frame_autorelease_pool\":false,\"drawable_timeout\":true,\"duration_s\":5}\n",NSProcessInfo.processInfo.lowPowerModeEnabled?"true":"false",(long)NSProcessInfo.processInfo.thermalState,layer.displaySyncEnabled?"true":"false",(unsigned long)layer.maximumDrawableCount);
+ source=dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD,0,0,dispatch_get_main_queue());dispatch_source_set_event_handler_f(source,draw);dispatch_resume(source);
+ CVDisplayLinkCreateWithActiveCGDisplays(&display_link);CVDisplayLinkSetCurrentCGDisplay(display_link,CGMainDisplayID());CVDisplayLinkSetOutputCallback(display_link,tick,NULL);start=now();atomic_store(&collecting,true);CVDisplayLinkStart(display_link);
+ dispatch_after(dispatch_time(DISPATCH_TIME_NOW,5*NSEC_PER_SEC),dispatch_get_global_queue(QOS_CLASS_USER_INITIATED,0),^{
+   atomic_store(&collecting,false);CVDisplayLinkStop(display_link);
+   dispatch_async(dispatch_get_main_queue(),^{fprintf(out,"{\"type\":\"end\",\"elapsed_ms\":%.6f,\"ticks\":%u,\"frames\":%u}\n",(now()-start)*1000,atomic_load(&ticks),frames);fflush(out);[window orderOut:nil];[NSApp stop:nil];exit(0);});
+ });
+ [NSApp run];
+}return 0;}

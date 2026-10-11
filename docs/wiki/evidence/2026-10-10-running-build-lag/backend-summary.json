@@ -1,0 +1,18 @@
+{
+  "ping": {
+    "id": "chartr-lag-readonly",
+    "result": {
+      "type": "pong",
+      "version": "0.8.2-chartr.5a2dee700eee",
+      "protocol": 22,
+      "capabilities": {
+        "live_handoff": true,
+        "detached_server_daemon": false,
+        "endpoint_protocol_generation": 1
+      }
+    }
+  },
+  "pane_count": 21,
+  "workspace_count": 11,
+  "pane_list_ms": 8.210708008846268
+}

@@ -1,0 +1,43 @@
+   Compiling libc v0.2.189
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.47
+   Compiling core-foundation-sys v0.8.7
+   Compiling bitflags v2.13.1
+   Compiling foreign-types-shared v0.3.1
+   Compiling paste v1.0.15
+   Compiling block v0.1.6
+   Compiling log v0.4.34
+   Compiling core-foundation v0.10.1
+   Compiling malloc_buf v0.0.6
+   Compiling objc v0.2.7
+   Compiling syn v3.0.4
+   Compiling core-graphics-types v0.2.0
+   Compiling cocoa-foundation v0.2.1
+   Compiling foreign-types-macros v0.2.4
+   Compiling foreign-types v0.5.0
+   Compiling core-graphics v0.24.0
+   Compiling metal v0.33.0
+   Compiling cocoa v0.26.0
+   Compiling chartr-metal-native-check v0.0.0 (/var/folders/00/h_k67s0j5dq0qvg6ylqysk2w0000gn/T/chartr-metal-check.95gvFG)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.88s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running unittests /Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/gpui_macos/examples/metal_display_link.rs (target/metal-display-link-check/debug/deps/chartr_metal_native_check-e8a4bcb79ab91b9c)
+
+running 1 test
+test metal_display_link::tests::power_policy_respects_slow_displays_and_restores_system_preference ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling chartr-metal-native-check v0.0.0 (/var/folders/00/h_k67s0j5dq0qvg6ylqysk2w0000gn/T/chartr-metal-check.95gvFG)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.46s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running `target/metal-display-link-check/debug/chartr-metal-native-check`
+low_power=false
+unused_callbacks=117
+submitted_after_idle=121
+resize_resume_callbacks=118
+paused_callbacks=0 post_drop_callbacks=0 reentrant_drop_callbacks=1
+PASS: unused updates, presentation, pause, resize/resume, drop, callback-owned drop

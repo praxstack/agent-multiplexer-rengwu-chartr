@@ -1,0 +1,25 @@
+   Compiling chartr-metal-native-check v0.0.0 (/var/folders/00/h_k67s0j5dq0qvg6ylqysk2w0000gn/T/chartr-metal-check.RISCMp)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.93s
+    Blocking waiting for file lock on package cache
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running unittests /Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/gpui_macos/examples/metal_display_link.rs (target/metal-display-link-check/debug/deps/chartr_metal_native_check-e8a4bcb79ab91b9c)
+
+running 1 test
+test metal_display_link::tests::power_policy_respects_slow_displays_and_restores_system_preference ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   Compiling chartr-metal-native-check v0.0.0 (/var/folders/00/h_k67s0j5dq0qvg6ylqysk2w0000gn/T/chartr-metal-check.RISCMp)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.88s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running `target/metal-display-link-check/debug/chartr-metal-native-check`
+low_power=true
+unused_callbacks=61
+
+thread 'main' (7108414) panicked at /Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/gpui_macos/examples/metal_display_link.rs:101:9:
+unused drawables exhausted the pool
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

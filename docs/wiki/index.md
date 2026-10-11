@@ -1,6 +1,6 @@
 ---
 title: Chartr development wiki
-updated: 2026-10-05
+updated: 2026-10-11
 ---
 # Chartr development wiki
 
@@ -26,12 +26,27 @@ locally generated reader.
 - [Release acceptance](verification/acceptance.md) and
   [packaging runbook](development/releasing.md).
 
-**The app recipes are unvalidated.** This migration did not build or exercise
-chartr. Historical passes apply only to their recorded snapshots. No synthetic
-product run reports were created.
+The migration did not build or exercise Chartr. Later execution is recorded in
+dated runs, including the [macOS frame-delivery recheck](verification/runs/2026-10-11-metal-frame-delivery-recheck.md).
+Unexecuted recipes remain unvalidated, and historical passes apply only to their
+recorded snapshots.
 
 ## History and migration
 
+- [Supplied-drawable implementation](journal/2026-10-11-low-power-implementation.md):
+  implemented Low Power Mode fix, with three active captures and selected native
+  and app rendering checks passed; aggregate lifecycle failure, latency percentile
+  and compatibility limits recorded.
+- [Concrete Low Power Mode fix design](journal/2026-10-10-low-power-fix-design.md):
+  supplied-drawable frame delivery removes acquisition from the observed blocking
+  path; exact code boundaries, lifetime rules and compatibility scope are defined.
+- [Low Power Mode evidence and resolution plan](journal/2026-10-10-low-power-frame-investigation.md):
+  standalone Metal timing reproduces drawable backpressure; records a bounded
+  pacing trial, fallback and acceptance criteria. No product fix applied.
+- [Running build lag investigation](journal/2026-10-10-running-build-lag.md):
+  battery/AC reproduction localizes the visible stall to main-thread Metal
+  drawable waits; frame scheduling needs a fix. Backend overhead is recorded
+  separately.
 - [Historical archive](archive/index.md): complete research, original rewrite
   specification, inactive Companion protocol, screenshots and receipts.
 - [Agreed migration scope](discussions/jstack-migration.md).

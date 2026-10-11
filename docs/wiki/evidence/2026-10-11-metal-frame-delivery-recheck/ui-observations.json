@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-10-11T19:10:06.818695+08:00",
+  "method": "Native UI automation with AX snapshots and screenshots inspected in the conversation; no event-to-presentation timing inferred from tool duration.",
+  "original_pid": 52063,
+  "relaunch_pid": 72781,
+  "build_sha256": "c90d4967d8ddaed555c8dd2f3c060593012ee85722d887e0e0046e49bffa9a9b",
+  "observations": [
+    "Restarted bounded 50 Hz counter in existing disposable shell. CHARTR_RECHECK_INPUT_OK rendered before captures; counter visibly advanced from 00012 through 06730.",
+    "During three complete 30-second captures, repeated Tabs/Spaces keyboard switches and sidebar two-page up/down scrolling. Screenshot showed spaces 13-32 after downward scroll. PID 52063 remained alive before/after all captures.",
+    "Zoomed to larger window and restored original size; terminal output and sidebar rendered at both sizes.",
+    "Opened Current space native popup. Activated Finder menu, then cancelled it; popup disappeared. Reactivated Chartr and terminal printed CHARTR_AFTER_ACTIVATION_OK.",
+    "Minimized test window using native minimize button. AX Raise alone did not restore interactive input. Opening exact test bundle through Finder restored it; CHARTR_AFTER_RESTORE_OK rendered.",
+    "Cmd+H did not visibly hide this build; its application menu is empty. No app-hide coverage claimed. Minimization covers the selected visibility stop/resume scenario.",
+    "Closed native test window. PID 52063 remained alive; 3-second sample had all 533 main-thread samples in normal event-loop waiting, no Metal callback or drawable acquisition.",
+    "Opening bundle while process had no windows did not recreate one. Source inspection found no on_reopen registration in unchanged crates/chartr/src/main.rs; platform callback is optional. Recorded as existing app lifecycle gap, not fixed by this patch.",
+    "Stopped windowless owned PID 52063 and launched identical isolated bundle through Finder. New PID 72781 restored the shell and printed CHARTR_AFTER_RELAUNCH_OK.",
+    "Typed exit only in disposable shell. AX showed Reattach afterward."
+  ],
+  "limits": [
+    "No recorded native event-to-presentation percentile",
+    "No subjective user confirmation on patched build",
+    "No Intel/older macOS/external-display or sleep-wake verification",
+    "No independent agent review"
+  ]
+}

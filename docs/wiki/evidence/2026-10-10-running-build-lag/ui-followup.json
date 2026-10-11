@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-10",
+  "chartr_pid": 1121,
+  "identity": "identity.json",
+  "user_report": "Sidebar scrolling very slow and delayed; view switching delayed; terminal typing less affected.",
+  "reproduction_confirmed": false,
+  "native_ui_inspection": "Unavailable: Sky Computer Use native pipe startup failed",
+  "samples": [
+    {
+      "file": "chartr-ui-active.sample.txt",
+      "duration_seconds": 15,
+      "interval_ms": 5,
+      "main_thread_samples": 2601,
+      "event_loop_wait_samples": 2594,
+      "sha256": "8b1c33df3367b6440c72c09506e0e6fa0cf5e79d79b0d1c5c75e2ceafb179be4"
+    },
+    {
+      "file": "chartr-reproduction.sample.txt",
+      "duration_seconds": 30,
+      "interval_ms": 5,
+      "main_thread_samples": 5206,
+      "event_loop_wait_samples": 5185,
+      "sha256": "8454c704d0ac1959e82ce255acdd158fee64c1000a4787a7287f90179aaf15e8"
+    },
+    {
+      "file": "chartr-reproduction-extended.sample.txt",
+      "duration_seconds": 60,
+      "interval_ms": 10,
+      "main_thread_samples": 5368,
+      "event_loop_wait_samples": 5356,
+      "sha256": "e45507fb10d7e2115096026afb6fdb0b22b4e95c110db195de38c8f1bf7eca94"
+    }
+  ],
+  "folder_stat_evidence": {
+    "file": "folder-stat-latencies.json",
+    "sha256": "925465a9271f495c25b7cdd4fb044cd430b465525f7887e2771915e6e57e5563"
+  }
+}

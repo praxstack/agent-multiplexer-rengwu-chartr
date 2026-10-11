@@ -1,0 +1,13 @@
+{
+  "time": "2026-10-11T19:12:13.644271+08:00",
+  "protected_patch_sha256": "6e346819aca02946a579074fcfd0ce66e7e68260116fc35db96084ed71da00bf",
+  "installed_binary_sha256": "699cbb789ad845e00e94bc2be69aa3ae9b6a2959a93ff554dedb24cd062cfcbe",
+  "installed_processes": "  PID     ELAPSED COMMAND\n 1121 04-04:01:15 /Applications/chartr.app/Contents/MacOS/chartr\n 1123 04-04:01:14 /Applications/chartr.app/Contents/MacOS/herdr server\n",
+  "remaining_owned_processes": [],
+  "test_bundle_and_profile_retained": true,
+  "temporary_awake_assertion_stopped": 71835,
+  "recorded_source_hashes_match": 32,
+  "tested_binary_matches_manifest": true,
+  "cargo_fmt_all_check": "Passed",
+  "git_diff_check": "Passed"
+}

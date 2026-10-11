@@ -1,0 +1,6 @@
+2026-10-11 15:27:42.390 chartr[47972:7056022] NSSoftLinking - The function '_TSMMenuKeyTransWithModifiersBeginWithEvent' can't be found in the HIToolbox framework.
+
+thread 'main' (7056022) panicked at /rustc/ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96/library/core/src/panicking.rs:225:5:
+panic in a function that cannot unwind
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+thread caused non-unwinding panic. aborting.
