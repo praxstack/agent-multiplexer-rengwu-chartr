@@ -2,7 +2,7 @@ use crate::{
     BoolExt, MacDisplay, NSRange, NSStringExt, TISCopyCurrentKeyboardInputSource,
     TISGetInputSourceProperty, WindowFrameSource, events::platform_input_from_native,
     kTISPropertyInputSourceIsASCIICapable, kTISPropertyInputSourceType, kTISTypeKeyboardInputMode,
-    ns_string, renderer,
+    metal_display_link::MetalFrameSource, ns_string, renderer,
 };
 #[cfg(any(test, feature = "test-support"))]
 use anyhow::Result;
@@ -598,6 +598,29 @@ unsafe fn apply_simple_fullscreen_plan(
     }
 }
 
+enum FrameSource {
+    CoreVideo(WindowFrameSource),
+    Metal(MetalFrameSource),
+}
+
+impl FrameSource {
+    fn stop(&mut self) {
+        match self {
+            Self::CoreVideo(source) => source.stop(),
+            Self::Metal(source) => source.stop(),
+        }
+    }
+}
+
+#[derive(Default)]
+enum FrameDrawTarget {
+    #[default]
+    Direct,
+    // None means this callback already consumed its drawable, not permission
+    // to fall back to a blocking acquisition.
+    Metal(Option<metal::MetalDrawable>),
+}
+
 struct MacWindowState {
     handle: AnyWindowHandle,
     foreground_executor: ForegroundExecutor,
@@ -608,7 +631,8 @@ struct MacWindowState {
     background_appearance: WindowBackgroundAppearance,
     cursor_style: CursorStyle,
     cursor_visible: Arc<AtomicBool>,
-    frame_source: Option<WindowFrameSource>,
+    frame_source: Option<FrameSource>,
+    frame_draw_target: FrameDrawTarget,
     renderer: renderer::Renderer,
     request_frame_callback: Option<Box<dyn FnMut(RequestFrameOptions)>>,
     event_callback: Option<Box<dyn FnMut(PlatformInput) -> gpui::DispatchEventResult>>,
@@ -788,16 +812,47 @@ impl MacWindowState {
             // AppKit can temporarily report no screen while displays are being reconfigured.
             return;
         };
-        let data = self.native_view.as_ptr() as *mut c_void;
-        self.frame_source
-            .get_or_insert_with(|| WindowFrameSource::new(data, step))
-            .start(display_id)
-            .log_err();
+        if self.frame_source.is_none() {
+            let window_state = unsafe { get_window_state(self.native_view.as_ref()) };
+            let weak = Arc::downgrade(&window_state);
+            let metal_source = self.renderer.layer().and_then(|layer| {
+                MetalFrameSource::new(layer, move |drawable| metal_step(&weak, drawable))
+            });
+            self.frame_source = Some(match metal_source {
+                Some(source) => FrameSource::Metal(source),
+                None => FrameSource::CoreVideo(WindowFrameSource::new(
+                    self.native_view.as_ptr().cast(),
+                    step,
+                )),
+            });
+        }
+        match self.frame_source.as_mut().unwrap() {
+            FrameSource::CoreVideo(source) => {
+                source.start(display_id).log_err();
+            }
+            FrameSource::Metal(source) => {
+                // Only queried on the macOS 14+ branch.
+                let maximum_fps: NSInteger =
+                    unsafe { msg_send![self.native_window.screen(), maximumFramesPerSecond] };
+                source.start(maximum_fps.max(0) as u32);
+            }
+        }
     }
 
     fn stop_display_link(&mut self) {
         if let Some(frame_source) = self.frame_source.as_mut() {
             frame_source.stop();
+        }
+    }
+
+    fn stop_display_link_for_transaction(&mut self) {
+        if matches!(self.frame_source, Some(FrameSource::Metal(_))) {
+            // Pausing does not permit nextDrawable: the layer still belongs to
+            // CAMetalDisplayLink. Invalidate it before AppKit's synchronous draw;
+            // start_display_link recreates the source after the transaction.
+            self.frame_source.take();
+        } else {
+            self.stop_display_link();
         }
     }
 
@@ -1244,6 +1299,7 @@ impl MacWindow {
                 cursor_style: CursorStyle::Arrow,
                 cursor_visible,
                 frame_source: None,
+                frame_draw_target: FrameDrawTarget::Direct,
                 renderer: renderer::new_renderer(
                     renderer_context,
                     native_window as *mut _,
@@ -2163,7 +2219,14 @@ impl PlatformWindow for MacWindow {
 
     fn draw(&self, scene: &gpui::Scene) {
         let mut this = self.0.lock();
-        this.renderer.draw(scene);
+        match &mut this.frame_draw_target {
+            FrameDrawTarget::Direct => this.renderer.draw(scene),
+            FrameDrawTarget::Metal(slot) => {
+                if let Some(drawable) = slot.take() {
+                    this.renderer.draw_with_drawable(scene, &drawable);
+                }
+            }
+        }
     }
 
     fn sprite_atlas(&self) -> Arc<dyn PlatformAtlas> {
@@ -3136,7 +3199,7 @@ extern "C" fn window_did_change_key_status(this: &Object, selector: Sel, _: id) 
         if lock.activated_least_once {
             if let Some(mut callback) = lock.request_frame_callback.take() {
                 lock.renderer.set_presents_with_transaction(true);
-                lock.stop_display_link();
+                lock.stop_display_link_for_transaction();
                 drop(lock);
                 callback(Default::default());
 
@@ -3257,7 +3320,7 @@ extern "C" fn display_layer(this: &Object, _: Sel, _: id) {
     let mut lock = window_state.lock();
     if let Some(mut callback) = lock.request_frame_callback.take() {
         lock.renderer.set_presents_with_transaction(true);
-        lock.stop_display_link();
+        lock.stop_display_link_for_transaction();
         drop(lock);
         callback(Default::default());
 
@@ -3265,6 +3328,34 @@ extern "C" fn display_layer(this: &Object, _: Sel, _: id) {
         lock.request_frame_callback = Some(callback);
         lock.renderer.set_presents_with_transaction(false);
         lock.start_display_link();
+    }
+}
+
+fn metal_step(window_state: &Weak<Mutex<MacWindowState>>, drawable: &metal::MetalDrawableRef) {
+    let Some(window_state) = window_state.upgrade() else { return };
+    let mut lock = window_state.lock();
+    if !matches!(lock.frame_source, Some(FrameSource::Metal(_))) {
+        return;
+    }
+    let Some(layer) = lock.renderer.layer() else { return };
+    let expected = layer.drawable_size();
+    let texture = drawable.texture();
+    if expected.width <= 0.0
+        || expected.height <= 0.0
+        || texture.width() != expected.width.ceil() as u64
+        || texture.height() != expected.height.ceil() as u64
+    {
+        // Resize/scale changed after the update was prepared. Leave GPUI's
+        // dirty state and forced work untouched for the next correctly sized update.
+        return;
+    }
+    if let Some(mut callback) = lock.request_frame_callback.take() {
+        lock.frame_draw_target = FrameDrawTarget::Metal(Some(drawable.to_owned()));
+        drop(lock);
+        callback(Default::default());
+        let mut lock = window_state.lock();
+        lock.frame_draw_target = FrameDrawTarget::Direct;
+        lock.request_frame_callback = Some(callback);
     }
 }
 

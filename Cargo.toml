@@ -29,6 +29,7 @@ exclude = [
     "vendor/herdr/.build",
     "vendor/zed-platform/gpui_linux",
     "vendor/zed-platform/gpui_macos",
+    "vendor/zed-platform/gpui_apple",
     "vendor/zed-platform/ui",
     "vendor/zed-terminal-view",
 ]
@@ -119,7 +120,10 @@ tree-sitter-language = { git = "https://github.com/tree-sitter/tree-sitter", rev
 # them on Wayland. These small platform forks complete the same contract on
 # macOS and X11 so menus can sit above native child surfaces without app-level
 # focus, z-order, or event-routing workarounds.
+# The paired macOS renderer patch also accepts drawables supplied by the native
+# frame source, avoiding main-thread drawable acquisition during normal frames.
 [patch."https://github.com/zed-industries/zed.git"]
 gpui_linux = { path = "vendor/zed-platform/gpui_linux" }
 gpui_macos = { path = "vendor/zed-platform/gpui_macos" }
+gpui_apple = { path = "vendor/zed-platform/gpui_apple" }
 ui = { path = "vendor/zed-platform/ui" }

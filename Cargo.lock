@@ -4000,7 +4000,6 @@ dependencies = [
 [[package]]
 name = "gpui_apple"
 version = "0.1.0"
-source = "git+https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1ab9dd6d36649e002dc60995634da04daf"
 dependencies = [
  "anyhow",
  "block",
