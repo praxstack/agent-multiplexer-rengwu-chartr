@@ -12,10 +12,11 @@ Repair verification drift in [FEAT-workspace-views](../../features/workspace-vie
 the sidebar test still expected an expanded empty space to contain a row after
 the accepted 2026-10-08 change removed the empty-space placeholder.
 
-The selected scope is the repaired GPUI sidebar scenario and the CI checks
-available on this macOS host. Linux-only checks, external-fixture tests and a
-fresh GitHub Actions matrix are outside this local result. No product behavior
-or CI workflow was changed.
+The initial selected scope was the repaired GPUI sidebar scenario and the CI
+checks available on this macOS host. The same-day remote follow-up below extends
+verification to the complete CI matrix, including Linux-only checks. External
+fixtures and broader release acceptance remain outside this result. No product
+behavior or CI workflow was changed.
 
 ## Baseline evidence
 
@@ -72,15 +73,31 @@ cargo test --workspace --locked --no-fail-fast --timings
 cargo test -p chartr --test live_session --locked -- --ignored --nocapture --test-threads=1
 ```
 
-## Limits and follow-up
+## Remote follow-up — 2026-10-12
 
-This is a local macOS verification result, not a green GitHub Actions run. After
-the change is pushed, CI must confirm both runners, including Ubuntu's forwarded
-X11 events, GTK scale/lifecycle checks and packaging tests. Those paths cannot
-run on this Mac. The native example, real-session and Node checks that the failed
-CI jobs had skipped were exercised locally here.
+The repair was committed as `bcab81d009a2bd5180dcf8a38569b624ac8da370` on
+`fix/sidebar-empty-space-ci` and pushed for hosted verification.
+[CI run 38231363049](https://github.com/rengwu/chartr/actions/runs/38231363049)
+completed successfully on that exact commit. The test source is identical to
+the locally verified patch. [Run and step metadata](../../evidence/2026-10-12-sidebar-ci/remote-ci.json)
+and [test-log excerpts](../../evidence/2026-10-12-sidebar-ci/remote-ci-test-excerpts.log)
+preserve the observed results.
+
+| Scenario | Expected outcome | Observed outcome | Result |
+| --- | --- | --- | --- |
+| macOS 15 job | Repaired sidebar and all required job steps pass | 419 default workspace tests passed, including the sidebar; native example, three real-session tests, ten Node tests and release-script checks passed; job successful | Passed |
+| Ubuntu 24.04 job | Repaired sidebar and all required job steps pass | 421 default workspace tests passed, including the sidebar; forwarded X11 test, GTK scale/lifecycle tests at both scale factors, native example, three real-session tests, ten Node tests and release-script checks passed; job successful | Passed |
+| Arch/AUR packaging job | All package/publication-fixture tests pass | All 12 tests passed; job successful | Passed |
+
+Both previously failing jobs now pass the sidebar assertion and all downstream
+steps that the original failure had skipped. The complete hosted CI result is
+**Passed**. Publication tests use their test fixtures; this run did not publish
+a Chartr release.
+
+## Limits and follow-up
 
 The four remaining default workspace ignores are a real native-plugin release
 download, installed OpenCode/Grok fixtures and an illustrative plugin doctest.
 They remain unexecuted. The broader release acceptance matrix and previously
-recorded app lifecycle issues are not certified by this test-only repair.
+recorded app lifecycle issues are not certified by this test-only repair. The
+CI pass belongs to the dedicated fix branch; merging it into main is separate.

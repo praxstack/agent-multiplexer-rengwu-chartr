@@ -71,7 +71,8 @@ reproduced the stale empty-space assertion from both CI runners, then passed
 with explicit empty-space geometry and populated collapse/add/sort coverage.
 The local macOS workspace suite passed 419 tests; three explicit real-session
 tests and the host-compatible remaining CI checks also passed. A fresh remote
-matrix, including Linux-only checks, remains pending.
+CI run on commit `bcab81d0` passed macOS, Ubuntu and Arch/AUR packaging, including
+the Linux-only checks and all steps the original failure had skipped.
 
 2026-10-11: The [first implementation run](../verification/runs/2026-10-11-metal-frame-delivery.md)
 eliminated sampled acquisition waits in two active captures, but failed on
