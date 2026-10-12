@@ -1,6 +1,6 @@
 ---
 title: Chartr development wiki
-updated: 2026-10-11
+updated: 2026-10-12
 ---
 # Chartr development wiki
 
@@ -33,6 +33,9 @@ recorded snapshots.
 
 ## History and migration
 
+- [Sidebar CI fixture repair](verification/runs/2026-10-12-sidebar-ci.md):
+  stale empty-space expectation corrected while preserving populated-space
+  coverage; local checks and the full macOS, Ubuntu and Arch/AUR CI matrix passed.
 - [Supplied-drawable implementation](journal/2026-10-11-low-power-implementation.md):
   implemented Low Power Mode fix, with three active captures and selected native
   and app rendering checks passed; aggregate lifecycle failure, latency percentile

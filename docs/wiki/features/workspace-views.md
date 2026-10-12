@@ -1,7 +1,7 @@
 ---
 title: Views, chrome and navigation
 section: Features
-updated: 2026-10-11
+updated: 2026-10-12
 basis: Source-reviewed migration baseline
 ---
 # Views, chrome and navigation
@@ -31,6 +31,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 ## Expected outcomes
 
 - Tabs focuses the active space; Spaces shows all spaces. Changing projection does not recreate or move items. Spaces is the initial view.
+- Empty spaces show only their heading, with no placeholder row or empty tree beneath it. Collapsing or expanding an empty space leaves its height and neighboring positions unchanged. Populated spaces hide their session rows when collapsed. The accepted 2026-10-08 UI change also increases the shared gap between spaces to 0.5 rem, including drag-sort geometry.
 - Tabs on macOS places its space picker beside the traffic lights. Spaces has no title-bar space picker.
 - Add/surface controls follow tabs while they fit and remain reachable when tabs overflow. Surface pickers show enabled surfaces and their icons/descriptions.
 - Native Settings remains in front when opened, including while the gear tooltip is active. Geometry, sidebar width and mode persist.
@@ -49,6 +50,7 @@ setup first; use actual UI entry points and observe underlying state where relev
 4. Change mode/sidebar width, relaunch, and inspect the same state. Exercise the current cycle-view binding and its Hotkeys entry.
 5. Restore a disposable profile saved in Chats (`inbox` or legacy `conversations`). Expect Spaces, with existing spaces, pane layout and history retained. Confirm Chats is absent from both selectors, the command palette and Hotkeys, and its old shortcut cannot enter the disabled view.
 6. On macOS, repeat sidebar scrolling and view switching on battery with Low Power Mode both enabled and disabled, then on AC and across a live power-source transition. Expect responsive input in each condition; record frame waits and input latency separately from CPU utilization.
+7. Keep an empty space beside a populated space. Toggle each heading and chevron: the empty space stays header-only without shifting its neighbor, while the populated space hides/restores its rows. Expect visible separation between spaces, including during drag sorting. The add button must not toggle or drag its space.
 
 Preserve the selected scenario's logs/screenshots/file observations and exact
 build identity before [cleanup](../verification/setup.md#cleanup). Record a fresh
@@ -63,6 +65,14 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+2026-10-12: The [sidebar CI fixture repair](../verification/runs/2026-10-12-sidebar-ci.md)
+reproduced the stale empty-space assertion from both CI runners, then passed
+with explicit empty-space geometry and populated collapse/add/sort coverage.
+The local macOS workspace suite passed 419 tests; three explicit real-session
+tests and the host-compatible remaining CI checks also passed. A fresh remote
+CI run on commit `bcab81d0` passed macOS, Ubuntu and Arch/AUR packaging, including
+the Linux-only checks and all steps the original failure had skipped.
 
 2026-10-11: The [first implementation run](../verification/runs/2026-10-11-metal-frame-delivery.md)
 eliminated sampled acquisition waits in two active captures, but failed on

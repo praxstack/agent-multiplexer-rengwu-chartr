@@ -1,0 +1,66 @@
+{
+  "recorded_at_utc": "2026-10-12T09:37:10.744026+00:00",
+  "head": "237057e2eab39291358ae82a51e5ee329a47bf61",
+  "tree": "dirty; only the sidebar test source and wiki records changed",
+  "test_file": "crates/chartr/src/chrome/sidebar_tests.rs",
+  "test_file_sha256": "34cafb314fa8e9c4b1c360cd70ca8b858a092fcd95dd0e4a2d9f5d1751dff78f",
+  "test_patch_sha256": "55983d79ea9473d3f451db2c10b3208f8e98a531056292434c61be953ab8823d",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "rust": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+  "node": "v22.19.0",
+  "python": "3.13.0",
+  "cargo_environment": {
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0"
+  },
+  "ci_baseline": {
+    "run": 38163267097,
+    "sha": "237057e2eab39291358ae82a51e5ee329a47bf61",
+    "conclusion": "failure",
+    "url": "https://github.com/rengwu/chartr/actions/runs/38163267097"
+  },
+  "commands": [
+    {
+      "command": "cargo test -p chartr --bin chartr --locked sidebar_tree_collapses_adds_and_sorts_free_sessions",
+      "phase": "baseline",
+      "exit_code": 101,
+      "evidence": "baseline-test.log"
+    },
+    {
+      "command": "cargo test -p chartr --bin chartr --locked sidebar_tree_collapses_adds_and_sorts_free_sessions",
+      "phase": "repaired",
+      "exit_code": 0,
+      "evidence": "focused.log"
+    },
+    {
+      "command": "cargo test --workspace --locked --no-fail-fast --timings",
+      "exit_code": 0,
+      "evidence": "workspace.log"
+    },
+    {
+      "command": "cargo test -p chartr --test live_session --locked -- --ignored --nocapture --test-threads=1",
+      "exit_code": 0,
+      "evidence": "live-session.log"
+    },
+    {
+      "command": "cargo check --manifest-path examples/plugins/hello/Cargo.toml --locked",
+      "exit_code": 0,
+      "evidence": "native-example.log"
+    },
+    {
+      "command": "python3 -B -m unittest discover -s scripts/tests -v",
+      "exit_code": 0,
+      "evidence": "release-scripts.log"
+    },
+    {
+      "command": "node --test crates/chartr/tests/plugin_bridge.cjs plugins/wayfinder/tests/layout.test.mjs",
+      "exit_code": 0,
+      "evidence": "javascript.log"
+    },
+    {
+      "command": "cargo fmt --all --check",
+      "exit_code": 0,
+      "evidence": "format.log"
+    }
+  ]
+}

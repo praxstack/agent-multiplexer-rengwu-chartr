@@ -1,0 +1,65 @@
+ubuntu-24.04	Check release scripts	2026-10-12T09:40:59.9759891Z Ran 22 tests in 1.727s
+ubuntu-24.04	Build and test	2026-10-12T09:47:22.2998170Z test chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions ... ok
+ubuntu-24.04	Build and test	2026-10-12T09:47:22.4104931Z test native_webview::tests::gtk_content_tracks_host_scale ... ignored, requires an X11 display and a real WebKit renderer
+ubuntu-24.04	Build and test	2026-10-12T09:47:22.8148565Z test web_plugin::linux_tests::native_child_shutdown_reaches_x11_without_another_gtk_tick ... ignored, requires an X11 display and GTK; run with --test-threads=1
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.0544831Z test result: ok. 306 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.87s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.1028960Z test result: ok. 0 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.1041121Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.1471383Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.3010387Z test result: ok. 30 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.15s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.4088660Z test result: ok. 36 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.4105128Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.4136525Z test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.4636652Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.4930676Z test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.4973219Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.5191816Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.5626581Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.6352557Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.7035639Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.7392573Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:23.9377536Z test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:24.1523658Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+ubuntu-24.04	Build and test	2026-10-12T09:47:24.2175730Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-12T09:47:24.2374904Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Test forwarded X11 input-method events	﻿2026-10-12T09:47:24.2540971Z ##[group]Run cargo test -p gpui_linux --lib xim_preserves_native_and_forwarded --locked
+ubuntu-24.04	Test forwarded X11 input-method events	2026-10-12T09:47:24.2541619Z ^[[36;1mcargo test -p gpui_linux --lib xim_preserves_native_and_forwarded --locked^[[0m
+ubuntu-24.04	Test forwarded X11 input-method events	2026-10-12T09:47:27.0528611Z test linux::x11::xim_handler::tests::xim_preserves_native_and_forwarded_key_presses_and_releases ... ok
+ubuntu-24.04	Test forwarded X11 input-method events	2026-10-12T09:47:27.0529590Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 22 filtered out; finished in 0.00s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:27.0721098Z ^[[36;1m    gtk_content_tracks_host_scale -- --ignored --test-threads=1^[[0m
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:27.0722484Z ^[[36;1m    native_child_shutdown -- --ignored --test-threads=1^[[0m
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:33.4688737Z test native_webview::tests::gtk_content_tracks_host_scale ... 
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:35.3239867Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 308 filtered out; finished in 3.02s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:36.3776454Z test web_plugin::linux_tests::native_child_shutdown_reaches_x11_without_another_gtk_tick ... 
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:36.4357454Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 308 filtered out; finished in 0.10s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:37.3851443Z test native_webview::tests::gtk_content_tracks_host_scale ... 
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:37.5823783Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 308 filtered out; finished in 0.23s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:38.5097184Z test web_plugin::linux_tests::native_child_shutdown_reaches_x11_without_another_gtk_tick ... 
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-12T09:47:38.5585892Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 308 filtered out; finished in 0.08s
+ubuntu-24.04	Test real terminal sessions	2026-10-12T09:48:25.1794361Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.92s
+ubuntu-24.04	Test web plugin bridges and layouts	2026-10-12T09:48:25.9769431Z # pass 10
+macos-15	Check release scripts	2026-10-12T09:40:30.1721410Z Ran 22 tests in 0.645s
+macos-15	Build and test	2026-10-12T09:48:27.8828990Z test chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions ... ok
+macos-15	Build and test	2026-10-12T09:48:29.1423040Z test result: ok. 304 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 1.40s
+macos-15	Build and test	2026-10-12T09:48:29.1839600Z test result: ok. 0 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:29.2012450Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:29.5739710Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.36s
+macos-15	Build and test	2026-10-12T09:48:30.0380460Z test result: ok. 30 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.45s
+macos-15	Build and test	2026-10-12T09:48:30.3129540Z test result: ok. 36 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+macos-15	Build and test	2026-10-12T09:48:30.3233740Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:30.3532500Z test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+macos-15	Build and test	2026-10-12T09:48:30.3993050Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+macos-15	Build and test	2026-10-12T09:48:30.5247970Z test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+macos-15	Build and test	2026-10-12T09:48:30.5512310Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+macos-15	Build and test	2026-10-12T09:48:30.6702480Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:30.7784400Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:30.8777110Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:30.9746770Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:31.0285980Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:31.6436110Z test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:32.1712580Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.53s
+macos-15	Build and test	2026-10-12T09:48:32.2738350Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-12T09:48:32.2985810Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Test real terminal sessions	2026-10-12T09:49:21.9182480Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.42s
+macos-15	Test web plugin bridges and layouts	2026-10-12T09:49:22.8721470Z # pass 10
+Arch and AUR packaging	Test Arch packages and AUR publication	2026-10-12T09:40:52.4328855Z Ran 12 tests in 12.403s
