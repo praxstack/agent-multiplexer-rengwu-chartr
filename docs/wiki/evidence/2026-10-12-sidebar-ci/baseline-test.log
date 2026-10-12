@@ -1,0 +1,23 @@
+    Finished `test` profile [unoptimized] target(s) in 8m 55s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`
+     Running unittests src/main.rs (target/debug/deps/chartr-9409d11036516b80)
+
+running 1 test
+test chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions ... FAILED
+
+failures:
+
+---- chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions stdout ----
+
+thread 'chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions' (11821663) panicked at crates/chartr/src/chrome/sidebar_tests.rs:220:5:
+assertion failed: collapsed.size.height < expanded.size.height
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 304 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p chartr --bin chartr`

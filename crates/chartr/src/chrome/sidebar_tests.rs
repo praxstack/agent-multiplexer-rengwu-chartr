@@ -174,11 +174,12 @@ impl Render for TreeHarness {
 
 #[gpui::test]
 fn sidebar_tree_collapses_adds_and_sorts_free_sessions(cx: &mut TestAppContext) {
-    use super::{Action, SpaceEntries};
+    use super::{Action, Entry, SpaceEntries};
     cx.update(|cx| {
         ::settings::init(cx);
         theme::init(theme::LoadThemes::JustBase, cx);
         crate::fonts::install(&crate::settings::ResolvedSettings::default(), cx);
+        cx.set_global(crate::settings::SettingsStore::bare());
     });
     let free_id = 10_u64.into();
     let folder_id = 11_u64.into();
@@ -210,6 +211,46 @@ fn sidebar_tree_collapses_adds_and_sorts_free_sessions(cx: &mut TestAppContext) 
     let bounds = |cx: &mut gpui::VisualTestContext, index| {
         view.read_with(cx, |view, _| view.sorter.scroll_handle().bounds_for_item(index).unwrap())
     };
+    let empty = bounds(cx, 0);
+    let project_without_sessions = bounds(cx, 1);
+
+    // Empty spaces have only a heading: toggling them must not introduce or
+    // remove a placeholder row, or shift the neighboring space.
+    cx.simulate_click(empty.origin + point(px(60.), px(12.)), Modifiers::none());
+    cx.run_until_parked();
+    assert!(view.read_with(cx, |view, _| view.spaces[0].collapsed));
+    assert_eq!(bounds(cx, 0), empty);
+    assert_eq!(bounds(cx, 1), project_without_sessions);
+
+    cx.simulate_click(empty.origin + point(px(12.), px(12.)), Modifiers::none());
+    cx.run_until_parked();
+    assert!(!view.read_with(cx, |view, _| view.spaces[0].collapsed));
+    assert_eq!(bounds(cx, 0), empty);
+    assert_eq!(bounds(cx, 1), project_without_sessions);
+
+    // A populated space still collapses its session rows. Keep the subsequent
+    // add-button and sorting checks on the expanded tree.
+    view.update(cx, |view, cx| {
+        view.spaces[0].entries.push(Entry {
+            space: free_id,
+            space_key: "free".into(),
+            key: serde_json::from_value(serde_json::json!(1)).unwrap(),
+            tab: serde_json::from_value(serde_json::json!(1)).unwrap(),
+            pane: serde_json::from_value(serde_json::json!(1)).unwrap(),
+            index: 0,
+            title: "Terminal".into(),
+            icon_path: None,
+            status: None,
+            process_running: false,
+            ended: false,
+            bell: false,
+            selected: true,
+            closable: true,
+            grouped: false,
+        });
+        cx.notify();
+    });
+    cx.run_until_parked();
     let expanded = bounds(cx, 0);
     let project_before = bounds(cx, 1);
     // Free sessions is a regular child in the shared sorter scroll list.
@@ -218,6 +259,7 @@ fn sidebar_tree_collapses_adds_and_sorts_free_sessions(cx: &mut TestAppContext) 
     cx.run_until_parked();
     let collapsed = bounds(cx, 0);
     assert!(collapsed.size.height < expanded.size.height);
+    assert_eq!(collapsed, empty);
     assert!(bounds(cx, 1).top() < project_before.top());
     assert!(view.read_with(cx, |view, _| view.spaces[0].collapsed));
 

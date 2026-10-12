@@ -1,0 +1,8 @@
+ubuntu-24.04	UNKNOWN STEP	2026-10-11T18:47:49.6190815Z test chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions ... FAILED
+ubuntu-24.04	UNKNOWN STEP	2026-10-11T18:47:50.3889077Z thread 'chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions' (29980) panicked at crates/chartr/src/chrome/sidebar_tests.rs:220:5:
+ubuntu-24.04	UNKNOWN STEP	2026-10-11T18:47:50.3890668Z assertion failed: collapsed.size.height < expanded.size.height
+ubuntu-24.04	UNKNOWN STEP	2026-10-11T18:47:50.3893353Z test result: FAILED. 305 passed; 1 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.87s
+macos-15	UNKNOWN STEP	2026-10-11T18:28:39.0666720Z test chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions ... FAILED
+macos-15	UNKNOWN STEP	2026-10-11T18:28:40.4228010Z thread 'chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions' (76556) panicked at crates/chartr/src/chrome/sidebar_tests.rs:220:5:
+macos-15	UNKNOWN STEP	2026-10-11T18:28:40.4228910Z assertion failed: collapsed.size.height < expanded.size.height
+macos-15	UNKNOWN STEP	2026-10-11T18:28:40.4231300Z test result: FAILED. 303 passed; 1 failed; 1 ignored; 0 measured; 0 filtered out; finished in 1.45s
