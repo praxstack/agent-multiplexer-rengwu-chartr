@@ -33,6 +33,10 @@ recorded snapshots.
 
 ## History and migration
 
+- [Last-window reopen implementation](verification/runs/2026-10-12-window-reopen.md):
+  window restoration and shutdown ownership corrected; automated checks and
+  native reopen/session/quit checks pass. The unchanged-build failure is preserved.
+
 - [Sidebar CI fixture repair](verification/runs/2026-10-12-sidebar-ci.md):
   stale empty-space expectation corrected while preserving populated-space
   coverage; local checks and the full macOS, Ubuntu and Arch/AUR CI matrix passed.

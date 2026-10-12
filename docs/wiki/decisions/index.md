@@ -1,6 +1,6 @@
 ---
 title: Decisions
-updated: 2026-10-11
+updated: 2026-10-12
 ---
 # Decisions
 
@@ -57,3 +57,14 @@ dates have been invented during import.
 | ADR-0005 | [Multi-workspace ownership](adr/0005-spaces-follow-zed-multi-workspace.md) | [Spaces](../features/spaces.md), [Panes](../features/panes.md) |
 | ADR-0006 | [Native services and web Wayfinder](adr/0006-native-plugin-services-and-wayfinder.md) | [Plugin services](../features/plugin-runtime.md), [Wayfinder](../features/wayfinder.md) |
 | ADR-0007 | [Prebuilt native surfaces](adr/0007-prebuilt-native-surfaces.md) | [Plugin packages](../features/plugin-packages.md), [Runtime](../features/plugin-runtime.md) |
+
+## DEC-LIFECYCLE-001 — Isolated native reopen verification
+
+Accepted 2026-10-12. The user requested the last-window reopen fix with
+work-until-grill, then explicitly approved a native AppKit test driver when the
+regular desktop tool could not start. Approval covers close/reopen, minimize,
+disposable terminal input and quit in the prepared isolated test instances;
+it does not authorize controlling the installed app or changing Accessibility
+permissions. [Submitted answer](../journal/2026-10-12-grill-e4ec3c4a-3dec-4cfc-a0f5-5c9f91924f20.md),
+[feature](../features/session-lifecycle.md),
+[implementation and executed verification](../verification/runs/2026-10-12-window-reopen.md).

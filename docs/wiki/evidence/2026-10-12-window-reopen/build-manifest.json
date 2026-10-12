@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "bundle": "/tmp/chartr-reopen.xf24t27z/baseline/Chartr Reopen Baseline.app",
+    "profile": "/tmp/chartr-reopen.xf24t27z/baseline/profile",
+    "binary_sha256": "1387b22f6f8dd9fd84d517b6b7efeff4b83dadc5fac0833a5918165729144f3c"
+  },
+  "fixed": {
+    "bundle": "/tmp/chartr-reopen.xf24t27z/fixed/Chartr Reopen Fixed.app",
+    "profile": "/tmp/chartr-reopen.xf24t27z/fixed/profile",
+    "binary_sha256": "832dee3aee1967228534dea84e269d309c6f580db9556d94fd1971fe32f4d15f"
+  },
+  "base_commit": "4cfe1581cca6ec53cef79691e5add0fdf1829e37",
+  "product_patch_sha256": "13c69161ae25e6837308de45c07fb48482299f2ae686b7f1e0f062898ee051ed"
+}

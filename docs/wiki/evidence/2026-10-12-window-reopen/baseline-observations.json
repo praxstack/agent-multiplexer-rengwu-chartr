@@ -1,0 +1,443 @@
+[
+  {
+    "event": "backend-fixture",
+    "time": 1791806722.816122,
+    "value": {
+      "pid": 23520,
+      "ping": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      },
+      "created": {
+        "type": "workspace_created",
+        "workspace": {
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "Reopen fixture",
+          "focused": true,
+          "pane_count": 1,
+          "tab_count": 1,
+          "active_tab_id": "w1:t1",
+          "agent_status": "unknown"
+        },
+        "tab": {
+          "tab_id": "w1:t1",
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "1",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65da3833834531",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/chartr-reopen.xf24t27z/baseline/profile/project",
+          "foreground_cwd": "/private/tmp/chartr-reopen.xf24t27z/baseline/profile/project",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806723.68781,
+    "value": {
+      "windows": [
+        {
+          "number": 11353,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            197,
+            1100,
+            721
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11358,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "2f4de02f-1448-4e65-ae36-9a2b1303718e",
+      "active": true,
+      "pid": 23552
+    }
+  },
+  {
+    "event": "started",
+    "time": 1791806723.688101,
+    "value": {
+      "gui_pid": 23552,
+      "backend_pid": 23520,
+      "terminate": false
+    }
+  },
+  {
+    "event": "harness-retry",
+    "time": 1791806783.570497,
+    "value": "First command lifetime ended before follow-up; keep all native steps within one runner lifetime."
+  },
+  {
+    "event": "backend-fixture",
+    "time": 1791806783.68316,
+    "value": {
+      "pid": 23909,
+      "ping": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      },
+      "created": {
+        "type": "workspace_created",
+        "workspace": {
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "Reopen fixture",
+          "focused": true,
+          "pane_count": 1,
+          "tab_count": 1,
+          "active_tab_id": "w1:t1",
+          "agent_status": "unknown"
+        },
+        "tab": {
+          "tab_id": "w1:t1",
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "1",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65da386d8f7681",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/chartr-reopen.xf24t27z/baseline/profile/project",
+          "foreground_cwd": "/private/tmp/chartr-reopen.xf24t27z/baseline/profile/project",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806784.166537,
+    "value": {
+      "windows": [
+        {
+          "number": 11362,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            197,
+            1100,
+            721
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11367,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "2adbbe4e-ce83-4254-9c5e-18ff8be9ad56",
+      "active": true,
+      "pid": 23941
+    }
+  },
+  {
+    "event": "started",
+    "time": 1791806784.166681,
+    "value": {
+      "gui_pid": 23941,
+      "backend_pid": 23909,
+      "terminate": false
+    }
+  },
+  {
+    "event": "type",
+    "time": 1791806785.375749,
+    "value": {
+      "windows": [
+        {
+          "number": 11362,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            197,
+            1100,
+            721
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11367,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "23d9919c-a0ea-4b05-b698-3d45cb9528ba",
+      "active": true,
+      "pid": 23941
+    }
+  },
+  {
+    "event": "terminal-input-before-close",
+    "time": 1791806785.376006,
+    "value": "before-close-ok"
+  },
+  {
+    "event": "persisted-state",
+    "time": 1791806785.3796039,
+    "value": {
+      "window": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 1100.0,
+          "height": 721.0
+        }
+      },
+      "spaces": [
+        {
+          "key": "ad-hoc",
+          "name": "Free sessions",
+          "path": null,
+          "kind": "ad_hoc",
+          "layout": {
+            "tabs": [
+              {
+                "id": 1,
+                "layout": {
+                  "center": {
+                    "root": {
+                      "kind": "pane",
+                      "pane": 1
+                    }
+                  },
+                  "panes": {
+                    "1": {
+                      "id": 1,
+                      "items": [
+                        1
+                      ],
+                      "active": 1,
+                      "activation_history": [
+                        1
+                      ]
+                    }
+                  },
+                  "panes_by_item": {
+                    "1": 1
+                  },
+                  "active_pane": 1,
+                  "next_pane_id": 2
+                }
+              }
+            ],
+            "active": 1,
+            "activation_history": [
+              1
+            ],
+            "next_tab_id": 2,
+            "next_item_id": 2
+          },
+          "items": [
+            {
+              "kind": "terminal",
+              "item_id": 1,
+              "backend_id": "w1:p1"
+            }
+          ],
+          "expanded": true
+        }
+      ]
+    }
+  },
+  {
+    "event": "close",
+    "time": 1791806785.544775,
+    "value": {
+      "windows": [
+        {
+          "number": 11367,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "117dba8d-6ac2-41d0-a074-7a484f5e9532",
+      "active": true,
+      "pid": 23941
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806786.293113,
+    "value": {
+      "windows": [
+        {
+          "number": 11367,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "cf685394-f2d4-4cd3-bdad-63c24248b887",
+      "active": true,
+      "pid": 23941
+    }
+  },
+  {
+    "event": "baseline-reopen-regression",
+    "time": 1791806786.293303,
+    "value": {
+      "same_pid": true,
+      "workspace_windows_after_reopen": 0
+    }
+  },
+  {
+    "event": "quit",
+    "time": 1791806786.347703,
+    "value": {
+      "windows": [
+        {
+          "number": 11367,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "d899fa3e-2cc9-48be-9f07-6bc70878f815",
+      "active": true,
+      "pid": 23941
+    }
+  },
+  {
+    "event": "panes-after-quit",
+    "time": 1791806786.8486981,
+    "value": {
+      "type": "pane_list",
+      "panes": [
+        {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65da386d8f7681",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/chartr-reopen.xf24t27z/baseline/profile/project",
+          "foreground_cwd": "/private/tmp/chartr-reopen.xf24t27z/baseline/profile/project",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 39
+          },
+          "revision": 0
+        }
+      ]
+    }
+  },
+  {
+    "event": "cleanup",
+    "time": 1791806787.24767,
+    "value": true
+  }
+]

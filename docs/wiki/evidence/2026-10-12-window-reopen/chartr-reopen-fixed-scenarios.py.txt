@@ -1,0 +1,61 @@
+import sys,importlib,time,json
+sys.path.insert(0,'/tmp')
+v=importlib.import_module('chartr-reopen-native')
+variant=sys.argv[1]
+terminate='--terminate' in sys.argv
+p=v.profile(variant)
+gui,backend=v.start(variant,terminate=terminate)
+try:
+    time.sleep(1)
+    original=v.rpc(variant,'pane.list')['panes']
+    assert len(original)==1,original
+    terminal=original[0]['terminal_id']
+    v.command(variant,'resize')
+    v.command(variant,'type',text="printf 'before-close-ok' > before-close.txt\r")
+    assert v.wait_file(p/'project'/'before-close.txt')=='before-close-ok'
+    time.sleep(.4)
+    saved=v.snapshot(variant)
+    for cycle in range(3):
+        before=v.command(variant,'inspect')
+        closed=v.command(variant,'close')
+        assert not v.windows(closed),closed
+        reopened=v.reopen(variant)
+        ws=v.windows(reopened)
+        assert reopened['pid']==gui.pid and gui.poll() is None,reopened
+        assert len(ws)==1 and ws[0]['visible'] and not ws[0]['miniaturized'],reopened
+        assert ws[0]['number']!=v.windows(before)[0]['number'],(before,reopened)
+        marker=p/'project'/f'after-reopen-{cycle}.txt'
+        v.command(variant,'type',text=f"printf 'reopen-{cycle}-ok' > after-reopen-{cycle}.txt\r")
+        assert v.wait_file(marker)==f'reopen-{cycle}-ok'
+        panes=v.rpc(variant,'pane.list')['panes']
+        assert len(panes)==1 and panes[0]['terminal_id']==terminal,panes
+        restored=v.snapshot(variant)
+        assert restored['spaces']==saved['spaces'],(saved,restored)
+        assert restored['window']['active_space']==saved['window']['active_space']
+        v.log(variant,'reopen-cycle-passed',{'cycle':cycle,'gui_pid':gui.pid,'window':ws[0],'terminal_id':terminal,'saved_bounds':saved['window']['bounds'],'restored_bounds':restored['window']['bounds']})
+    existing=v.command(variant,'inspect')
+    for _ in range(3):
+        repeated=v.reopen(variant)
+        assert len(v.windows(repeated))==1 and v.windows(repeated)[0]['number']==v.windows(existing)[0]['number'],repeated
+    minimized=v.command(variant,'minimize')
+    assert v.windows(minimized)[0]['miniaturized'],minimized
+    restored=v.reopen(variant)
+    assert len(v.windows(restored))==1 and v.windows(restored)[0]['visible'] and not v.windows(restored)[0]['miniaturized'],restored
+    assert v.windows(restored)[0]['number']==v.windows(existing)[0]['number'],restored
+    v.log(variant,'repeated-open-and-minimize-passed',{'gui_pid':gui.pid,'window_number':v.windows(restored)[0]['number']})
+    v.command(variant,'type',text="printf 'after-minimize-ok' > after-minimize.txt\r")
+    assert v.wait_file(p/'project'/'after-minimize.txt')=='after-minimize-ok'
+    v.command(variant,'quit')
+    assert gui.wait(timeout=10)==0,gui.returncode
+    panes=v.rpc(variant,'pane.list')['panes']
+    if terminate: assert panes==[],panes
+    else: assert len(panes)==1 and panes[0]['terminal_id']==terminal,panes
+    final=v.snapshot(variant)
+    v.log(variant,'quit-policy-passed',{'terminate':terminate,'gui_exit_code':gui.returncode,'panes':panes,'window_state':final['window']})
+finally:
+    if gui.poll() is None:
+        v.command(variant,'quit')
+        gui.wait(timeout=10)
+    v.subprocess.run([str(v.Path(v.MANIFEST[variant]['bundle'])/'Contents'/'MacOS'/'herdr'),'server','stop'],env=v.backend_env(variant),check=True,timeout=10)
+    backend.wait(timeout=10)
+    v.log(variant,'cleanup',{'gui_exit':gui.returncode,'backend_exit':backend.returncode})

@@ -1,0 +1,144 @@
+diff --git a/crates/chartr/src/main.rs b/crates/chartr/src/main.rs
+index b85cd051..6cbf7906 100644
+--- a/crates/chartr/src/main.rs
++++ b/crates/chartr/src/main.rs
+@@ -73,7 +73,19 @@ fn main() {
+     let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+     let opened_path = opened_path_from_args(std::env::args_os(), &cwd);
+ 
+-    application().with_assets(assets::Assets).run(move |cx: &mut App| {
++    let application = application().with_assets(assets::Assets);
++    let reopen_cwd = cwd.clone();
++    application.on_reopen(move |cx| {
++        if let Some(window) =
++            cx.windows().into_iter().find_map(|window| window.downcast::<app::WorkspaceWindow>())
++        {
++            let _ = window.update(cx, |_, window, _| window.activate_window());
++        } else if let Err(error) = open_workspace_window(reopen_cwd.clone(), None, cx) {
++            eprintln!("chartr could not reopen a window: {error}");
++        }
++        cx.activate(true);
++    });
++    application.run(move |cx: &mut App| {
+         // Zed's terminal model/view keeps its native emulator settings graph
+         // (cursor, scrollback, mouse behavior, and escape-sequence policy).
+         // chartr owns product settings and adapts its terminal typography into
+@@ -120,56 +132,21 @@ fn main() {
+             return;
+         }
+ 
+-        let bounds = persistence::state_file()
+-            .ok()
+-            .and_then(|path| persistence::StateStore::open(path).ok())
+-            .and_then(|store| store.load().ok())
+-            .and_then(|snapshot| snapshot.window.bounds)
+-            .filter(|bounds| {
+-                bounds.x.is_finite()
+-                    && bounds.y.is_finite()
+-                    && bounds.width.is_finite()
+-                    && bounds.height.is_finite()
+-                    && bounds.width >= 640.
+-                    && bounds.height >= 420.
+-            })
+-            .map(|bounds| {
+-                Bounds::new(
+-                    point(px(bounds.x), px(bounds.y)),
+-                    size(px(bounds.width), px(bounds.height)),
+-                )
+-            })
+-            .unwrap_or_else(|| Bounds::centered(None, size(px(1100.), px(720.)), cx));
+-        let window = cx.open_window(
+-            WindowOptions {
+-                window_bounds: Some(WindowBounds::Windowed(bounds)),
+-                titlebar: Some(title_bar::options("chartr")),
+-                app_owns_titlebar_drag: title_bar::app_owns_drag(),
+-                ..Default::default()
+-            },
+-            |window, cx| {
+-                let view = cx.new(|cx| {
+-                    app::WorkspaceWindow::new(cwd.clone(), opened_path.clone(), window, cx)
+-                });
+-                window.focus(&view.read(cx).focus_handle(cx), cx);
+-                view
+-            },
+-        );
+-
+-        let window = match window {
+-            Ok(window) => window,
+-            Err(err) => {
+-                eprintln!("chartr could not open a window: {err}");
+-                cx.quit();
+-                return;
+-            }
+-        };
+-        cx.on_app_quit(move |cx| {
++        if let Err(error) = open_workspace_window(cwd, opened_path, cx) {
++            eprintln!("chartr could not open a window: {error}");
++            cx.quit();
++            return;
++        }
++        cx.on_app_quit(|cx| {
+             native_plugin::prepare_to_quit();
+-            let _ = window.update(cx, |chartr, _, cx| {
+-                chartr.apply_exit_policy(cx);
+-                chartr.flush_state(cx);
+-            });
++            for window in cx.windows() {
++                if let Some(window) = window.downcast::<app::WorkspaceWindow>() {
++                    let _ = window.update(cx, |chartr, _, cx| {
++                        chartr.apply_exit_policy(cx);
++                        chartr.flush_state(cx);
++                    });
++                }
++            }
+             async {}
+         })
+         .detach();
+@@ -178,6 +155,47 @@ fn main() {
+     native_plugin::shutdown();
+ }
+ 
++fn open_workspace_window(
++    cwd: PathBuf,
++    opened_path: Option<PathBuf>,
++    cx: &mut App,
++) -> anyhow::Result<()> {
++    let bounds = persistence::state_file()
++        .ok()
++        .and_then(|path| persistence::StateStore::open(path).ok())
++        .and_then(|store| store.load().ok())
++        .and_then(|snapshot| snapshot.window.bounds)
++        .filter(|bounds| {
++            bounds.x.is_finite()
++                && bounds.y.is_finite()
++                && bounds.width.is_finite()
++                && bounds.height.is_finite()
++                && bounds.width >= 640.
++                && bounds.height >= 420.
++        })
++        .map(|bounds| {
++            Bounds::new(
++                point(px(bounds.x), px(bounds.y)),
++                size(px(bounds.width), px(bounds.height)),
++            )
++        })
++        .unwrap_or_else(|| Bounds::centered(None, size(px(1100.), px(720.)), cx));
++    cx.open_window(
++        WindowOptions {
++            window_bounds: Some(WindowBounds::Windowed(bounds)),
++            titlebar: Some(title_bar::options("chartr")),
++            app_owns_titlebar_drag: title_bar::app_owns_drag(),
++            ..Default::default()
++        },
++        |window, cx| {
++            let view = cx.new(|cx| app::WorkspaceWindow::new(cwd, opened_path, window, cx));
++            window.focus(&view.read(cx).focus_handle(cx), cx);
++            view
++        },
++    )?;
++    Ok(())
++}
++
+ /// Return only a folder explicitly passed to chartr.
+ ///
+ /// A desktop launcher controls the process working directory; on macOS that is

@@ -1,6 +1,6 @@
 ---
 title: Open questions
-updated: 2026-10-11
+updated: 2026-10-12
 status: Migration resolved; performance verification open
 ---
 # Open questions
@@ -34,6 +34,15 @@ entry point does not register `on_reopen`; a fresh process launch works. App Hid
 was not established either: Cmd+H had no visible effect and the application menu
 was empty. These observations are retained as separate follow-up work, not fixed
 or counted as successful lifecycle behavior by the performance change.
+
+The user requested the reopen fix on October 12. The
+[implementation run](../verification/runs/2026-10-12-window-reopen.md) records a
+registered reopen handler, shared startup/restoration path and current-window
+quit handling. The user approved an isolated native AppKit test route after desktop tool
+startup failed. Automated checks and six native reopen cycles passed, including
+terminal identity/input, saved bounds/layout, existing/minimized-window behavior
+and both quit policies. The reopen issue is resolved for this tested build;
+App Hide remains a separate unverified follow-up.
 
 ## Resolved questions
 

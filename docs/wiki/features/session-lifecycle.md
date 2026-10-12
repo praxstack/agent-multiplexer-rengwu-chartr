@@ -1,7 +1,7 @@
 ---
 title: Session lifecycle, recovery and persistence
 section: Features
-updated: 2026-10-05
+updated: 2026-10-12
 basis: Source-reviewed migration baseline
 ---
 # Session lifecycle, recovery and persistence
@@ -30,6 +30,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 
 ## Expected outcomes
 
+- On macOS, opening the still-running app after its last workspace window closes restores a workspace from saved state. Repeated opens activate an existing workspace rather than duplicating it. Quit policy and persistence apply to the current workspace after reopening. See the bounded October 12 native verification below.
 - Normal app exit detaches sessions by default; the configured exit policy may terminate them. Closing a terminal terminates that session, while closing a plugin destroys its view.
 - Session-bound plugin items cascade when their subject closes. Bulk operations confirm before terminating multiple sessions.
 - Backend recovery permits one clean restart before a stable crash-loop state; Retry is explicit. Live backend identity overrides stale records while unrelated layout survives.
@@ -45,7 +46,8 @@ setup first; use actual UI entry points and observe underlying state where relev
 2. Close one terminal and verify the other survives. Cancel and then confirm a multi-session group/space close; verify only selected descendants terminate.
 3. For the dirty Close All Sessions action, use the command palette; cancel first, then confirm in a disposable profile. Expect spaces and unrelated unbound tools to remain.
 4. For backend failure scenarios, run the real-sidecar suite from shared setup or exercise only the isolated daemon. Check identity replacement, stale-session rejection and visible recovery states.
-5. Relaunch after changing layout and verify persisted state and registry order. Never infer persistence solely from the pre-exit screenshot.
+5. On macOS, close the last workspace window without quitting, then open the same app bundle. Verify the PID is unchanged, the workspace is visible, and disposable terminal identity/layout/bounds are restored. Repeat twice, open with a window already present, and minimize/open; expect one workspace. Quit the recreated window with default detach and configured terminate in separate disposable fixtures.
+6. Relaunch after changing layout and verify persisted state and registry order. Never infer persistence solely from the pre-exit screenshot.
 
 Preserve the selected scenario's logs/screenshots/file observations and exact
 build identity before [cleanup](../verification/setup.md#cleanup). Record a fresh
@@ -64,3 +66,8 @@ ordinary changes; release requirements remain separate from this advisory workfl
 No current product run was performed for this migration. Earlier
 [research and audits](../archive/research/index.md) remain historical evidence for
 their recorded snapshots; they do not certify this baseline.
+
+The [October 12 reopen implementation run](../verification/runs/2026-10-12-window-reopen.md)
+records the scoped patch, automated regression passes, six same-process reopen
+cycles, terminal continuity, minimize/restore and both quit policies. The [October 11 failure](../verification/runs/2026-10-11-metal-frame-delivery-recheck.md)
+remains historical evidence.

@@ -1,0 +1,87 @@
+// Test-only driver, injected into an isolated Chartr process. It controls only
+// that process's own NSWindows; no Accessibility API or system input synthesis.
+#import <AppKit/AppKit.h>
+#import <unistd.h>
+
+static NSString *controlRoot;
+static NSString *lastCommand;
+static NSTimer *poller;
+
+static NSArray *windowStates(void) {
+    NSMutableArray *states = [NSMutableArray array];
+    for (NSWindow *w in NSApp.windows) {
+        [states addObject:@{@"number": @(w.windowNumber), @"title": w.title ?: @"",
+            @"class": NSStringFromClass(w.class), @"visible": @(w.visible),
+            @"miniaturized": @(w.miniaturized), @"key": @(w.keyWindow),
+            @"frame": @[@(w.frame.origin.x), @(w.frame.origin.y),
+                         @(w.frame.size.width), @(w.frame.size.height)]}];
+    }
+    return states;
+}
+
+static void reply(NSString *identifier, NSString *error) {
+    NSMutableDictionary *result = [@{@"id": identifier, @"pid": @(getpid()),
+        @"windows": windowStates(), @"active": @(NSApp.active)} mutableCopy];
+    if (error) result[@"error"] = error;
+    NSData *json = [NSJSONSerialization dataWithJSONObject:result options:0 error:nil];
+    [json writeToFile:[controlRoot stringByAppendingPathComponent:@"reply.json"] atomically:YES];
+}
+
+__attribute__((constructor)) static void initializeDriver(void) {
+    const char *root = getenv("CHARTR_REOPEN_CONTROL");
+    if (!root) return;
+    controlRoot = [NSString stringWithUTF8String:root];
+    // Do not load the driver into the private backend or disposable shells.
+    unsetenv("DYLD_INSERT_LIBRARIES");
+    unsetenv("CHARTR_REOPEN_CONTROL");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        poller = [NSTimer scheduledTimerWithTimeInterval:0.05 repeats:YES block:^(NSTimer *timer) {
+            if (!NSApp) return;
+            NSData *data = [NSData dataWithContentsOfFile:[controlRoot stringByAppendingPathComponent:@"command.json"]];
+            if (!data) return;
+            NSDictionary *command = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSString *identifier = command[@"id"];
+            if (!identifier || [identifier isEqual:lastCommand]) return;
+            lastCommand = [identifier copy];
+            NSString *operation = command[@"operation"];
+            NSWindow *window = nil;
+            for (NSWindow *candidate in NSApp.windows) {
+                if ([NSStringFromClass(candidate.class) isEqual:@"GPUIWindow"]) {
+                    window = candidate;
+                    break;
+                }
+            }
+            NSString *error = nil;
+            if ([operation isEqual:@"inspect"]) {
+                // Observation only.
+            } else if ([operation isEqual:@"quit"]) {
+                reply(identifier, nil);
+                [NSApp terminate:nil];
+                return;
+            } else if (!window) {
+                error = @"No GPUIWindow exists";
+            } else if ([operation isEqual:@"close"]) {
+                [window performClose:nil];
+            } else if ([operation isEqual:@"minimize"]) {
+                [window miniaturize:nil];
+            } else if ([operation isEqual:@"resize"]) {
+                [window setContentSize:NSMakeSize(960, 640)];
+            } else if ([operation isEqual:@"type"]) {
+                NSString *text = command[@"text"];
+                for (NSUInteger i = 0; i < text.length; i++) {
+                    NSString *character = [text substringWithRange:NSMakeRange(i, 1)];
+                    NSEvent *event = [NSEvent keyEventWithType:NSEventTypeKeyDown
+                        location:NSZeroPoint modifierFlags:0 timestamp:NSProcessInfo.processInfo.systemUptime
+                        windowNumber:window.windowNumber context:nil characters:character
+                        charactersIgnoringModifiers:character isARepeat:NO
+                        keyCode:[character isEqual:@"\r"] ? 36 : 0];
+                    [window sendEvent:event];
+                }
+            } else {
+                error = @"Unknown operation";
+            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC),
+                           dispatch_get_main_queue(), ^{ reply(identifier, error); });
+        }];
+    });
+}

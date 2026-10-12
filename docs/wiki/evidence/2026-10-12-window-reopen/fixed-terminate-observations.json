@@ -1,0 +1,1392 @@
+[
+  {
+    "event": "backend-fixture",
+    "time": 1791806867.471602,
+    "value": {
+      "pid": 24616,
+      "ping": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      },
+      "created": {
+        "type": "workspace_created",
+        "workspace": {
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "Reopen fixture",
+          "focused": true,
+          "pane_count": 1,
+          "tab_count": 1,
+          "active_tab_id": "w1:t1",
+          "agent_status": "unknown"
+        },
+        "tab": {
+          "tab_id": "w1:t1",
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "1",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65da38bd778c41",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/chartr-reopen.xf24t27z/fixed-terminate/profile/project",
+          "foreground_cwd": "/private/tmp/chartr-reopen.xf24t27z/fixed-terminate/profile/project",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806868.122516,
+    "value": {
+      "windows": [
+        {
+          "number": 11387,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            197,
+            1100,
+            721
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "0992f648-226d-4add-8cc9-de8d40902b83",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "started",
+    "time": 1791806868.122705,
+    "value": {
+      "gui_pid": 24649,
+      "backend_pid": 24616,
+      "terminate": true
+    }
+  },
+  {
+    "event": "resize",
+    "time": 1791806869.288146,
+    "value": {
+      "windows": [
+        {
+          "number": 11387,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "d26547a5-bf8a-4fb2-8b4f-caad7e28cb42",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "type",
+    "time": 1791806869.4524338,
+    "value": {
+      "windows": [
+        {
+          "number": 11387,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "950e72c7-ae53-42df-9295-a34c30603b4e",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "persisted-state",
+    "time": 1791806869.858061,
+    "value": {
+      "window": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 960.0,
+          "height": 640.0
+        }
+      },
+      "spaces": [
+        {
+          "key": "ad-hoc",
+          "name": "Free sessions",
+          "path": null,
+          "kind": "ad_hoc",
+          "layout": {
+            "tabs": [
+              {
+                "id": 1,
+                "layout": {
+                  "center": {
+                    "root": {
+                      "kind": "pane",
+                      "pane": 1
+                    }
+                  },
+                  "panes": {
+                    "1": {
+                      "id": 1,
+                      "items": [
+                        1
+                      ],
+                      "active": 1,
+                      "activation_history": [
+                        1
+                      ]
+                    }
+                  },
+                  "panes_by_item": {
+                    "1": 1
+                  },
+                  "active_pane": 1,
+                  "next_pane_id": 2
+                }
+              }
+            ],
+            "active": 1,
+            "activation_history": [
+              1
+            ],
+            "next_tab_id": 2,
+            "next_item_id": 2
+          },
+          "items": [
+            {
+              "kind": "terminal",
+              "item_id": 1,
+              "backend_id": "w1:p1"
+            }
+          ],
+          "expanded": true
+        }
+      ]
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806870.0237281,
+    "value": {
+      "windows": [
+        {
+          "number": 11387,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "f134c0d6-e0f0-4190-9da6-7ae230c8f62b",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "close",
+    "time": 1791806870.18515,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "50667a07-b2d6-4729-8ef6-d0dc488dc946",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806870.925365,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11395,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "45e61109-8f71-4b69-98a3-49727a490632",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "type",
+    "time": 1791806871.08323,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11395,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "d3e07d5b-0111-4e40-acc3-ece3a37f19c3",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "persisted-state",
+    "time": 1791806871.084288,
+    "value": {
+      "window": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 960.0,
+          "height": 640.0
+        }
+      },
+      "spaces": [
+        {
+          "key": "ad-hoc",
+          "name": "Free sessions",
+          "path": null,
+          "kind": "ad_hoc",
+          "layout": {
+            "tabs": [
+              {
+                "id": 1,
+                "layout": {
+                  "center": {
+                    "root": {
+                      "kind": "pane",
+                      "pane": 1
+                    }
+                  },
+                  "panes": {
+                    "1": {
+                      "id": 1,
+                      "items": [
+                        1
+                      ],
+                      "active": 1,
+                      "activation_history": [
+                        1
+                      ]
+                    }
+                  },
+                  "panes_by_item": {
+                    "1": 1
+                  },
+                  "active_pane": 1,
+                  "next_pane_id": 2
+                }
+              }
+            ],
+            "active": 1,
+            "activation_history": [
+              1
+            ],
+            "next_tab_id": 2,
+            "next_item_id": 2
+          },
+          "items": [
+            {
+              "kind": "terminal",
+              "item_id": 1,
+              "backend_id": "w1:p1"
+            }
+          ],
+          "expanded": true
+        }
+      ]
+    }
+  },
+  {
+    "event": "reopen-cycle-passed",
+    "time": 1791806871.0844538,
+    "value": {
+      "cycle": 0,
+      "gui_pid": 24649,
+      "window": {
+        "number": 11395,
+        "miniaturized": false,
+        "visible": true,
+        "frame": [
+          314,
+          278,
+          960,
+          640
+        ],
+        "title": "",
+        "class": "GPUIWindow",
+        "key": true
+      },
+      "terminal_id": "term_65da38bd778c41",
+      "saved_bounds": {
+        "x": 314.0,
+        "y": 199.0,
+        "width": 960.0,
+        "height": 640.0
+      },
+      "restored_bounds": {
+        "x": 314.0,
+        "y": 199.0,
+        "width": 960.0,
+        "height": 640.0
+      }
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806871.245805,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11395,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "5844558a-b97e-41bc-b833-5e1718358c7e",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "close",
+    "time": 1791806871.404324,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "c3a3c8b4-9f9d-4923-ab0e-0de6ba8d1360",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806872.141655,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11397,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "e60ac0f7-648e-4493-b754-e25fa3368236",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "type",
+    "time": 1791806872.302413,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11397,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "bf84a0f7-3097-4aa8-a913-a87c9cfcd660",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "persisted-state",
+    "time": 1791806872.303398,
+    "value": {
+      "window": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 960.0,
+          "height": 640.0
+        }
+      },
+      "spaces": [
+        {
+          "key": "ad-hoc",
+          "name": "Free sessions",
+          "path": null,
+          "kind": "ad_hoc",
+          "layout": {
+            "tabs": [
+              {
+                "id": 1,
+                "layout": {
+                  "center": {
+                    "root": {
+                      "kind": "pane",
+                      "pane": 1
+                    }
+                  },
+                  "panes": {
+                    "1": {
+                      "id": 1,
+                      "items": [
+                        1
+                      ],
+                      "active": 1,
+                      "activation_history": [
+                        1
+                      ]
+                    }
+                  },
+                  "panes_by_item": {
+                    "1": 1
+                  },
+                  "active_pane": 1,
+                  "next_pane_id": 2
+                }
+              }
+            ],
+            "active": 1,
+            "activation_history": [
+              1
+            ],
+            "next_tab_id": 2,
+            "next_item_id": 2
+          },
+          "items": [
+            {
+              "kind": "terminal",
+              "item_id": 1,
+              "backend_id": "w1:p1"
+            }
+          ],
+          "expanded": true
+        }
+      ]
+    }
+  },
+  {
+    "event": "reopen-cycle-passed",
+    "time": 1791806872.303589,
+    "value": {
+      "cycle": 1,
+      "gui_pid": 24649,
+      "window": {
+        "number": 11397,
+        "miniaturized": false,
+        "visible": true,
+        "frame": [
+          314,
+          278,
+          960,
+          640
+        ],
+        "title": "",
+        "class": "GPUIWindow",
+        "key": true
+      },
+      "terminal_id": "term_65da38bd778c41",
+      "saved_bounds": {
+        "x": 314.0,
+        "y": 199.0,
+        "width": 960.0,
+        "height": 640.0
+      },
+      "restored_bounds": {
+        "x": 314.0,
+        "y": 199.0,
+        "width": 960.0,
+        "height": 640.0
+      }
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806872.467011,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11397,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "a78d1702-2e87-4e01-9972-f68be9353d9c",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "close",
+    "time": 1791806872.6297479,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "ec448dc5-bb62-4fa8-8a39-2af26cdbed4f",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806873.372262,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "978d53fc-614b-4ba4-b0db-8af14859d53f",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "type",
+    "time": 1791806873.5369442,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "70b9a904-0d1a-4304-9cd1-835eb3aa21e3",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "persisted-state",
+    "time": 1791806873.5381088,
+    "value": {
+      "window": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 960.0,
+          "height": 640.0
+        }
+      },
+      "spaces": [
+        {
+          "key": "ad-hoc",
+          "name": "Free sessions",
+          "path": null,
+          "kind": "ad_hoc",
+          "layout": {
+            "tabs": [
+              {
+                "id": 1,
+                "layout": {
+                  "center": {
+                    "root": {
+                      "kind": "pane",
+                      "pane": 1
+                    }
+                  },
+                  "panes": {
+                    "1": {
+                      "id": 1,
+                      "items": [
+                        1
+                      ],
+                      "active": 1,
+                      "activation_history": [
+                        1
+                      ]
+                    }
+                  },
+                  "panes_by_item": {
+                    "1": 1
+                  },
+                  "active_pane": 1,
+                  "next_pane_id": 2
+                }
+              }
+            ],
+            "active": 1,
+            "activation_history": [
+              1
+            ],
+            "next_tab_id": 2,
+            "next_item_id": 2
+          },
+          "items": [
+            {
+              "kind": "terminal",
+              "item_id": 1,
+              "backend_id": "w1:p1"
+            }
+          ],
+          "expanded": true
+        }
+      ]
+    }
+  },
+  {
+    "event": "reopen-cycle-passed",
+    "time": 1791806873.538261,
+    "value": {
+      "cycle": 2,
+      "gui_pid": 24649,
+      "window": {
+        "number": 11399,
+        "miniaturized": false,
+        "visible": true,
+        "frame": [
+          314,
+          278,
+          960,
+          640
+        ],
+        "title": "",
+        "class": "GPUIWindow",
+        "key": true
+      },
+      "terminal_id": "term_65da38bd778c41",
+      "saved_bounds": {
+        "x": 314.0,
+        "y": 199.0,
+        "width": 960.0,
+        "height": 640.0
+      },
+      "restored_bounds": {
+        "x": 314.0,
+        "y": 199.0,
+        "width": 960.0,
+        "height": 640.0
+      }
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806873.69621,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "deef49bf-a732-41ce-ba01-ea6a6f3a750d",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806874.440819,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "856813d1-18cf-4d64-91dd-23c903665383",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806875.186396,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        }
+      ],
+      "id": "aa8017ed-9fc7-4f36-ba35-455478934df0",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806875.922482,
+    "value": {
+      "windows": [
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        },
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": false
+        }
+      ],
+      "id": "67a901d7-a08a-4fe8-b6fa-1650673bc1c7",
+      "active": false,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "minimize",
+    "time": 1791806876.520087,
+    "value": {
+      "windows": [
+        {
+          "number": 11399,
+          "miniaturized": true,
+          "visible": false,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": false
+        },
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "f0c4c8ec-dab3-460c-9028-761313011306",
+      "active": false,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "inspect",
+    "time": 1791806877.21371,
+    "value": {
+      "windows": [
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "0e6d00ab-110c-4e3e-b61d-b4cc5351136a",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "repeated-open-and-minimize-passed",
+    "time": 1791806877.213902,
+    "value": {
+      "gui_pid": 24649,
+      "window_number": 11399
+    }
+  },
+  {
+    "event": "type",
+    "time": 1791806877.37844,
+    "value": {
+      "windows": [
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "91dfa6bc-8207-4044-86b1-9e34f4cca4b0",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "quit",
+    "time": 1791806877.431438,
+    "value": {
+      "windows": [
+        {
+          "number": 11399,
+          "miniaturized": false,
+          "visible": true,
+          "frame": [
+            314,
+            278,
+            960,
+            640
+          ],
+          "title": "",
+          "class": "GPUIWindow",
+          "key": true
+        },
+        {
+          "number": 11392,
+          "miniaturized": false,
+          "visible": false,
+          "frame": [
+            0,
+            0,
+            500,
+            500
+          ],
+          "title": "",
+          "class": "TUINSWindow",
+          "key": false
+        }
+      ],
+      "id": "dd2e038d-c403-427f-9364-96fc1357c937",
+      "active": true,
+      "pid": 24649
+    }
+  },
+  {
+    "event": "persisted-state",
+    "time": 1791806877.432578,
+    "value": {
+      "window": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 960.0,
+          "height": 640.0
+        }
+      },
+      "spaces": [
+        {
+          "key": "ad-hoc",
+          "name": "Free sessions",
+          "path": null,
+          "kind": "ad_hoc",
+          "layout": {
+            "tabs": [],
+            "active": null,
+            "activation_history": [],
+            "next_tab_id": 2,
+            "next_item_id": 2
+          },
+          "items": [],
+          "expanded": true
+        }
+      ]
+    }
+  },
+  {
+    "event": "quit-policy-passed",
+    "time": 1791806877.432758,
+    "value": {
+      "terminate": true,
+      "gui_exit_code": 0,
+      "panes": [],
+      "window_state": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 960.0,
+          "height": 640.0
+        }
+      }
+    }
+  },
+  {
+    "event": "cleanup",
+    "time": 1791806877.770211,
+    "value": {
+      "gui_exit": 0,
+      "backend_exit": 0
+    }
+  }
+]

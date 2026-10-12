@@ -1,0 +1,109 @@
+{
+  "baseline": {
+    "regression": {
+      "same_pid": true,
+      "workspace_windows_after_reopen": 0
+    }
+  },
+  "fixed": {
+    "cycles": 3,
+    "gui_pid": 24261,
+    "terminal_id": "term_65da38a2f32d01",
+    "bounds": {
+      "x": 314.0,
+      "y": 199.0,
+      "width": 960.0,
+      "height": 640.0
+    },
+    "terminal_markers": {
+      "after-reopen-2.txt": "reopen-2-ok",
+      "after-minimize.txt": "after-minimize-ok",
+      "after-reopen-1.txt": "reopen-1-ok",
+      "after-reopen-0.txt": "reopen-0-ok",
+      "before-close.txt": "before-close-ok"
+    },
+    "quit_result": {
+      "terminate": false,
+      "gui_exit_code": 0,
+      "panes": [
+        {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65da38a2f32d01",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/chartr-reopen.xf24t27z/fixed/profile/project",
+          "foreground_cwd": "/private/tmp/chartr-reopen.xf24t27z/fixed/profile/project",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 34
+          },
+          "revision": 0
+        }
+      ],
+      "window_state": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 960.0,
+          "height": 640.0
+        }
+      }
+    },
+    "cleanup": {
+      "gui_exit": 0,
+      "backend_exit": 0
+    }
+  },
+  "fixed-terminate": {
+    "cycles": 3,
+    "gui_pid": 24649,
+    "terminal_id": "term_65da38bd778c41",
+    "bounds": {
+      "x": 314.0,
+      "y": 199.0,
+      "width": 960.0,
+      "height": 640.0
+    },
+    "terminal_markers": {
+      "after-reopen-2.txt": "reopen-2-ok",
+      "after-minimize.txt": "after-minimize-ok",
+      "after-reopen-1.txt": "reopen-1-ok",
+      "after-reopen-0.txt": "reopen-0-ok",
+      "before-close.txt": "before-close-ok"
+    },
+    "quit_result": {
+      "terminate": true,
+      "gui_exit_code": 0,
+      "panes": [],
+      "window_state": {
+        "chrome": "sidebar",
+        "terminal_mode": "sidebar",
+        "selected_conversation": null,
+        "sidebar_width": 280.0,
+        "active_space": "ad-hoc",
+        "bounds": {
+          "x": 314.0,
+          "y": 199.0,
+          "width": 960.0,
+          "height": 640.0
+        }
+      }
+    },
+    "cleanup": {
+      "gui_exit": 0,
+      "backend_exit": 0
+    }
+  },
+  "app_binary_sha256": "699cbb789ad845e00e94bc2be69aa3ae9b6a2959a93ff554dedb24cd062cfcbe",
+  "existing_app_processes": "1121     1 /Applications/chartr.app/Contents/MacOS/chartr\n 1123  1121 /Applications/chartr.app/Contents/MacOS/herdr",
+  "remaining_owned_processes": "",
+  "driver_sha256": "1383c17c2bcbfd230c54180bf63564572b665c85e237942ca0614b6f2e29a28b"
+}

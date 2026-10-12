@@ -1,0 +1,8 @@
+{
+  "native_tool_error": "Sky Computer Use native pipe startup failed",
+  "attempts": 3,
+  "screen_locked": false,
+  "on_console": true,
+  "accessibility_trusted_for_shell_swift": false,
+  "native_product_scenarios_executed_this_turn": false
+}

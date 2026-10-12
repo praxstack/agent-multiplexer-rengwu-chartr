@@ -1,0 +1,114 @@
+"""Disposable native verification runner; only targets its own test bundles."""
+from pathlib import Path
+import os, sys, json, socket, subprocess, time, uuid, sqlite3
+ROOT = Path('/tmp/chartr-reopen-current.txt').read_text().strip()
+ROOT = Path(ROOT)
+MANIFEST = json.loads((ROOT/'manifest.json').read_text())
+
+def log(variant, event, value):
+    item = {'event':event, 'time':time.time(), 'value':value}
+    with (ROOT/variant/'observations.jsonl').open('a') as f:
+        f.write(json.dumps(item)+'\n')
+    print(json.dumps(item), flush=True)
+
+def profile(variant): return Path(MANIFEST[variant]['profile'])
+def backend_env(variant):
+    p=profile(variant)
+    env={k:v for k,v in os.environ.items() if not k.startswith(('HERDR_', 'DYLD_'))}
+    env.update({f'XDG_{name.upper()}_HOME':str(p/name) for name in ('config','state','data','cache')})
+    env.update(XDG_CONFIG_HOME=str(p/'config'/'chartr'), HERDR_SOCKET_PATH=str(p/'config'/'chartr'/'herdr'/'herdr.sock'), SHELL='/bin/sh')
+    return env
+
+def rpc(variant, method, params=None):
+    with socket.socket(socket.AF_UNIX) as s:
+        s.settimeout(3)
+        s.connect(backend_env(variant)['HERDR_SOCKET_PATH'])
+        s.sendall((json.dumps({'id':str(uuid.uuid4()),'method':method,'params':params or {}})+'\n').encode())
+        reply=json.loads(s.makefile('rb').readline())
+        if reply.get('error'): raise RuntimeError(reply['error'])
+        return reply['result']
+
+def command(variant, operation, **kwargs):
+    p=profile(variant)/'control'
+    identifier=str(uuid.uuid4())
+    temp=p/'command.next'
+    temp.write_text(json.dumps(dict(id=identifier,operation=operation,**kwargs)))
+    temp.replace(p/'command.json')
+    deadline=time.monotonic()+10
+    while time.monotonic()<deadline:
+        try:
+            result=json.loads((p/'reply.json').read_text())
+            if result['id']==identifier:
+                log(variant, operation, result)
+                if 'error' in result: raise RuntimeError(result['error'])
+                return result
+        except (FileNotFoundError, json.JSONDecodeError): pass
+        time.sleep(.05)
+    raise TimeoutError(operation)
+
+def windows(state): return [w for w in state['windows'] if w['class']=='GPUIWindow']
+
+def snapshot(variant):
+    with sqlite3.connect(profile(variant)/'state'/'chartr'/'state.sqlite') as db:
+        result={'window':json.loads(db.execute("select value_json from app_state where key='window'").fetchone()[0]),
+                'spaces':[json.loads(row[0]) for row in db.execute('select value_json from spaces order by ordinal')]}
+    log(variant,'persisted-state',result)
+    return result
+
+def wait_file(path):
+    deadline=time.monotonic()+10
+    while time.monotonic()<deadline:
+        if path.exists(): return path.read_text()
+        time.sleep(.1)
+    raise TimeoutError(str(path))
+
+def start(variant, terminate=False):
+    p=profile(variant)
+    settings=p/'config'/'chartr'/'settings.toml'
+    settings.write_text('[general]\nterminate_sessions_on_exit = '+str(terminate).lower()+'\n[terminal]\nad_hoc_directory = '+json.dumps(str(p/'project'))+'\n')
+    bundle=Path(MANIFEST[variant]['bundle'])
+    with (ROOT/variant/'backend.log').open('ab') as f:
+        backend=subprocess.Popen([str(bundle/'Contents'/'MacOS'/'herdr'),'server'],env=backend_env(variant),stdin=subprocess.DEVNULL,stdout=f,stderr=f)
+    (ROOT/variant/'backend.pid').write_text(str(backend.pid))
+    deadline=time.monotonic()+10
+    while time.monotonic()<deadline:
+        try:
+            ping=rpc(variant,'ping')
+            break
+        except (OSError, RuntimeError): time.sleep(.1)
+    else: raise TimeoutError('private backend')
+    created=rpc(variant,'workspace.create',{'cwd':str(p/'project'),'label':'Reopen fixture'})
+    (ROOT/variant/'fixture.json').write_text(json.dumps(created,indent=2))
+    log(variant,'backend-fixture',{'pid':backend.pid,'ping':ping,'created':created})
+    env=backend_env(variant)
+    env['XDG_CONFIG_HOME']=str(p/'config')
+    env['DYLD_INSERT_LIBRARIES']=str(ROOT/'driver'/'chartr-reopen-driver.dylib')
+    env['CHARTR_REOPEN_CONTROL']=str(p/'control')
+    env['RUST_BACKTRACE']='1'
+    with (ROOT/variant/'runtime.log').open('ab') as f:
+        gui=subprocess.Popen([str(bundle/'Contents'/'MacOS'/'chartr')],cwd=p/'project',env=env,stdin=subprocess.DEVNULL,stdout=f,stderr=f)
+    (ROOT/variant/'gui.pid').write_text(str(gui.pid))
+    state=command(variant,'inspect')
+    assert state['pid']==gui.pid, (state,gui.pid)
+    assert len(windows(state))==1, state
+    log(variant,'started',{'gui_pid':gui.pid,'backend_pid':backend.pid,'terminate':terminate})
+    return gui,backend
+
+def reopen(variant):
+    subprocess.run(['open','-a',MANIFEST[variant]['bundle']],check=True,timeout=10)
+    time.sleep(.5)
+    return command(variant,'inspect')
+
+if __name__=='__main__':
+    variant=sys.argv[1]
+    operation=sys.argv[2]
+    if operation=='start': start(variant, '--terminate' in sys.argv)
+    elif operation=='reopen': reopen(variant)
+    elif operation=='snapshot': snapshot(variant)
+    elif operation=='panes': log(variant,'panes',rpc(variant,'pane.list'))
+    elif operation=='type': command(variant,'type',text=sys.argv[3])
+    elif operation=='stop-backend':
+        bundle=Path(MANIFEST[variant]['bundle'])
+        subprocess.run([str(bundle/'Contents'/'MacOS'/'herdr'),'server','stop'],env=backend_env(variant),check=True,timeout=10)
+        log(variant,'backend-stopped',True)
+    else: command(variant,operation)
