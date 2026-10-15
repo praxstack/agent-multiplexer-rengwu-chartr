@@ -28,7 +28,8 @@ locally generated reader.
 
 The [October 16 release-readiness assessment](verification/runs/2026-10-16-release-readiness.md)
 at `c11b2dc5` is **Failed**: the current fade test disagrees with the implemented
-tuning. Candidate CI/packages and native acceptance coverage remain incomplete;
+tuning. The [subsequent expectation correction](verification/runs/2026-10-16-fade-expectations.md)
+preserves the user's manual tuning and passes all 428 workspace tests. Candidate CI/packages and native acceptance coverage remain incomplete;
 release-version preparation and AUR publication configuration are also outstanding.
 
 The migration did not build or exercise Chartr. Later execution is recorded in

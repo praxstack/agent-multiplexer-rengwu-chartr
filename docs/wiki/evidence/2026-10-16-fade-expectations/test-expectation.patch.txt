@@ -1,0 +1,27 @@
+diff --git a/crates/chartr/src/chrome/sidebar_tests.rs b/crates/chartr/src/chrome/sidebar_tests.rs
+index 189dd076..10b24c30 100644
+--- a/crates/chartr/src/chrome/sidebar_tests.rs
++++ b/crates/chartr/src/chrome/sidebar_tests.rs
+@@ -344,8 +344,8 @@ fn spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel(cx: &mut T
+             cx.update(|window, cx| {
+                 let background = cx.theme().colors().panel_background;
+                 let progress = (offset / 32_f32).clamp(0., 1.);
+-                let fade_height = header.size.height + px(20.) * progress;
+-                let opaque_height = header.size.height * (0.75 + 0.25 * progress);
++                let fade_height = header.size.height + px(16.) * progress;
++                let opaque_height = header.size.height * (0.3 + 0.3 * progress);
+                 let gradient = gpui::linear_gradient(
+                     180.,
+                     gpui::linear_color_stop(background, opaque_height / fade_height),
+@@ -366,8 +366,9 @@ fn spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel(cx: &mut T
+                     "the growing fade height may round to the nearest device pixel"
+                 );
+                 assert!(
+-                    opaque_height >= header.size.height * 0.75,
+-                    "the header text needs a fully opaque ground"
++                    opaque_height >= header.size.height * 0.3
++                        && opaque_height <= header.size.height * 0.6,
++                    "the opaque region stays within the tuned 30–60% of the header"
+                 );
+                 if offset == 0. {
+                     assert_eq!(

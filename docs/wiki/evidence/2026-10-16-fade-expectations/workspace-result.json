@@ -1,0 +1,14 @@
+{
+  "command": [
+    "cargo",
+    "test",
+    "--workspace",
+    "--locked",
+    "--no-fail-fast"
+  ],
+  "revision": "b34d0ba065ef7d3872297e8f2611e105cfdcd381",
+  "test_patch_sha256": "e4e8abe1789752565918041f0f266de786f5952dc994e8eb4d55c5a3c69c647f",
+  "started_at": 1792103555.252576,
+  "elapsed_seconds": 22.515671014785767,
+  "exit_code": 0
+}

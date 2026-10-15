@@ -30,7 +30,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 
 ## Expected outcomes
 
-- The fixed “Spaces” header overlays the top of the scroll viewport. The list reserves matching top padding, so the first card is fully visible at rest. Scrolling moves cards behind an always-active fade, with an opaque ground behind the header text. At rest the fade ends at the first card; over the first 32 px of scrolling it grows 20 px below the header and makes the whole header opaque before fading to transparent. Header clicks cannot reach covered cards; scrolling over the header still moves the list (accepted layout, 2026-10-16).
+- The fixed “Spaces” header overlays the top of the scroll viewport. The list reserves matching top padding, so the first card is fully visible at rest. Scrolling moves cards behind an always-active fade. At rest the fade ends at the first card; over the first 32 px of scrolling it grows 16 px below the header while its opaque region grows from 30% to 60% of the header height, then fades to transparent. These values preserve the user's manual tuning, confirmed on 2026-10-16. Header clicks cannot reach covered cards; scrolling over the header still moves the list (accepted layout, 2026-10-16).
 
 - While reordering a session in Spaces or an outer tab in Tabs, the carried item has an opaque rounded background within its existing bounds, with no broad wrapper shadow. Its size, outer margins and selection state stay unchanged; the list still reserves its destination slot (accepted drag appearance correction, 2026-10-16).
 
@@ -67,6 +67,10 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 16 expectation correction](../verification/runs/2026-10-16-fade-expectations.md)
+preserves the user-confirmed manual fade tuning. The corrected gradient test and
+all 428 exercised workspace tests pass; production rendering is unchanged.
 
 2026-10-16 header/fade follow-up: the
 [initial regression](../evidence/2026-10-16-header-fade/before.log) reproduced

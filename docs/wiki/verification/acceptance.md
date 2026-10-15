@@ -237,14 +237,20 @@ items; tab headers must remain visible and draggable throughout. Clicking inside
 a web plugin must activate its pane, and its native child view must yield during
 a drag so neither the tab preview nor drop highlight is obscured.
 
-In the All Spaces sidebar, clicking anywhere on a space card activates that
-space and returns keyboard focus to its workspace. Its session rows still select
-their specific tabs, and its `+` and plugin-pane buttons retain their own actions.
+In the All Spaces sidebar, clicking an inactive space heading activates that
+space without changing its expansion. Clicking the active heading toggles
+expansion; the chevron toggles expansion independently. Heading hover does not
+change the background. Session rows select their specific tabs, and the `+` and
+plugin-pane buttons retain their own actions.
 Scroll space cards upward beneath the **Spaces** heading: a short, theme-colored
 frosted fade should gently hide their top edge, with no horizontal border. The
-fade should ease in over the first few pixels of scrolling and disappear at the
-top. Check light and dark themes, wheel/trackpad scrolling, thumb dragging, and
-clicking rows beneath the fade. The heading stays clear; Free sessions sorts and
+fade stays active at the top, where matching list padding keeps the first card
+fully visible below it. Over the first 32 px of scrolling, it grows up to 16 px
+below the header and its opaque region grows from 30% to 60% of the header height
+(user-confirmed manual tuning, 2026-10-16). Check light and dark themes,
+wheel/trackpad scrolling, thumb dragging, and clicking rows beneath the fade.
+Header clicks must not reach covered cards; scrolling over the header must still
+move the list. Free sessions sorts and
 scrolls as an ordinary space card,
 and scrolling should remain smooth with many cards.
 
