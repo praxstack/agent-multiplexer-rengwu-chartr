@@ -823,6 +823,14 @@ impl WorkspaceWindow {
         }
         match action {
             Action::BeginSpaceDrag { at } => self.space_sorter.press(at),
+            Action::ActivateSpace { space } => {
+                if let Some(target) =
+                    self.spaces.iter().find(|candidate| candidate.entity_id() == space).cloned()
+                {
+                    self.activate(target, window, cx);
+                    self.focus_active_terminal(window, cx);
+                }
+            }
             Action::ToggleSpaceCollapsed { space } => {
                 if !self.collapsed_spaces.remove(&space) {
                     self.collapsed_spaces.insert(space);

@@ -57,6 +57,7 @@ pub fn render(
     let reduce_motion = cx.reduce_motion();
     for (space_index, space) in spaces.iter().enumerate() {
         let mut contents = Vec::with_capacity(space.entries.len() + 1);
+        let select = on.clone();
         let toggle = on.clone();
         let add = on.clone();
         let add_plugin = on.clone();
@@ -65,6 +66,7 @@ pub fn render(
         let action_space = space.id;
         let removable = space.removable;
         let available = space.available;
+        let active = space.active;
         let space_drag = DraggedSpace(space.id);
         let begin_drag = on.clone();
         let dragging = cx.has_active_drag();
@@ -80,11 +82,16 @@ pub fn render(
             .rounded_sm()
             .role(Role::TreeItem)
             .aria_label(space.name.clone())
+            .aria_selected(active)
             .aria_expanded(!space.collapsed)
-            .hover(|style| style.bg(session_backgrounds.hover))
             .on_click(move |_, window, cx| {
                 cx.stop_propagation();
-                toggle(Action::ToggleSpaceCollapsed { space: space_id }, window, cx)
+                let action = if active {
+                    Action::ToggleSpaceCollapsed { space: space_id }
+                } else {
+                    Action::ActivateSpace { space: space_id }
+                };
+                select(action, window, cx)
             })
             .justify_between()
             .child(
@@ -93,13 +100,30 @@ pub fn render(
                     .flex_1()
                     .gap_1()
                     .child(
-                        Icon::new(if space.collapsed {
-                            IconName::ChevronRight
-                        } else {
-                            IconName::ChevronDown
-                        })
-                        .size(IconSize::Small)
-                        .color(Color::Muted),
+                        h_flex()
+                            .id(format!("space-collapse-{space_id:?}"))
+                            .flex_none()
+                            .cursor_pointer()
+                            .role(Role::Button)
+                            .aria_label(format!(
+                                "{} {}",
+                                if space.collapsed { "Expand" } else { "Collapse" },
+                                space.name
+                            ))
+                            .on_mouse_down(MouseButton::Left, |_, _, cx| cx.stop_propagation())
+                            .on_click(move |_, window, cx| {
+                                cx.stop_propagation();
+                                toggle(Action::ToggleSpaceCollapsed { space: space_id }, window, cx)
+                            })
+                            .child(
+                                Icon::new(if space.collapsed {
+                                    IconName::ChevronRight
+                                } else {
+                                    IconName::ChevronDown
+                                })
+                                .size(IconSize::Small)
+                                .color(Color::Muted),
+                            ),
                     )
                     .child(
                         Label::new(space.name.clone())
@@ -235,7 +259,6 @@ pub fn render(
             );
             contents.push(
                 v_flex()
-                    // Rows fill the tree; only their contents are indented.
                     .relative()
                     .w_full()
                     // Paint the guide first so row selections cover it.
@@ -256,13 +279,20 @@ pub fn render(
         // Move the entire expanded or collapsed tree with its heading.
         let held = sorter.holds(space.id);
         let offset = sorter.offset_of(space.id, now, reduce_motion);
+        let backdrop = colors.panel_background.blend(if space.active {
+            sidebar_colors.card_active.opacity(0.4)
+        } else {
+            sidebar_colors.card_inactive.opacity(0.3)
+        });
         let card = selection_list()
             .id(format!("space-card-{:?}", space.id))
             .relative()
-            .w_full()
+            .mr(px(2.))
             .flex_none()
             .rounded_sm()
-            .when(held, |tree| tree.bg(colors.panel_background).shadow_md())
+            .bg(backdrop)
+            .when(!space.collapsed && !space.entries.is_empty(), |card| card.pb(px(2.)))
+            .when(held, |tree| tree.shadow_md())
             .when(offset != px(0.), |tree| tree.top(offset))
             .children(contents);
         cards.push(
@@ -354,7 +384,10 @@ fn row(
         .id(format!("session-drag-{space:?}-{}", entry.tab.get()))
         .relative()
         .group("session")
-        .w_full()
+        // Keep the gap outside the painted border, with auto width accounting
+        // for both margins.
+        .ml(px(4.))
+        .mr(px(6.))
         .flex_none()
         .rounded_sm()
         .border_1()
@@ -388,7 +421,7 @@ fn row(
                 .on_click(move |_, window, cx| {
                     on(Action::Select { space: Some(space), item: select }, window, cx)
                 })
-                .start_slot(div().ml(px(9.)).child(item_indicator(
+                .start_slot(div().ml(px(3.)).child(item_indicator(
                     super::Activity { unread: entry.unread, ..Default::default() },
                     entry.icon_path.clone().or_else(|| Some("icons/tool_terminal.svg".into())),
                     entry.grouped,

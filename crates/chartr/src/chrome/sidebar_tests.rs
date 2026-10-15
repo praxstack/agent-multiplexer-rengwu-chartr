@@ -118,6 +118,11 @@ impl Render for TreeHarness {
             if let super::Action::BeginSpaceDrag { at } = action {
                 this.sorter.press(*at);
             }
+            if let super::Action::ActivateSpace { space } = action {
+                for entry in &mut this.spaces {
+                    entry.active = entry.id == *space;
+                }
+            }
             if let super::Action::ToggleSpaceCollapsed { space } = action {
                 let space = this.spaces.iter_mut().find(|entry| entry.id == *space).unwrap();
                 space.collapsed = !space.collapsed;
@@ -214,6 +219,36 @@ fn sidebar_tree_collapses_adds_and_sorts_free_sessions(cx: &mut TestAppContext) 
     let empty = bounds(cx, 0);
     let project_without_sessions = bounds(cx, 1);
 
+    // An inactive heading selects its space without changing expansion. Its
+    // chevron remains an independent collapse control and must not select it.
+    cx.simulate_click(project_without_sessions.origin + point(px(12.), px(12.)), Modifiers::none());
+    cx.run_until_parked();
+    view.read_with(cx, |view, _| {
+        assert!(view.spaces[1].collapsed);
+        assert!(view.spaces[0].active);
+        assert!(!view.spaces[1].active);
+    });
+    view.update(cx, |view, _| view.actions.clear());
+    cx.simulate_click(project_without_sessions.origin + point(px(60.), px(12.)), Modifiers::none());
+    cx.run_until_parked();
+    view.read_with(cx, |view, _| {
+        assert!(view.actions.contains(&Action::ActivateSpace { space: folder_id }));
+        assert!(
+            !view
+                .actions
+                .iter()
+                .any(|action| matches!(action, Action::ToggleSpaceCollapsed { .. }))
+        );
+        assert!(view.spaces[1].active && view.spaces[1].collapsed);
+        assert!(!view.spaces[0].active);
+    });
+    cx.simulate_click(empty.origin + point(px(60.), px(12.)), Modifiers::none());
+    cx.run_until_parked();
+    view.read_with(cx, |view, _| {
+        assert!(view.spaces[0].active && !view.spaces[0].collapsed);
+        assert!(!view.spaces[1].active);
+    });
+
     // Empty spaces have only a heading: toggling them must not introduce or
     // remove a placeholder row, or shift the neighboring space.
     cx.simulate_click(empty.origin + point(px(60.), px(12.)), Modifiers::none());
@@ -295,11 +330,10 @@ fn sidebar_tree_collapses_adds_and_sorts_free_sessions(cx: &mut TestAppContext) 
             view.spaces.iter().map(|space| space.id).collect::<Vec<_>>(),
             vec![folder_id, free_id]
         );
-        assert!(
-            view.actions
-                .iter()
-                .all(|action| !matches!(action, Action::ToggleSpaceCollapsed { .. }))
-        );
+        assert!(view.actions.iter().all(|action| !matches!(
+            action,
+            Action::ToggleSpaceCollapsed { .. } | Action::ActivateSpace { .. }
+        )));
         assert!(!view.spaces[1].collapsed, "dropping a title must not collapse it");
     });
 }

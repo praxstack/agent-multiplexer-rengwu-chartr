@@ -489,6 +489,7 @@ pub struct SpaceEntries {
 /// What the user did to the chrome.
 #[derive(Debug, Clone, PartialEq)]
 pub enum Action {
+    ActivateSpace { space: EntityId },
     ToggleSpaceCollapsed { space: EntityId },
     Select { space: Option<EntityId>, item: ItemId },
     Close { space: Option<EntityId>, item: ItemId },
