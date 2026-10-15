@@ -26,6 +26,9 @@ pub fn render(
     window: &mut Window,
     cx: &mut App,
 ) -> impl IntoElement {
+    // Match the square add button plus the header's existing bottom padding.
+    // One scaled height drives the header, scroll inset and fade zone.
+    let header_height = (IconSize::Small.square(window, cx) + window.rem_size() * 0.5).round();
     let colors = cx.theme().colors();
     let sidebar_colors = sidebar_theme_colors(cx.theme());
     let session_backgrounds = SelectionRowBackgrounds {
@@ -37,8 +40,11 @@ pub fn render(
     let add_space = on.clone();
     let spaces_header = h_flex()
         .id("spaces-header")
+        .debug_selector(|| "SPACES_HEADER".into())
         .w_full()
-        .px_2()
+        .h(header_height)
+        .pl_2()
+        .pr(window.rem_size() * 0.5 + px(4.))
         .pb_2()
         .justify_between()
         .child(Label::new("Spaces").size(UI_LABEL_SMALL).color(Color::Muted))
@@ -320,11 +326,11 @@ pub fn render(
         .min_h_0()
         .h_full()
         .bg(colors.panel_background)
-        .child(spaces_header)
         .child(crate::components::scrolling_list(
             "spaces-scrollbar",
             v_flex().id("sessions").pb_2().px_1p5().gap(CARD_GAP).children(cards),
             sorter.scroll_handle(),
+            Some((header_height, spaces_header.into_any_element())),
             window,
             cx,
         ))

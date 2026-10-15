@@ -301,6 +301,149 @@ impl Render for TreeHarness {
 }
 
 #[gpui::test]
+fn spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel(cx: &mut TestAppContext) {
+    cx.update(|cx| {
+        ::settings::init(cx);
+        theme::init(theme::LoadThemes::JustBase, cx);
+        crate::fonts::install(&crate::settings::ResolvedSettings::default(), cx);
+        cx.set_global(crate::settings::SettingsStore::bare());
+    });
+    let (view, cx) = cx.add_window_view(|_, _| TreeHarness {
+        spaces: (0..20)
+            .map(|index| super::SpaceEntries {
+                id: (index + 10).into(),
+                name: format!("Space {index}"),
+                collapsed: true,
+                active: index == 0,
+                removable: false,
+                available: true,
+                entries: vec![],
+            })
+            .collect(),
+        sorter: super::sidebar::SpaceSorter::new(super::sidebar::CARD_GAP),
+        actions: vec![],
+    });
+    for rem_size in [14., 20.] {
+        cx.update(|window, _| {
+            window.set_rem_size(px(rem_size));
+            window.refresh();
+        });
+        cx.run_until_parked();
+        let handle = view.read_with(cx, |view, _| view.sorter.scroll_handle().clone());
+        let header = cx.debug_bounds("SPACES_HEADER").unwrap();
+        assert_eq!(handle.bounds().top(), header.top(), "scrolling must extend behind the header");
+        assert_eq!(handle.children_count(), 20, "top padding must not become a sortable item");
+        let first = handle.bounds_for_item(0).unwrap();
+        assert_eq!(first.top(), header.bottom(), "the first card starts below the fade at rest");
+
+        for offset in [0., 1., 8., 30., 80., 0.] {
+            handle.set_offset(point(px(0.), px(-offset)));
+            cx.update(|window, _| window.refresh());
+            cx.run_until_parked();
+            assert_eq!(cx.debug_bounds("SPACES_HEADER").unwrap(), header);
+            cx.update(|window, cx| {
+                let background = cx.theme().colors().panel_background;
+                let progress = (offset / 32_f32).clamp(0., 1.);
+                let fade_height = header.size.height + px(20.) * progress;
+                let opaque_height = header.size.height * (0.75 + 0.25 * progress);
+                let gradient = gpui::linear_gradient(
+                    180.,
+                    gpui::linear_color_stop(background, opaque_height / fade_height),
+                    gpui::linear_color_stop(background.opacity(0.), 1.),
+                );
+                let quads = window.painted_quads();
+                let fade = quads
+                    .iter()
+                    .find(|quad| quad.background == gradient)
+                    .expect("the header fade must stay active, including at scroll offset zero");
+                assert_eq!(fade.bounds.origin, header.origin.scale(window.scale_factor()));
+                assert_eq!(fade.bounds.size.width, header.size.width.scale(window.scale_factor()));
+                assert!(
+                    (fade.bounds.size.height.as_f32()
+                        - fade_height.scale(window.scale_factor()).as_f32())
+                    .abs()
+                        <= 1.,
+                    "the growing fade height may round to the nearest device pixel"
+                );
+                assert!(
+                    opaque_height >= header.size.height * 0.75,
+                    "the header text needs a fully opaque ground"
+                );
+                if offset == 0. {
+                    assert_eq!(
+                        fade.bounds.bottom(),
+                        first.top().scale(window.scale_factor()),
+                        "the resting fade must not dim the first card"
+                    );
+                } else {
+                    assert!(
+                        fade.bounds.bottom() > header.bottom().scale(window.scale_factor()),
+                        "scrolling extends the soft fade below the header"
+                    );
+                }
+                let card_color = background.blend(
+                    crate::settings::sidebar_theme_colors(cx.theme()).card_active.opacity(0.4),
+                );
+                if offset < 30. {
+                    let card =
+                        quads.iter().find(|quad| quad.background == card_color.into()).unwrap();
+                    assert_eq!(
+                        card.bounds.top(),
+                        (first.top() - px(offset)).scale(window.scale_factor())
+                    );
+                    assert_eq!(
+                        card.content_mask.bounds.top(),
+                        header.top().scale(window.scale_factor()),
+                        "cards must not clip at the old bottom-of-header boundary"
+                    );
+                    if offset > 0. {
+                        assert!(
+                            fade.order > card.order,
+                            "the fade paints over the overlapping card at offset {offset}"
+                        );
+                    }
+                }
+            });
+        }
+
+        // The header lets wheel input reach the list, but hides its covered
+        // cards from clicks. Its own add button remains usable after scrolling.
+        cx.simulate_event(gpui::ScrollWheelEvent {
+            position: header.center(),
+            delta: gpui::ScrollDelta::Pixels(point(px(0.), px(-20.))),
+            ..Default::default()
+        });
+        cx.run_until_parked();
+        assert!(handle.offset().y < px(0.), "scrolling over the header must move the list");
+        view.update(cx, |view, _| view.actions.clear());
+        cx.simulate_click(header.center(), Modifiers::none());
+        assert!(view.read_with(cx, |view, _| view.actions.is_empty()));
+        let add = cx.update(|window, cx| {
+            let button_size = IconSize::Small.square(window, cx);
+            point(
+                header.right() - window.rem_size() * 0.5 - px(4.) - button_size * 0.5,
+                header.top() + button_size * 0.5,
+            )
+        });
+        cx.simulate_click(add, Modifiers::none());
+        assert_eq!(
+            view.read_with(cx, |view, _| view.actions.clone()),
+            vec![super::Action::NewSpace]
+        );
+        handle.set_offset(point(px(0.), px(0.)));
+    }
+    // Removing overflow must restore the resting geometry and scroll range.
+    view.update(cx, |view, cx| {
+        view.spaces.truncate(1);
+        cx.notify();
+    });
+    cx.run_until_parked();
+    let handle = view.read_with(cx, |view, _| view.sorter.scroll_handle().clone());
+    assert_eq!(handle.max_offset().y, px(0.));
+    assert_eq!(handle.offset().y, px(0.));
+}
+
+#[gpui::test]
 fn sidebar_tree_collapses_adds_and_sorts_free_sessions(cx: &mut TestAppContext) {
     use super::{Action, Entry, SpaceEntries};
     cx.update(|cx| {

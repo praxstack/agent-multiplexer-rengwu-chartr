@@ -168,6 +168,7 @@ impl Conversations {
                         list.child(self.empty_history())
                     }),
                 &self.history_scroll,
+                None,
                 window,
                 cx,
             ))

@@ -6,6 +6,8 @@ use gpui::{
 };
 use ui::{ScrollAxes, Scrollbars, WithScrollbar, prelude::*};
 
+const HEADER_FADE_GROWTH: Pixels = px(16.);
+
 pub(crate) fn scrollbar_thumb_colors(colors: &theme::ThemeColors) -> [gpui::Hsla; 3] {
     // Light palettes need a little more opacity to keep the overlay readable.
     let opacity =
@@ -14,10 +16,14 @@ pub(crate) fn scrollbar_thumb_colors(colors: &theme::ThemeColors) -> [gpui::Hsla
 }
 
 /// A tracked list with the shared top fade and hover-only vertical scrollbar.
+/// An optional fixed header overlaps the scroll viewport. Its height also sets
+/// the list's top padding and always-active fade. Scrolling strengthens the
+/// opaque header ground and extends its soft edge into the content below.
 pub(crate) fn scrolling_list(
     scrollbar_id: impl Into<gpui::ElementId>,
     content: gpui::Stateful<gpui::Div>,
     scroll_handle: &ScrollHandle,
+    header: Option<(Pixels, AnyElement)>,
     window: &mut Window,
     cx: &mut App,
 ) -> AnyElement {
@@ -25,45 +31,71 @@ pub(crate) fn scrolling_list(
     let [thumb, hovered_thumb, active_thumb] = scrollbar_thumb_colors(colors);
     let scroll_background = colors.panel_background;
     let fade_handle = scroll_handle.clone();
+    let header_height = header.as_ref().map(|(height, _)| *height);
     v_flex()
         .relative()
         .flex_1()
         .min_h_0()
         .w_full()
-        .child(content.flex_1().min_h_0().overflow_y_scroll().track_scroll(scroll_handle))
+        .child(
+            content
+                .flex_1()
+                .min_h_0()
+                .when_some(header_height, |list, height| list.pt(height))
+                .overflow_y_scroll()
+                .track_scroll(scroll_handle),
+        )
         .child(
             // Read the clamped offset at paint time. This passive overlay
             // adds no hitbox, layout shift, timer, or scroll subscription.
             canvas(
                 |_, _, _| {},
                 move |bounds, _, window, _| {
-                    let strength = (-fade_handle.offset().y / px(12.)).clamp(0., 1.);
+                    if bounds.size.height <= px(0.) {
+                        return;
+                    }
+                    let scrolled = (-fade_handle.offset().y).max(px(0.));
+                    let (fade_bounds, strength, opaque_stop) = if let Some(height) = header_height {
+                        let progress = (scrolled / px(32.)).clamp(0., 1.);
+                        let fade_height =
+                            (height + HEADER_FADE_GROWTH * progress).min(bounds.size.height);
+                        let opaque_height = height * (0.3 + 0.3 * progress);
+                        (
+                            Bounds::new(bounds.origin, size(bounds.size.width, fade_height)),
+                            1.,
+                            (opaque_height / fade_height).clamp(0., 1.),
+                        )
+                    } else {
+                        (bounds, (scrolled / px(12.)).clamp(0., 1.), 0.)
+                    };
                     if strength == 0. {
                         return;
                     }
                     window.with_content_mask(Some(ContentMask { bounds }), |window| {
-                        // A small, theme-colored blurred veil gives the
-                        // edge a frosted appearance. GPUI has no element
-                        // backdrop blur; this needs no offscreen capture.
-                        let veil = Bounds::new(
-                            point(bounds.left(), bounds.top() - px(8.)),
-                            size(bounds.size.width, px(8.)),
-                        );
-                        window.paint_drop_shadows(
-                            veil,
-                            Default::default(),
-                            &[BoxShadow::new(
-                                px(0.),
-                                px(4.),
-                                scroll_background.opacity(0.35 * strength),
-                            )
-                            .blur_radius(px(12.))],
-                        );
+                        if header_height.is_none() {
+                            // Preserve the history list's frosted edge. Under
+                            // a fixed header, use only the gradient so its
+                            // bottom is completely transparent at rest.
+                            let veil = Bounds::new(
+                                point(bounds.left(), bounds.top() - px(8.)),
+                                size(bounds.size.width, px(8.)),
+                            );
+                            window.paint_drop_shadows(
+                                veil,
+                                Default::default(),
+                                &[BoxShadow::new(
+                                    px(0.),
+                                    px(4.),
+                                    scroll_background.opacity(0.35 * strength),
+                                )
+                                .blur_radius(px(12.))],
+                            );
+                        }
                         window.paint_quad(fill(
-                            bounds,
+                            fade_bounds,
                             linear_gradient(
                                 180.,
-                                linear_color_stop(scroll_background.opacity(strength), 0.),
+                                linear_color_stop(scroll_background.opacity(strength), opaque_stop),
                                 linear_color_stop(scroll_background.opacity(0.), 1.),
                             ),
                         ));
@@ -74,9 +106,23 @@ pub(crate) fn scrolling_list(
             .top_0()
             .left_0()
             .w_full()
-            .h(px(28.))
+            .h(header_height.map(|height| height + HEADER_FADE_GROWTH).unwrap_or(px(28.)))
             .max_h(relative(1.)),
         )
+        .when_some(header, |list, (height, header)| {
+            list.child(
+                div()
+                    .absolute()
+                    .top_0()
+                    .left_0()
+                    .w_full()
+                    .h(height)
+                    // Covered cards cannot be clicked or hovered, but wheel
+                    // input still reaches the full-height scroll viewport.
+                    .block_mouse_except_scroll()
+                    .child(header),
+            )
+        })
         .custom_scrollbars(
             Scrollbars::on_hover(ScrollAxes::Vertical)
                 .id(scrollbar_id)
@@ -114,6 +160,7 @@ mod tests {
                     .when(self.rows > 0, |list| list.pb_2())
                     .children((0..self.rows).map(|_| div().h(px(30.)).flex_none())),
                 &self.handle,
+                None,
                 window,
                 cx,
             ))
@@ -164,6 +211,7 @@ mod tests {
                 "test-scrollbar",
                 div().id("test-list").child(div().h(px(1000.)).w_full()),
                 &self.handle,
+                None,
                 window,
                 cx,
             ))
