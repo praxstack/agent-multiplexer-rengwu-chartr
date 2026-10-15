@@ -1,7 +1,7 @@
 ---
 title: Agent launching and Inbox history
 section: Features
-updated: 2026-10-15
+updated: 2026-10-16
 basis: Source-reviewed migration baseline
 ---
 # Agent launching and Inbox history
@@ -122,6 +122,12 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 16 release-readiness assessment](../verification/runs/2026-10-16-release-readiness.md)
+at `c11b2dc5` passes the automated attention checks within the workspace suite and
+the focused backend identity-handoff regression. The overall workspace run fails
+an unrelated fade expectation. Actual notification banners/clicks and the native
+focus/lifecycle coverage gaps from October 15 remain unverified.
 
 The [October 15 lean recheck](../verification/runs/2026-10-15-lean-attention.md)
 records the current implementation and its exact coverage. Its

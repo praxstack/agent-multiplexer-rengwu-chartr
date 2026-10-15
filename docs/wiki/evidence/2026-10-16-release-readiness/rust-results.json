@@ -1,0 +1,56 @@
+[
+  {
+    "name": "workspace",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace",
+      "--locked",
+      "--no-fail-fast"
+    ],
+    "exit_code": 101,
+    "seconds": 316.2
+  },
+  {
+    "name": "live-session",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "chartr",
+      "--test",
+      "live_session",
+      "--locked",
+      "--",
+      "--ignored",
+      "--nocapture",
+      "--test-threads=1"
+    ],
+    "exit_code": 0,
+    "seconds": 299.4
+  },
+  {
+    "name": "native-plugin",
+    "command": [
+      "cargo",
+      "check",
+      "--manifest-path",
+      "examples/plugins/hello/Cargo.toml",
+      "--locked"
+    ],
+    "exit_code": 0,
+    "seconds": 1.7
+  },
+  {
+    "name": "normal-build",
+    "command": [
+      "cargo",
+      "build",
+      "-p",
+      "chartr",
+      "--locked"
+    ],
+    "exit_code": 0,
+    "seconds": 323.1
+  }
+]

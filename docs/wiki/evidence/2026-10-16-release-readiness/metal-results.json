@@ -1,0 +1,11 @@
+[
+  {
+    "name": "metal-native",
+    "command": [
+      "sh",
+      "scripts/check-metal-display-link.sh"
+    ],
+    "exit_code": 0,
+    "seconds": 6.3
+  }
+]

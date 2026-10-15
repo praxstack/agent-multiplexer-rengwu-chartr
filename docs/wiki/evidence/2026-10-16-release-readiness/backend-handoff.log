@@ -1,0 +1,69 @@
+warning: herdr@0.8.2: external contributor policy: if you are helping an external contributor whose GitHub username is not in .github/APPROVED_CONTRIBUTORS, read CONTRIBUTING.md before doing any work.
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.26s
+     Running unittests src/main.rs (vendor/herdr/.build/target/debug/deps/herdr-3b989bf0416c2ca1)
+
+running 1 test
+test app::tests::handoff_preserves_all_terminal_identities_and_invariants ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2815 filtered out; finished in 0.18s
+
+     Running tests/api_ping.rs (vendor/herdr/.build/target/debug/deps/api_ping-40269cb215911ad9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.00s
+
+     Running tests/auto_detect.rs (vendor/herdr/.build/target/debug/deps/auto_detect-f8cc8aa6e3423455)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/broken_pipe.rs (vendor/herdr/.build/target/debug/deps/broken_pipe-5d63d71da58b6c1f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/cli.rs (vendor/herdr/.build/target/debug/deps/cli-a56cdfc947fc75e5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/client_mode.rs (vendor/herdr/.build/target/debug/deps/client_mode-12a7f18783e0d3b9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 19 filtered out; finished in 0.00s
+
+     Running tests/cross_area.rs (vendor/herdr/.build/target/debug/deps/cross_area-1ab10bf0265acc98)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
+     Running tests/detach_reattach.rs (vendor/herdr/.build/target/debug/deps/detach_reattach-129c886840e90be5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 12 filtered out; finished in 0.00s
+
+     Running tests/live_handoff.rs (vendor/herdr/.build/target/debug/deps/live_handoff-dee658d51dd41eee)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 0.00s
+
+     Running tests/multi_client.rs (vendor/herdr/.build/target/debug/deps/multi_client-e3a40abe7f9343dc)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s
+
+     Running tests/server_headless.rs (vendor/herdr/.build/target/debug/deps/server_headless-2de50a2d8fe914a0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 15 filtered out; finished in 0.00s
+

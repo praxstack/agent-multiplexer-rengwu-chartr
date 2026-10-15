@@ -1,7 +1,7 @@
 ---
 title: Session lifecycle, recovery and persistence
 section: Features
-updated: 2026-10-12
+updated: 2026-10-16
 basis: Source-reviewed migration baseline
 ---
 # Session lifecycle, recovery and persistence
@@ -62,6 +62,11 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 16 release-readiness run](../verification/runs/2026-10-16-release-readiness.md)
+at `c11b2dc5` passes the three real-backend session tests, including isolated
+daemon crash recovery, and the focused backend terminal-identity handoff test.
+This does not rerun the full native reopen, Hide, quit-policy or layout matrix.
 
 No current product run was performed for this migration. Earlier
 [research and audits](../archive/research/index.md) remain historical evidence for

@@ -1,0 +1,8 @@
+{
+  "passed": 427,
+  "failed": 1,
+  "ignored": 7,
+  "failed_tests": [
+    "chrome::sidebar_tests::spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel"
+  ]
+}

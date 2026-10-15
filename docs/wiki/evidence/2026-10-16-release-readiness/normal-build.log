@@ -1,0 +1,15 @@
+   Compiling ui v0.1.0 (/Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/ui)
+   Compiling markdown v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling ui_input v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling chartr-plugin v0.3.0 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-plugin)
+   Compiling chartr-plugin-host v0.3.0 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-plugin-host)
+   Compiling project v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling agent_settings v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling workspace v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling breadcrumbs v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling editor v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling terminal_view v0.1.0 (/Users/rengwu/Desktop/Projects/chartr/vendor/zed-terminal-view)
+   Compiling chartr v0.3.0 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5m 22s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`

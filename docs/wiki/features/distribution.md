@@ -1,7 +1,7 @@
 ---
 title: Installation, packages and release boundaries
 section: Features
-updated: 2026-10-05
+updated: 2026-10-16
 basis: Source-reviewed migration baseline
 ---
 # Installation, packages and release boundaries
@@ -57,6 +57,11 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 16 release-readiness assessment](../verification/runs/2026-10-16-release-readiness.md)
+at `c11b2dc5` finds a failing local workspace gate, no matching candidate CI or
+package builds, the unchanged `0.3.0` version, and missing AUR publication
+configuration. Passing older GitHub runs do not certify the current candidate.
 
 No current product run was performed for this migration. Earlier
 [research and audits](../archive/research/index.md) remain historical evidence for

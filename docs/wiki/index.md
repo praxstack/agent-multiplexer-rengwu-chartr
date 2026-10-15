@@ -1,6 +1,6 @@
 ---
 title: Chartr development wiki
-updated: 2026-10-15
+updated: 2026-10-16
 ---
 # Chartr development wiki
 
@@ -25,6 +25,11 @@ locally generated reader.
   fixtures, available tests and cleanup.
 - [Release acceptance](verification/acceptance.md) and
   [packaging runbook](development/releasing.md).
+
+The [October 16 release-readiness assessment](verification/runs/2026-10-16-release-readiness.md)
+at `c11b2dc5` is **Failed**: the current fade test disagrees with the implemented
+tuning. Candidate CI/packages and native acceptance coverage remain incomplete;
+release-version preparation and AUR publication configuration are also outstanding.
 
 The migration did not build or exercise Chartr. Later execution is recorded in
 dated runs, including the [macOS frame-delivery recheck](verification/runs/2026-10-11-metal-frame-delivery-recheck.md).

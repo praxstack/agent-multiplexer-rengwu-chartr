@@ -1,0 +1,6 @@
+{
+  "new_live_session_scratch_directories_remaining": [],
+  "new_metal_manifest_directories_remaining": [],
+  "metal_example_processes_remaining": [],
+  "cleanup_note": "Observed after the live-session and native Metal checks; no process-name kills or user-profile cleanup performed."
+}

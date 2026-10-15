@@ -1,0 +1,50 @@
+{
+  "implementation": {
+    "path": "crates/chartr/src/components/scrolling_list.rs",
+    "observations": [
+      {
+        "line": 9,
+        "text": "const HEADER_FADE_GROWTH: Pixels = px(16.);"
+      },
+      {
+        "line": 62,
+        "text": "let opaque_height = height * (0.3 + 0.3 * progress);"
+      }
+    ]
+  },
+  "test": {
+    "path": "crates/chartr/src/chrome/sidebar_tests.rs",
+    "observations": [
+      {
+        "line": 347,
+        "text": "let fade_height = header.size.height + px(20.) * progress;"
+      },
+      {
+        "line": 348,
+        "text": "let opaque_height = header.size.height * (0.75 + 0.25 * progress);"
+      },
+      {
+        "line": 369,
+        "text": "opaque_height >= header.size.height * 0.75,"
+      }
+    ]
+  },
+  "feature_contract": {
+    "path": "docs/wiki/features/workspace-views.md",
+    "observations": [
+      {
+        "line": 33,
+        "text": "- The fixed \u201cSpaces\u201d header overlays the top of the scroll viewport. The list reserves matching top padding, so the first card is fully visible at rest. Scrolling moves cards behind an always-active fade, with an opaque ground behind the header text. At rest the fade ends at the first card; over the first 32 px of scrolling it grows 20 px below the header and makes the whole header opaque before fading to transparent. Header clicks cannot reach covered cards; scrolling over the header still moves the list (accepted layout, 2026-10-16)."
+      }
+    ]
+  },
+  "version": {
+    "path": "Cargo.toml",
+    "observations": [
+      {
+        "line": 38,
+        "text": "version = \"0.3.0\""
+      }
+    ]
+  }
+}

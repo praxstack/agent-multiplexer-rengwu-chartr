@@ -1,0 +1,24 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.61s
+    Blocking waiting for file lock on package cache
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running unittests /Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/gpui_macos/examples/metal_display_link.rs (target/metal-display-link-check/debug/deps/chartr_metal_native_check-e8a4bcb79ab91b9c)
+
+running 1 test
+test metal_display_link::tests::power_policy_respects_slow_displays_and_restores_system_preference ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+     Running `target/metal-display-link-check/debug/chartr-metal-native-check`
+low_power=false
+unused_callbacks=115
+submitted_after_idle=120
+resize_resume_callbacks=121
+transaction_recreate_cycles=8
+paused_callbacks=0 post_drop_callbacks=0 reentrant_drop_callbacks=1
+PASS: unused updates, presentation, pause, resize/resume, transactions, drop, callback-owned drop

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "backend-handoff",
+    "command": [
+      "cargo",
+      "+1.96.0",
+      "test",
+      "--locked",
+      "--manifest-path",
+      "vendor/herdr/.build/source/5a2dee700eeeea68267a4d16777307632f77172f-9ed02822c8773c63053cf4d42745fff8758ef5aa57ddb5d4c3c55eec56bdaf70/Cargo.toml",
+      "handoff_preserves_all_terminal_identities_and_invariants"
+    ],
+    "exit_code": 0,
+    "seconds": 1.9
+  }
+]

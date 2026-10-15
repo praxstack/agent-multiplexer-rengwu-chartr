@@ -76,6 +76,13 @@ ordinary changes; release requirements remain separate from this advisory workfl
 
 ## Verification history
 
+The [October 16 release-readiness run](../verification/runs/2026-10-16-release-readiness.md)
+at `c11b2dc5` reproduces the header-fade rendering test failure. Current code uses
+16 px growth and a 30–60% opaque region; the test and expected-outcomes paragraph
+above retain the older 20 px and 75–100% treatment. This is an unresolved
+expectation mismatch, not a new native clipping observation. The earlier passing
+logs below apply only to their recorded tuning and source snapshots.
+
 2026-10-16 header/fade follow-up: the
 [initial regression](../evidence/2026-10-16-header-fade/before.log) reproduced
 the viewport clipping below the header. The first overlapping preview was

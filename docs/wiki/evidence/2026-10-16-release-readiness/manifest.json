@@ -1,0 +1,28 @@
+{
+  "revision": "c11b2dc582a2e96f8d1a7d6fcafea66dc17037e5",
+  "tree": "3584a1f1db42e2e2f53ce172ef37972a68d3b94c",
+  "initial_status": "",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "macos": "27.0",
+  "machine": "arm64",
+  "rust": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+  "node": "v22.19.0",
+  "python": "3.13.0",
+  "sidecar_version": "herdr 0.8.2-chartr.5a2dee700eee.identity.9ed02822c877",
+  "sidecar_sha256": "93ee0fc1f06fbe27e9150e9eeb6afcb7f2bbfdc2ba3efcde28471e5b78e742c3",
+  "backend_patch_sha256": "9ed02822c8773c63053cf4d42745fff8758ef5aa57ddb5d4c3c55eec56bdaf70",
+  "backend_test_source_files": {
+    "src/app/mod.rs": "fd944df0b1278676177bb50d09cd103f589aecfee707ff39766a1076ca7ac871",
+    "src/server/handoff.rs": "4bd03373b70a66ea29be77ff393c6b533eb936cafc4b0a0c73de274f111c612a",
+    "src/server/headless/bootstrap.rs": "1bafaa0977e55ef41464b5fa6d407e39cb77574897e001ee57cabdc5eae963f6",
+    "src/server/headless/lifecycle.rs": "422943e561caa01e7e3c1879e14392b7db3dafa3547f0f7b35a429254e590a3a"
+  },
+  "product_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "normal_app_build": {
+    "path": "target/debug/chartr",
+    "sha256": "c6cadb72c74e977008fa36a0972db6f49a15db5ecaea4ed6099c6d168a30df24",
+    "size": 198826024,
+    "sidecar_sha256": "93ee0fc1f06fbe27e9150e9eeb6afcb7f2bbfdc2ba3efcde28471e5b78e742c3",
+    "completed_at": "2026-10-15T22:11:31.063900+00:00"
+  }
+}

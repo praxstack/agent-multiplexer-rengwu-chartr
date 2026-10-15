@@ -1,7 +1,7 @@
 ---
 title: Terminal interaction and search
 section: Features
-updated: 2026-10-15
+updated: 2026-10-16
 basis: Source-reviewed migration baseline
 ---
 # Terminal interaction and search
@@ -101,6 +101,11 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 16 release-readiness run](../verification/runs/2026-10-16-release-readiness.md)
+at `c11b2dc5` passes all three real-session tests with the exact patched sidecar,
+including direct attach, crash recovery and shell-versus-TUI mouse handling.
+The broader native terminal input/accessibility matrix is not rerun.
 
 The [October 15 lean recheck](../verification/runs/2026-10-15-lean-attention.md)
 records the current implementation and its exact coverage. Its

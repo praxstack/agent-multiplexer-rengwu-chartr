@@ -1,0 +1,12 @@
+{
+  "secrets": {
+    "query_exit_code": 0,
+    "required_name": "AUR_SSH_PRIVATE_KEY",
+    "present": false
+  },
+  "variables": {
+    "query_exit_code": 0,
+    "required_name": "AUR_SSH_KNOWN_HOSTS",
+    "present": false
+  }
+}
