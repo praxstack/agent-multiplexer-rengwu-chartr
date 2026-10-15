@@ -112,6 +112,120 @@ struct TreeHarness {
     actions: Vec<super::Action>,
 }
 
+struct TabDragHarness {
+    space: super::SpaceEntries,
+    sidebar: bool,
+    sorter: super::sidebar::SpaceSorter,
+}
+
+impl Render for TabDragHarness {
+    fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
+        let on: super::Emit = std::rc::Rc::new(|_, _, _| {});
+        let chrome = if self.sidebar {
+            super::sidebar::render(std::slice::from_ref(&self.space), on, &self.sorter, window, cx)
+                .into_any_element()
+        } else {
+            super::tabs::render(
+                &self.space.entries,
+                None,
+                div().into_any_element(),
+                div().into_any_element(),
+                on,
+                window,
+                cx,
+            )
+            .into_any_element()
+        };
+        div().w(px(if self.sidebar { 280. } else { 640. })).h(px(400.)).child(chrome)
+    }
+}
+
+#[gpui::test]
+fn dragged_tabs_paint_a_solid_rounded_surface_without_changing_size(cx: &mut TestAppContext) {
+    cx.update(|cx| {
+        ::settings::init(cx);
+        theme::init(theme::LoadThemes::JustBase, cx);
+        crate::fonts::install(&crate::settings::ResolvedSettings::default(), cx);
+        cx.set_global(crate::settings::SettingsStore::bare());
+    });
+    for sidebar in [true, false] {
+        for selected in [false, true] {
+            let (_, cx) = cx.add_window_view(|_, _| TabDragHarness {
+                sidebar,
+                sorter: super::sidebar::SpaceSorter::new(super::sidebar::CARD_GAP),
+                space: super::SpaceEntries {
+                    id: 10_u64.into(),
+                    name: "Project".into(),
+                    collapsed: false,
+                    active: true,
+                    removable: true,
+                    available: true,
+                    entries: (1..=3)
+                        .map(|id| super::Entry {
+                            space: 10_u64.into(),
+                            space_key: "test".into(),
+                            key: serde_json::from_value(serde_json::json!(id)).unwrap(),
+                            tab: serde_json::from_value(serde_json::json!(id)).unwrap(),
+                            pane: serde_json::from_value(serde_json::json!(1)).unwrap(),
+                            index: id - 1,
+                            title: format!("Session {id}"),
+                            icon_path: None,
+                            status: None,
+                            process_running: false,
+                            ended: false,
+                            bell: false,
+                            unread: false,
+                            selected: id == if selected { 2 } else { 1 },
+                            closable: true,
+                            grouped: false,
+                        })
+                        .collect(),
+                },
+            });
+            cx.run_until_parked();
+            let selector = if sidebar { "SESSION_TAB_2" } else { "WORKSPACE_TAB_2" };
+            let original = cx.debug_bounds(selector).unwrap();
+            let source = original.center();
+            let target =
+                source + if sidebar { point(px(0.), px(-18.)) } else { point(px(-45.), px(0.)) };
+            cx.simulate_mouse_down(source, MouseButton::Left, Modifiers::none());
+            cx.simulate_mouse_move(
+                source + point(px(8.), px(0.)),
+                MouseButton::Left,
+                Modifiers::none(),
+            );
+            cx.simulate_mouse_move(target, MouseButton::Left, Modifiers::none());
+            cx.run_until_parked();
+            let held = cx.debug_bounds(selector).unwrap();
+            assert_eq!(held.size, original.size, "sidebar={sidebar}, selected={selected}");
+            assert!(held.contains(&target));
+            cx.update(|window, cx| {
+                let colors = cx.theme().colors();
+                let overlay = if sidebar {
+                    let colors = crate::settings::sidebar_theme_colors(cx.theme());
+                    if selected { colors.session_active } else { colors.session_hover }
+                } else if selected {
+                    colors.ghost_element_selected
+                } else {
+                    colors.ghost_element_hover
+                };
+                let background = colors.background.blend(colors.panel_background).blend(overlay);
+                assert_eq!(background.a, 1.);
+                assert!(window.painted_quads().iter().any(|quad| {
+                    quad.bounds == held.scale(window.scale_factor())
+                        && quad.background == gpui::solid_background(background)
+                        && quad.corner_radii.top_left > gpui::ScaledPixels(0.)
+                }), "dragged tab must cover underlying labels within its own rounded bounds: sidebar={sidebar}, selected={selected}");
+                cx.stop_active_drag(window);
+                window.refresh();
+            });
+            cx.simulate_mouse_up(target, MouseButton::Left, Modifiers::none());
+            cx.run_until_parked();
+            assert_eq!(cx.debug_bounds(selector).unwrap(), original);
+        }
+    }
+}
+
 impl Render for TreeHarness {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let on = cx.listener(|this, action: &super::Action, _, cx| {

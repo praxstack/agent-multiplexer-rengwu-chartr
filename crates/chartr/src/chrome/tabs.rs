@@ -66,11 +66,13 @@ pub fn render(
                         .is_some_and(|(space, tab)| space == entry.space && tab.get() == previous)
                 });
                 let separator_visible = placement.previous.is_some()
+                    && !placement.dragging
                     && !previous_selected
                     && !entry.selected
                     && !previous_hovered
                     && hovered != Some((entry.space, entry.tab));
                 let trailing_separator_visible = placement.index + 1 == placement.count
+                    && !placement.dragging
                     && !entry.selected
                     && hovered != Some((entry.space, entry.tab));
                 h_flex()
@@ -80,6 +82,7 @@ pub fn render(
                         placement.index,
                         placement.count,
                         placement.active_index,
+                        placement.dragging,
                         &entry,
                         &hovered_tab,
                         on,
@@ -171,6 +174,7 @@ fn tab(
     index: usize,
     count: usize,
     active_index: Option<usize>,
+    dragging: bool,
     entry: &Entry,
     hovered_tab: &Entity<HoveredTab>,
     on: Emit,
@@ -231,7 +235,7 @@ fn tab(
     .icon_path(entry.icon_path.clone())
     .grouped(entry.grouped)
     .close_slot(close_slot)
-    .build_rounded(hovered, cx)
+    .build_rounded(hovered, dragging, cx)
     .debug_selector(move || format!("WORKSPACE_TAB_{}", close_tab.get()))
     .on_hover(move |is_hovered, window, cx| {
         hovered_tab.update(cx, |hovered, _| {
@@ -346,6 +350,7 @@ mod tests {
                 0,
                 1,
                 None,
+                false,
                 &entry,
                 &hovered,
                 Rc::new(|_, _, _| {}),

@@ -359,15 +359,17 @@ impl<'a> ItemTab<'a> {
     /// Inset, rounded variant for the outer strip in Tabbed mode only.
     /// Keep the same slots and semantics as pane tabs, with a constant border
     /// and label width so selection never shifts neighboring tabs.
-    pub(crate) fn build_rounded(self, hovered: bool, cx: &App) -> Stateful<Div> {
+    pub(crate) fn build_rounded(self, hovered: bool, dragging: bool, cx: &App) -> Stateful<Div> {
         let colors = cx.theme().colors();
         let panel_background = colors.background.blend(colors.panel_background);
         let background = if self.selected {
             panel_background.blend(colors.ghost_element_selected)
+        } else if dragging {
+            panel_background.blend(colors.ghost_element_hover)
         } else {
             panel_background
         };
-        let hover_background = if self.selected {
+        let hover_background = if self.selected || dragging {
             background
         } else {
             panel_background.blend(colors.ghost_element_hover)
@@ -392,19 +394,23 @@ impl<'a> ItemTab<'a> {
             .border_1()
             .border_color(if self.selected {
                 colors.border_selected
-            } else if hovered {
+            } else if hovered || dragging {
                 colors.border_variant
             } else {
                 transparent_black()
             })
-            .bg(if self.selected {
+            // Normal tabs can blend with the strip; a carried tab must cover
+            // the labels underneath it with a full, opaque rounded surface.
+            .bg(if dragging {
+                background
+            } else if self.selected {
                 colors.ghost_element_selected
             } else if hovered {
                 colors.ghost_element_hover
             } else {
                 transparent_black()
             })
-            .text_color(if self.selected { colors.text } else { colors.text_muted })
+            .text_color(if self.selected || dragging { colors.text } else { colors.text_muted })
             .cursor_pointer()
             .child(h_flex().flex_none().size(px(12.)).justify_center().child(item_indicator(
                 self.activity,
@@ -417,7 +423,7 @@ impl<'a> ItemTab<'a> {
             .child(tab_label(
                 self.title,
                 false,
-                if self.selected || hovered { Color::Default } else { Color::Muted },
+                if self.selected || hovered || dragging { Color::Default } else { Color::Muted },
                 background,
                 hover_background,
                 self.close_slot,

@@ -225,17 +225,20 @@ pub fn render(
                     top_level: true,
                     grouped: entry.grouped,
                 };
-                let row = row(
-                    index,
-                    target_index,
-                    entry,
-                    space.active && entry.selected,
-                    entry.grouped,
-                    session_backgrounds,
-                    on.clone(),
-                    cx,
-                );
-                tabs.push(SortableTab::new(dragged, entry.selected, move |_, _| row));
+                let entry = entry.clone();
+                let on = on.clone();
+                tabs.push(SortableTab::new(dragged, entry.selected, move |placement, cx| {
+                    row(
+                        index,
+                        target_index,
+                        &entry,
+                        active && entry.selected,
+                        placement.dragging,
+                        session_backgrounds,
+                        on,
+                        cx,
+                    )
+                }));
                 index += 1;
             }
             let move_tab = on.clone();
@@ -332,11 +335,12 @@ fn row(
     target_index: usize,
     entry: &Entry,
     selected: bool,
-    grouped: bool,
+    dragging: bool,
     backgrounds: SelectionRowBackgrounds,
     on: Emit,
     cx: &App,
 ) -> AnyElement {
+    let grouped = entry.grouped;
     let close = on.clone();
     let middle_close = on.clone();
     let ungroup = on.clone();
@@ -382,6 +386,10 @@ fn row(
     // the close overlay and fallback drop target; SortableTabList owns sorting.
     let row = div()
         .id(format!("session-drag-{space:?}-{}", entry.tab.get()))
+        .debug_selector({
+            let tab = entry.tab;
+            move || format!("SESSION_TAB_{}", tab.get())
+        })
         .relative()
         .group("session")
         // Keep the gap outside the painted border, with auto width accounting
@@ -390,6 +398,14 @@ fn row(
         .mr(px(6.))
         .flex_none()
         .rounded_sm()
+        .when(dragging, |row| {
+            let colors = cx.theme().colors();
+            row.bg(colors.background.blend(colors.panel_background).blend(if selected {
+                backgrounds.selected
+            } else {
+                backgrounds.hover
+            }))
+        })
         .border_1()
         .border_color(if selected {
             cx.theme().colors().border_selected
@@ -409,7 +425,16 @@ fn row(
         })
         .child(
             selection_row(format!("session-{space:?}-{}", entry.tab.get()), selected)
-                .backgrounds(backgrounds)
+                .backgrounds(if dragging {
+                    // The wrapper paints the solid carried surface, including
+                    // its border. Avoid compositing another hover/selection tint.
+                    SelectionRowBackgrounds {
+                        hover: transparent_black(),
+                        selected: transparent_black(),
+                    }
+                } else {
+                    backgrounds
+                })
                 .aria_role(Role::Tab)
                 .aria_label(if entry.unread {
                     format!("{}, unseen agent attention", entry.title)

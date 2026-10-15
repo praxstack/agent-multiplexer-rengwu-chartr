@@ -24,6 +24,8 @@ pub(crate) struct Placement {
     pub count: usize,
     pub active_index: Option<usize>,
     pub previous: Option<u64>,
+    /// Paint the carried item as a solid surface over its neighbors.
+    pub dragging: bool,
 }
 
 pub(crate) struct SortableTab {
@@ -122,9 +124,9 @@ impl RenderOnce for SortableTabList {
             .enumerate()
             .map(|(index, tab)| {
                 let id = key(&tab.dragged);
-                let placement = Placement { index, count, active_index, previous };
-                previous = Some(id);
                 let held = sorter.read(cx).holds(id);
+                let placement = Placement { index, count, active_index, previous, dragging: held };
+                previous = Some(id);
                 let offset = sorter.read(cx).offset_of(id, now, reduce_motion);
                 let child = (tab.render)(placement, cx);
                 let press = sorter.clone();
@@ -136,7 +138,6 @@ impl RenderOnce for SortableTabList {
                     .when(axis == SortAxis::Vertical, |tab| tab.w_full())
                     .when(axis == SortAxis::Horizontal, |tab| tab.left(offset))
                     .when(axis == SortAxis::Vertical, |tab| tab.top(offset))
-                    .when(held, |tab| tab.shadow_md())
                     .on_mouse_down(MouseButton::Left, move |event, _, cx| {
                         press.update(cx, |sorter, _| sorter.press(axis.coordinate(event.position)));
                     })
@@ -446,7 +447,7 @@ mod tests {
                                 .into_any_element(),
                         ));
                         let tab = if rounded {
-                            tab.build_rounded(false, cx).into_any_element()
+                            tab.build_rounded(false, placement.dragging, cx).into_any_element()
                         } else {
                             tab.build(cx).into_any_element()
                         };
