@@ -1,4 +1,5 @@
 """Exercise sidecar reuse/failure handling without downloading or compiling Herdr."""
+import hashlib
 import io
 import os
 from pathlib import Path
@@ -29,6 +30,13 @@ class FetchTests(unittest.TestCase):
         self.version = pins.split('SUPPORTED_HERDR_VERSION: &str = "')[1].split('"')[0]
         self.upstream_version = pins.split('SUPPORTED_HERDR_UPSTREAM_VERSION: &str = "')[1].split('"')[0]
         self.revision = pins.split('SUPPORTED_HERDR_REVISION: &str = "')[1].split('"')[0]
+        # Exercise real patch application with a tiny source fixture.
+        patch = b"--- a/LICENSE\n+++ b/LICENSE\n@@ -1 +1 @@\n-test license\n+patched license\n"
+        (self.root / 'vendor/herdr/terminal-identity.patch').write_bytes(patch)
+        self.patch_hash = hashlib.sha256(patch).hexdigest()
+        pin_path = self.root / 'crates/chartr-herdr/src/lib.rs'
+        pin_path.write_text(pins.replace(pins.split('SUPPORTED_HERDR_PATCH_SHA256: &str =')[1].split('"')[1], self.patch_hash))
+        self.source_key = self.revision + '-' + self.patch_hash
         self.binary = self.root / 'vendor/herdr' / self.target / 'herdr'
         self.bin = self.root / 'fake-bin'
         self.bin.mkdir()
@@ -94,7 +102,7 @@ cp "$TEST_ROOT/fixture.tar.gz" "$2"
         for build in builds:
             self.assertTrue(build.startswith(f'+{self.toolchain} build --release --locked'))
             self.assertIn('--timings', build)
-        self.assertTrue((self.root / 'vendor/herdr/.build/source' / self.revision).is_dir())
+        self.assertTrue((self.root / 'vendor/herdr/.build/source' / self.source_key).is_dir())
         self.assertTrue((self.root / 'vendor/herdr/.build/target' / self.target / 'release/herdr').exists())
 
     def test_stale_sidecar_is_replaced(self):
@@ -102,19 +110,37 @@ cp "$TEST_ROOT/fixture.tar.gz" "$2"
         result = self.run_fetch()
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn(self.version, self.binary.read_text())
+        self.assertEqual((self.root / 'vendor/herdr/LICENSE').read_text(), 'patched license\n')
 
     def test_failed_build_preserves_previous_binary(self):
         self.seed_binary('old')
         result = self.run_fetch(FAIL_BUILD='1')
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('old', self.binary.read_text())
-        self.assertTrue((self.root / 'vendor/herdr/.build/source' / self.revision).is_dir())
+        self.assertTrue((self.root / 'vendor/herdr/.build/source' / self.source_key).is_dir())
 
     def test_wrong_built_version_is_not_published(self):
         self.seed_binary('old')
         result = self.run_fetch(TEST_VERSION='incorrect')
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('old', self.binary.read_text())
+
+    def test_changed_patch_cannot_reuse_old_binary(self):
+        self.seed_binary(self.version)
+        with (self.root / 'vendor/herdr/terminal-identity.patch').open('ab') as patch:
+            patch.write(b'changed')
+        result = self.run_fetch()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('patch hash does not match', result.stderr)
+        self.assertFalse((self.root / 'downloads').exists())
+
+    def test_patch_failure_preserves_previous_binary_and_does_not_cache_source(self):
+        self.seed_binary('old')
+        self.script('patch', 'exit 23')
+        result = self.run_fetch()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('old', self.binary.read_text())
+        self.assertFalse((self.root / 'vendor/herdr/.build/source' / self.source_key).exists())
 
     def test_invalid_target_fails_before_network(self):
         result = self.run_fetch('x86_64-unknown-linuz-gnu')

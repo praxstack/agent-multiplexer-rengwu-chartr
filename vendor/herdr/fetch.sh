@@ -36,6 +36,21 @@ revision=$(sed -n \
     exit 1
 }
 
+# A tracked patch is part of the exact executable identity. Validate it even
+# when reusing a binary so edits cannot silently ship under an old version.
+patch_file="$here/terminal-identity.patch"
+patch_hash=$(tr '\n' ' ' < "$root/crates/chartr-herdr/src/lib.rs" |
+    sed -n 's/.*pub const SUPPORTED_HERDR_PATCH_SHA256: &str = *"\([^"]*\)";.*/\1/p')
+if command -v sha256sum >/dev/null 2>&1; then
+    actual_patch_hash=$(sha256sum "$patch_file" | cut -d ' ' -f 1)
+else
+    actual_patch_hash=$(shasum -a 256 "$patch_file" | cut -d ' ' -f 1)
+fi
+[ -n "$patch_hash" ] && [ "$actual_patch_hash" = "$patch_hash" ] || {
+    echo "Herdr terminal identity patch hash does not match the pin" >&2
+    exit 1
+}
+
 # Herdr does not support chartr's Windows control plane; keep accepted targets
 # explicit so a typo cannot silently produce a sidecar in the wrong directory.
 supported_target() {
@@ -110,7 +125,7 @@ case $("$zig_bin" version) in
 esac
 
 work="$here/.build"
-source_dir="$work/source/$revision"
+source_dir="$work/source/$revision-$patch_hash"
 mkdir -p "$work/source"
 if [ ! -d "$source_dir" ]; then
     download=$(mktemp -d "$work/source/download.XXXXXX")
@@ -121,6 +136,10 @@ if [ ! -d "$source_dir" ]; then
         -o "$download/herdr.tar.gz"
     mkdir "$download/source"
     tar -xzf "$download/herdr.tar.gz" -C "$download/source" --strip-components=1
+    (
+        cd "$download/source"
+        patch --batch --fuzz=0 -p1 -i "$patch_file"
+    )
     mv "$download/source" "$source_dir"
     rm -rf "$download"
     trap - EXIT HUP INT TERM
@@ -133,7 +152,7 @@ actual_upstream_version=$(sed -n \
     exit 1
 }
 
-build_id=$(printf '%s' "$revision" | cut -c1-12)
+build_id="$(printf '%s' "$revision" | cut -c1-12).identity.$(printf '%s' "$patch_hash" | cut -c1-12)"
 for target in $pending; do
     echo "building Herdr $version for $target"
     (

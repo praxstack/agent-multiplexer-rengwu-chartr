@@ -1,0 +1,135 @@
+--- a/src/app/mod.rs
++++ b/src/app/mod.rs
+@@ -678,6 +678,40 @@
+     }
+ 
+     #[cfg(unix)]
++    pub(crate) fn restore_terminal_identities(
++        &mut self,
++        ids: &std::collections::HashMap<u32, crate::terminal::TerminalId>,
++    ) -> io::Result<()> {
++        let unique: std::collections::HashSet<_> = ids.values().collect();
++        if unique.len() != ids.len() {
++            return Err(io::Error::other("duplicate handoff terminal identity"));
++        }
++        let aliases = &self.state.pane_id_aliases;
++        for ws in &mut self.state.workspaces {
++            for tab in &mut ws.tabs {
++                for (pane_id, pane) in &mut tab.panes {
++                    let old_raw = aliases
++                        .iter()
++                        .find_map(|(old, new)| (new == pane_id).then_some(*old))
++                        .unwrap_or(pane_id.raw());
++                    let Some(id) = ids.get(&old_raw) else {
++                        continue;
++                    };
++                    let previous = std::mem::replace(&mut pane.attached_terminal_id, id.clone());
++                    if let Some(mut terminal) = self.state.terminals.remove(&previous) {
++                        terminal.id = id.clone();
++                        self.state.terminals.insert(id.clone(), terminal);
++                    }
++                    if let Some(runtime) = self.terminal_runtimes.remove(&previous) {
++                        self.terminal_runtimes.insert(id.clone(), runtime);
++                    }
++                }
++            }
++        }
++        Ok(())
++    }
++
++    #[cfg(unix)]
+     pub fn unpause_handoff_readers(&self) {
+         self.terminal_runtimes.set_handoff_readers_paused(false);
+     }
+@@ -978,6 +1012,32 @@
+             api_rx,
+             crate::api::EventHub::default(),
+         )
++    }
++
++    #[test]
++    #[cfg(unix)]
++    fn handoff_preserves_all_terminal_identities_and_invariants() {
++        let mut app = test_app();
++        app.state = state::AppState::test_with_adversarial_identity_state();
++        app.state.assert_invariants_for_test();
++        let mut mapping = std::collections::HashMap::new();
++        for ws in &app.state.workspaces {
++            for tab in &ws.tabs {
++                for (pane, _) in &tab.panes {
++                    mapping.insert(pane.raw(), crate::terminal::TerminalId::alloc());
++                }
++            }
++        }
++        app.restore_terminal_identities(&mapping).unwrap();
++        app.state.assert_invariants_for_test();
++        for ws in &app.state.workspaces {
++            for tab in &ws.tabs {
++                for (pane, state) in &tab.panes {
++                    assert_eq!(&state.attached_terminal_id, &mapping[&pane.raw()]);
++                }
++            }
++        }
++        assert_eq!(app.state.terminals.len(), mapping.len());
+     }
+ 
+     fn unique_temp_path(name: &str) -> std::path::PathBuf {
+--- a/src/server/handoff.rs
++++ b/src/server/handoff.rs
+@@ -44,6 +44,8 @@
+     /// Absent from manifests written before this field existed.
+     #[serde(default)]
+     pub api_window_title: Option<String>,
++    #[serde(default)]
++    pub terminal_ids: std::collections::HashMap<u32, crate::terminal::TerminalId>,
+ }
+ 
+ #[cfg(unix)]
+@@ -320,6 +322,7 @@
+         snapshot,
+         panes,
+         api_window_title,
++        terminal_ids: Default::default(),
+     }
+ }
+ 
+--- a/src/server/headless/bootstrap.rs
++++ b/src/server/headless/bootstrap.rs
+@@ -144,7 +144,7 @@
+         .map_err(io::Error::other)?;
+ 
+     let result = rt.block_on(async {
+-        let app = app::App::new_from_handoff(
++        let mut app = app::App::new_from_handoff(
+             &loaded_config.config,
+             config::config_diagnostic_summary(&loaded_config.diagnostics),
+             api_rx,
+@@ -152,6 +152,7 @@
+             &received.manifest.snapshot,
+             &mut imports,
+         )?;
++        app.restore_terminal_identities(&received.manifest.terminal_ids)?;
+         crate::server::handoff::report_restored(&mut received.stream)?;
+         if std::env::var("HERDR_TEST_HANDOFF_IMPORT_FAIL").as_deref() == Ok("after_restored") {
+             return Err(io::Error::other(
+--- a/src/server/headless/lifecycle.rs
++++ b/src/server/headless/lifecycle.rs
+@@ -109,13 +109,17 @@
+             .iter()
+             .map(|(_, runtime)| runtime.clone())
+             .collect();
+-        let manifest = crate::server::handoff::manifest_for(
++        let mut manifest = crate::server::handoff::manifest_for(
+             snapshot,
+             panes,
+             params.expected_protocol,
+             params.expected_version,
+             self.api_window_title.clone(),
+         );
++        manifest.terminal_ids = pane_by_terminal
++            .iter()
++            .map(|(id, raw)| (*raw, id.clone()))
++            .collect();
+         let mut import_child = match crate::server::handoff::spawn_handoff_import(
+             import_exe.as_deref(),
+             &socket_path,
