@@ -86,7 +86,7 @@ impl SettingsWindow {
         ));
         fields.push(setting_field(
             "Show status bar",
-            "Show persistent plugin and Mobile Companion activity at the bottom of the workspace.",
+            "Show background activity at the bottom of the workspace.",
             Switch::new("show-status-bar", show_status_bar.into())
                 .tab_index(0isize)
                 .aria_label("Show status bar")
