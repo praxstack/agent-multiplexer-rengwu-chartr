@@ -1,5 +1,4 @@
 use std::{any::Any, fmt::Debug, ops::Not, time::Duration};
-use web_time::Instant;
 
 use gpui::{
     Along, Anchor, App, AppContext as _, Axis as ScrollbarAxis, BorderStyle, Bounds, ContentMask,
@@ -21,6 +20,7 @@ use crate::scrollbars::{ScrollbarAutoHide, ScrollbarVisibility, ShowScrollbar};
 
 const SCROLLBAR_HIDE_DELAY_INTERVAL: Duration = Duration::from_secs(1);
 const SCROLLBAR_HIDE_DURATION: Duration = Duration::from_millis(400);
+const SCROLLBAR_HOVER_HIDE_DURATION: Duration = Duration::from_millis(800);
 const SCROLLBAR_SHOW_DURATION: Duration = Duration::from_millis(50);
 
 pub const EDITOR_SCROLLBAR_WIDTH: Pixels = ScrollbarStyle::Editor.to_pixels();
@@ -406,8 +406,8 @@ impl Scrollbars {
         Self::new_with_setting(show_along, |_| ShowScrollbar::Always)
     }
 
-    /// Reveal while the pointer is in the container, and retain mouse handling
-    /// throughout a thumb drag even when the pointer leaves the container.
+    /// Reveal while the pointer is in the container, then fade out on exit.
+    /// Retain mouse handling throughout a thumb drag outside the container.
     pub fn on_hover(show_along: ScrollAxes) -> Self {
         let mut scrollbars = Self::always_visible(show_along);
         scrollbars.hover_only = true;
@@ -495,7 +495,7 @@ impl<ScrollHandle: ScrollableHandle> Scrollbars<ScrollHandle> {
         }
     }
 
-    /// Override the theme's thumb colors for a surface with a different background.
+    /// Override the theme's thumb colors, preserving their alpha for overlays.
     pub fn thumb_colors(mut self, normal: Hsla, hovered: Hsla, active: Hsla) -> Self {
         self.thumb_colors = Some([normal, hovered, active]);
         self
@@ -747,10 +747,24 @@ impl<T: ScrollableHandle> ScrollbarState<T> {
     }
 
     fn show_scrollbars(&mut self, window: &mut Window, cx: &mut Context<Self>) {
+        if self.hover_only {
+            // Content changes outside the container must not reveal the thumb
+            // or interrupt an exit fade. Re-entry reveals it immediately.
+            if self.parent_hovered(window) || self.is_dragging() {
+                self.set_visibility(VisibilityState::Visible, cx);
+            }
+            return;
+        }
         let visibility = self.show_state.toggle_visible(self.show_behavior);
         self.set_visibility(visibility, cx);
         self._auto_hide_task.take();
         self.schedule_auto_hide(window, cx);
+    }
+
+    fn hide_hover_scrollbars(&mut self, cx: &mut Context<Self>) {
+        if self.hover_only && self.show_state == VisibilityState::Visible && !self.is_dragging() {
+            self.set_visibility(VisibilityState::for_autohide(), cx);
+        }
     }
 
     fn set_show_behavior(
@@ -856,7 +870,12 @@ impl<T: ScrollableHandle> ScrollbarState<T> {
             if state == ThumbState::Inactive {
                 self.schedule_auto_hide(window, cx);
             } else {
-                self.set_visibility(self.show_state.toggle_visible(self.show_behavior), cx);
+                let visibility = if self.hover_only {
+                    VisibilityState::Visible
+                } else {
+                    self.show_state.toggle_visible(self.show_behavior)
+                };
+                self.set_visibility(visibility, cx);
                 self._auto_hide_task.take();
             }
             self.thumb_state = state;
@@ -944,7 +963,11 @@ impl<T: ScrollableHandle> ScrollbarState<T> {
     }
 
     fn thumb_visible(&self, parent_hovered: bool) -> bool {
-        self.visible() && (!self.hover_only || parent_hovered || self.is_dragging())
+        self.visible()
+            && (!self.hover_only
+                || parent_hovered
+                || self.is_dragging()
+                || matches!(self.show_state, VisibilityState::Animating { showing: false, .. }))
     }
 
     #[inline]
@@ -1369,6 +1392,11 @@ impl<T: ScrollableHandle> Element for ScrollbarElement<T> {
                         animation_duration: delta_duration,
                         showing: should_invert,
                     } => {
+                        let delta_duration = if self.state.read(cx).hover_only && !should_invert {
+                            SCROLLBAR_HOVER_HIDE_DURATION
+                        } else {
+                            delta_duration
+                        };
                         if cx.reduce_motion() {
                             self.state.update(cx, |state, _| {
                                 let has_border = state
@@ -1380,8 +1408,8 @@ impl<T: ScrollableHandle> Element for ScrollbarElement<T> {
                             if should_invert { 0.0 } else { DELTA_MAX }
                         } else {
                             window.with_element_state(id.unwrap(), |state, window| {
-                                let state = state.unwrap_or_else(|| Instant::now());
-                                let current = Instant::now();
+                                let current = cx.background_executor().now();
+                                let state = state.unwrap_or(current);
 
                                 let new_delta = DELTA_MAX.min(
                                     current_delta
@@ -1397,9 +1425,9 @@ impl<T: ScrollableHandle> Element for ScrollbarElement<T> {
 
                                 window.request_animation_frame();
                                 let delta = if should_invert {
-                                    DELTA_MAX - current_delta
+                                    DELTA_MAX - new_delta
                                 } else {
-                                    current_delta
+                                    new_delta
                                 };
                                 (ease_in_out(delta), current)
                             })
@@ -1483,7 +1511,11 @@ impl<T: ScrollableHandle> Element for ScrollbarElement<T> {
                         blend_color.min(blend_color.alpha(MAXIMUM_OPACITY))
                     };
 
-                    let mut thumb_color = blending_color.blend(thumb_base_color);
+                    let mut thumb_color = if state.thumb_colors.is_some() {
+                        thumb_base_color
+                    } else {
+                        blending_color.blend(thumb_base_color)
+                    };
 
                     if !hovered && let Some(fade) = autohide_fade {
                         thumb_color.fade_out(fade);
@@ -1657,9 +1689,7 @@ impl<T: ScrollableHandle> Element for ScrollbarElement<T> {
                                 }
                                 ParentHoverEvent::Exited => {
                                     state.set_thumb_state(ThumbState::Inactive, window, cx);
-                                    if state.hover_only {
-                                        cx.notify();
-                                    }
+                                    state.hide_hover_scrollbars(cx);
                                 }
                                 _ => {}
                             }
@@ -1682,6 +1712,7 @@ impl<T: ScrollableHandle> Element for ScrollbarElement<T> {
 
                         if !state.parent_hovered(window) {
                             state.set_thumb_state(ThumbState::Inactive, window, cx);
+                            state.hide_hover_scrollbars(cx);
                             state.schedule_auto_hide(window, cx);
                             return;
                         }

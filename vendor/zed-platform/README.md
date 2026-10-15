@@ -32,8 +32,10 @@ chartr patches the native platform and presentation seams:
   they can appear above webviews. Tooltip creation is cancelled on dismissal
   and checked against the active parent window; existing tooltips close when
   their parent loses focus, preventing them from raising a background workspace.
-  Scrollbars also support container-hover visibility that retains input handling
-  during thumb drags, plus surface-specific thumb colors for sidebar contrast.
+  Scrollbars also support container-hover visibility with an 800 ms exit fade,
+  immediate reveal on re-entry, and input handling retained during thumb drags.
+  Reduced motion skips the fade. Surface-specific thumb colors preserve alpha
+  so sidebar thumbs can overlay content translucently.
   Fixed-width context menus size the bordered surface, keeping their item
   highlights equally inset on both sides of a native popup.
 

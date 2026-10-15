@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use gpui::{Context, Modifiers, MouseButton, Render, ScrollHandle, TestAppContext, point};
 use ui::{ScrollAxes, Scrollbars, WithScrollbar, prelude::*};
 
@@ -40,6 +42,9 @@ fn sidebar_scrollbar_drags_past_the_container_and_releases(cx: &mut TestAppConte
     let handle = ScrollHandle::new();
     let (_, cx) = cx.add_window_view(|_, _| ScrollbarHarness { handle: handle.clone() });
     cx.simulate_mouse_move(point(px(250.), px(250.)), None, Modifiers::none());
+    cx.executor().advance_clock(Duration::from_millis(900));
+    cx.update(|window, _| window.refresh());
+    cx.run_until_parked();
     let hidden_quad_count = cx.update(|window, _| window.painted_quads().len());
     cx.simulate_mouse_move(point(px(50.), px(50.)), None, Modifiers::none());
     assert_eq!(
@@ -65,12 +70,16 @@ fn sidebar_scrollbar_drags_past_the_container_and_releases(cx: &mut TestAppConte
     cx.simulate_mouse_up(outside, MouseButton::Left, Modifiers::none());
     assert_eq!(
         cx.update(|window, _| window.painted_quads().len()),
-        hidden_quad_count,
-        "releasing outside must hide the thumb",
+        hidden_quad_count + 1,
+        "releasing outside starts a fade instead of hiding the thumb immediately",
     );
     let released_offset = handle.offset();
     cx.simulate_mouse_move(point(px(250.), px(50.)), None, Modifiers::none());
     assert_eq!(handle.offset(), released_offset, "release must end scrolling");
+    cx.executor().advance_clock(Duration::from_millis(900));
+    cx.update(|window, _| window.refresh());
+    cx.run_until_parked();
+    assert_eq!(cx.update(|window, _| window.painted_quads().len()), hidden_quad_count);
 }
 
 #[gpui::test]
@@ -90,11 +99,11 @@ fn sidebar_scrollbar_has_contrast_in_every_theme(cx: &mut TestAppContext) {
             let colors = &theme.styles.colors;
             let sidebar = crate::settings::sidebar_theme_colors(&theme);
             for thumb in crate::components::scrollbar_thumb_colors(colors) {
-                assert_eq!(thumb.a, 1.);
+                assert!(thumb.a > 0. && thumb.a < 1., "{name}: thumbs must be translucent");
                 for background in
                     [colors.panel_background, sidebar.card_active, sidebar.card_inactive]
                 {
-                    let a = luminance(thumb);
+                    let a = luminance(background.blend(thumb));
                     let b = luminance(background);
                     let contrast = (a.max(b) + 0.05) / (a.min(b) + 0.05);
                     assert!(contrast >= 3., "{name}: scrollbar contrast is only {contrast:.2}:1");
