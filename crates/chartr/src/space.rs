@@ -523,7 +523,7 @@ impl Space {
         }
     }
 
-    pub fn entries(&self, space: gpui::EntityId) -> Vec<Entry> {
+    pub fn entries(&self, space: gpui::EntityId, cx: &gpui::App) -> Vec<Entry> {
         self.layout
             .tabs()
             .iter()
@@ -553,6 +553,11 @@ impl Space {
                     process_running: !grouped && item.process_running(),
                     ended: !grouped && item.ended(),
                     bell: !grouped && item.as_session().is_some_and(SessionItem::bell),
+                    unread: tab.layout.item_ids().any(|id| {
+                        self.items.get(&id).and_then(Item::as_session).is_some_and(|item| {
+                            crate::attention::unread(&item.session.info.terminal.0, cx)
+                        })
+                    }),
                     selected: self.layout.active_tab_id() == Some(tab.id),
                     closable: true,
                     grouped,
@@ -1618,7 +1623,7 @@ mod tests {
                 Some("/plugins/hello/icons/WavingHand01Icon.svg")
             );
             assert_eq!(
-                space.entries(space_entity)[0].icon_path.as_deref(),
+                space.entries(space_entity, cx)[0].icon_path.as_deref(),
                 Some("/plugins/hello/icons/WavingHand01Icon.svg")
             );
             assert!(!space.item(launcher).unwrap().is_plugin_launcher());
@@ -1630,7 +1635,7 @@ mod tests {
         cx.read(|cx| {
             let space = space.read(cx);
             assert_eq!(space.item(launcher).unwrap().title(), "Example Page");
-            assert_eq!(space.entries(space_entity)[0].title, "Example Page");
+            assert_eq!(space.entries(space_entity, cx)[0].title, "Example Page");
         });
 
         space.update(cx, |space, cx| space.act(Action::Close { space: None, item: launcher }, cx));

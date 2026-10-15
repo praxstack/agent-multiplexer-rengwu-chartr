@@ -223,6 +223,25 @@ impl StateStore {
         Ok(Snapshot { window, spaces })
     }
 
+    /// App-lifetime attention is independent of window/layout snapshots.
+    pub fn load_attention(&self) -> Result<Option<String>> {
+        Ok(self
+            .connection
+            .query_row("SELECT value_json FROM app_state WHERE key = 'attention'", [], |row| {
+                row.get(0)
+            })
+            .optional()?)
+    }
+
+    pub fn save_attention(&mut self, json: &str) -> Result<()> {
+        self.connection.execute(
+            "INSERT INTO app_state (key, value_json) VALUES ('attention', ?1)
+             ON CONFLICT(key) DO UPDATE SET value_json = excluded.value_json",
+            [json],
+        )?;
+        Ok(())
+    }
+
     pub fn save(&mut self, snapshot: &Snapshot) -> Result<()> {
         let transaction = self.connection.transaction()?;
         transaction.execute(

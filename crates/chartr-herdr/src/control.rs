@@ -488,6 +488,13 @@ impl Client {
         Ok(bounded.describe(list.panes))
     }
 
+    /// Lightweight namespace-wide activity snapshot, including unmounted terminals.
+    /// Avoid per-pane process/title lookups for the app-lifetime attention monitor.
+    pub fn session_states(&self) -> Result<Vec<Session>> {
+        let list: PaneList = self.call("pane.list", &PaneListParams { workspace_id: None })?;
+        Ok(list.panes.into_iter().map(Session::from).collect())
+    }
+
     /// Decorate Herdr panes with the same live titles used by chartr-rs:
     /// detected agent, foreground process, then custom tab label or idle shell.
     ///

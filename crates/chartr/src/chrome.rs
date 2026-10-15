@@ -330,7 +330,11 @@ impl<'a> ItemTab<'a> {
         Tab::new(self.id)
             .fill_width()
             .role(Role::Tab)
-            .aria_label(self.aria_label)
+            .aria_label(if self.activity.unread {
+                format!("{}, unseen agent attention", self.aria_label)
+            } else {
+                self.aria_label.to_string()
+            })
             .aria_selected(self.selected)
             .position(self.position)
             .toggle_state(self.selected)
@@ -372,7 +376,11 @@ impl<'a> ItemTab<'a> {
             .id(self.id)
             .group("")
             .role(Role::Tab)
-            .aria_label(self.aria_label)
+            .aria_label(if self.activity.unread {
+                format!("{}, unseen agent attention", self.aria_label)
+            } else {
+                self.aria_label.to_string()
+            })
             .aria_selected(self.selected)
             .flex_none()
             .w_full()
@@ -440,6 +448,7 @@ pub struct Entry {
     pub ended: bool,
     /// Zed's terminal emulator received BEL since the terminal last handled input.
     pub bell: bool,
+    pub unread: bool,
     pub selected: bool,
     pub closable: bool,
     pub grouped: bool,
@@ -452,6 +461,7 @@ impl Entry {
             process_running: self.process_running,
             ended: self.ended,
             bell: self.bell,
+            unread: self.unread,
         }
     }
 }
@@ -462,6 +472,7 @@ pub(crate) struct Activity {
     pub process_running: bool,
     pub ended: bool,
     pub bell: bool,
+    pub unread: bool,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -628,7 +639,33 @@ pub fn item_indicator(
     grouped: bool,
     space: &str,
     key: ItemId,
-    _cx: &App,
+    cx: &App,
+) -> AnyElement {
+    div()
+        .relative()
+        .flex_none()
+        .size(px(12.))
+        .child(activity_indicator(activity, icon_path, grouped, space, key))
+        .when(activity.unread, |slot| {
+            slot.child(
+                div()
+                    .absolute()
+                    .top(px(-1.))
+                    .right(px(-3.))
+                    .size(px(5.))
+                    .rounded_full()
+                    .bg(cx.theme().status().info),
+            )
+        })
+        .into_any_element()
+}
+
+fn activity_indicator(
+    activity: Activity,
+    icon_path: Option<SharedString>,
+    grouped: bool,
+    space: &str,
+    key: ItemId,
 ) -> AnyElement {
     let slot = || div().flex_none().size(px(12.)).flex().items_center().justify_center();
     let icon = |name, color| Icon::new(name).size(IconSize::XSmall).color(color);

@@ -255,6 +255,15 @@ impl WorkspaceWindow {
         cx: &mut Context<Self>,
     ) -> Self {
         Self::observe_background_status(cx);
+        if let Some(attention) = crate::attention::service(cx) {
+            cx.observe(&attention, |_, _, cx| cx.notify()).detach();
+        }
+        cx.observe_window_activation(window, |this, window, cx| {
+            if let Some(terminal) = this.focused_attention_terminal(window, cx) {
+                crate::attention::acknowledge(&terminal, cx);
+            }
+        })
+        .detach();
         let focus = cx.focus_handle();
         cx.on_focus_in(&focus, window, |this, window, cx| {
             this.focus_active_terminal(window, cx);
@@ -522,6 +531,20 @@ impl WorkspaceWindow {
                 return;
             };
             let view = crate::terminal_host::new_view(terminal.clone(), window, cx);
+            let attention_space = space.clone();
+            cx.on_focus(&view.read(cx).focus_handle(cx), window, move |_, window, cx| {
+                if window.is_window_active() {
+                    let terminal = attention_space
+                        .read(cx)
+                        .item(id)
+                        .and_then(crate::item::Item::as_session)
+                        .map(|item| item.session.info.terminal.0.clone());
+                    if let Some(terminal) = terminal {
+                        crate::attention::acknowledge(&terminal, cx);
+                    }
+                }
+            })
+            .detach();
             space.update(cx, |space, _| space.install_terminal_view(id, view.clone()));
             cx.subscribe(&terminal, |_, _, event, cx| {
                 let terminal::Event::Open(terminal::MaybeNavigationTarget::PathLike(target)) =
@@ -581,6 +604,55 @@ impl WorkspaceWindow {
 
     fn active_space(&self) -> Option<&Entity<Space>> {
         self.active.as_ref()
+    }
+
+    pub(crate) fn focused_attention_terminal(&self, window: &Window, cx: &App) -> Option<String> {
+        if !window.is_window_active() {
+            return None;
+        }
+        self.spaces.iter().find_map(|space| {
+            let space = space.read(cx);
+            space.all_item_ids().into_iter().find_map(|id| {
+                let item = space.item(id)?.as_session()?;
+                let view = item.terminal_view()?;
+                view.read(cx)
+                    .focus_handle(cx)
+                    .is_focused(window)
+                    .then(|| item.session.info.terminal.0.clone())
+            })
+        })
+    }
+
+    pub(crate) fn navigate_attention(
+        &mut self,
+        terminal: &str,
+        pane: &str,
+        window: &mut Window,
+        cx: &mut Context<Self>,
+    ) -> bool {
+        let pane = chartr_herdr::PaneId(pane.to_owned());
+        let Some(space) = self
+            .spaces
+            .iter()
+            .find(|space| {
+                space
+                    .read(cx)
+                    .session_item(&pane)
+                    .is_some_and(|item| item.session.info.terminal.0 == terminal)
+            })
+            .cloned()
+        else {
+            return false;
+        };
+        self.active = Some(space.clone());
+        if self.mode == Mode::Inbox {
+            self.mode = self.terminal_mode;
+        }
+        space.update(cx, |space, cx| space.activate_session(&pane, cx));
+        window.activate_window();
+        self.focus_active_terminal(window, cx);
+        cx.notify();
+        true
     }
 
     fn snapshot(&self, cx: &App) -> Snapshot {
@@ -715,7 +787,7 @@ impl WorkspaceWindow {
 
     fn entries(&self, cx: &App) -> Vec<Entry> {
         self.active_space()
-            .map(|space| space.read(cx).entries(space.entity_id()))
+            .map(|space| space.read(cx).entries(space.entity_id(), cx))
             .unwrap_or_default()
     }
 
@@ -731,7 +803,7 @@ impl WorkspaceWindow {
                     active: self.active.as_ref() == Some(space),
                     removable: read.kind() == SpaceKind::Registered,
                     available: read.available(),
-                    entries: read.entries(space.entity_id()),
+                    entries: read.entries(space.entity_id(), cx),
                 }
             })
             .collect()

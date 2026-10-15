@@ -629,6 +629,9 @@ impl WorkspaceWindow {
                 let process_running = item.process_running();
                 let ended = item.ended();
                 let bell = item.as_session().is_some_and(crate::item::SessionItem::bell);
+                let unread = item.as_session().is_some_and(|item| {
+                    crate::attention::unread(&item.session.info.terminal.0, cx)
+                });
                 let position = chrome::tab_position(index, pane.items().len(), active_index);
                 let select = *id;
                 let close = *id;
@@ -667,7 +670,7 @@ impl WorkspaceWindow {
                     &space_key,
                     *id,
                 )
-                .activity(chrome::Activity { status, process_running, ended, bell })
+                .activity(chrome::Activity { status, process_running, ended, bell, unread })
                 .icon_path(item.icon_path())
                 .close_slot(Some(close_slot))
                 .build(cx)

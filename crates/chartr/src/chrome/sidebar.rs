@@ -378,7 +378,9 @@ fn row(
             selection_row(format!("session-{space:?}-{}", entry.tab.get()), selected)
                 .backgrounds(backgrounds)
                 .aria_role(Role::Tab)
-                .aria_label(if grouped {
+                .aria_label(if entry.unread {
+                    format!("{}, unseen agent attention", entry.title)
+                } else if grouped {
                     format!("Pane group: {}", entry.title)
                 } else {
                     entry.title.clone()
@@ -387,7 +389,7 @@ fn row(
                     on(Action::Select { space: Some(space), item: select }, window, cx)
                 })
                 .start_slot(div().ml(px(9.)).child(item_indicator(
-                    super::Activity::default(),
+                    super::Activity { unread: entry.unread, ..Default::default() },
                     entry.icon_path.clone().or_else(|| Some("icons/tool_terminal.svg".into())),
                     entry.grouped,
                     &entry.space_key,
@@ -399,7 +401,7 @@ fn row(
                     entry.status.is_some() || entry.ended || entry.bell || entry.process_running,
                     |row| {
                         row.child(item_indicator(
-                            entry.activity(),
+                            super::Activity { unread: false, ..entry.activity() },
                             None,
                             false,
                             &entry.space_key,

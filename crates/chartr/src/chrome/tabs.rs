@@ -337,6 +337,7 @@ mod tests {
                 process_running: false,
                 ended: false,
                 bell: false,
+                unread: false,
                 selected: false,
                 closable: true,
                 grouped: self.grouped,

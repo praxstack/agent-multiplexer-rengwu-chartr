@@ -11,6 +11,7 @@ These guides describe the current Rust working tree. Start with
 | First space, agent setup, and the Wayfinder workflow | [Getting started](getting-started.md) |
 | Spaces, panes, terminals, settings, persistence, and data locations | [Workspace](workspace.md) |
 | Package installation, prerequisites, permissions, and SDK contracts | [Plugins](plugins.md) |
+| Agent notifications and unread terminal dots | [Agent attention](agent-attention.md) |
 | Persistent plugin activity | [Status bar](status-bar.md) |
 | Ordered local and Git skill sources | [Skill sources](../plugins/skills/README.md) |
 | Shared prompt library and editor modals | [Saved Prompts](../plugins/prompts/README.md) |

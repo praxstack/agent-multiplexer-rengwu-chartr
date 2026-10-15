@@ -244,6 +244,7 @@ fn sidebar_tree_collapses_adds_and_sorts_free_sessions(cx: &mut TestAppContext) 
             process_running: false,
             ended: false,
             bell: false,
+            unread: false,
             selected: true,
             closable: true,
             grouped: false,

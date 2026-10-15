@@ -44,6 +44,9 @@ impl WorkspaceWindow {
             let _ = this.update(cx, |this, cx| match result {
                 Ok(infos) => {
                     this.backend_became_ready();
+                    if let Some(client) = this.client.clone() {
+                        crate::attention::connect(client, cx);
+                    }
                     this.distribute(infos, cx);
                     this.start_supervision(cx);
                     cx.notify();
@@ -154,6 +157,9 @@ impl WorkspaceWindow {
             let _ = this.update(cx, |this, cx| match result {
                 Ok(infos) => {
                     this.backend_became_ready();
+                    if let Some(client) = this.client.clone() {
+                        crate::attention::connect(client, cx);
+                    }
                     this.distribute(infos, cx);
                     cx.notify();
                 }
@@ -206,6 +212,9 @@ impl WorkspaceWindow {
                 Ok(infos) => {
                     this.backend_restart_spent = false;
                     this.backend_became_ready();
+                    if let Some(client) = this.client.clone() {
+                        crate::attention::connect(client, cx);
+                    }
                     this.distribute(infos, cx);
                     this.start_supervision(cx);
                     cx.notify();
@@ -274,6 +283,7 @@ impl WorkspaceWindow {
         for (space, infos) in self.spaces.iter().zip(partition_sessions(infos, &owners)) {
             space.update(cx, |space, cx| space.adopt(infos, cx));
         }
+        cx.defer(crate::attention::retry_navigation);
     }
 }
 

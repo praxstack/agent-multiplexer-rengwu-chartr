@@ -16,6 +16,7 @@ mod agent_icons;
 mod agent_plugin;
 mod app;
 mod assets;
+mod attention;
 mod chrome;
 mod components;
 mod conversations;
@@ -119,6 +120,7 @@ fn main() {
         settings_window::init(&keymap, cx);
         cx.set_global(settings.clone());
         cx.set_global(keymap);
+        attention::init(cx);
 
         // A build whose platform layer cannot rasterise glyphs paints every
         // quad and icon correctly and shows not one character. Saying so is
