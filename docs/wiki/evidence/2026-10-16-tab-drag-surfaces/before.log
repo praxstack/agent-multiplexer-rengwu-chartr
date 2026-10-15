@@ -1,0 +1,24 @@
+   Compiling chartr v0.3.0 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 18.27s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`
+     Running unittests src/main.rs (target/debug/deps/chartr-2776c57534a089d4)
+
+running 1 test
+test chrome::sidebar_tests::dragged_tabs_paint_a_solid_rounded_surface_without_changing_size ... FAILED
+
+failures:
+
+---- chrome::sidebar_tests::dragged_tabs_paint_a_solid_rounded_surface_without_changing_size stdout ----
+
+thread 'chrome::sidebar_tests::dragged_tabs_paint_a_solid_rounded_surface_without_changing_size' (1196132) panicked at crates/chartr/src/chrome/sidebar_tests.rs:226:17:
+dragged tab must cover underlying labels within its own rounded bounds: sidebar=true, selected=false
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    chrome::sidebar_tests::dragged_tabs_paint_a_solid_rounded_surface_without_changing_size
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 312 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p chartr --bin chartr`

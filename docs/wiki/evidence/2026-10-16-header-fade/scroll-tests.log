@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.59s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`
+     Running unittests src/main.rs (target/debug/deps/chartr-2776c57534a089d4)
+
+running 3 tests
+test components::scrolling_list::tests::empty_and_fitting_history_has_no_scrollbar_even_on_hover ... ok
+test components::scrolling_list::tests::fade_tracks_scroll_and_hover_thumb_remains_draggable ... ok
+test components::scrolling_list::tests::scrollbar_fades_after_exit_and_reappears_on_reentry ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 311 filtered out; finished in 0.01s
+

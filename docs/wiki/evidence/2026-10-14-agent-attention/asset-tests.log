@@ -1,0 +1,45 @@
+bun test v1.4.3 (c6da4a4d3)
+
+src/integration/assets/herdr-agent-state.test.ts:
+(pass) OpenCode maps the Windows socket marker path to a named pipe endpoint [13.84ms]
+(pass) Kilo maps the Windows socket marker path to a named pipe endpoint [1.32ms]
+(pass) OpenCode stays disabled without the Herdr socket environment [1.28ms]
+(pass) Pi maps the Windows socket marker path to a named pipe endpoint [4.07ms]
+(pass) Pi reload preserves working state when the agent is active [7.95ms]
+(pass) Oh My Pi maps the Windows socket marker path to a named pipe endpoint [1.83ms]
+(pass) Oh My Pi reload preserves working state when the agent is active [7.17ms]
+(pass) OMP accepts POSIX and Windows session paths [0.69ms]
+(pass) Pi reports idle only after the agent settles [47.23ms]
+(pass) Pi ignores RPC sessions even when UI APIs are available [26.70ms]
+(pass) Pi settlement preserves explicit blocked-state precedence [53.57ms]
+(pass) Pi reports the session replacement source [2.65ms]
+(pass) Pi waits for a replacement session report before publishing state [14.06ms]
+(pass) Oh My Pi retries working before a queued idle state [509.55ms]
+(pass) Oh My Pi keeps working when a turn ends with a scheduled continuation [69.75ms]
+(pass) Pi retries working state after an unanswered socket attempt [505.99ms]
+
+src/integration/assets/attention.test.ts:
+(pass) Pi requires final outcome plus explicit non-aborted settlement [64.53ms]
+(pass) Pi prompts deduplicate until end and queued observations keep their session [64.58ms]
+(pass) Pi continuation and session replacement invalidate prior turn outcomes [63.86ms]
+(pass) OpenCode only reports rooted request IDs; idle and error remain silent [65.07ms]
+
+src/integration/assets/opencode/herdr-agent-state.test.ts:
+(pass) serializes lifecycle reports [0.76ms]
+(pass) suppresses redundant same-session updates [0.56ms]
+(pass) does not classify server activity in another root session as a selection [0.12ms]
+(pass) does not classify server-global root creation as a local selection [0.52ms]
+(pass) reports retry status as working [0.43ms]
+(pass) reports child prompts without replacing the root session [0.49ms]
+
+src/integration/assets/opencode/herdr-tui-session.test.ts:
+(pass) reports a root session when only the local route changes [103.25ms]
+(pass) retries an initial selection while Herdr detects the process [127.68ms]
+(pass) does not report root sessions not selected by this TUI [127.86ms]
+(pass) does not replace the root session with a selected child session [127.79ms]
+(pass) stops route polling when the TUI plugin is disposed [127.45ms]
+
+ 31 pass
+ 0 fail
+ 84 expect() calls
+Ran 31 tests across 4 files. [2.20s]

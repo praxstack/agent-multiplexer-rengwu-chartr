@@ -1,8 +1,50 @@
 ---
 title: Decisions
-updated: 2026-10-12
+updated: 2026-10-15
 ---
 # Decisions
+
+## DEC-ATTENTION-005 — Reuse existing detection with best-effort alerts
+
+Accepted October 15 in [questions 15–17](../journal/2026-10-15-grill-1cbbb041-3fb2-41c0-97c7-434cb1dbeff1.md).
+Use Herdr's existing agent detection for attention. Accept occasional false or
+missed alerts, including cancellation or unfamiliar screens appearing inactive.
+The dot and notification mean the agent may need attention, not confirmed
+success or failure. This prioritizes broad upstream-supported coverage and low
+Chartr maintenance over new provider-specific outcome adapters. Explicit terminal
+signals and a combined detector are not selected for this iteration.
+
+Send at most one desktop notification per terminal until the user visits it.
+Exact terminal focus in an active foreground window clears unread attention and
+allows a later event to notify again. Existing group aggregation, retention during
+resumed work, restored unread dots without catch-up notifications, and app-lifetime
+scope remain unchanged. Codex alone is sufficient for the first real-agent
+validation; this is not a Codex-only support policy.
+
+This supersedes the strict uncertainty and confirmed-outcome requirements in
+DEC-ATTENTION-001/003. DEC-ATTENTION-004 records the earlier implementation choice;
+its rich backend contract is no longer a prerequisite for the selected design.
+The interview itself made no product changes. Implementation authorized on October 15
+replaces the rich patch with terminal-identity preservation only. The
+[revised plan](../discussions/agent-attention.md#accepted-simplification-october-15)
+separates the new target from the October 14 implementation and verification.
+
+## DEC-ATTENTION-004 — Carry the required backend changes as a tracked patch
+
+Accepted October 13 in [concise question 14](../journal/2026-10-13-grill-1a7ca491-2a9a-41df-bf41-6294ae40628a.md).
+Keep a Herdr patch in Chartr, applied to the pinned source with a distinct
+reproducible build identity. Chartr owns patch maintenance when upgrading Herdr;
+agent-specific interpretation remains in the backend. The continuing
+work-until-grill instruction covers implementation and verification. No upstream
+submission or separate fork is requested. The [plugin feasibility check](../verification/runs/2026-10-13-agent-attention-plugin.md)
+preceded this choice; it found that current hooks cannot recover lost outcome
+information.
+
+October 14 implementation checkpoint: the tracked patch and Chartr policy are
+implemented locally. [Verification](../verification/runs/2026-10-14-agent-attention.md)
+separates passing checks from remaining native/provider gaps. DEC-ATTENTION-004
+supersedes the earlier no-implementation constraints quoted in decisions 001–003;
+those paragraphs retain their original planning context.
 
 These migration decisions were accepted in the
 [first interview](../journal/2026-10-05-grill-ab31b76a-3123-4152-9f0b-1c822da69430.md)
@@ -68,3 +110,57 @@ it does not authorize controlling the installed app or changing Accessibility
 permissions. [Submitted answer](../journal/2026-10-12-grill-e4ec3c4a-3dec-4cfc-a0f5-5c9f91924f20.md),
 [feature](../features/session-lifecycle.md),
 [implementation and executed verification](../verification/runs/2026-10-12-window-reopen.md).
+
+## DEC-ATTENTION-001 — Agent attention behavior
+
+Accepted 2026-10-12 through the
+[grill-form answers](../journal/2026-10-12-grill-b4cd88bb-d438-4828-a304-f5b77f4dae14.md).
+Unseen completion and input/approval requests receive an accent dot on their
+terminal tab and enclosing group. Focus in an active window acknowledges that
+terminal; visibility in a split does not. Desktop notifications apply when that
+terminal is not focused or Chartr is inactive. Scope is agents only while Chartr
+is running, and uncertain state must not produce guessed alerts.
+
+The user requested comparative research before selecting the detection
+architecture. The [discussion and research](../discussions/agent-attention.md)
+preserves the exact requirements, evidence and proposed reuse of Herdr. This is
+planning authorization only; no implementation or architecture proposal has
+been approved by these answers.
+
+## DEC-ATTENTION-002 — Reuse Herdr for attention detection
+
+Accepted 2026-10-13 when the follow-up form was collected. The user selected
+reuse of Herdr with conservative attention events, then asked for the concrete
+work required for dots and notifications. The
+[answer](../journal/2026-10-12-grill-ff575bf5-cacf-4ab8-868e-46d9ca93c63e.md)
+comes from the round created October 12.
+
+Herdr remains the common detection boundary; Chartr owns one provider-independent
+attention/focus/presentation policy. This resolves the architecture direction
+left open by the first interview. The [proposed implementation](../discussions/agent-attention.md#proposed-implementation)
+maps the remaining work to the backend API, attention model, shared chrome and
+existing GPUI notification service. The user has not authorized implementation
+or accepted every proposed contract/lifecycle detail.
+
+## DEC-ATTENTION-003 — Retain unseen attention and include failures
+
+Accepted 2026-10-13 through the
+[grill-form-concise answers](../journal/2026-10-12-grill-5f286d71-92ef-499d-a8fd-4591f968fade.md).
+Keep a terminal's unread dot until focus, even when its agent resumes working.
+Restore dots for restored sessions after relaunch, without catch-up desktop
+notifications. Include confirmed agent failures in the same dot/notification
+policy, labeled as failures; normal exits, user cancellations and uncertain
+detection do not qualify.
+
+These choices preserve unseen attention independently of activity and add
+dependable failure alerts to DEC-ATTENTION-001's event scope. They resolve the
+remaining user-level retention/failure questions. The
+[implementation design](../discussions/agent-attention.md#proposed-implementation)
+still requires backend contract and signal verification; product implementation
+remains outside the authorized discussion scope.
+
+The user subsequently authorized investigation and validation with
+`work-until-grill`, retaining the no-implementation constraint. The
+[contract investigation](../verification/runs/2026-10-13-agent-attention-contract.md)
+records executed gaps and a revised technical proposal. It does not change these
+accepted product decisions or establish live-provider coverage.

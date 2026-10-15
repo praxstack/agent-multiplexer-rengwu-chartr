@@ -1,0 +1,76 @@
+import hashlib,json,os,pathlib,socket,subprocess,tempfile,time,shlex
+OUT=pathlib.Path(__file__).parent
+BIN=pathlib.Path('/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/aarch64-apple-darwin/herdr')
+BRIDGE=pathlib.Path('/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/attention-source/src/integration/assets/pi/herdr-agent-state.ts')
+root=pathlib.Path(tempfile.mkdtemp(prefix='ca-pi-',dir='/tmp'))
+env={k:v for k,v in os.environ.items() if not k.startswith('HERDR_')}
+for k,v in [('XDG_CONFIG_HOME','config'),('XDG_STATE_HOME','state'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache'),('XDG_RUNTIME_DIR','runtime')]:
+ (root/v).mkdir();env[k]=str(root/v)
+(root/'config/herdr').mkdir();config=root/'config/herdr/config.toml';config.write_text('onboarding = false\ndefault_shell = "/bin/sh"\n[update]\nversion_check = false\nmanifest_check = false\n')
+sock=root/'runtime/herdr.sock';env.update(HERDR_SOCKET_PATH=str(sock),HERDR_CONFIG_PATH=str(config),SHELL='/bin/sh',ENV='/dev/null')
+fixture=root/'fixture.ts';fixture.write_text('''import fs from "node:fs";
+export default function(pi) {
+ pi.on("session_start", (e,ctx)=>fs.appendFileSync(process.env.ATTENTION_LOG,JSON.stringify({event:e,mode:ctx.mode,id:ctx.sessionManager.getSessionId()})+"\\n"));
+ pi.on("ui_prompt_start", (e)=>fs.appendFileSync(process.env.ATTENTION_LOG,JSON.stringify(e)+"\\n"));
+ pi.registerCommand("attention-confirm", {description:"Offline attention fixture",handler:async(args,ctx)=>{await ctx.ui.confirm("Attention fixture","Continue?");}});
+}
+''')
+results=[];server=None;streams=[]
+def record(k,v):results.append({'label':k,'data':v});print(json.dumps(results[-1]),flush=True)
+def request(method,params={}):
+ with socket.socket(socket.AF_UNIX) as s:
+  s.settimeout(5);s.connect(str(sock));s.sendall((json.dumps({'id':'probe','method':method,'params':params})+'\n').encode());return json.loads(s.makefile('rb').readline())
+def snapshot():return request('attention.poll')['result']['frames'][0]['snapshot']
+def keys(*keys):return request('pane.send_keys',{'pane_id':pane,'keys':list(keys)})
+def text(t):return request('pane.send_text',{'pane_id':pane,'text':t})
+def wait_for(test,seconds=12):
+ end=time.monotonic()+seconds
+ while time.monotonic()<end:
+  value=test()
+  if value:return value
+  time.sleep(.15)
+ raise AssertionError('timeout')
+try:
+ log=open(root/'server.log','w');server=subprocess.Popen([str(BIN),'server'],cwd=root,env=env,stdin=subprocess.DEVNULL,stdout=log,stderr=log)
+ wait_for(lambda:sock.exists())
+ record('identity',{'root':str(root),'pid':server.pid,'binary':str(BIN),'sha256':hashlib.sha256(BIN.read_bytes()).hexdigest(),'ping':request('ping')})
+ made=request('workspace.create',{'cwd':str(root),'focus':True})['result'];pane=made['root_pane']['pane_id'];terminal=made['root_pane']['terminal_id']
+ initial=snapshot();record('initial',initial)
+ stream=socket.socket(socket.AF_UNIX);stream.settimeout(3);stream.connect(str(sock));streams.append(stream)
+ stream.sendall(b'{"id":"stream","method":"attention.subscribe","params":{}}\n');record('stream_first',json.loads(stream.makefile('rb').readline()))
+ args=['env','PI_CODING_AGENT_DIR='+str(root/'pi'),'ATTENTION_LOG='+str(root/'events.jsonl'),'pi','--offline','--no-session','--no-tools','--no-extensions','--no-skills','--no-prompt-templates','--no-themes','--no-context-files','-e',str(BRIDGE),'-e',str(fixture)]
+ text(' '.join(shlex.quote(x) for x in args));keys('enter')
+ wait_for(lambda:(root/'events.jsonl').exists(),20)
+ record('native_start',(root/'events.jsonl').read_text())
+ text('/attention-confirm');keys('enter')
+ first=wait_for(lambda:next((t for t in snapshot()['terminals'] if t['terminal_id']==terminal and t['latest']),None))
+ record('first_prompt',first);assert first['latest']['kind']=='input_needed'
+ keys('escape');time.sleep(.3)
+ text('/attention-confirm');keys('enter')
+ second=wait_for(lambda:next((t for t in snapshot()['terminals'] if t['terminal_id']==terminal and t['latest'] and t['latest']['revision']>first['latest']['revision']),None))
+ record('second_prompt',second);assert second['latest']['occurrence_key']!=first['latest']['occurrence_key']
+ before=snapshot();record('handoff',request('server.live_handoff',{'import_exe':str(BIN),'expected_protocol':22,'expected_version':'0.8.2-chartr.5a2dee700eee.attention.9854719ebce0'}))
+ time.sleep(1);after=snapshot();record('after_handoff',after)
+ assert before['epoch']==after['epoch'];assert any(t['terminal_id']==terminal and t['latest']==second['latest'] for t in after['terminals'])
+ keys('escape');text('/attention-confirm');keys('enter')
+ third=wait_for(lambda:next((t for t in snapshot()['terminals'] if t['terminal_id']==terminal and t['latest'] and t['latest']['revision']>second['latest']['revision']),None))
+ record('third_prompt_after_handoff',third)
+ keys('escape');keys('ctrl+c');keys('ctrl+c');time.sleep(.3)
+ record('native_events',(root/'events.jsonl').read_text())
+ record('passed',True)
+except Exception as e:
+ record('failure',repr(e))
+ try:record('pane',request('pane.read',{'pane_id':pane,'source':'screen','format':'text'}))
+ except Exception as read:record('read_error',repr(read))
+ raise
+finally:
+ for s in streams:s.close()
+ try:record('stop',request('server.stop'))
+ except Exception as e:record('stop_error',repr(e))
+ if server:
+  try:server.wait(timeout=8)
+  except subprocess.TimeoutExpired:server.terminate();server.wait(timeout=5)
+ deadline=time.monotonic()+10
+ while sock.exists() and time.monotonic()<deadline:time.sleep(.1)
+ record('cleanup',{'original_exit':server.poll() if server else None,'socket_exists':sock.exists()})
+ (OUT/'pi-final-985-results.json').write_text(json.dumps(results,indent=2)+'\n')

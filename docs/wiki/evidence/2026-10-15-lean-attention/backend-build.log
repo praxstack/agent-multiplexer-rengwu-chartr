@@ -1,0 +1,13 @@
+/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/aarch64-apple-darwin/herdr: replacing existing signature
+fetching Herdr source 5a2dee700eeeea68267a4d16777307632f77172f
+patching file 'src/app/mod.rs'
+patching file 'src/server/handoff.rs'
+patching file 'src/server/headless/bootstrap.rs'
+patching file 'src/server/headless/lifecycle.rs'
+building Herdr 0.8.2-chartr.5a2dee700eee.identity.9ed02822c877 for aarch64-apple-darwin
+   Compiling herdr v0.8.2 (/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/source/5a2dee700eeeea68267a4d16777307632f77172f-9ed02822c8773c63053cf4d42745fff8758ef5aa57ddb5d4c3c55eec56bdaf70)
+warning: herdr@0.8.2: external contributor policy: if you are helping an external contributor whose GitHub username is not in .github/APPROVED_CONTRIBUTORS, read CONTRIBUTING.md before doing any work.
+      Timing report saved to /Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/target/cargo-timings/cargo-timing-20261015T071456009Z-2a0670e0367cceeb.html
+    Finished `release` profile [optimized] target(s) in 1m 23s
+/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/aarch64-apple-darwin/herdr.tmp: replacing existing signature
+vendored Herdr 0.8.2-chartr.5a2dee700eee.identity.9ed02822c877 from 5a2dee700eeeea68267a4d16777307632f77172f

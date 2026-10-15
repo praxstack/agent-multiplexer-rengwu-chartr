@@ -1,0 +1,424 @@
+[
+  {
+    "label": "identity",
+    "data": {
+      "pid": 6746,
+      "root": "/tmp/ca-attn-u2d70byh",
+      "binary": "/Users/rengwu/Desktop/Projects/chartr/target/debug/herdr",
+      "sha256": "d9c83f20c4a7daa88570e32ee7af35c86ad4c9ec5ff3ec212a783565db9ec754"
+    }
+  },
+  {
+    "label": "ping",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      }
+    }
+  },
+  {
+    "label": "workspace.create",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "workspace_created",
+        "workspace": {
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "ca-attn-u2d70byh",
+          "focused": true,
+          "pane_count": 1,
+          "tab_count": 1,
+          "active_tab_id": "w1:t1",
+          "agent_status": "unknown"
+        },
+        "tab": {
+          "tab_id": "w1:t1",
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "1",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db003a5ff111",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/ca-attn-u2d70byh",
+          "foreground_cwd": "/private/tmp/ca-attn-u2d70byh",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "tab.create",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "tab_created",
+        "tab": {
+          "tab_id": "w1:t2",
+          "workspace_id": "w1",
+          "number": 2,
+          "label": "2",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p2",
+          "terminal_id": "term_65db003a612cf2",
+          "workspace_id": "w1",
+          "tab_id": "w1:t2",
+          "focused": true,
+          "cwd": "/private/tmp/ca-attn-u2d70byh",
+          "foreground_cwd": "/private/tmp/ca-attn-u2d70byh",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "initial_stream",
+    "data": [
+      {
+        "id": "sub",
+        "result": {
+          "type": "subscription_started"
+        }
+      }
+    ]
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "working_stream",
+    "data": [
+      {
+        "data": {
+          "agent": "probe",
+          "agent_status": "working",
+          "pane_id": "w1:p1",
+          "workspace_id": "w1"
+        },
+        "event": "pane.agent_status_changed"
+      }
+    ]
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db003a5ff111",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": false,
+          "cwd": "/private/tmp/ca-attn-u2d70byh",
+          "foreground_cwd": "/private/tmp/ca-attn-u2d70byh",
+          "agent": "probe",
+          "agent_status": "working",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "idle_stream",
+    "data": [
+      {
+        "data": {
+          "agent": "probe",
+          "agent_status": "done",
+          "pane_id": "w1:p1",
+          "workspace_id": "w1"
+        },
+        "event": "pane.agent_status_changed"
+      }
+    ]
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db003a5ff111",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": false,
+          "cwd": "/private/tmp/ca-attn-u2d70byh",
+          "foreground_cwd": "/private/tmp/ca-attn-u2d70byh",
+          "agent": "probe",
+          "agent_status": "done",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "pane.report_metadata",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "title_only_stream",
+    "data": [
+      {
+        "data": {
+          "agent": "probe",
+          "agent_status": "done",
+          "pane_id": "w1:p1",
+          "title": "renamed fixture",
+          "workspace_id": "w1"
+        },
+        "event": "pane.agent_status_changed"
+      }
+    ]
+  },
+  {
+    "label": "reconnected_stream",
+    "data": [
+      {
+        "id": "sub",
+        "result": {
+          "type": "subscription_started"
+        }
+      }
+    ]
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "resumed_stream",
+    "data": [
+      {
+        "data": {
+          "agent": "probe",
+          "agent_status": "working",
+          "pane_id": "w1:p1",
+          "title": "renamed fixture",
+          "workspace_id": "w1"
+        },
+        "event": "pane.agent_status_changed"
+      }
+    ]
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db003a5ff111",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": false,
+          "cwd": "/private/tmp/ca-attn-u2d70byh",
+          "foreground_cwd": "/private/tmp/ca-attn-u2d70byh",
+          "agent": "probe",
+          "title": "renamed fixture",
+          "agent_status": "working",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "blocked_stream",
+    "data": [
+      {
+        "data": {
+          "agent": "probe",
+          "agent_status": "blocked",
+          "pane_id": "w1:p1",
+          "title": "renamed fixture",
+          "workspace_id": "w1"
+        },
+        "event": "pane.agent_status_changed"
+      }
+    ]
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db003a5ff111",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": false,
+          "cwd": "/private/tmp/ca-attn-u2d70byh",
+          "foreground_cwd": "/private/tmp/ca-attn-u2d70byh",
+          "agent": "probe",
+          "title": "renamed fixture",
+          "agent_status": "blocked",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "duplicate_blocked_stream",
+    "data": []
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "",
+      "error": {
+        "code": "invalid_request",
+        "message": "invalid request: unknown variant `failed`, expected one of `idle`, `working`, `blocked`, `unknown` at line 1 column 163"
+      }
+    }
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db003a5ff111",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": false,
+          "cwd": "/private/tmp/ca-attn-u2d70byh",
+          "foreground_cwd": "/private/tmp/ca-attn-u2d70byh",
+          "agent": "probe",
+          "title": "renamed fixture",
+          "agent_status": "blocked",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "terminal_identity",
+    "data": {
+      "pane_id": "w1:p1",
+      "terminal_id": "term_65db003a5ff111"
+    }
+  },
+  {
+    "label": "stop",
+    "data": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "label": "cleanup",
+    "data": {
+      "server_returncode": 0,
+      "socket_exists": false,
+      "profile_retained_for_evidence": "/tmp/ca-attn-u2d70byh"
+    }
+  }
+]

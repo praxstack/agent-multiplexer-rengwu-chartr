@@ -1,6 +1,6 @@
 ---
 title: Chartr development wiki
-updated: 2026-10-12
+updated: 2026-10-15
 ---
 # Chartr development wiki
 
@@ -33,6 +33,16 @@ recorded snapshots.
 
 ## History and migration
 
+- [Agent attention and notifications](discussions/agent-attention.md): the October 15
+  [accepted simplification](discussions/agent-attention.md#accepted-simplification-october-15)
+  is implemented using existing Herdr detection and one notification until the
+  exact terminal is visited. The [Codex recheck](verification/runs/2026-10-15-lean-attention.md)
+  records passing automated tests, real completion/approval/cancellation states,
+  dots/focus, persistence, live handoff and minimized/closed-window monitoring.
+  Native click navigation, direct banner inspection and broader platform/layout
+  coverage remain unverified. [Setup attempts](verification/runs/2026-10-15-lean-attention-attempts.md)
+  and the [October 14 strict implementation](verification/runs/2026-10-14-agent-attention.md)
+  remain historical evidence.
 - [Last-window reopen implementation](verification/runs/2026-10-12-window-reopen.md):
   window restoration and shutdown ownership corrected; automated checks and
   native reopen/session/quit checks pass. The unchanged-build failure is preserved.

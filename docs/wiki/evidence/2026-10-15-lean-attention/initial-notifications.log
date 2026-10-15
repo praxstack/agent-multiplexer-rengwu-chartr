@@ -1,0 +1,4 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-15 15:18:01.598 E  usernoted[522:4dc7] [com.apple.unc:UserNotifications] Failed to find or validate client of identifier dev.chartr.leanverify.oct15 with audit token <BSAuditToken: 0x7b72fe6a80; AUID: 501; EUID: 501; EGID: 20; RUID: 501; RGID: 20; PID: 6206; ASID: 100002; PIDVersion: 11412>
+2026-10-15 15:20:07.915 E  usernoted[522:d6ca] [com.apple.unc:UserNotifications] Failed to find or validate client of identifier dev.chartr.leanverify.oct15 with audit token <BSAuditToken: 0x7b72fe7380; AUID: 501; EUID: 501; EGID: 20; RUID: 501; RGID: 20; PID: 6711; ASID: 100002; PIDVersion: 12155>
+2026-10-15 15:25:23.403 E  usernoted[522:10b07] [com.apple.unc:UserNotifications] Failed to find or validate client of identifier dev.chartr.leanverify.oct15 with audit token <BSAuditToken: 0x7b72fe74c0; AUID: 501; EUID: 501; EGID: 20; RUID: 501; RGID: 20; PID: 7249; ASID: 100002; PIDVersion: 13007>

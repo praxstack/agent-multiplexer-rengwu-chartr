@@ -1,0 +1,20 @@
+import concurrent.futures,json,pathlib,re,subprocess,time
+root=pathlib.Path('/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/attention-source');out=pathlib.Path(__file__).parent
+log=(out/'backend-build.log').read_text();exe=re.findall(r'Executable unittests .*? \((.*?)\)',log)[-1];exe=root/exe
+listed=subprocess.check_output([str(exe),'--list'],text=True,cwd=root)
+names=[line[:-6] for line in listed.splitlines() if line.endswith(': test')]
+def run(name):
+ t=time.monotonic()
+ try:
+  r=subprocess.run([str(exe),name,'--exact','--test-threads=1'],cwd=root,text=True,capture_output=True,timeout=90)
+  return {'test':name,'code':r.returncode,'seconds':round(time.monotonic()-t,3),'output':r.stdout+r.stderr if r.returncode else None}
+ except subprocess.TimeoutExpired:return {'test':name,'code':'timeout','seconds':90}
+results=[]
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+ for index,r in enumerate(pool.map(run,names)):
+  results.append(r)
+  if r['code']:print(json.dumps(r),flush=True)
+  elif index%250==0:print(f'{index}/{len(names)} tests completed',flush=True)
+(out/'backend-isolated-results.json').write_text(json.dumps(results,indent=2)+'\n')
+print(json.dumps({'tests':len(results),'failed':sum(bool(r['code']) for r in results),'binary':str(exe)}),flush=True)
+raise SystemExit(any(r['code'] for r in results))

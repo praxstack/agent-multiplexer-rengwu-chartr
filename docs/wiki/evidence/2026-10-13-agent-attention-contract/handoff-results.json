@@ -1,0 +1,186 @@
+[
+  {
+    "label": "identity",
+    "data": {
+      "pid": 7600,
+      "root": "/tmp/ca-attn-y3gegu2e",
+      "binary": "/Users/rengwu/Desktop/Projects/chartr/target/debug/herdr",
+      "sha256": "d9c83f20c4a7daa88570e32ee7af35c86ad4c9ec5ff3ec212a783565db9ec754"
+    }
+  },
+  {
+    "label": "ping",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      }
+    }
+  },
+  {
+    "label": "workspace.create",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "workspace_created",
+        "workspace": {
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "ca-attn-y3gegu2e",
+          "focused": true,
+          "pane_count": 1,
+          "tab_count": 1,
+          "active_tab_id": "w1:t1",
+          "agent_status": "unknown"
+        },
+        "tab": {
+          "tab_id": "w1:t1",
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "1",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db01c2968971",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/ca-attn-y3gegu2e",
+          "foreground_cwd": "/private/tmp/ca-attn-y3gegu2e",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db01c2968971",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/ca-attn-y3gegu2e",
+          "foreground_cwd": "/private/tmp/ca-attn-y3gegu2e",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "initial_stream",
+    "data": [
+      {
+        "id": "sub",
+        "result": {
+          "type": "subscription_started"
+        }
+      }
+    ]
+  },
+  {
+    "label": "server.live_handoff",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "ping",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": true,
+          "endpoint_protocol_generation": 1
+        }
+      }
+    }
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db01c304af61",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/ca-attn-y3gegu2e",
+          "foreground_cwd": "/private/tmp/ca-attn-y3gegu2e",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "handoff_identity",
+    "data": {
+      "pane_before": "w1:p1",
+      "pane_after": "w1:p1",
+      "terminal_before": "term_65db01c2968971",
+      "terminal_after": "term_65db01c304af61"
+    }
+  },
+  {
+    "label": "old_subscription_after_handoff",
+    "data": []
+  },
+  {
+    "label": "stop",
+    "data": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "label": "cleanup",
+    "data": {
+      "server_returncode": 0,
+      "socket_exists": false,
+      "profile_retained_for_evidence": "/tmp/ca-attn-y3gegu2e"
+    }
+  }
+]

@@ -1,0 +1,15 @@
+import json,pathlib,socket,sys
+root=pathlib.Path('/tmp/ca-final-ve2jppdu');targets=json.loads((root/'targets.json').read_text())
+def req(method,params={}):
+ with socket.socket(socket.AF_UNIX) as s:
+  s.settimeout(5);s.connect(str(root/'config/chartr/herdr/herdr.sock'));s.sendall((json.dumps({'id':'ui-fixture','method':method,'params':params})+'\n').encode());return json.loads(s.makefile('rb').readline())
+if sys.argv[1]=='prompt':
+ print(req('pane.send_text',{'pane_id':targets['pane_id'],'text':'/attention-confirm'}));print(req('pane.send_keys',{'pane_id':targets['pane_id'],'keys':['enter']}))
+elif sys.argv[1]=='escape':print(req('pane.send_keys',{'pane_id':targets['pane_id'],'keys':['escape']}))
+elif sys.argv[1]=='snapshot':print(json.dumps(req('attention.poll'),indent=2))
+
+elif sys.argv[1]=='state':
+ import sqlite3
+ db=root/'state/chartr/state.sqlite'
+ con=sqlite3.connect('file:'+str(db)+'?mode=ro',uri=True)
+ print(json.dumps({'database':str(db),'attention':json.loads(con.execute("SELECT value_json FROM app_state WHERE key='attention'").fetchone()[0])},indent=2))

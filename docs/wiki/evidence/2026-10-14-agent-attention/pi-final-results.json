@@ -1,0 +1,166 @@
+[
+  {
+    "label": "identity",
+    "data": {
+      "root": "/tmp/ca-pi-es6c8676",
+      "pid": 60978,
+      "binary": "/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/aarch64-apple-darwin/herdr",
+      "sha256": "b47588e3fc79a19e218e7984ffe3027b71f14674a16e3a3b3ad9a8eb62bf8cbc",
+      "ping": {
+        "id": "probe",
+        "result": {
+          "type": "pong",
+          "version": "0.8.2-chartr.5a2dee700eee.attention.5f68192e4365",
+          "protocol": 22,
+          "capabilities": {
+            "live_handoff": true,
+            "detached_server_daemon": false,
+            "endpoint_protocol_generation": 1
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "initial",
+    "data": {
+      "epoch": "term_65db3ebbea58c1",
+      "sequence": 1,
+      "terminals": [
+        {
+          "terminal_id": "term_65db3ebc22ed32",
+          "pane_id": "w1:p1",
+          "generation": null,
+          "label": "Agent",
+          "latest": null
+        }
+      ]
+    }
+  },
+  {
+    "label": "stream_first",
+    "data": {
+      "type": "snapshot",
+      "snapshot": {
+        "epoch": "term_65db3ebbea58c1",
+        "sequence": 1,
+        "terminals": [
+          {
+            "terminal_id": "term_65db3ebc22ed32",
+            "pane_id": "w1:p1",
+            "generation": null,
+            "label": "Agent",
+            "latest": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "native_start",
+    "data": "{\"event\":{\"type\":\"session_start\",\"reason\":\"startup\"},\"mode\":\"tui\",\"id\":\"01a13434-2a9b-73fd-ab84-d5ddcb2caefa\"}\n"
+  },
+  {
+    "label": "first_prompt",
+    "data": {
+      "terminal_id": "term_65db3ebc22ed32",
+      "pane_id": "w1:p1",
+      "generation": "term_65db3ebcdd4c13",
+      "label": "pi",
+      "latest": {
+        "generation": "term_65db3ebcdd4c13",
+        "revision": 1,
+        "kind": "input_needed",
+        "occurrence_key": "prompt:2235584564202290806784001:1",
+        "evidence": "pi.ui_prompt.v1"
+      }
+    }
+  },
+  {
+    "label": "second_prompt",
+    "data": {
+      "terminal_id": "term_65db3ebc22ed32",
+      "pane_id": "w1:p1",
+      "generation": "term_65db3ebcdd4c13",
+      "label": "pi",
+      "latest": {
+        "generation": "term_65db3ebcdd4c13",
+        "revision": 2,
+        "kind": "input_needed",
+        "occurrence_key": "prompt:2235584564202290806784001:2",
+        "evidence": "pi.ui_prompt.v1"
+      }
+    }
+  },
+  {
+    "label": "handoff",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "after_handoff",
+    "data": {
+      "epoch": "term_65db3ebbea58c1",
+      "sequence": 5,
+      "terminals": [
+        {
+          "terminal_id": "term_65db3ebc22ed32",
+          "pane_id": "w1:p1",
+          "generation": "term_65db3ebcdd4c13",
+          "label": "pi",
+          "latest": {
+            "generation": "term_65db3ebcdd4c13",
+            "revision": 2,
+            "kind": "input_needed",
+            "occurrence_key": "prompt:2235584564202290806784001:2",
+            "evidence": "pi.ui_prompt.v1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "label": "third_prompt_after_handoff",
+    "data": {
+      "terminal_id": "term_65db3ebc22ed32",
+      "pane_id": "w1:p1",
+      "generation": "term_65db3ebcdd4c13",
+      "label": "pi",
+      "latest": {
+        "generation": "term_65db3ebcdd4c13",
+        "revision": 3,
+        "kind": "input_needed",
+        "occurrence_key": "prompt:2235584564202290806784001:3",
+        "evidence": "pi.ui_prompt.v1"
+      }
+    }
+  },
+  {
+    "label": "native_events",
+    "data": "{\"event\":{\"type\":\"session_start\",\"reason\":\"startup\"},\"mode\":\"tui\",\"id\":\"01a13434-2a9b-73fd-ab84-d5ddcb2caefa\"}\n{\"type\":\"ui_prompt_start\",\"reason\":\"ui_prompt\",\"kind\":\"confirm\",\"title\":\"Attention fixture\"}\n{\"type\":\"ui_prompt_start\",\"reason\":\"ui_prompt\",\"kind\":\"confirm\",\"title\":\"Attention fixture\"}\n{\"type\":\"ui_prompt_start\",\"reason\":\"ui_prompt\",\"kind\":\"confirm\",\"title\":\"Attention fixture\"}\n"
+  },
+  {
+    "label": "passed",
+    "data": true
+  },
+  {
+    "label": "stop",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "cleanup",
+    "data": {
+      "original_exit": 0,
+      "socket_exists": false
+    }
+  }
+]

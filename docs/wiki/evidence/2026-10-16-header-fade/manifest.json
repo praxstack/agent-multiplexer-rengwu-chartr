@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-16",
+  "head": "402ba90a25d82b527f68f23c1dc5f29e27065036",
+  "working_tree": "dirty; unrelated existing work preserved",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+  "source_sha256": {
+    "crates/chartr/src/chrome/sidebar.rs": "c0d4f006d8c1feeb42a80a63f69bac7449a5a8d59eff5b103da8f1ef3722c296",
+    "crates/chartr/src/chrome/sidebar_tests.rs": "f5238ba4a01bb6fe343e05412cf787440263bae831d60132d847276d8c691a0b",
+    "crates/chartr/src/components/scrolling_list.rs": "39cdd1cd7513ad02ff05bd534482cf958366cf765be94ed589e9486db2857ce1",
+    "crates/chartr/src/conversations/view.rs": "46e04c296701ec75bc938f94c38d75ac8cd77ece93273aafa8f4d41bdd0f6841"
+  },
+  "diff_sha256_before_final_wiki_rebuild": "38cd1c2a42a4d400b5031e5536c9d1ab7178c58597c12f1ff58e453a0222fadf",
+  "test_binary_sha256": "64b5aadd7701a7152f56887a09e52287362a4e022d1b11c0b721b027aea57e00",
+  "normal_binary_sha256": "20658589ecff586482bf9cca872f8fab334a3387cd243ce010c8e98483a0d24a",
+  "preview_binary_sha256": "4371e2372f2bebd0ae87508391dbb90cf7f7e712f1cd24d12beb94e6b933a000",
+  "commands": [
+    "cargo test -p chartr --bin chartr --locked chrome::",
+    "cargo test -p chartr --bin chartr --locked components::scrolling_list::",
+    "cargo build -p chartr --locked",
+    "cargo fmt --all --check",
+    "git diff --check"
+  ],
+  "observations": [
+    "Initial regression reproduced the clipping boundary below the header.",
+    "Initial overlaid native preview was rejected by the user as too transparent; supplied screenshot retained.",
+    "Revised fade has an opaque header ground and grows 20px across the first 32px of scroll.",
+    "19 chrome and 3 scrolling-list tests passed. Native scrolled screenshot inspected; precise offsets and header input behavior covered by GPUI tests.",
+    "Preview left running for user inspection; four existing private-profile terminal identities preserved across app refresh."
+  ],
+  "limits": [
+    "No full theme/platform matrix.",
+    "No claim of independently measured native scroll offsets."
+  ]
+}

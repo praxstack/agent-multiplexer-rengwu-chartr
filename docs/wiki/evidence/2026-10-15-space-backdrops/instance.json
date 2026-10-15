@@ -1,0 +1,20 @@
+{
+  "root": "/tmp/cs-ctu2api2",
+  "app": "/Users/rengwu/Desktop/Projects/chartr/target/space-backdrop/Chartr Spaces Verify.app",
+  "pid": 10907,
+  "env": {
+    "XDG_CONFIG_HOME": "/tmp/cs-ctu2api2/config",
+    "XDG_STATE_HOME": "/tmp/cs-ctu2api2/state",
+    "XDG_DATA_HOME": "/tmp/cs-ctu2api2/data"
+  },
+  "dark_pid": 10246,
+  "head": "402ba90a25d82b527f68f23c1dc5f29e27065036",
+  "sidebar_sha256": "a49f2904007bfb6d88c81aefd29f79049a4eb3422fb62cf0e3a8e6444f98203a",
+  "signed_binary_sha256": "333485fb02b114278a3b02017ff4069ab312597b9183606e6ecd8ec6cdd66740",
+  "diff_binary_head_sha256": "3056de57e8c2d062a016f69a1e590a2d4ae48e135dc97626920f25f11bde5c22",
+  "verification": "Three existing sidebar tests passed; native empty/collapsed cards visually inspected in chartr Dark and chartr Light. No full theme/platform matrix.",
+  "cleanup": {
+    "process_stopped": true,
+    "socket_exists": false
+  }
+}

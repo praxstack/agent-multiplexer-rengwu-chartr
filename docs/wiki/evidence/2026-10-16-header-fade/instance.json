@@ -1,0 +1,19 @@
+{
+  "root": "/tmp/cf-r_0aua0g",
+  "app": "/Users/rengwu/Desktop/Projects/chartr/target/header-fade/Chartr Fade Verify.app",
+  "pid": 39420,
+  "bundle_id": "dev.chartr.fadeverify.oct16",
+  "binary_sha256": "4371e2372f2bebd0ae87508391dbb90cf7f7e712f1cd24d12beb94e6b933a000",
+  "terminal_ids_before": [
+    "term_65de4e4d9950b1",
+    "term_65de4e4e222742",
+    "term_65de4e4e5037d3",
+    "term_65de4e4e74ed54"
+  ],
+  "terminal_ids_after": [
+    "term_65de4e4d9950b1",
+    "term_65de4e4e222742",
+    "term_65de4e4e5037d3",
+    "term_65de4e4e74ed54"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "before": {
+    "time": 1792049509.486536,
+    "panes": [
+      {
+        "pane_id": "w1:p1",
+        "terminal_id": "term_65ddbdadc709f1",
+        "workspace_id": "w1",
+        "agent": "codex",
+        "agent_status": "working",
+        "display_agent": null
+      },
+      {
+        "pane_id": "w1:p2",
+        "terminal_id": "term_65ddbea0723e62",
+        "workspace_id": "w1",
+        "agent": null,
+        "agent_status": "unknown",
+        "display_agent": null
+      }
+    ],
+    "attention": {
+      "version": 2,
+      "terminals": {
+        "term_65ddbdadc709f1": {
+          "pane_id": "w1:p1",
+          "label": "codex",
+          "activity": "Working",
+          "unread": false,
+          "revision": 3
+        },
+        "term_65ddbea0723e62": {
+          "pane_id": "w1:p2",
+          "label": "Terminal",
+          "activity": "Unknown",
+          "unread": false,
+          "revision": 0
+        }
+      }
+    }
+  },
+  "after": {
+    "time": 1792049511.9018939,
+    "panes": [
+      {
+        "pane_id": "w1:p1",
+        "terminal_id": "term_65ddbdadc709f1",
+        "workspace_id": "w1",
+        "agent": "codex",
+        "agent_status": "idle",
+        "display_agent": null
+      },
+      {
+        "pane_id": "w1:p2",
+        "terminal_id": "term_65ddbea0723e62",
+        "workspace_id": "w1",
+        "agent": null,
+        "agent_status": "unknown",
+        "display_agent": null
+      }
+    ],
+    "attention": {
+      "version": 2,
+      "terminals": {
+        "term_65ddbdadc709f1": {
+          "pane_id": "w1:p1",
+          "label": "codex",
+          "activity": "Inactive",
+          "unread": true,
+          "revision": 4
+        },
+        "term_65ddbea0723e62": {
+          "pane_id": "w1:p2",
+          "label": "Terminal",
+          "activity": "Unknown",
+          "unread": false,
+          "revision": 0
+        }
+      }
+    }
+  },
+  "screen": {
+    "type": "pane_read",
+    "read": {
+      "pane_id": "w1:p1",
+      "workspace_id": "w1",
+      "tab_id": "w1:t1",
+      "source": "detection",
+      "format": "text",
+      "text": "\u203a Test the approval UI only. Request approval for the harmless shell command printf ATTENTION_APPROVA\u2026\n\n\u2022 Ran printf ATTENTION_APPROVAL\n  \u2514 ATTENTION_APPROVAL\n\n\u2022 APPROVAL COMPLETE\n\n  Worked for 1m 42s \u2022 3:29 PM\n\n\n\u203a Repeat the attention test: run only sleep 8 and then reply exactly ATTENTION SECOND. Do not use\n  other tools or change files.\n\n\n\u2022 I\u2019ll run sleep 8.\n\n\u2022 Ran sleep 8\n  \u2514 (no output)\n\n\u2022 ATTENTION SECOND\n\n  Worked for 17s \u2022 3:30 PM\n\n\n\u203a Run only sleep 30 for a cancellation test, then reply CANCEL TEST FINISHED if it completes. Do not\n  use other tools or change files.\n\n\n\u2022 I\u2019ll run sleep 30.\n\n\u25a0 Conversation interrupted - use /feedback if something went wrong\n\n  1 background terminal running \u00b7 /ps to view \u00b7 /stop to close\n\n\n\u203a Ask Codex to do anything\n\n  GPT-6-Astra xhigh \u00b7 /private/tmp/ca-lean-s4xq_16d/project \u00b7 Inspect run-codex\n  ? for shortcuts                                                             \u26a0 1 warning \u00b7 f2 to view\n",
+      "revision": 0,
+      "truncated": false
+    }
+  }
+}

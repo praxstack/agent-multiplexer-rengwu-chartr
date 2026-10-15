@@ -1,0 +1,11 @@
+{
+  "head": "402ba90a25d82b527f68f23c1dc5f29e27065036",
+  "source_sha256": {
+    "crates/chartr/src/chrome/sidebar.rs": "798a63f3455fcd4ed5d8c6a4ae39b9e031ac24048089502df468e6e06b569411",
+    "crates/chartr/src/chrome/sidebar_tests.rs": "e8f58bcde2a130c08f27ff00c28ce278b7e3766317548b8a8c1b1a31416aa59e",
+    "crates/chartr/src/chrome.rs": "1c9552b181762a0ca4a832a79ee3665f038c0b6264177217f19349c5a33cfe6b",
+    "crates/chartr/src/app.rs": "51a1dce4696b45b20a998509bc8e1422a7096b8dd8c2a36825aa9c8b01349f5e",
+    "crates/chartr/src/space.rs": "df3cbb1254c51bedd90d9156cbf380489261430c16b74c36b2e812c7cc0a004e"
+  },
+  "coverage": "Three existing sidebar tests, extended to cover inactive-heading activation, independent inactive chevrons, and drag/drop without activation. GPUI harness only; no new native app check."
+}

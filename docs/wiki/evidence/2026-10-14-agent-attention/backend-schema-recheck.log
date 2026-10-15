@@ -1,0 +1,45 @@
+   Compiling herdr v0.8.2 (/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/attention-source)
+warning: herdr@0.8.2: external contributor policy: if you are helping an external contributor whose GitHub username is not in .github/APPROVED_CONTRIBUTORS, read CONTRIBUTING.md before doing any work.
+error: failed to run custom build command for `herdr v0.8.2 (/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/attention-source)`
+
+Caused by:
+  process didn't exit successfully: `/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/attention-source/target/debug/build/herdr-e635f46b269025fc/build-script-build` (exit status: 101)
+  --- stdout
+  cargo:rerun-if-changed=build.rs
+  cargo:rerun-if-changed=vendor/libghostty-vt.vendor.json
+  cargo:rerun-if-changed=vendor/libghostty-vt/build.zig
+  cargo:rerun-if-changed=vendor/libghostty-vt/build.zig.zon
+  cargo:rerun-if-changed=vendor/libghostty-vt/include
+  cargo:rerun-if-changed=vendor/libghostty-vt/pkg
+  cargo:rerun-if-changed=vendor/libghostty-vt/src
+  cargo:rerun-if-changed=vendor/libghostty-vt/VERSION
+  cargo:rerun-if-env-changed=LIBGHOSTTY_VT_OPTIMIZE
+  cargo:rerun-if-env-changed=LIBGHOSTTY_VT_SIMD
+  cargo:rerun-if-env-changed=LIBGHOSTTY_VT_ZIG_SYSTEM_DIR
+  cargo:rerun-if-env-changed=HERDR_BUILD_CHANNEL
+  cargo:rerun-if-env-changed=HERDR_BUILD_ID
+  cargo:rerun-if-env-changed=HERDR_BUILD_COMMIT
+  cargo:rerun-if-env-changed=ZIG
+  cargo:warning=external contributor policy: if you are helping an external contributor whose GitHub username is not in .github/APPROVED_CONTRIBUTORS, read CONTRIBUTING.md before doing any work.
+
+  --- stderr
+  build.zig:27:62: error: member function expected 4 argument(s), found 3
+      const file_version: ?[]const u8 = if (b.build_root.handle.readFileAlloc(
+                                            ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+  /opt/homebrew/Cellar/zig/0.16.0_1/lib/zig/std/Io/Dir.zig:1326:5: note: function declared here
+  pub fn readFileAlloc(
+  ~~~~^~
+  referenced by:
+      runBuild__anon_28797: /opt/homebrew/Cellar/zig/0.16.0_1/lib/zig/std/Build.zig:2265:44
+      main: /opt/homebrew/Cellar/zig/0.16.0_1/lib/zig/compiler/build_runner.zig:463:29
+      4 reference(s) hidden; use '-freference-trace=6' to see all references
+  src/build/zig.zig:13:9: error: Your Zig version v0.16.0 does not meet the required build version of v0.15.2
+          @compileError(std.fmt.comptimePrint(
+          ^~~~~~~~~~~~~
+  build.zig:16:24: note: called at comptime here
+      buildpkg.requireZig(minimum_zig_version);
+      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+
+  thread 'main' (18698764) panicked at build.rs:92:5:
+  zig build for vendored libghostty-vt failed: exit status: 2
+  note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

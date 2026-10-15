@@ -1,0 +1,142 @@
+[
+  {
+    "label": "opencode:session.status:",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791861001267:625086",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791861001267001,
+          "state": "working",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:permission.asked:",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791861001269:794580",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791861001267002,
+          "state": "blocked",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:question.asked:",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791861001270:727258",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791861001267003,
+          "state": "blocked",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:session.error:APIError",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791861001270:798609",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791861001267004,
+          "state": "blocked",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:session.error:MessageAbortedError",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791861001271:803418",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791861001267005,
+          "state": "blocked",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:session.idle:",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791861001272:607049",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791861001267006,
+          "state": "idle",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "pi:agent_settled:completed",
+    "reports": [
+      {
+        "id": "herdr:pi:1791861001445:hn2lm98uq4v",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:pi",
+          "agent": "pi",
+          "state": "idle",
+          "seq": 1791861001322005,
+          "agent_session_id": "fixture-pi"
+        }
+      }
+    ]
+  },
+  {
+    "label": "pi:agent_settled:aborted",
+    "reports": [
+      {
+        "id": "herdr:pi:1791861001567:vr2mzulx27i",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:pi",
+          "agent": "pi",
+          "state": "idle",
+          "seq": 1791861001322008,
+          "agent_session_id": "fixture-pi"
+        }
+      }
+    ]
+  },
+  {
+    "label": "scope",
+    "note": "Exact pinned integration assets executed against a local capture socket. Synthetic provider events demonstrate mapping and loss of outcome data, not real installed-provider event semantics or end-to-end reliability."
+  }
+]

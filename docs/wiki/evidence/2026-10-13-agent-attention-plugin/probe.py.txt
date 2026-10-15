@@ -1,0 +1,85 @@
+import hashlib,json,os,pathlib,socket,subprocess,tempfile,time,sys
+HERE=pathlib.Path(__file__).resolve().parent
+BIN=pathlib.Path('/Users/rengwu/Desktop/Projects/chartr/target/debug/herdr')
+root=pathlib.Path(tempfile.mkdtemp(prefix='ca-plug-',dir='/tmp'))
+env={k:v for k,v in os.environ.items() if not k.startswith('HERDR_')}
+for key,sub in [('XDG_CONFIG_HOME','config'),('XDG_STATE_HOME','state'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache'),('XDG_RUNTIME_DIR','runtime')]:
+    (root/sub).mkdir();env[key]=str(root/sub)
+config=root/'config/herdr';config.mkdir()
+(config/'config.toml').write_text('onboarding = false\ndefault_shell = "/bin/sh"\n[update]\nversion_check = false\nmanifest_check = false\n')
+sockpath=root/'runtime/herdr.sock'
+env.update(HERDR_SOCKET_PATH=str(sockpath),HERDR_CONFIG_PATH=str(config/'config.toml'),SHELL='/bin/sh',ENV='/dev/null',PS1='probe> ')
+transcript=[]
+def record(label,data):
+    transcript.append({'label':label,'data':data});print(json.dumps(transcript[-1]),flush=True)
+def request(method,params=None):
+    with socket.socket(socket.AF_UNIX) as s:
+        s.settimeout(5);s.connect(str(sockpath))
+        s.sendall((json.dumps({'id':'probe','method':method,'params':params or {}})+'\n').encode())
+        result=json.loads(s.makefile('rb').readline());record(method,result);return result
+plugin=root/'plugin';plugin.mkdir()
+(plugin/'capture.py').write_text('''import json,os,pathlib,time
+state=pathlib.Path(os.environ['HERDR_PLUGIN_STATE_DIR'])
+payload={k:os.environ.get(k) for k in ['HERDR_PLUGIN_EVENT','HERDR_PLUGIN_EVENT_JSON','HERDR_PLUGIN_CONTEXT_JSON']}
+(state/f'{time.time_ns()}-{os.getpid()}.json').write_text(json.dumps(payload))
+''')
+(plugin/'herdr-plugin.toml').write_text('''id = "fixture.attention-probe"
+name = "Attention probe"
+version = "0.1.0"
+min_herdr_version = "0.8.2"
+platforms = ["macos", "linux"]
+[[events]]
+on = "pane.agent_status_changed"
+command = ["/usr/bin/python3", "capture.py"]
+''')
+server=None
+try:
+    log=open(root/'server.log','w');server=subprocess.Popen([str(BIN),'server'],cwd=root,env=env,stdin=subprocess.DEVNULL,stdout=log,stderr=log)
+    record('identity',{'pid':server.pid,'root':str(root),'binary':str(BIN),'sha256':hashlib.sha256(BIN.read_bytes()).hexdigest(),'python':sys.version,'platform':sys.platform})
+    deadline=time.monotonic()+10
+    while not sockpath.exists() and server.poll() is None and time.monotonic()<deadline:time.sleep(.05)
+    assert sockpath.exists(),(server.poll(),(root/'server.log').read_text())
+    assert request('ping')['result']['version']=='0.8.2-chartr.5a2dee700eee'
+    request('plugin.link',{'path':str(plugin),'enabled':True})
+    made=request('workspace.create',{'cwd':str(root),'focus':True})['result']
+    pane=made['root_pane']['pane_id'];workspace=made['workspace']['workspace_id']
+    request('tab.create',{'workspace_id':workspace,'focus':True})
+    seq=0
+    def report(state):
+        global seq
+        seq+=1
+        request('pane.report_agent',{'pane_id':pane,'source':'custom:attention-probe','agent':'probe','state':state,'seq':seq,'agent_session_id':'fixture-session'})
+        time.sleep(.25)
+    report('working');report('idle')
+    request('pane.report_metadata',{'pane_id':pane,'source':'custom:probe-title','title':'renamed fixture'})
+    time.sleep(.25)
+    report('working');report('blocked');report('blocked')
+    request('pane.report_agent',{'pane_id':pane,'source':'custom:attention-probe','agent':'probe','state':'failed','seq':100})
+    logs=None
+    deadline=time.monotonic()+5
+    while time.monotonic()<deadline:
+        logs=request('plugin.log.list',{'plugin_id':'fixture.attention-probe','limit':30})
+        if not any(row.get('status')=='running' for row in logs.get('result',{}).get('logs',[])):break
+        time.sleep(.1)
+    captures=[]
+    for path in sorted((root/'state').rglob('*.json')):
+        try:
+            obj=json.loads(path.read_text())
+            if isinstance(obj,dict) and 'HERDR_PLUGIN_EVENT_JSON' in obj:
+                captures.append({key:json.loads(val) if val and key.endswith('_JSON') else val for key,val in obj.items()})
+        except (ValueError,OSError):pass
+    record('hook_captures',captures)
+    assert captures,'No captured hook output'
+    events=[x['HERDR_PLUGIN_EVENT_JSON']['data'] for x in captures]
+    assert sum(x.get('agent_status')=='done' for x in events)>=2,events
+    assert sum(x.get('agent_status')=='blocked' for x in events)==1,events
+    assert all('occurrence_id' not in x and 'outcome' not in x and 'seq' not in x for x in events)
+    record('checks',{'hook_received_status':True,'title_only_duplicates_done':True,'repeated_blocked_report_emits_no_new_hook':True,'hook_lacks_occurrence_outcome_and_producer_sequence':True})
+finally:
+    if server and server.poll() is None:
+        stopped=subprocess.run([str(BIN),'server','stop'],env=env,cwd=root,capture_output=True,text=True,timeout=10)
+        record('stop',{'returncode':stopped.returncode,'stdout':stopped.stdout,'stderr':stopped.stderr})
+        try:server.wait(timeout=10)
+        except subprocess.TimeoutExpired:server.terminate();server.wait(timeout=5)
+    record('cleanup',{'server_returncode':server.poll() if server else None,'socket_exists':sockpath.exists(),'profile_retained_for_evidence':str(root)})
+    (HERE/'results.json').write_text(json.dumps(transcript,indent=2)+'\n')

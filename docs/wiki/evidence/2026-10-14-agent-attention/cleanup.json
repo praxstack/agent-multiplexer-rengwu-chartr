@@ -1,0 +1,34 @@
+{
+  "instances": [
+    {
+      "root": "/tmp/ca-ui-je72hgoi",
+      "app_stop": "SIGTERM",
+      "app_pids": [
+        63629
+      ],
+      "server_stop": {
+        "id": "cleanup",
+        "result": {
+          "type": "ok"
+        }
+      },
+      "socket_remaining": false
+    },
+    {
+      "root": "/tmp/ca-final-ve2jppdu",
+      "app_stop": "SIGTERM",
+      "app_pids": [
+        24715
+      ],
+      "server_stop": {
+        "id": "cleanup",
+        "result": {
+          "type": "ok"
+        }
+      },
+      "socket_remaining": false
+    }
+  ],
+  "remaining_owned_processes": [],
+  "old_instance_disposable_confirmed_by_user": true
+}

@@ -1,0 +1,36 @@
+   Compiling gpui_apple v0.1.0 (/Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/gpui_apple)
+   Compiling gpui_macos v0.1.0 (/Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/gpui_macos)
+   Compiling gpui_platform v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling chartr v0.3.0 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.84s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`
+     Running unittests src/main.rs (target/debug/deps/chartr-2776c57534a089d4)
+
+running 17 tests
+test app::persistence::tests::disabled_chats_restore_as_spaces_without_losing_workspace_or_history_selection ... ok
+test app::persistence::tests::malformed_space_preserves_healthy_layouts_and_plugin_state ... ok
+test app::persistence::tests::malformed_window_state_disables_saving_too ... ok
+test app::persistence::tests::new_and_healthy_workspaces_remain_writable ... ok
+test markdown_prompt_plugin::persistence::tests::invalid_saves_preserve_configuration_receipts_and_output ... ok
+test markdown_prompt_plugin::persistence::tests::legacy_state_loads_and_migrates_latest_whole_file_receipts ... ok
+test markdown_prompt_plugin::persistence::tests::saves_track_cleanup_across_restarts_and_reject_stale_panes ... ok
+test persistence::tests::a_new_database_runs_the_versioned_schema ... ok
+test persistence::tests::a_new_window_uses_the_shipped_chrome_defaults ... ok
+test persistence::tests::complete_snapshots_round_trip_in_space_order ... ok
+test persistence::tests::delayed_background_requests_cannot_overwrite_a_final_flush ... ok
+test persistence::tests::failed_transactions_roll_back_and_the_same_snapshot_can_be_retried ... ok
+test persistence::tests::older_window_state_ignores_removed_space_preferences ... ok
+test persistence::tests::one_time_migrations_have_an_explicit_completion_marker ... ok
+test persistence::tests::saves_touch_only_changed_rows ... ok
+test persistence::tests::saving_is_a_transaction_that_replaces_removed_spaces ... ok
+test persistence::tests::state_paths_use_the_chartr_namespace ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 288 filtered out; finished in 0.10s
+
+     Running tests/live_session.rs (target/debug/deps/live_session-96f9b5a99d9a23a9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+

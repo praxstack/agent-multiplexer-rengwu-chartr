@@ -1,7 +1,7 @@
 ---
 title: Views, chrome and navigation
 section: Features
-updated: 2026-10-12
+updated: 2026-10-16
 basis: Source-reviewed migration baseline
 ---
 # Views, chrome and navigation
@@ -30,6 +30,14 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 
 ## Expected outcomes
 
+- The fixed “Spaces” header overlays the top of the scroll viewport. The list reserves matching top padding, so the first card is fully visible at rest. Scrolling moves cards behind an always-active fade, with an opaque ground behind the header text. At rest the fade ends at the first card; over the first 32 px of scrolling it grows 20 px below the header and makes the whole header opaque before fading to transparent. Header clicks cannot reach covered cards; scrolling over the header still moves the list (accepted layout, 2026-10-16).
+
+- While reordering a session in Spaces or an outer tab in Tabs, the carried item has an opaque rounded background within its existing bounds, with no broad wrapper shadow. Its size, outer margins and selection state stay unchanged; the list still reserves its destination slot (accepted drag appearance correction, 2026-10-16).
+
+- Clicking an inactive space heading activates that space and its current item without changing its expanded/collapsed state. Clicking the active heading toggles expansion; the chevron toggles expansion independently for either space. Heading hover does not change its background (accepted interaction update, 2026-10-15).
+
+- Each space has a very subtle, slightly rounded backdrop around its heading and visible sessions. The active space has slightly stronger contrast. This uses the existing theme palette with no added border. Session rows have explicit outer margins of 4 px on the left and 6 px on the right, outside their backgrounds and borders. Their leading icon has 3 px beyond the normal compact row padding. Space cards have an additional 2 px outer right margin and 2 px below the last visible session (accepted UI changes, 2026-10-15).
+
 - Tabs focuses the active space; Spaces shows all spaces. Changing projection does not recreate or move items. Spaces is the initial view.
 - Empty spaces show only their heading, with no placeholder row or empty tree beneath it. Collapsing or expanding an empty space leaves its height and neighboring positions unchanged. Populated spaces hide their session rows when collapsed. The accepted 2026-10-08 UI change also increases the shared gap between spaces to 0.5 rem, including drag-sort geometry.
 - Tabs on macOS places its space picker beside the traffic lights. Spaces has no title-bar space picker.
@@ -38,6 +46,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 - Cycle view modes (Cmd+~ on macOS, Ctrl+Alt+~ on Linux) alternates between Tabs and Spaces.
 - Chats is disabled by the accepted 2026-10-08 UI change: selectors, Settings, the command palette and Hotkeys offer only the two enabled views. Saved `inbox` or `conversations` preferences fall back to Spaces, while history and stored legacy shortcut entries remain intact. Legacy Chats shortcuts are inactive.
 - Scrolling and view switching must remain responsive on battery with Low Power Mode enabled. Reduced rendering throughput must not monopolize input dispatch; this requirement was confirmed by the user on 2026-10-10.
+- Sidebar scroll thumbs are translucent, with stronger hover and drag emphasis. They remain visible while the pointer is in the list or a thumb drag is active, then fade out over 800 ms on exit/release outside. Re-entry reveals them immediately; background content changes do not reveal them. Reduced motion skips the fade. This is the accepted October 15 scrollbar treatment.
 
 ## Verification recipe
 
@@ -50,7 +59,8 @@ setup first; use actual UI entry points and observe underlying state where relev
 4. Change mode/sidebar width, relaunch, and inspect the same state. Exercise the current cycle-view binding and its Hotkeys entry.
 5. Restore a disposable profile saved in Chats (`inbox` or legacy `conversations`). Expect Spaces, with existing spaces, pane layout and history retained. Confirm Chats is absent from both selectors, the command palette and Hotkeys, and its old shortcut cannot enter the disabled view.
 6. On macOS, repeat sidebar scrolling and view switching on battery with Low Power Mode both enabled and disabled, then on AC and across a live power-source transition. Expect responsive input in each condition; record frame waits and input latency separately from CPU utilization.
-7. Keep an empty space beside a populated space. Toggle each heading and chevron: the empty space stays header-only without shifting its neighbor, while the populated space hides/restores its rows. Expect visible separation between spaces, including during drag sorting. The add button must not toggle or drag its space.
+7. Keep an empty space beside a populated space. Click an inactive heading to switch spaces without changing its expansion. Use the active heading or either chevron to collapse/expand: the empty space stays header-only without shifting its neighbor, while the populated space hides/restores its rows. Expect visible separation between spaces, including during drag sorting. The add button must not toggle or drag its space.
+8. Overflow the sidebar and scroll its first 1–30 px: cards should move behind the stationary Spaces header and fade there, without clipping at the header’s bottom. Scroll with the pointer over the header; its add button should remain clickable without triggering a covered card. Return to the top and expect a fully visible first card. Hover the list and thumb, then leave the container. Expect translucent normal/hover/drag colors and a smooth 800 ms exit fade. Re-enter midway to restore visibility immediately; drag beyond the container and release to start the fade. Keep the pointer outside during content changes and expect no reveal. Repeat with reduced motion (immediate hide) and a fitting list (no thumb).
 
 Preserve the selected scenario's logs/screenshots/file observations and exact
 build identity before [cleanup](../verification/setup.md#cleanup). Record a fresh
@@ -65,6 +75,66 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+2026-10-16 header/fade follow-up: the
+[initial regression](../evidence/2026-10-16-header-fade/before.log) reproduced
+the viewport clipping below the header. The first overlapping preview was
+[rejected as too transparent](../evidence/2026-10-16-header-fade/weak-preview-user-feedback.png)
+during user inspection. The revised treatment keeps the header text on an
+opaque ground and extends the fade as scrolling increases.
+[19 chrome tests](../evidence/2026-10-16-header-fade/chrome-tests.log) and
+[3 scrolling-list tests](../evidence/2026-10-16-header-fade/scroll-tests.log)
+passed, including offsets 0/1/8/30/80 px at two UI scales, clipping/paint bounds,
+header input, fitting content, scrollbar behavior and existing drag checks.
+The [normal build](../evidence/2026-10-16-header-fade/build.log) passed.
+A [native scrolled snapshot](../evidence/2026-10-16-header-fade/strong-scrolled.png)
+was inspected; precise scroll offsets and input assertions above are automated
+GPUI evidence, not measured native gestures. The
+[preview](../evidence/2026-10-16-header-fade/instance.json) remains open for user
+inspection with its four terminal identities preserved across refresh.
+[Build/source identity and limits](../evidence/2026-10-16-header-fade/manifest.json).
+No full theme/platform matrix is claimed.
+
+2026-10-16 drag appearance correction: the new GPUI rendering regression
+[failed before the fix](../evidence/2026-10-16-tab-drag-surfaces/before.log)
+for an unselected sidebar row. After the fix,
+[18 relevant tests passed](../evidence/2026-10-16-tab-drag-surfaces/tests.log),
+including actual sidebar and outer-tab rendering with selected/unselected
+items, opaque rounded bounds, unchanged dimensions and cancellation, plus
+existing reorder/commit and pane-drop checks. The
+[normal build](../evidence/2026-10-16-tab-drag-surfaces/build.log) passed.
+[Source and binary identity](../evidence/2026-10-16-tab-drag-surfaces/manifest.json).
+This is automated rendering/interaction coverage; no fresh native screenshot
+or full platform/theme matrix is claimed.
+
+2026-10-15 heading interaction follow-up: inactive headings now select their
+space without changing expansion; chevrons remain independent collapse controls.
+Three sidebar tests passed, including new real-renderer click assertions for an
+inactive collapsed heading, its chevron, and drag/drop without accidental
+activation. The normal app build passed. This used the GPUI harness; no fresh
+native interaction result is claimed.
+[Tests](../evidence/2026-10-15-space-heading/sidebar-tests.log),
+[build](../evidence/2026-10-15-space-heading/build.log),
+[source identity](../evidence/2026-10-15-space-heading/manifest.json).
+
+2026-10-15: Translucent sidebar thumbs and the 800 ms exit fade implemented.
+`cargo test -p chartr --bin chartr --locked -- --nocapture` passed 311 tests
+(one ignored), including rendered alpha, intermediate fade progress, re-entry,
+outside dragging/release, reduced motion, fitting content, and composited
+contrast across the registered themes. The initial opacity failed light-theme
+contrast; higher light-palette opacity passed the recheck. Formatting checks
+passed. These are automated GPUI checks of the working tree; the native visual
+recipe and full platform matrix were not exercised for this change.
+
+2026-10-15: Subtle space backdrops implemented. Three existing sidebar tests passed
+(collapse/add/sort, scrollbar dragging, theme scrollbar contrast), and the normal
+app build passed. Native empty/collapsed card appearance was inspected in
+[dark](../evidence/2026-10-15-space-backdrops/dark.png) and
+[light](../evidence/2026-10-15-space-backdrops/light.png) themes.
+[Instance and source identity](../evidence/2026-10-15-space-backdrops/instance.json),
+[test log](../evidence/2026-10-15-space-backdrops/sidebar-tests.log), and
+[build log](../evidence/2026-10-15-space-backdrops/build.log) record this bounded check;
+no full theme or platform matrix was run. The isolated preview was stopped.
 
 2026-10-12: The [sidebar CI fixture repair](../verification/runs/2026-10-12-sidebar-ci.md)
 reproduced the stale empty-space assertion from both CI runners, then passed

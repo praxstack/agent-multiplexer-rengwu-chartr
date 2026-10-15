@@ -1,0 +1,10 @@
+warning: herdr@0.8.2: external contributor policy: if you are helping an external contributor whose GitHub username is not in .github/APPROVED_CONTRIBUTORS, read CONTRIBUTING.md before doing any work.
+   Compiling herdr v0.8.2 (/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/attention-source)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 51.82s
+     Running unittests src/main.rs (target/debug/deps/herdr-f12ff1d3a07209e6)
+
+running 1 test
+test integration::tests::opencode_status_requires_the_tui_plugin_and_config_entry ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2818 filtered out; finished in 0.00s
+

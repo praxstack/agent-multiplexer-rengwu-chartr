@@ -1,0 +1,78 @@
+import hashlib,json,os,pathlib,select,socket,subprocess,tempfile,time
+
+HERE=pathlib.Path(__file__).resolve().parent
+BIN=pathlib.Path('/Users/rengwu/Desktop/Projects/chartr/target/debug/herdr')
+root=pathlib.Path(tempfile.mkdtemp(prefix='ca-attn-',dir='/tmp'))
+env={k:v for k,v in os.environ.items() if not k.startswith('HERDR_')}
+for key,sub in [('XDG_CONFIG_HOME','config'),('XDG_STATE_HOME','state'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache'),('XDG_RUNTIME_DIR','runtime')]:
+    (root/sub).mkdir();env[key]=str(root/sub)
+config=root/'config/herdr';config.mkdir()
+(config/'config.toml').write_text('onboarding = false\ndefault_shell = "/bin/sh"\n[update]\nversion_check = false\nmanifest_check = false\n')
+sockpath=root/'runtime/herdr.sock'
+env.update(HERDR_SOCKET_PATH=str(sockpath),HERDR_CONFIG_PATH=str(config/'config.toml'),SHELL='/bin/sh',ENV='/dev/null',PS1='probe> ')
+transcript=[]
+def record(label,data):
+    transcript.append({'label':label,'data':data})
+    print(json.dumps(transcript[-1]),flush=True)
+def conn():
+    s=socket.socket(socket.AF_UNIX);s.settimeout(5);s.connect(str(sockpath));return s
+def request(method,params={}):
+    with conn() as s:
+        s.sendall((json.dumps({'id':'probe','method':method,'params':params})+'\n').encode())
+        result=json.loads(s.makefile('rb').readline());record(method,result);return result
+class Stream:
+    def __init__(self,subscriptions):
+        self.sock=conn();self.buf=b''
+        self.sock.sendall((json.dumps({'id':'sub','method':'events.subscribe','params':{'subscriptions':subscriptions}})+'\n').encode())
+    def drain(self,seconds=.4):
+        until=time.monotonic()+seconds;lines=[]
+        while time.monotonic()<until:
+            if not select.select([self.sock],[],[],max(0,until-time.monotonic()))[0]:break
+            part=self.sock.recv(65536)
+            if not part:break
+            self.buf+=part
+            while b'\n' in self.buf:
+                line,self.buf=self.buf.split(b'\n',1)
+                if line:lines.append(json.loads(line))
+        return lines
+    def close(self):self.sock.close()
+streams=[];server=None
+try:
+    log=open(root/'server.log','w')
+    server=subprocess.Popen([str(BIN),'server'],cwd=root,env=env,stdin=subprocess.DEVNULL,stdout=log,stderr=log)
+    record('identity',{'pid':server.pid,'root':str(root),'binary':str(BIN),'sha256':hashlib.sha256(BIN.read_bytes()).hexdigest()})
+    deadline=time.monotonic()+10
+    while not sockpath.exists() and server.poll() is None and time.monotonic()<deadline:time.sleep(.05)
+    assert sockpath.exists(),(server.poll(),(root/'server.log').read_text())
+    pong=request('ping');assert pong['result']['version']=='0.8.2-chartr.5a2dee700eee'
+    made=request('workspace.create',{'cwd':str(root),'focus':True})['result']
+    pane=made['root_pane']['pane_id'];workspace=made['workspace']['workspace_id']
+    request('tab.create',{'workspace_id':workspace,'focus':True})
+    get=lambda:request('pane.get',{'pane_id':pane})['result']['pane']
+    subscription=[{'type':'pane.agent_status_changed','pane_id':pane}]
+    stream=Stream(subscription);streams.append(stream);record('initial_stream',stream.drain())
+    seq=0
+    def report(state):
+        global seq
+        seq+=1
+        return request('pane.report_agent',{'pane_id':pane,'source':'custom:attention-probe','agent':'probe','state':state,'seq':seq,'agent_session_id':'fixture-session'})
+    report('working');record('working_stream',stream.drain());get()
+    report('idle');idle=stream.drain();record('idle_stream',idle);get()
+    request('pane.report_metadata',{'pane_id':pane,'source':'custom:probe-title','title':'renamed fixture'})
+    record('title_only_stream',stream.drain())
+    reconnect=Stream(subscription);streams.append(reconnect);record('reconnected_stream',reconnect.drain())
+    filtered=Stream([{'type':'pane.agent_status_changed','pane_id':pane,'agent_status':'done'}]);streams.append(filtered);record('filtered_reconnect_stream',filtered.drain())
+    report('working');record('resumed_stream',stream.drain());get()
+    report('blocked');record('blocked_stream',stream.drain());get()
+    report('blocked');record('duplicate_blocked_stream',stream.drain())
+    request('pane.report_agent',{'pane_id':pane,'source':'custom:attention-probe','agent':'probe','state':'failed','seq':100})
+    record('terminal_identity',{'pane_id':pane,'terminal_id':get()['terminal_id']})
+finally:
+    for stream in streams:stream.close()
+    if server and server.poll() is None:
+        stopped=subprocess.run([str(BIN),'server','stop'],env=env,cwd=root,capture_output=True,text=True,timeout=10)
+        record('stop',{'returncode':stopped.returncode,'stdout':stopped.stdout,'stderr':stopped.stderr})
+        try:server.wait(timeout=10)
+        except subprocess.TimeoutExpired:server.terminate();server.wait(timeout=5)
+    record('cleanup',{'server_returncode':server.poll() if server else None,'socket_exists':sockpath.exists(),'profile_retained_for_evidence':str(root)})
+    (HERE/'wire-results-v2.json').write_text(json.dumps(transcript,indent=2)+'\n')

@@ -1,7 +1,7 @@
 ---
 title: Background plugin status
 section: Features
-updated: 2026-10-05
+updated: 2026-10-16
 basis: Source-reviewed migration baseline
 ---
 # Background plugin status
@@ -28,6 +28,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 
 ## Expected outcomes
 
+- Core status-bar settings describe generic background activity without naming individual plugins. Provider labels and details come from their contributions (accepted copy boundary, 2026-10-16).
 - The bar is hidden by default; visibility is global and persisted. Hiding it does not stop background services.
 - Plugins with background_status contribute buttons; the host polls once per second and redraws changed values.
 - Clicking a service opens its settings. Companion is excluded from the desktop build, so historical mobile status/counts are absent.

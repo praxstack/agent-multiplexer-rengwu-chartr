@@ -1,0 +1,15 @@
+{
+  "root": "/tmp/ca-final-ve2jppdu",
+  "app": "/tmp/ca-final-ve2jppdu/Chartr Verify.app",
+  "env": {
+    "XDG_CONFIG_HOME": "/tmp/ca-final-ve2jppdu/config",
+    "XDG_STATE_HOME": "/tmp/ca-final-ve2jppdu/state",
+    "XDG_DATA_HOME": "/tmp/ca-final-ve2jppdu/data",
+    "PI_CODING_AGENT_DIR": "/tmp/ca-final-ve2jppdu/pi",
+    "ATTENTION_LOG": "/tmp/ca-final-ve2jppdu/events.jsonl"
+  },
+  "hashes": {
+    "chartr": "49d312bf0cb17a54b568a7c2551325288ff8e12d2f2845d1f31aa83f27756da4",
+    "herdr": "f58c5cc2ba3de955da1de7fa8c90623181310a40cb85209f7e9cb7c3160116bf"
+  }
+}

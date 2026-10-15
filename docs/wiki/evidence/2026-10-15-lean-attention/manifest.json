@@ -1,0 +1,58 @@
+{
+  "recorded_at": "2026-10-15T15:48:58.312086+08:00",
+  "phase": "Product code final; documentation records still being finalized",
+  "head": "402ba90a25d82b527f68f23c1dc5f29e27065036",
+  "git_status": " M crates/chartr-herdr/src/control.rs\n M crates/chartr-herdr/src/lib.rs\n M crates/chartr/src/app.rs\n M crates/chartr/src/app/backend.rs\n M crates/chartr/src/app/panes.rs\n M crates/chartr/src/chrome.rs\n M crates/chartr/src/chrome/sidebar.rs\n M crates/chartr/src/chrome/sidebar_tests.rs\n M crates/chartr/src/chrome/tabs.rs\n M crates/chartr/src/main.rs\n M crates/chartr/src/persistence.rs\n M crates/chartr/src/space.rs\n M docs/README.md\n M docs/wiki/decisions/index.md\n M docs/wiki/discussions/open-questions.md\n M docs/wiki/features/agents-inbox.md\n M docs/wiki/features/panes.md\n M docs/wiki/features/terminals.md\n M docs/wiki/index.html\n M docs/wiki/index.md\n M docs/wiki/verification/setup.md\n M scripts/tests/test_herdr_fetch.py\n M vendor/herdr/fetch.sh\n?? crates/chartr/src/attention.rs\n?? crates/chartr/src/attention/\n?? docs/agent-attention.md\n?? docs/wiki/discussions/agent-attention.md\n?? docs/wiki/evidence/2026-10-13-agent-attention-contract/\n?? docs/wiki/evidence/2026-10-13-agent-attention-plugin/\n?? docs/wiki/evidence/2026-10-14-agent-attention/\n?? docs/wiki/evidence/2026-10-15-lean-attention/\n?? docs/wiki/journal/2026-10-12-grill-5f286d71-92ef-499d-a8fd-4591f968fade.md\n?? docs/wiki/journal/2026-10-12-grill-b4cd88bb-d438-4828-a304-f5b77f4dae14.md\n?? docs/wiki/journal/2026-10-12-grill-ff575bf5-cacf-4ab8-868e-46d9ca93c63e.md\n?? docs/wiki/journal/2026-10-13-grill-1a7ca491-2a9a-41df-bf41-6294ae40628a.md\n?? docs/wiki/journal/2026-10-13-grill-6ad221ca-e028-42eb-95eb-6ec117d4f4bd.md\n?? docs/wiki/journal/2026-10-15-grill-1cbbb041-3fb2-41c0-97c7-434cb1dbeff1.md\n?? docs/wiki/verification/runs/2026-10-13-agent-attention-contract.md\n?? docs/wiki/verification/runs/2026-10-13-agent-attention-plugin.md\n?? docs/wiki/verification/runs/2026-10-14-agent-attention-attempts.md\n?? docs/wiki/verification/runs/2026-10-14-agent-attention.md\n?? untitled\n?? vendor/herdr/README.md\n?? vendor/herdr/terminal-identity.patch\n",
+  "git_diff_binary_head_sha256": "a6ad4417f7aad47053a21b4cb84ab3b01ae1de1ab3510f6a45fe9b0474e94223",
+  "product_source_sha256": {
+    "crates/chartr-herdr/src/control.rs": "16c4798f2c7304bbae573c27576a10c0c5ba01bcc9b584f49063519126824855",
+    "crates/chartr-herdr/src/lib.rs": "3b9d308c93a191795f4881cb0923c8abf730b43f07cd969c4d44ca15935904e8",
+    "crates/chartr/src/app.rs": "4bb215418761752dd10ebb268b3a404dd8ae3e9014a2c6d911eb2e93097c3f11",
+    "crates/chartr/src/app/backend.rs": "821f6b9aa63dbd2aaedb79457cae8cdd87292063e76c7c97498c8522e47cd2b6",
+    "crates/chartr/src/app/panes.rs": "9c495d5ed13879e4395841d929c6b6a712eed30f88f4387d4666a0e9d952396c",
+    "crates/chartr/src/attention.rs": "0bbae53f4a39cf04faafe2c99191bf98fa4c347183954a6ff4ed17bba6ace32e",
+    "crates/chartr/src/attention/service.rs": "9bfb85efbfd9d10bddcebe7f611fab1aa6a8b8dd542b15a5a881bc60b718dcd1",
+    "crates/chartr/src/chrome.rs": "8f1c2361fd3e26311441731eaf82da3a4d6463b9023f15faaa5d108bcdd83b1e",
+    "crates/chartr/src/chrome/sidebar.rs": "bc78b9a42dc9001702dd688e2a87dc82cbd5b2c9efc26e77d88f129b711b1142",
+    "crates/chartr/src/chrome/sidebar_tests.rs": "c5c3df3ef32f900da4e638f6e24bde29975e876cb2c4693f0048bd52b8de2b13",
+    "crates/chartr/src/chrome/tabs.rs": "3a887fcb8e8007ad72e4c906c043b88faa4fc07d42b27042cd29e255ea689084",
+    "crates/chartr/src/main.rs": "14d0995f9c88c71225b0632a70f52aa02f2bf786d18a30f2bfb44fb30e5852d8",
+    "crates/chartr/src/persistence.rs": "3bc98c797014ef43552c5216becc8b1a63ad4f426f9f2f59de33163d98570f79",
+    "crates/chartr/src/space.rs": "42513098ec6e11b6ae67c65add933707d506d16df11cef95cdd83e6ed9332b16",
+    "scripts/tests/test_herdr_fetch.py": "5ce5e63fb5e477e665d6603765a09b72a214ec5c70504e4cc359fb177534bf16",
+    "vendor/herdr/fetch.sh": "9c630479b2712145c63de7f62c73d51a857e07be57ae51d0c7b20c37342bf8e4",
+    "vendor/herdr/terminal-identity.patch": "9ed02822c8773c63053cf4d42745fff8758ef5aa57ddb5d4c3c55eec56bdaf70"
+  },
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0\nBuildVersion:\t\t26A5368g",
+  "architecture": "arm64",
+  "rust": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+  "codex_version": "codex-cli 0.162.1",
+  "codex_invocation": "run-codex.txt; configured gpt-6-astra xhigh; authenticated ChatGPT account; harmless sleep/printf prompts only",
+  "detection_manifest": {
+    "version": "2026.10.11.1",
+    "source": "Herdr downloaded remote override in isolated state/herdr/agent-detection/remote/codex.toml",
+    "sha256": "d25cfddb5434259303fb0ac27b5b0e6d0558408e6901ee112bcd53de02bcda13"
+  },
+  "herdr": {
+    "upstream_revision": "5a2dee700eeeea68267a4d16777307632f77172f",
+    "version": "0.8.2-chartr.5a2dee700eee.identity.9ed02822c877",
+    "protocol": 22,
+    "patch_sha256": "9ed02822c8773c63053cf4d42745fff8758ef5aa57ddb5d4c3c55eec56bdaf70"
+  },
+  "native_instance": {
+    "root": "/tmp/ca-lean-s4xq_16d",
+    "app": "/Users/rengwu/Desktop/Projects/chartr/target/lean-native/Chartr Lean Verify.app",
+    "bundle_id": "dev.chartr.leanverify.project.oct15",
+    "pid": 7363,
+    "env": {
+      "XDG_CONFIG_HOME": "/tmp/ca-lean-s4xq_16d/config",
+      "XDG_STATE_HOME": "/tmp/ca-lean-s4xq_16d/state",
+      "XDG_DATA_HOME": "/tmp/ca-lean-s4xq_16d/data"
+    },
+    "hashes": {
+      "chartr": "92c6453343b4cba226def46aa31e3bbef2ee423d7e9361d6ffe0767b7771b055",
+      "herdr": "1027d7c4b901b5a228b6919f9c4bd35ade20599bc619d45d7bc83c0bd6131f4d"
+    }
+  },
+  "untracked_file_untitled_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

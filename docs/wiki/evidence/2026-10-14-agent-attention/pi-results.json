@@ -1,0 +1,166 @@
+[
+  {
+    "label": "identity",
+    "data": {
+      "root": "/tmp/ca-pi-yqo1wpe9",
+      "pid": 48213,
+      "binary": "/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/attention-source/target/debug/herdr",
+      "sha256": "2e14e6c3edf196024de562f618fc9ac9440b54f3a277e90023b2631503cac4cf",
+      "ping": {
+        "id": "probe",
+        "result": {
+          "type": "pong",
+          "version": "0.8.2-chartr.5a2dee700eee.attention-dev",
+          "protocol": 22,
+          "capabilities": {
+            "live_handoff": true,
+            "detached_server_daemon": false,
+            "endpoint_protocol_generation": 1
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "initial",
+    "data": {
+      "epoch": "term_65db3c2fd9d4f1",
+      "sequence": 1,
+      "terminals": [
+        {
+          "terminal_id": "term_65db3c2fdef982",
+          "pane_id": "w1:p1",
+          "generation": null,
+          "label": "Agent",
+          "latest": null
+        }
+      ]
+    }
+  },
+  {
+    "label": "stream_first",
+    "data": {
+      "type": "snapshot",
+      "snapshot": {
+        "epoch": "term_65db3c2fd9d4f1",
+        "sequence": 1,
+        "terminals": [
+          {
+            "terminal_id": "term_65db3c2fdef982",
+            "pane_id": "w1:p1",
+            "generation": null,
+            "label": "Agent",
+            "latest": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "native_start",
+    "data": "{\"event\":{\"type\":\"session_start\",\"reason\":\"startup\"},\"mode\":\"tui\",\"id\":\"01a13429-bafa-701f-9c87-692cd7380336\"}\n"
+  },
+  {
+    "label": "first_prompt",
+    "data": {
+      "terminal_id": "term_65db3c2fdef982",
+      "pane_id": "w1:p1",
+      "generation": "term_65db3c3094e893",
+      "label": "pi",
+      "latest": {
+        "generation": "term_65db3c3094e893",
+        "revision": 1,
+        "kind": "input_needed",
+        "occurrence_key": "prompt:2232646937408341803008001:1",
+        "evidence": "pi.ui_prompt.v1"
+      }
+    }
+  },
+  {
+    "label": "second_prompt",
+    "data": {
+      "terminal_id": "term_65db3c2fdef982",
+      "pane_id": "w1:p1",
+      "generation": "term_65db3c3094e893",
+      "label": "pi",
+      "latest": {
+        "generation": "term_65db3c3094e893",
+        "revision": 2,
+        "kind": "input_needed",
+        "occurrence_key": "prompt:2232646937408341803008001:2",
+        "evidence": "pi.ui_prompt.v1"
+      }
+    }
+  },
+  {
+    "label": "handoff",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "after_handoff",
+    "data": {
+      "epoch": "term_65db3c2fd9d4f1",
+      "sequence": 5,
+      "terminals": [
+        {
+          "terminal_id": "term_65db3c2fdef982",
+          "pane_id": "w1:p1",
+          "generation": "term_65db3c3094e893",
+          "label": "pi",
+          "latest": {
+            "generation": "term_65db3c3094e893",
+            "revision": 2,
+            "kind": "input_needed",
+            "occurrence_key": "prompt:2232646937408341803008001:2",
+            "evidence": "pi.ui_prompt.v1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "label": "third_prompt_after_handoff",
+    "data": {
+      "terminal_id": "term_65db3c2fdef982",
+      "pane_id": "w1:p1",
+      "generation": "term_65db3c3094e893",
+      "label": "pi",
+      "latest": {
+        "generation": "term_65db3c3094e893",
+        "revision": 3,
+        "kind": "input_needed",
+        "occurrence_key": "prompt:2232646937408341803008001:3",
+        "evidence": "pi.ui_prompt.v1"
+      }
+    }
+  },
+  {
+    "label": "native_events",
+    "data": "{\"event\":{\"type\":\"session_start\",\"reason\":\"startup\"},\"mode\":\"tui\",\"id\":\"01a13429-bafa-701f-9c87-692cd7380336\"}\n{\"type\":\"ui_prompt_start\",\"reason\":\"ui_prompt\",\"kind\":\"confirm\",\"title\":\"Attention fixture\"}\n{\"type\":\"ui_prompt_start\",\"reason\":\"ui_prompt\",\"kind\":\"confirm\",\"title\":\"Attention fixture\"}\n{\"type\":\"ui_prompt_start\",\"reason\":\"ui_prompt\",\"kind\":\"confirm\",\"title\":\"Attention fixture\"}\n"
+  },
+  {
+    "label": "passed",
+    "data": true
+  },
+  {
+    "label": "stop",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "cleanup",
+    "data": {
+      "original_exit": 0,
+      "socket_exists": true
+    }
+  }
+]

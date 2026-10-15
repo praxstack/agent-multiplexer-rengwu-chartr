@@ -1,0 +1,17 @@
+{
+  "meaning": "Assertions that captured observations match the report; these are not passes for the proposed feature.",
+  "checks": {
+    "metadata_reemits_done": true,
+    "filtered_reconnect_emits_old_done": true,
+    "no_event_identity_or_evidence": true,
+    "same_blocked_report_silent": true,
+    "failed_state_rejected": true,
+    "cancellation_screen_can_be_done": true,
+    "unknown_screen_can_be_done": true,
+    "cancellation_has_visible_idle_evidence": true,
+    "opencode_cancel_maps_to_blocked": true,
+    "pi_abort_maps_to_idle": true,
+    "handoff_changes_terminal_identity": true,
+    "baseline_persistence_tests_pass": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "root": "/tmp/ca-lean-s4xq_16d",
+  "app": "/Users/rengwu/Desktop/Projects/chartr/target/lean-native/Chartr Lean Verify.app",
+  "bundle_id": "dev.chartr.leanverify.project.oct15",
+  "pid": 7363,
+  "env": {
+    "XDG_CONFIG_HOME": "/tmp/ca-lean-s4xq_16d/config",
+    "XDG_STATE_HOME": "/tmp/ca-lean-s4xq_16d/state",
+    "XDG_DATA_HOME": "/tmp/ca-lean-s4xq_16d/data"
+  },
+  "hashes": {
+    "chartr": "92c6453343b4cba226def46aa31e3bbef2ee423d7e9361d6ffe0767b7771b055",
+    "herdr": "1027d7c4b901b5a228b6919f9c4bd35ade20599bc619d45d7bc83c0bd6131f4d"
+  }
+}

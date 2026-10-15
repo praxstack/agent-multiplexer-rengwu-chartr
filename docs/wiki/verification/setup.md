@@ -1,7 +1,7 @@
 ---
 title: Verification setup
 section: Verification
-updated: 2026-10-11
+updated: 2026-10-15
 recipe: Unvalidated
 ---
 # Verification setup
@@ -93,10 +93,36 @@ resolved it. Also confirm the screen is unlocked before driving native windows:
 the UI tool reported `cgWindowNotFound` for both Chartr and Finder while the
 screen was locked. Such captures cannot prove interaction responsiveness.
 
-An isolated `.app` can use a unique bundle identifier and `LSEnvironment` for
-the three XDG roots so later UI-tool launches cannot accidentally use the normal
-profile. Record the actual signed executable's hash, since ad hoc bundle signing
-changes its bytes. Do not replace the installed app to perform these checks.
+An isolated `.app` should use a unique bundle identifier. Start its executable
+with explicit XDG variables using the launch recipe above, then verify the actual
+private socket and empty profile. **Do not rely on `LSEnvironment` alone:** the
+[October 14 attempt](runs/2026-10-14-agent-attention-attempts.md) found that Launch
+Services inherited a pre-existing XDG value over the bundle's value. Opening the
+already-running exact bundle through Finder can activate it after its process and
+profile have been verified. Never let a UI helper launch a stopped test bundle
+without re-establishing isolation. Record the signed executable's hash; ad hoc
+signing changes its bytes. Do not replace the installed app for these checks.
+
+The [October 15 setup attempts](runs/2026-10-15-lean-attention-attempts.md) add two
+practical checks. Build the normal app **after** test compilation before copying
+`target/debug/chartr` into a native bundle; a concurrent test-enabled build produced
+a GPUI test-executor panic in the first attempt. For native notifications, keep
+the short isolated profile under `/tmp` but use a correctly formed, registered,
+uniquely identified app bundle under `target/`. The `/tmp` bundle was rejected by
+macOS notification validation; the target-directory bundle was accepted. Its
+location, metadata and signing differed, so this does not isolate one cause.
+
+Do not inspect the tested app while proving minimized/closed-window behavior:
+the desktop helper can reactivate or reopen it. Observe another app, and read
+private backend/SQLite state for the resulting transition. Backend text entry and
+Enter sent back-to-back can leave a Codex prompt unsubmitted; observe the working
+state before drawing a lifecycle conclusion.
+
+Native automation may select a tab without activating the app. Exact-focus
+attention checks require an active foreground window. A persisted delivery
+watermark proves the application attempted notification delivery, not that macOS
+showed a banner. Observe actual banners/clicks separately. A process-termination
+restart verifies stored restoration, not graceful quit-flush behavior.
 
 ### General interaction coverage
 

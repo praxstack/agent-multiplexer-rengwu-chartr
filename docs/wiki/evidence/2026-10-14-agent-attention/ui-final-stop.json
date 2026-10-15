@@ -1,0 +1,6 @@
+{
+  "method": "SIGTERM after native Quit shortcut did not exit",
+  "pids": [
+    23644
+  ]
+}

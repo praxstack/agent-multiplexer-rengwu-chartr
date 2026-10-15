@@ -1,0 +1,55 @@
+{
+  "state": {
+    "time": 1792049353.306058,
+    "panes": [
+      {
+        "pane_id": "w1:p1",
+        "terminal_id": "term_65ddbdadc709f1",
+        "workspace_id": "w1",
+        "agent": "codex",
+        "agent_status": "blocked",
+        "display_agent": null
+      },
+      {
+        "pane_id": "w1:p2",
+        "terminal_id": "term_65ddbea0723e62",
+        "workspace_id": "w1",
+        "agent": null,
+        "agent_status": "unknown",
+        "display_agent": null
+      }
+    ],
+    "attention": {
+      "version": 2,
+      "terminals": {
+        "term_65ddbdadc709f1": {
+          "pane_id": "w1:p1",
+          "label": "codex",
+          "activity": "Blocked",
+          "unread": true,
+          "revision": 2
+        },
+        "term_65ddbea0723e62": {
+          "pane_id": "w1:p2",
+          "label": "Terminal",
+          "activity": "Unknown",
+          "unread": false,
+          "revision": 0
+        }
+      }
+    }
+  },
+  "screen": {
+    "type": "pane_read",
+    "read": {
+      "pane_id": "w1:p1",
+      "workspace_id": "w1",
+      "tab_id": "w1:t1",
+      "source": "detection",
+      "format": "text",
+      "text": "\n\n\u203a This is a disposable terminal attention test. Run only the harmless shell command sleep 8, then\n  reply exactly ATTENTION COMPLETE. Do not read or change files, use other tools, or spawn agents.\n\n\n\u2022 Ran sleep 8\n  \u2514 (no output)\n\n\u2022 ATTENTION COMPLETE\n\n  Worked for 14s \u2022 3:23 PM\n\n\n\u203a Test the approval UI only. Request approval for the harmless shell command printf ATTENTION_APPROVAL\n  using exec_command with sandbox_permissions=require_escalated and justification=\"Allow this harmless\n  attention verification print?\". Do not read or change files, run anything else, or spawn agents.\n  After approval, reply APPROVAL COMPLETE.\n\n\n\u2022 I\u2019ll request approval for the verification print.\n\n\u2022 Running printf ATTENTION_APPROVAL\n\n\n  Would you like to run the following command?\n\n  Environment: local\n\n  Reason: Allow this harmless attention verification print?\n\n  $ printf ATTENTION_APPROVAL\n\n\n\u203a 1. Yes, proceed (y)\n  2. Yes, and don't ask again for commands that start with `printf ATTENTION_APPROVAL` (p)\n  3. No, and tell Codex what to do differently (esc)\n\n  Press enter to confirm or esc to cancel\n",
+      "revision": 0,
+      "truncated": false
+    }
+  }
+}

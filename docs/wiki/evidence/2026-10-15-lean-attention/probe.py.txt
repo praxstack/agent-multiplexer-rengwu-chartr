@@ -1,0 +1,34 @@
+import json,socket,sqlite3,pathlib,sys,time
+root=pathlib.Path(__file__).parent
+sock=root/'config/chartr/herdr/herdr.sock'
+def request(method,params=None):
+ with socket.socket(socket.AF_UNIX) as s:
+  s.settimeout(6);s.connect(str(sock));s.sendall((json.dumps({'id':'lean-verify','method':method,'params':params or {}})+'\n').encode());value=json.loads(s.makefile('rb').readline())
+ if 'error' in value:raise RuntimeError(value['error'])
+ return value['result']
+def state():
+ panes=request('pane.list')['panes'];out=[]
+ for p in panes:out.append({k:p.get(k) for k in ['pane_id','terminal_id','workspace_id','agent','agent_status','display_agent']})
+ db=[root/'state/chartr/state.sqlite']
+ attention=None
+ if db:
+  with sqlite3.connect(db[0]) as c:
+   row=c.execute("SELECT value_json FROM app_state WHERE key='attention'").fetchone()
+   if row:attention=json.loads(row[0])
+ return {'time':time.time(),'panes':out,'attention':attention}
+if __name__=='__main__':
+ action=sys.argv[1]
+ if action=='state':print(json.dumps(state(),indent=2))
+ elif action=='watch':
+  end=time.monotonic()+float(sys.argv[2]);last=None
+  with (root/'observations.jsonl').open('a') as f:
+   while time.monotonic()<end:
+    value=state();key=json.dumps({k:v for k,v in value.items() if k!='time'},sort_keys=True)
+    if key!=last:f.write(json.dumps(value)+'\n');f.flush();last=key
+    time.sleep(.2)
+ elif action=='read':print(json.dumps(request('pane.read',{'pane_id':sys.argv[2],'source':'detection','format':'text','strip_ansi':True}),indent=2))
+ elif action=='handoff':
+  before=state();c=json.loads((root/'instance.json').read_text());exe=pathlib.Path(c['app'])/'Contents/MacOS/herdr';version=request('ping')['version']
+  result=request('server.live_handoff',{'import_exe':str(exe),'expected_protocol':22,'expected_version':version})
+  time.sleep(2);after=state();assert {x['terminal_id'] for x in before['panes']}=={x['terminal_id'] for x in after['panes']}
+  value={'before':before,'result':result,'after':after};(root/'handoff.json').write_text(json.dumps(value,indent=2));print(json.dumps(value,indent=2))

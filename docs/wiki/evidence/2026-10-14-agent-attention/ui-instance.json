@@ -1,0 +1,16 @@
+{
+  "root": "/tmp/ca-ui-je72hgoi",
+  "app": "/tmp/ca-ui-je72hgoi/Chartr Attention.app",
+  "env": {
+    "XDG_CONFIG_HOME": "/tmp/ca-ui-je72hgoi/config",
+    "XDG_STATE_HOME": "/tmp/ca-ui-je72hgoi/state",
+    "XDG_DATA_HOME": "/tmp/ca-ui-je72hgoi/data",
+    "PI_CODING_AGENT_DIR": "/tmp/ca-ui-je72hgoi/pi",
+    "ATTENTION_LOG": "/tmp/ca-ui-je72hgoi/events.jsonl"
+  },
+  "hashes": {
+    "chartr": "83142df7a1db1a54cc772b2a2787c972c30fc4096b7c1b24c15e79db802f4eda",
+    "herdr": "b47588e3fc79a19e218e7984ffe3027b71f14674a16e3a3b3ad9a8eb62bf8cbc"
+  },
+  "pid": 63270
+}

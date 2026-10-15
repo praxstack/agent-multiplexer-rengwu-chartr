@@ -1,0 +1,14 @@
+{
+  "total": 2819,
+  "passed": 2817,
+  "failed": [
+    {
+      "test": "api::schema::tests::generated_protocol_schema_artifact_is_current",
+      "code": 101
+    },
+    {
+      "test": "integration::tests::opencode_status_requires_the_tui_plugin_and_config_entry",
+      "code": 101
+    }
+  ]
+}

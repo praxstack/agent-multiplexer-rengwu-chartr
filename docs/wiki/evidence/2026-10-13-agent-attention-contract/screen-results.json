@@ -1,0 +1,982 @@
+[
+  {
+    "label": "identity",
+    "data": {
+      "pid": 7026,
+      "root": "/tmp/ca-attn-9xlbzhht",
+      "binary": "/Users/rengwu/Desktop/Projects/chartr/target/debug/herdr",
+      "sha256": "d9c83f20c4a7daa88570e32ee7af35c86ad4c9ec5ff3ec212a783565db9ec754"
+    }
+  },
+  {
+    "label": "ping",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      }
+    }
+  },
+  {
+    "label": "workspace.create",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "workspace_created",
+        "workspace": {
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "ca-attn-9xlbzhht",
+          "focused": true,
+          "pane_count": 1,
+          "tab_count": 1,
+          "active_tab_id": "w1:t1",
+          "agent_status": "unknown"
+        },
+        "tab": {
+          "tab_id": "w1:t1",
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "1",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db00c983b761",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/ca-attn-9xlbzhht",
+          "foreground_cwd": "/private/tmp/ca-attn-9xlbzhht",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "tab.create",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "tab_created",
+        "tab": {
+          "tab_id": "w1:t2",
+          "workspace_id": "w1",
+          "number": 2,
+          "label": "2",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p2",
+          "terminal_id": "term_65db00c984f1a2",
+          "workspace_id": "w1",
+          "tab_id": "w1:t2",
+          "focused": true,
+          "cwd": "/private/tmp/ca-attn-9xlbzhht",
+          "foreground_cwd": "/private/tmp/ca-attn-9xlbzhht",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "initial_stream",
+    "data": [
+      {
+        "id": "sub",
+        "result": {
+          "type": "subscription_started"
+        }
+      }
+    ]
+  },
+  {
+    "label": "pane.send_text",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "pane.send_keys",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "working_stream",
+    "data": []
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db00c983b761",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": false,
+          "cwd": "/private/tmp/ca-attn-9xlbzhht",
+          "foreground_cwd": "/private/tmp/ca-attn-9xlbzhht",
+          "agent": "codex",
+          "terminal_title": "project",
+          "terminal_title_stripped": "project",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 1
+        }
+      }
+    }
+  },
+  {
+    "label": "agent.explain",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "agent_explain",
+        "explain": {
+          "agent": "codex",
+          "cached_remote_version": null,
+          "evaluated_rules": [
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [
+                  "Action Required"
+                ],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_blocked",
+              "matched": false,
+              "priority": 1100,
+              "region": "osc_title",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [
+                  "(?:^| )[\u280b\u2819\u2839\u2838\u283c\u2834\u2826\u2827\u2807\u280f](?: |$)"
+                ],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_working",
+              "matched": false,
+              "priority": 1050,
+              "region": "osc_title",
+              "state": "working"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 2,
+                "contains": [
+                  "\u2191/\u2193 to scroll",
+                  "pgup/pgdn to",
+                  "home/end to jump",
+                  "q to quit"
+                ],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "transcript_viewer",
+              "matched": false,
+              "priority": 1000,
+              "region": "after_last_prompt_marker",
+              "state": "unknown"
+            },
+            {
+              "evidence": {
+                "all_count": 2,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 80,
+                "region_preview": "\u2022 Working (4s \u2022 esc to interrupt)\n\n\u203a Use /skills to list available skills\n"
+              },
+              "id": "trust_directory",
+              "matched": false,
+              "priority": 950,
+              "region": "top_non_empty_lines(20)",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 4,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "live_strong_blocker",
+              "matched": false,
+              "priority": 900,
+              "region": "after_last_prompt_marker",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 4,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "weak_blocker",
+              "matched": false,
+              "priority": 600,
+              "region": "whole_recent_without_current_prompt_marker",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [
+                  "^[\u2022\u25e6]\\s+Working \\([^)]*esc to interrupt\\)(?: \u00b7 .*)?$"
+                ],
+                "not_count": 1,
+                "regex": [],
+                "region_bytes": 80,
+                "region_preview": "\u2022 Working (4s \u2022 esc to interrupt)\n\n\u203a Use /skills to list available skills\n"
+              },
+              "id": "screen_working_fallback",
+              "matched": true,
+              "priority": 500,
+              "region": "bottom_non_empty_lines(3)",
+              "state": "working"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 2,
+                "regex": [
+                  "\\S"
+                ],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_idle",
+              "matched": true,
+              "priority": 100,
+              "region": "osc_title",
+              "state": "idle"
+            }
+          ],
+          "fallback_reason": null,
+          "local_override_shadowing_remote": false,
+          "manifest_source": "bundled",
+          "manifest_version": "2026.08.28.1",
+          "matched_rule": {
+            "id": "screen_working_fallback",
+            "priority": 500,
+            "region": "bottom_non_empty_lines(3)",
+            "state": "working"
+          },
+          "remote_update_error": null,
+          "remote_update_status": null,
+          "screen_detection_skipped": false,
+          "skip_state_update": false,
+          "skipped_update_reason": null,
+          "state": "working",
+          "visible_blocker": false,
+          "visible_idle": false,
+          "visible_working": true,
+          "warning": null
+        }
+      }
+    }
+  },
+  {
+    "label": "cancelled_screen_stream",
+    "data": []
+  },
+  {
+    "label": "pane.get",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pane_info",
+        "pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db00c983b761",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": false,
+          "cwd": "/private/tmp/ca-attn-9xlbzhht",
+          "foreground_cwd": "/private/tmp/ca-attn-9xlbzhht",
+          "agent": "codex",
+          "terminal_title": "project",
+          "terminal_title_stripped": "project",
+          "agent_status": "idle",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 1
+        }
+      }
+    }
+  },
+  {
+    "label": "agent.explain",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "agent_explain",
+        "explain": {
+          "agent": "codex",
+          "cached_remote_version": null,
+          "evaluated_rules": [
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [
+                  "Action Required"
+                ],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_blocked",
+              "matched": false,
+              "priority": 1100,
+              "region": "osc_title",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [
+                  "(?:^| )[\u280b\u2819\u2839\u2838\u283c\u2834\u2826\u2827\u2807\u280f](?: |$)"
+                ],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_working",
+              "matched": false,
+              "priority": 1050,
+              "region": "osc_title",
+              "state": "working"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 2,
+                "contains": [
+                  "\u2191/\u2193 to scroll",
+                  "pgup/pgdn to",
+                  "home/end to jump",
+                  "q to quit"
+                ],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "transcript_viewer",
+              "matched": false,
+              "priority": 1000,
+              "region": "after_last_prompt_marker",
+              "state": "unknown"
+            },
+            {
+              "evidence": {
+                "all_count": 2,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 75,
+                "region_preview": "\u25e6 Working (1m 16s \u2022 esc to interrupt)\n\u25a0 Conversation interrupted\n\u203a\n"
+              },
+              "id": "trust_directory",
+              "matched": false,
+              "priority": 950,
+              "region": "top_non_empty_lines(20)",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 4,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "live_strong_blocker",
+              "matched": false,
+              "priority": 900,
+              "region": "after_last_prompt_marker",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 4,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "weak_blocker",
+              "matched": false,
+              "priority": 600,
+              "region": "whole_recent_without_current_prompt_marker",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [
+                  "^[\u2022\u25e6]\\s+Working \\([^)]*esc to interrupt\\)(?: \u00b7 .*)?$"
+                ],
+                "not_count": 1,
+                "regex": [],
+                "region_bytes": 75,
+                "region_preview": "\u25e6 Working (1m 16s \u2022 esc to interrupt)\n\u25a0 Conversation interrupted\n\u203a\n"
+              },
+              "id": "screen_working_fallback",
+              "matched": false,
+              "priority": 500,
+              "region": "bottom_non_empty_lines(3)",
+              "state": "working"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 2,
+                "regex": [
+                  "\\S"
+                ],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_idle",
+              "matched": true,
+              "priority": 100,
+              "region": "osc_title",
+              "state": "idle"
+            }
+          ],
+          "fallback_reason": null,
+          "local_override_shadowing_remote": false,
+          "manifest_source": "bundled",
+          "manifest_version": "2026.08.28.1",
+          "matched_rule": {
+            "id": "osc_title_idle",
+            "priority": 100,
+            "region": "osc_title",
+            "state": "idle"
+          },
+          "remote_update_error": null,
+          "remote_update_status": null,
+          "screen_detection_skipped": false,
+          "skip_state_update": false,
+          "skipped_update_reason": null,
+          "state": "idle",
+          "visible_blocker": false,
+          "visible_idle": true,
+          "visible_working": false,
+          "warning": null
+        }
+      }
+    }
+  },
+  {
+    "label": "approval_screen_stream",
+    "data": [
+      {
+        "data": {
+          "agent": "codex",
+          "agent_status": "idle",
+          "pane_id": "w1:p1",
+          "workspace_id": "w1"
+        },
+        "event": "pane.agent_status_changed"
+      },
+      {
+        "data": {
+          "agent": "codex",
+          "agent_status": "blocked",
+          "pane_id": "w1:p1",
+          "workspace_id": "w1"
+        },
+        "event": "pane.agent_status_changed"
+      }
+    ]
+  },
+  {
+    "label": "agent.explain",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "agent_explain",
+        "explain": {
+          "agent": "codex",
+          "cached_remote_version": null,
+          "evaluated_rules": [
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [
+                  "Action Required"
+                ],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_blocked",
+              "matched": false,
+              "priority": 1100,
+              "region": "osc_title",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [
+                  "(?:^| )[\u280b\u2819\u2839\u2838\u283c\u2834\u2826\u2827\u2807\u280f](?: |$)"
+                ],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_working",
+              "matched": false,
+              "priority": 1050,
+              "region": "osc_title",
+              "state": "working"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 2,
+                "contains": [
+                  "\u2191/\u2193 to scroll",
+                  "pgup/pgdn to",
+                  "home/end to jump",
+                  "q to quit"
+                ],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 40,
+                "region_preview": "Press enter to confirm or esc to cancel\n"
+              },
+              "id": "transcript_viewer",
+              "matched": false,
+              "priority": 1000,
+              "region": "after_last_prompt_marker",
+              "state": "unknown"
+            },
+            {
+              "evidence": {
+                "all_count": 2,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 60,
+                "region_preview": "\u203a 1. Yes, proceed\nPress enter to confirm or esc to cancel\n"
+              },
+              "id": "trust_directory",
+              "matched": false,
+              "priority": 950,
+              "region": "top_non_empty_lines(20)",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 4,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 40,
+                "region_preview": "Press enter to confirm or esc to cancel\n"
+              },
+              "id": "live_strong_blocker",
+              "matched": true,
+              "priority": 900,
+              "region": "after_last_prompt_marker",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 4,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "weak_blocker",
+              "matched": false,
+              "priority": 600,
+              "region": "whole_recent_without_current_prompt_marker",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [
+                  "^[\u2022\u25e6]\\s+Working \\([^)]*esc to interrupt\\)(?: \u00b7 .*)?$"
+                ],
+                "not_count": 1,
+                "regex": [],
+                "region_bytes": 60,
+                "region_preview": "\u203a 1. Yes, proceed\nPress enter to confirm or esc to cancel\n"
+              },
+              "id": "screen_working_fallback",
+              "matched": false,
+              "priority": 500,
+              "region": "bottom_non_empty_lines(3)",
+              "state": "working"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 2,
+                "regex": [
+                  "\\S"
+                ],
+                "region_bytes": 7,
+                "region_preview": "project"
+              },
+              "id": "osc_title_idle",
+              "matched": true,
+              "priority": 100,
+              "region": "osc_title",
+              "state": "idle"
+            }
+          ],
+          "fallback_reason": null,
+          "local_override_shadowing_remote": false,
+          "manifest_source": "bundled",
+          "manifest_version": "2026.08.28.1",
+          "matched_rule": {
+            "id": "live_strong_blocker",
+            "priority": 900,
+            "region": "after_last_prompt_marker",
+            "state": "blocked"
+          },
+          "remote_update_error": null,
+          "remote_update_status": null,
+          "screen_detection_skipped": false,
+          "skip_state_update": false,
+          "skipped_update_reason": null,
+          "state": "blocked",
+          "visible_blocker": true,
+          "visible_idle": false,
+          "visible_working": false,
+          "warning": null
+        }
+      }
+    }
+  },
+  {
+    "label": "unknown_screen_stream",
+    "data": [
+      {
+        "data": {
+          "agent": "codex",
+          "agent_status": "done",
+          "pane_id": "w1:p1",
+          "workspace_id": "w1"
+        },
+        "event": "pane.agent_status_changed"
+      }
+    ]
+  },
+  {
+    "label": "agent.explain",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "agent_explain",
+        "explain": {
+          "agent": "codex",
+          "cached_remote_version": null,
+          "evaluated_rules": [
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [
+                  "Action Required"
+                ],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "osc_title_blocked",
+              "matched": false,
+              "priority": 1100,
+              "region": "osc_title",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [
+                  "(?:^| )[\u280b\u2819\u2839\u2838\u283c\u2834\u2826\u2827\u2807\u280f](?: |$)"
+                ],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "osc_title_working",
+              "matched": false,
+              "priority": 1050,
+              "region": "osc_title",
+              "state": "working"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 2,
+                "contains": [
+                  "\u2191/\u2193 to scroll",
+                  "pgup/pgdn to",
+                  "home/end to jump",
+                  "q to quit"
+                ],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 28,
+                "region_preview": "unrecognized screen fixture\n"
+              },
+              "id": "transcript_viewer",
+              "matched": false,
+              "priority": 1000,
+              "region": "after_last_prompt_marker",
+              "state": "unknown"
+            },
+            {
+              "evidence": {
+                "all_count": 2,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 28,
+                "region_preview": "unrecognized screen fixture\n"
+              },
+              "id": "trust_directory",
+              "matched": false,
+              "priority": 950,
+              "region": "top_non_empty_lines(20)",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 4,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 28,
+                "region_preview": "unrecognized screen fixture\n"
+              },
+              "id": "live_strong_blocker",
+              "matched": false,
+              "priority": 900,
+              "region": "after_last_prompt_marker",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 4,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 0,
+                "regex": [],
+                "region_bytes": 28,
+                "region_preview": "unrecognized screen fixture\n"
+              },
+              "id": "weak_blocker",
+              "matched": false,
+              "priority": 600,
+              "region": "whole_recent_without_current_prompt_marker",
+              "state": "blocked"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [
+                  "^[\u2022\u25e6]\\s+Working \\([^)]*esc to interrupt\\)(?: \u00b7 .*)?$"
+                ],
+                "not_count": 1,
+                "regex": [],
+                "region_bytes": 28,
+                "region_preview": "unrecognized screen fixture\n"
+              },
+              "id": "screen_working_fallback",
+              "matched": false,
+              "priority": 500,
+              "region": "bottom_non_empty_lines(3)",
+              "state": "working"
+            },
+            {
+              "evidence": {
+                "all_count": 0,
+                "any_count": 0,
+                "contains": [],
+                "line_regex": [],
+                "not_count": 2,
+                "regex": [
+                  "\\S"
+                ],
+                "region_bytes": 0,
+                "region_preview": ""
+              },
+              "id": "osc_title_idle",
+              "matched": false,
+              "priority": 100,
+              "region": "osc_title",
+              "state": "idle"
+            }
+          ],
+          "fallback_reason": "default_known_agent_idle_fallback",
+          "local_override_shadowing_remote": false,
+          "manifest_source": "bundled",
+          "manifest_version": "2026.08.28.1",
+          "matched_rule": null,
+          "remote_update_error": null,
+          "remote_update_status": null,
+          "screen_detection_skipped": false,
+          "skip_state_update": false,
+          "skipped_update_reason": null,
+          "state": "idle",
+          "visible_blocker": false,
+          "visible_idle": false,
+          "visible_working": false,
+          "warning": null
+        }
+      }
+    }
+  },
+  {
+    "label": "stop",
+    "data": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "label": "cleanup",
+    "data": {
+      "server_returncode": 0,
+      "socket_exists": false,
+      "profile_retained_for_evidence": "/tmp/ca-attn-9xlbzhht"
+    }
+  }
+]

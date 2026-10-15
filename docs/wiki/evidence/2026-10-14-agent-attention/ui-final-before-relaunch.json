@@ -1,0 +1,38 @@
+{
+  "database": "/tmp/ca-final-ve2jppdu/state/chartr/state.sqlite",
+  "attention": {
+    "version": 1,
+    "epoch": "term_65dc799adc9101",
+    "sequence": 6,
+    "terminals": {
+      "term_65dc79d7c03192": {
+        "terminal": {
+          "terminal_id": "term_65dc79d7c03192",
+          "pane_id": "w1:p1",
+          "generation": "term_65dc79d8aabcb3",
+          "label": "pi",
+          "latest": {
+            "generation": "term_65dc79d8aabcb3",
+            "revision": 2,
+            "kind": "input_needed",
+            "occurrence_key": "prompt:2598878705349566660608001:2",
+            "evidence": "pi.ui_prompt.v1"
+          }
+        },
+        "acknowledged": 1,
+        "delivered": 2
+      },
+      "term_65dc79f5c76064": {
+        "terminal": {
+          "terminal_id": "term_65dc79f5c76064",
+          "pane_id": "w1:p2",
+          "generation": null,
+          "label": "Agent",
+          "latest": null
+        },
+        "acknowledged": 0,
+        "delivered": 0
+      }
+    }
+  }
+}

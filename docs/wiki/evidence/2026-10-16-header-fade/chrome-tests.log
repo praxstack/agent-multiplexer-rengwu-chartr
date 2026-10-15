@@ -1,0 +1,29 @@
+   Compiling chartr v0.3.0 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 15.57s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`
+     Running unittests src/main.rs (target/debug/deps/chartr-2776c57534a089d4)
+
+running 19 tests
+test chrome::sidebar_pane::tests::dragging_takes_over_and_obeys_each_modes_limits ... ok
+test app::window_chrome::responsive_controls_tests::brand_yields_before_the_view_picker ... ok
+test chrome::sidebar_pane::tests::wide_panes_and_restored_inbox_do_not_animate ... ok
+test chrome::sidebar_pane::tests::reduced_motion_finishes_auto_resize ... ok
+test chrome::sidebar_pane::tests::inbox_expands_the_shared_pane_and_keeps_its_width_on_return ... ok
+test chrome::sidebar_tests::sidebar_scrollbar_has_contrast_in_every_theme ... ok
+test chrome::sidebar_tests::sidebar_scrollbar_drags_past_the_container_and_releases ... ok
+test chrome::tab_sorter::tests::a_tab_can_leave_its_preview_and_drop_into_another_pane ... ok
+test app::window_chrome::responsive_controls_tests::picker_hides_and_returns_as_available_width_and_scale_change ... ok
+test chrome::tab_sorter::tests::leaving_the_strip_or_cancelling_restores_order_without_committing ... ok
+test chrome::tab_sorter::tests::every_tab_variant_sorts_before_release_and_commits_once ... ok
+test chrome::tab_sorter::tests::leaving_and_reentering_the_full_strip_resumes_sorting ... ok
+test chrome::tab_sorter::tests::overflowing_titles_fade_and_hover_widens_the_fade ... ok
+test chrome::tabs::tests::grouped_tab_menu_fills_its_slot_before_and_during_hover ... ok
+test chrome::sidebar_tests::sidebar_tree_collapses_adds_and_sorts_free_sessions ... ok
+test chrome::tab_sorter::tests::buttons_and_empty_strip_space_keep_sorting_until_release ... ok
+test chrome::sidebar_tests::dragged_tabs_paint_a_solid_rounded_surface_without_changing_size ... ok
+test chrome::tab_sorter::tests::tab_widths_are_equal_capped_and_shrink_to_the_existing_minimum ... ok
+test chrome::sidebar_tests::spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 295 filtered out; finished in 0.08s
+

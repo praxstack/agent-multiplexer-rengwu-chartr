@@ -1,0 +1,21 @@
+{
+  "foreground_focus": {
+    "observed": "Pi unseen label and accent dot disappeared after selecting Pi in the active window",
+    "persisted_acknowledged_revision": 1
+  },
+  "initial_prompt": {
+    "observed": "Pi unseen label and blue accent dot visible while zsh selected",
+    "screenshot": "final-unread.png"
+  },
+  "relaunch": {
+    "method": "SIGTERM then explicit same-XDG executable launch; backend survived",
+    "attention_value_equal": true,
+    "observed": "Pi unread restored, zsh selected",
+    "screenshot": "final-restored.png"
+  },
+  "desktop_banners_and_clicks": "Untested; OS delivery was not observed. Delivered watermark records an attempted notification, not proof of OS delivery.",
+  "group_split_hidden_minimized_closed_window": "Untested in final native run; source/model checks are not a substitute.",
+  "native_quit": "Shortcut did not exit; cleanup and restart used exact run-owned process SIGTERM. Graceful native quit flush untested.",
+  "isolation": "Fresh final profile was empty before fixture setup. Earlier inherited-profile attempt was restored; see attempts report.",
+  "tool_notes": "Native CUA input sometimes updated the app only after later observation/activation. Finder opening the already-running exact bundle established foreground activation. A fullscreen action caused by a stale index was reversed; no test conclusion depends on it."
+}

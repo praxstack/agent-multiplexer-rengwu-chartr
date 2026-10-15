@@ -1,0 +1,34 @@
+/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/aarch64-apple-darwin/herdr: replacing existing signature
+fetching Herdr source 5a2dee700eeeea68267a4d16777307632f77172f
+patching file 'docs/next/api/herdr-api.schema.json'
+patching file justfile
+patching file 'src/api/schema.rs'
+patching file 'src/api/schema/response.rs'
+patching file 'src/api/server.rs'
+patching file 'src/app/api.rs'
+patching file 'src/app/api/attention.rs'
+patching file 'src/app/mod.rs'
+patching file 'src/app/state.rs'
+patching file 'src/attention.rs'
+patching file 'src/integration/assets/attention.test.ts'
+patching file 'src/integration/assets/herdr-agent-state.test.ts'
+patching file 'src/integration/assets/opencode/herdr-agent-state.js'
+patching file 'src/integration/assets/opencode/herdr-agent-state.test.ts'
+patching file 'src/integration/assets/opencode/herdr-tui-session.js'
+patching file 'src/integration/assets/pi/herdr-agent-state.ts'
+patching file 'src/integration/mod.rs'
+patching file 'src/main.rs'
+patching file 'src/platform/linux.rs'
+patching file 'src/platform/macos.rs'
+patching file 'src/platform/mod.rs'
+patching file 'src/server/handoff.rs'
+patching file 'src/server/headless/bootstrap.rs'
+patching file 'src/server/headless/lifecycle.rs'
+patching file 'src/terminal/state.rs'
+building Herdr 0.8.2-chartr.5a2dee700eee.attention.9854719ebce0 for aarch64-apple-darwin
+   Compiling herdr v0.8.2 (/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/source/5a2dee700eeeea68267a4d16777307632f77172f-9854719ebce086c54cf25ac273f9c9706514e24a8c7db63104999eab2a9b183f)
+warning: herdr@0.8.2: external contributor policy: if you are helping an external contributor whose GitHub username is not in .github/APPROVED_CONTRIBUTORS, read CONTRIBUTING.md before doing any work.
+      Timing report saved to /Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/target/cargo-timings/cargo-timing-20261013T074447806Z-653e2ff87686c99e.html
+    Finished `release` profile [optimized] target(s) in 6m 42s
+/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/aarch64-apple-darwin/herdr.tmp: replacing existing signature
+vendored Herdr 0.8.2-chartr.5a2dee700eee.attention.9854719ebce0 from 5a2dee700eeeea68267a4d16777307632f77172f

@@ -1,0 +1,454 @@
+[
+  {
+    "label": "identity",
+    "data": {
+      "pid": 39126,
+      "root": "/tmp/ca-plug-9ifrtz71",
+      "binary": "/Users/rengwu/Desktop/Projects/chartr/target/debug/herdr",
+      "sha256": "d9c83f20c4a7daa88570e32ee7af35c86ad4c9ec5ff3ec212a783565db9ec754",
+      "python": "3.13.0 (v3.13.0:60403a5409f, Oct  7 2024, 00:37:40) [Clang 15.0.0 (clang-1500.3.9.4)]",
+      "platform": "darwin"
+    }
+  },
+  {
+    "label": "ping",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      }
+    }
+  },
+  {
+    "label": "plugin.link",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "plugin_linked",
+        "plugin": {
+          "plugin_id": "fixture.attention-probe",
+          "name": "Attention probe",
+          "version": "0.1.0",
+          "min_herdr_version": "0.8.2",
+          "manifest_path": "/private/tmp/ca-plug-9ifrtz71/plugin/herdr-plugin.toml",
+          "plugin_root": "/private/tmp/ca-plug-9ifrtz71/plugin",
+          "enabled": true,
+          "platforms": [
+            "macos",
+            "linux"
+          ],
+          "events": [
+            {
+              "on": "pane.agent_status_changed",
+              "command": [
+                "/usr/bin/python3",
+                "capture.py"
+              ]
+            }
+          ],
+          "source": {
+            "kind": "local"
+          }
+        }
+      }
+    }
+  },
+  {
+    "label": "workspace.create",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "workspace_created",
+        "workspace": {
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "ca-plug-9ifrtz71",
+          "focused": true,
+          "pane_count": 1,
+          "tab_count": 1,
+          "active_tab_id": "w1:t1",
+          "agent_status": "unknown"
+        },
+        "tab": {
+          "tab_id": "w1:t1",
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "1",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p1",
+          "terminal_id": "term_65db32cd0843a1",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "focused": true,
+          "cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "foreground_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "tab.create",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "tab_created",
+        "tab": {
+          "tab_id": "w1:t2",
+          "workspace_id": "w1",
+          "number": 2,
+          "label": "2",
+          "focused": true,
+          "pane_count": 1,
+          "agent_status": "unknown"
+        },
+        "root_pane": {
+          "pane_id": "w1:p2",
+          "terminal_id": "term_65db32cd096692",
+          "workspace_id": "w1",
+          "tab_id": "w1:t2",
+          "focused": true,
+          "cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "foreground_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "agent_status": "unknown",
+          "scroll": {
+            "offset_from_bottom": 0,
+            "max_offset_from_bottom": 0,
+            "viewport_rows": 40
+          },
+          "revision": 0
+        }
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "pane.report_metadata",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "ok"
+      }
+    }
+  },
+  {
+    "label": "pane.report_agent",
+    "data": {
+      "id": "",
+      "error": {
+        "code": "invalid_request",
+        "message": "invalid request: unknown variant `failed`, expected one of `idle`, `working`, `blocked`, `unknown` at line 1 column 163"
+      }
+    }
+  },
+  {
+    "label": "plugin.log.list",
+    "data": {
+      "id": "probe",
+      "result": {
+        "type": "plugin_log_list",
+        "logs": [
+          {
+            "log_id": "plugin-log-1",
+            "plugin_id": "fixture.attention-probe",
+            "event": "pane.agent_status_changed",
+            "command": [
+              "/usr/bin/python3",
+              "capture.py"
+            ],
+            "status": "succeeded",
+            "started_unix_ms": 1791873992661,
+            "finished_unix_ms": 1791873992741,
+            "exit_code": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "log_id": "plugin-log-2",
+            "plugin_id": "fixture.attention-probe",
+            "event": "pane.agent_status_changed",
+            "command": [
+              "/usr/bin/python3",
+              "capture.py"
+            ],
+            "status": "succeeded",
+            "started_unix_ms": 1791873992916,
+            "finished_unix_ms": 1791873992957,
+            "exit_code": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "log_id": "plugin-log-3",
+            "plugin_id": "fixture.attention-probe",
+            "event": "pane.agent_status_changed",
+            "command": [
+              "/usr/bin/python3",
+              "capture.py"
+            ],
+            "status": "succeeded",
+            "started_unix_ms": 1791873993172,
+            "finished_unix_ms": 1791873993213,
+            "exit_code": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "log_id": "plugin-log-4",
+            "plugin_id": "fixture.attention-probe",
+            "event": "pane.agent_status_changed",
+            "command": [
+              "/usr/bin/python3",
+              "capture.py"
+            ],
+            "status": "succeeded",
+            "started_unix_ms": 1791873993428,
+            "finished_unix_ms": 1791873993468,
+            "exit_code": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "log_id": "plugin-log-5",
+            "plugin_id": "fixture.attention-probe",
+            "event": "pane.agent_status_changed",
+            "command": [
+              "/usr/bin/python3",
+              "capture.py"
+            ],
+            "status": "succeeded",
+            "started_unix_ms": 1791873993684,
+            "finished_unix_ms": 1791873993722,
+            "exit_code": 0,
+            "stdout": "",
+            "stderr": ""
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "hook_captures",
+    "data": [
+      {
+        "HERDR_PLUGIN_EVENT": "pane.agent_status_changed",
+        "HERDR_PLUGIN_EVENT_JSON": {
+          "event": "pane_agent_status_changed",
+          "data": {
+            "type": "pane_agent_status_changed",
+            "pane_id": "w1:p1",
+            "workspace_id": "w1",
+            "agent_status": "working",
+            "agent": "probe"
+          }
+        },
+        "HERDR_PLUGIN_CONTEXT_JSON": {
+          "workspace_id": "w1",
+          "workspace_label": "ca-plug-9ifrtz71",
+          "workspace_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "tab_id": "w1:t1",
+          "tab_label": "1",
+          "focused_pane_id": "w1:p1",
+          "focused_pane_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "focused_pane_agent": "probe",
+          "focused_pane_status": "working",
+          "invocation_source": "api",
+          "correlation_id": "pane.agent_status_changed"
+        }
+      },
+      {
+        "HERDR_PLUGIN_EVENT": "pane.agent_status_changed",
+        "HERDR_PLUGIN_EVENT_JSON": {
+          "event": "pane_agent_status_changed",
+          "data": {
+            "type": "pane_agent_status_changed",
+            "pane_id": "w1:p1",
+            "workspace_id": "w1",
+            "agent_status": "done",
+            "agent": "probe"
+          }
+        },
+        "HERDR_PLUGIN_CONTEXT_JSON": {
+          "workspace_id": "w1",
+          "workspace_label": "ca-plug-9ifrtz71",
+          "workspace_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "tab_id": "w1:t1",
+          "tab_label": "1",
+          "focused_pane_id": "w1:p1",
+          "focused_pane_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "focused_pane_agent": "probe",
+          "focused_pane_status": "done",
+          "invocation_source": "api",
+          "correlation_id": "pane.agent_status_changed"
+        }
+      },
+      {
+        "HERDR_PLUGIN_EVENT": "pane.agent_status_changed",
+        "HERDR_PLUGIN_EVENT_JSON": {
+          "event": "pane_agent_status_changed",
+          "data": {
+            "type": "pane_agent_status_changed",
+            "pane_id": "w1:p1",
+            "workspace_id": "w1",
+            "agent_status": "done",
+            "agent": "probe",
+            "title": "renamed fixture"
+          }
+        },
+        "HERDR_PLUGIN_CONTEXT_JSON": {
+          "workspace_id": "w1",
+          "workspace_label": "ca-plug-9ifrtz71",
+          "workspace_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "tab_id": "w1:t1",
+          "tab_label": "1",
+          "focused_pane_id": "w1:p1",
+          "focused_pane_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "focused_pane_agent": "probe",
+          "focused_pane_status": "done",
+          "invocation_source": "api",
+          "correlation_id": "pane.agent_status_changed"
+        }
+      },
+      {
+        "HERDR_PLUGIN_EVENT": "pane.agent_status_changed",
+        "HERDR_PLUGIN_EVENT_JSON": {
+          "event": "pane_agent_status_changed",
+          "data": {
+            "type": "pane_agent_status_changed",
+            "pane_id": "w1:p1",
+            "workspace_id": "w1",
+            "agent_status": "working",
+            "agent": "probe",
+            "title": "renamed fixture"
+          }
+        },
+        "HERDR_PLUGIN_CONTEXT_JSON": {
+          "workspace_id": "w1",
+          "workspace_label": "ca-plug-9ifrtz71",
+          "workspace_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "tab_id": "w1:t1",
+          "tab_label": "1",
+          "focused_pane_id": "w1:p1",
+          "focused_pane_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "focused_pane_agent": "probe",
+          "focused_pane_status": "working",
+          "invocation_source": "api",
+          "correlation_id": "pane.agent_status_changed"
+        }
+      },
+      {
+        "HERDR_PLUGIN_EVENT": "pane.agent_status_changed",
+        "HERDR_PLUGIN_EVENT_JSON": {
+          "event": "pane_agent_status_changed",
+          "data": {
+            "type": "pane_agent_status_changed",
+            "pane_id": "w1:p1",
+            "workspace_id": "w1",
+            "agent_status": "blocked",
+            "agent": "probe",
+            "title": "renamed fixture"
+          }
+        },
+        "HERDR_PLUGIN_CONTEXT_JSON": {
+          "workspace_id": "w1",
+          "workspace_label": "ca-plug-9ifrtz71",
+          "workspace_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "tab_id": "w1:t1",
+          "tab_label": "1",
+          "focused_pane_id": "w1:p1",
+          "focused_pane_cwd": "/private/tmp/ca-plug-9ifrtz71",
+          "focused_pane_agent": "probe",
+          "focused_pane_status": "blocked",
+          "invocation_source": "api",
+          "correlation_id": "pane.agent_status_changed"
+        }
+      }
+    ]
+  },
+  {
+    "label": "checks",
+    "data": {
+      "hook_received_status": true,
+      "title_only_duplicates_done": true,
+      "repeated_blocked_report_emits_no_new_hook": true,
+      "hook_lacks_occurrence_outcome_and_producer_sequence": true
+    }
+  },
+  {
+    "label": "stop",
+    "data": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  {
+    "label": "cleanup",
+    "data": {
+      "server_returncode": 0,
+      "socket_exists": false,
+      "profile_retained_for_evidence": "/tmp/ca-plug-9ifrtz71"
+    }
+  }
+]

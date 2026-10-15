@@ -1,0 +1,67 @@
+import net from 'node:net';
+import fs from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
+import assert from 'node:assert/strict';
+
+const root='/tmp/chartr-attention-validation-l4lwufrh';
+const source=root+'/herdr-5a2dee700eeeea68267a4d16777307632f77172f';
+const endpoint=root+'/integration.sock';
+const reports=[];
+const server=net.createServer(socket=>{
+  let buffer='';
+  socket.on('data',data=>{
+    buffer+=data;
+    if(buffer.includes('\n')){
+      const request=JSON.parse(buffer.split('\n')[0]);
+      reports.push(request);
+      socket.end(JSON.stringify({id:request.id,result:{type:'ok'}})+'\n');
+    }
+  });
+});
+await new Promise(resolve=>server.listen(endpoint,resolve));
+Object.assign(process.env,{HERDR_ENV:'1',HERDR_SOCKET_PATH:endpoint,HERDR_PANE_ID:'fixture:p1'});
+const results=[];
+function captured(label,start){
+  const data=reports.slice(start);
+  results.push({label,reports:data});
+  console.log(JSON.stringify({label,states:data.filter(x=>x.method==='pane.report_agent').map(x=>x.params)}));
+  return data;
+}
+try{
+  const {HerdrAgentStatePlugin}=await import(pathToFileURL(source+'/src/integration/assets/opencode/herdr-agent-state.js'));
+  const plugin=await HerdrAgentStatePlugin();
+  for(const [type,properties] of [
+    ['session.status',{status:{type:'busy'}}],
+    ['permission.asked',{id:'permission-1'}],
+    ['question.asked',{id:'question-1'}],
+    ['session.error',{error:{name:'APIError',data:{message:'synthetic failure'}}}],
+    ['session.error',{error:{name:'MessageAbortedError',data:{message:'synthetic cancellation'}}}],
+    ['session.idle',{}],
+  ]){
+    const start=reports.length;
+    await plugin.event({event:{type,properties:{sessionID:'fixture-root',...properties}}});
+    captured('opencode:'+type+':'+(properties.error?.name??''),start);
+  }
+  const states=results.map(x=>x.reports.find(r=>r.method==='pane.report_agent')?.params.state);
+  assert.deepEqual(states,['working','blocked','blocked','blocked','blocked','idle']);
+  const callbacks=new Map();
+  const eventCallbacks=new Map();
+  const pi={on:(name,fn)=>callbacks.set(name,fn),events:{on:(name,fn)=>eventCallbacks.set(name,fn)}};
+  const {default:installPi}=await import(pathToFileURL(source+'/src/integration/assets/pi/herdr-agent-state.ts'));
+  installPi(pi);
+  let idle=true;
+  const ctx={mode:'tui',isIdle:()=>idle,sessionManager:{getSessionId:()=> 'fixture-pi'}};
+  const settle=()=>new Promise(resolve=>setTimeout(resolve,60));
+  await callbacks.get('session_start')({reason:'startup'},ctx);await settle();
+  for(const outcome of ['completed','aborted']){
+    idle=false;callbacks.get('agent_start')({},ctx);await settle();
+    const start=reports.length;
+    idle=true;callbacks.get('agent_settled')({type:'agent_settled',aborted:outcome==='aborted'},ctx);await settle();
+    const data=captured('pi:agent_settled:'+outcome,start);
+    assert.equal(data.find(x=>x.method==='pane.report_agent')?.params.state,'idle');
+  }
+  results.push({label:'scope',note:'Exact pinned integration assets executed against a local capture socket. Synthetic provider events demonstrate mapping and loss of outcome data, not real installed-provider event semantics or end-to-end reliability.'});
+}finally{
+  await new Promise(resolve=>server.close(resolve));
+  await fs.writeFile(root+'/integration-results-v2.json',JSON.stringify(results,null,2)+'\n');
+}

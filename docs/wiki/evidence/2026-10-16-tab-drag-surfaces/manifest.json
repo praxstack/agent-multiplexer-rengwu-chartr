@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-16",
+  "head": "402ba90a25d82b527f68f23c1dc5f29e27065036",
+  "working_tree": "dirty; existing unrelated changes preserved",
+  "diff_sha256_before_wiki_rebuild": "b91d298d95a816e368a4755fe7710382118b239821e0d3b815ce2643e939b99e",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+  "source_sha256": {
+    "crates/chartr/src/chrome.rs": "2848d2520882274318880918f472459c01507a6fa4788a3c72615fc5db90da59",
+    "crates/chartr/src/chrome/sidebar.rs": "7b6b112f725d64da7cf2d8dea9224f062822fbde87e167d4bc87451d955009ce",
+    "crates/chartr/src/chrome/sidebar_tests.rs": "170f473cb8ad6e72f53ae0def1982c614165751a48d897459f6b538815cec0fb",
+    "crates/chartr/src/chrome/tab_sorter.rs": "29391dccfbcbecc13ba42cc766a490fd6a6cc127f003f2e46665700310a42a4e",
+    "crates/chartr/src/chrome/tabs.rs": "2c526f536af96bf41b637ce5e96a917316118b82f46b7fbc91ee44d47106ee39"
+  },
+  "test_binary_sha256": "8d22a33303a9ea632ff4e3b6a22cad30b3aec4c7ae02f3bfcab00212cfde244f",
+  "normal_binary_sha256": "408d0551df3893322de017a0622b5228965093147670bd33fddfb18d445a7b4a",
+  "commands": [
+    "cargo test -p chartr --bin chartr --locked chrome::",
+    "cargo build -p chartr --locked",
+    "cargo fmt --all --check",
+    "git diff --check"
+  ],
+  "observed": "Regression failed before fix. After fix, 18 relevant tests and normal build passed. No native UI run."
+}

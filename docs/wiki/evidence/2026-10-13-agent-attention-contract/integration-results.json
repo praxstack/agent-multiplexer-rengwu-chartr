@@ -1,0 +1,159 @@
+[
+  {
+    "label": "opencode:session.status:",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791860527593:845277",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791860527593001,
+          "state": "working",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:permission.asked:",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791860527595:898266",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791860527593002,
+          "state": "blocked",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:question.asked:",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791860527596:792141",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791860527593003,
+          "state": "blocked",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:session.error:APIError",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791860527596:620122",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791860527593004,
+          "state": "blocked",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:session.error:MessageAbortedError",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791860527597:089952",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791860527593005,
+          "state": "blocked",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "opencode:session.idle:",
+    "reports": [
+      {
+        "id": "herdr:opencode:1791860527598:071434",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:opencode",
+          "agent": "opencode",
+          "seq": 1791860527593006,
+          "state": "idle",
+          "agent_session_id": "fixture-root"
+        }
+      }
+    ]
+  },
+  {
+    "label": "pi:agent_settled:completed",
+    "reports": [
+      {
+        "id": "herdr:pi:1791860527777:phffg8pza59",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:pi",
+          "agent": "pi",
+          "state": "idle",
+          "seq": 1791860527654005,
+          "agent_session_id": "fixture-pi"
+        }
+      }
+    ]
+  },
+  {
+    "label": "pi:agent_settled:aborted",
+    "reports": [
+      {
+        "id": "herdr:pi:1791860527899:8rhp6lv395a",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:pi",
+          "agent": "pi",
+          "state": "idle",
+          "seq": 1791860527654008,
+          "agent_session_id": "fixture-pi"
+        }
+      }
+    ]
+  },
+  {
+    "label": "pi:agent_settled:error",
+    "reports": [
+      {
+        "id": "herdr:pi:1791860528023:nwxebt2q689",
+        "method": "pane.report_agent",
+        "params": {
+          "pane_id": "fixture:p1",
+          "source": "herdr:pi",
+          "agent": "pi",
+          "state": "idle",
+          "seq": 1791860527654011,
+          "agent_session_id": "fixture-pi"
+        }
+      }
+    ]
+  },
+  {
+    "label": "scope",
+    "note": "Exact pinned integration assets executed against a local capture socket. Synthetic provider events demonstrate mapping and loss of outcome data, not real installed-provider event semantics or end-to-end reliability."
+  }
+]

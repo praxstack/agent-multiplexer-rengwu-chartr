@@ -1,0 +1,105 @@
+{
+  "captured_utc": "2026-10-14T07:22:56.292468+00:00",
+  "head": "402ba90a25d82b527f68f23c1dc5f29e27065036",
+  "tracked_diff_sha256_before_wiki_regeneration": "44dddab24c77c55f30d0b68a79f558f9a98e8b519a9aeb22a35e8308248c0cac",
+  "product_tracked_diff_sha256": "3d9f240caba8d6a169c68fa81070bcafd0a0e67db590351f83f4577f70cc82d7",
+  "source_files": {
+    "crates/chartr-herdr/src/attention.rs": "e84385acbabf17370d7d053afc1c125cc1b665d851170a90d287854fe6d1e934",
+    "crates/chartr-herdr/src/lib.rs": "e086c584ddb7ecdc80b9cf9be0341a01f900e9708c5d726b90e3490814447545",
+    "crates/chartr/src/app.rs": "4bb215418761752dd10ebb268b3a404dd8ae3e9014a2c6d911eb2e93097c3f11",
+    "crates/chartr/src/app/backend.rs": "821f6b9aa63dbd2aaedb79457cae8cdd87292063e76c7c97498c8522e47cd2b6",
+    "crates/chartr/src/app/panes.rs": "9c495d5ed13879e4395841d929c6b6a712eed30f88f4387d4666a0e9d952396c",
+    "crates/chartr/src/attention.rs": "3d25ce73d836c24b5bb918f42fff9c26369e4ba44205b3a98fe530736197af6f",
+    "crates/chartr/src/attention/service.rs": "c9bb218fa9fe5988c16c03ec3f525c27ab96e4ff37bc54c010770e9246c03a6f",
+    "crates/chartr/src/chrome.rs": "8f1c2361fd3e26311441731eaf82da3a4d6463b9023f15faaa5d108bcdd83b1e",
+    "crates/chartr/src/chrome/sidebar.rs": "bc78b9a42dc9001702dd688e2a87dc82cbd5b2c9efc26e77d88f129b711b1142",
+    "crates/chartr/src/chrome/sidebar_tests.rs": "c5c3df3ef32f900da4e638f6e24bde29975e876cb2c4693f0048bd52b8de2b13",
+    "crates/chartr/src/chrome/tabs.rs": "3a887fcb8e8007ad72e4c906c043b88faa4fc07d42b27042cd29e255ea689084",
+    "crates/chartr/src/main.rs": "14d0995f9c88c71225b0632a70f52aa02f2bf786d18a30f2bfb44fb30e5852d8",
+    "crates/chartr/src/persistence.rs": "3bc98c797014ef43552c5216becc8b1a63ad4f426f9f2f59de33163d98570f79",
+    "crates/chartr/src/space.rs": "42513098ec6e11b6ae67c65add933707d506d16df11cef95cdd83e6ed9332b16",
+    "docs/agent-attention.md": "f5964dceafb15f210b5b6bfa5328e55562ad8c2281b29eb8e897b341c26df0ed",
+    "scripts/tests/test_herdr_fetch.py": "967f8449d80b5d43558addf06b340466f04f1988302bfa281b378dcd6c6472e3",
+    "vendor/herdr/README.md": "b532d6ff44a075c6259445fef143cdbb1ec43ad21bc3d20fded5b41a97e08b65",
+    "vendor/herdr/attention.patch": "9854719ebce086c54cf25ac273f9c9706514e24a8c7db63104999eab2a9b183f",
+    "vendor/herdr/fetch.sh": "16ed18c7a4729ac34c137bfff5e38fcfa3b97d27b5eafb9b13a4cb9461bc7443"
+  },
+  "untitled": "Pre-existing untracked file; not read or hashed",
+  "host": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0\nBuildVersion:\t\t26A5368g\n",
+  "architecture": "arm64",
+  "tools": {
+    "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+    "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)",
+    "node": "v22.19.0",
+    "python": "Python 3.13.0",
+    "zig": "0.15.2",
+    "bun": "1.4.3 via npx --yes bun",
+    "pi": "0.99.2 observed in real native fixture"
+  },
+  "backend": {
+    "revision": "5a2dee700eeeea68267a4d16777307632f77172f",
+    "version": "0.8.2-chartr.5a2dee700eee.attention.9854719ebce0",
+    "patch_sha256": "9854719ebce086c54cf25ac273f9c9706514e24a8c7db63104999eab2a9b183f",
+    "protocol": 22
+  },
+  "binaries": {
+    "target/debug/chartr": "413fb84133a7146b8f07e9648bec8fa3f5e8e720043da28c411d79a976f215a8",
+    "vendor/herdr/aarch64-apple-darwin/herdr": "f58c5cc2ba3de955da1de7fa8c90623181310a40cb85209f7e9cb7c3160116bf"
+  },
+  "native_signed_instance": {
+    "root": "/tmp/ca-final-ve2jppdu",
+    "app": "/tmp/ca-final-ve2jppdu/Chartr Verify.app",
+    "env": {
+      "XDG_CONFIG_HOME": "/tmp/ca-final-ve2jppdu/config",
+      "XDG_STATE_HOME": "/tmp/ca-final-ve2jppdu/state",
+      "XDG_DATA_HOME": "/tmp/ca-final-ve2jppdu/data",
+      "PI_CODING_AGENT_DIR": "/tmp/ca-final-ve2jppdu/pi",
+      "ATTENTION_LOG": "/tmp/ca-final-ve2jppdu/events.jsonl"
+    },
+    "hashes": {
+      "chartr": "49d312bf0cb17a54b568a7c2551325288ff8e12d2f2845d1f31aa83f27756da4",
+      "herdr": "f58c5cc2ba3de955da1de7fa8c90623181310a40cb85209f7e9cb7c3160116bf"
+    }
+  },
+  "verification_notes": [
+    "Full workspace tests ran before final chrome polish; final Chartr package tests/build and native checks ran afterward.",
+    "Backend isolated suite initially failed two metadata checks; both final exact rechecks passed.",
+    "Earlier intermediate trees were not each fingerprinted; artifacts retain available binary identities.",
+    "OS delivery was not observed; delivery watermark means attempted platform call."
+  ],
+  "evidence_sha256": {
+    "asset-tests.log": "73e5f4fec57179a4edc90f2bac9ee0fa7834a4d893832740874a9bb92280d51d",
+    "backend-build.log": "3882fddd525d3127f539cba948f3dd554e3d335549b209496f532d173778681f",
+    "backend-isolated-results.json": "e0f3178386e76e5be6c070fd43deb8040a7939bd1e637e3db255733e3ed65d14",
+    "backend-recheck.log": "36e9b07e1046d014bcd25d650953da26d939cfd3f742d2bd6d4740dd61778f75",
+    "backend-schema-final.log": "894b0915f154a09625c78174cf5ca15a58f8049f6fd2db87a107b7c5e45a906c",
+    "backend-schema-recheck.log": "2f3e72b0d5830fa94594544ad5f11f9ccb4801f4891d24104664d6f94270a7ad",
+    "backend-summary.json": "50e6579e9414b0a76b12aa8c71d46ccd515ef3deaa9048414a40c7679662dfa9",
+    "backend-tests.log": "0778ac90caa4313a11d501add2af65a805b546015c10f0dbcf7837699a217357",
+    "chartr-final-build.log": "3d938a2ab28e06602e7877b4d259ca93cd1a7b4e9174cdc1c42d5ccca46a0276",
+    "chartr-final-tests.log": "fe33be02862005aac7289d5fec62214a67caabd8ccae9779d70e2594341e721f",
+    "chartr-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "chartr-tests.log": "6fa0b4984b68f1a3e3ddd949ba649ad86f1a1c827b967d801bcfba58a6bc10c8",
+    "cleanup.json": "f3f29de47889a2e2eef38c544fda82e37e786d4315376b32a9feef08f5c95ceb",
+    "fetch-final.log": "0fca42fc2d2f88d0c682ef561c59ab193da72b615c54baddfd8893d073de8dc7",
+    "fetch.log": "058decc2b75a3af00d687eb063dae78f056b71f49a6c19b74f2c82336fb122f6",
+    "final-restored.png": "9472ebe1beafafc555a3f56ed14806bb33be3b4f708b7e1d8f0d727508a6300c",
+    "final-unread.png": "85d24d773806f40769e4eb59de872115d6ebeca106ee390b148074ec46b25395",
+    "native-observations.json": "7def1d6f3392ff7f8b7b9ea92e75cf8fd6e5aa4d31fba169a6621bf7de651bf5",
+    "node-tests.log": "8aa0523446131dddf28d815fcc635ca2a89f61ece8b6cd3f54d0cbacf3e00bdc",
+    "pi-final-985-results.json": "183950b93cac14685a2378c1a51cca36776529a965ef902185ed8b9bb2e8aabe",
+    "pi-final-results.json": "7f87de03b77d142b18521306e9f3083a4643732d12652fb9f6ff36c5d8d5b573",
+    "pi-probe-985.py.txt": "99b690ab2d1eb1ee28158103fb3c4e5ddf252217b243886822ef6d04d4209202",
+    "pi-results.json": "facc8fc3c8ea58b44a0fc3e0a264aef9b6c54c3e2319556208feee671f9c4eef",
+    "run-backend-tests.py.txt": "1f7d19db71374d72f43e9876f36ab1765bb6a2fe6309bbd5c2e4fb17def8c8a4",
+    "script-tests.log": "b5665c25371ac91cfd3ed090230063aea9ae86bcab02bee7aa93eca21d5877e5",
+    "ui-final-after-relaunch.json": "e106df54bb7fa08ea87aa8d9c5036e1883bc1eab55dae082a36d725567520644",
+    "ui-final-before-relaunch.json": "e106df54bb7fa08ea87aa8d9c5036e1883bc1eab55dae082a36d725567520644",
+    "ui-final-focused.json": "7e36c2d21215ca7fce55ae6d286b7decd31540f368c4b4a3de214541fe359ec5",
+    "ui-final-instance.json": "da943b174064d206156a04456421b10b71d28b53dc46620cdcd596ab4d7f7b71",
+    "ui-final-request.py.txt": "51e6451c6757f1a3d74532e2c7a2c9d06a53e720c47d22ee3e60d45dc0ac6c65",
+    "ui-final-stop.json": "1f6c1783bb79dc617574ab7bb34c9ba61da6627f93c9e4059d2443e29a4c4d3e",
+    "ui-instance.json": "f3938648af1b5d31c6ca50a63fcd3f83fb13b71021d6bfda864f4fb07316b298",
+    "ui-isolation-attempt.json": "57af028a92a54dc9a6ec22121c2930c8231950920135cf8120d9243ff1bc9953"
+  }
+}

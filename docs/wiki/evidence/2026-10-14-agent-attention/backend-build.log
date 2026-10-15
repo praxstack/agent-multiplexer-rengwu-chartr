@@ -1,0 +1,4 @@
+   Compiling herdr v0.8.2 (/Users/rengwu/Desktop/Projects/chartr/vendor/herdr/.build/attention-source)
+warning: herdr@0.8.2: external contributor policy: if you are helping an external contributor whose GitHub username is not in .github/APPROVED_CONTRIBUTORS, read CONTRIBUTING.md before doing any work.
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 25s
+  Executable unittests src/main.rs (target/debug/deps/herdr-f12ff1d3a07209e6)

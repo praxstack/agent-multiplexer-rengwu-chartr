@@ -1,0 +1,26 @@
+   Compiling chartr v0.3.0 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 16.03s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`
+     Running unittests src/main.rs (target/debug/deps/chartr-2776c57534a089d4)
+
+running 1 test
+test chrome::sidebar_tests::spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel ... FAILED
+
+failures:
+
+---- chrome::sidebar_tests::spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel stdout ----
+
+thread 'chrome::sidebar_tests::spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel' (1429998) panicked at crates/chartr/src/chrome/sidebar_tests.rs:332:9:
+assertion `left == right` failed: scrolling must extend behind the header
+  left: 23px
+ right: 0px
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    chrome::sidebar_tests::spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 313 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p chartr --bin chartr`
