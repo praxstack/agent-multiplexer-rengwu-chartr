@@ -1,0 +1,25 @@
+[workspace]
+resolver = "3"
+members = ["crates/chartr-agent", "crates/chartr-storage", "crates/chartr-herdr"]
+[workspace.package]
+version = "0.3.1"
+edition = "2024"
+rust-version = "1.95"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/rengwu/chartr"
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+socket2 = "0.6"
+rustix = { version = "1.1", features = ["fs", "process", "event"] }
+tempfile = "3"
+[package]
+name = "chartr-packaged-backend-check"
+version = "0.3.1"
+edition = "2024"
+[dev-dependencies]
+chartr-herdr = { path = "crates/chartr-herdr" }
+tempfile = "3"
+rustix = { version = "1.1", features = ["fs", "process", "event"] }
+libc = "0.2"
+serde_json = "1"

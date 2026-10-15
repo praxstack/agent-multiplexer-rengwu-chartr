@@ -1,0 +1,26 @@
+{
+  "x86_64": {
+    "tarball": {
+      "chartr": "77b9122889d9f5285e94b0d063b3b15deb166324f3872c0df156be1fd3981bb7",
+      "herdr": "ddcde450d841bb26d118e744b061985195c7bc8ebb289c59574afc50e35c610c"
+    },
+    "debian": {
+      "chartr": "77b9122889d9f5285e94b0d063b3b15deb166324f3872c0df156be1fd3981bb7",
+      "herdr": "ddcde450d841bb26d118e744b061985195c7bc8ebb289c59574afc50e35c610c"
+    },
+    "arch": {
+      "chartr": "77b9122889d9f5285e94b0d063b3b15deb166324f3872c0df156be1fd3981bb7",
+      "herdr": "ddcde450d841bb26d118e744b061985195c7bc8ebb289c59574afc50e35c610c"
+    }
+  },
+  "aarch64": {
+    "tarball": {
+      "chartr": "cac5aa57572d026559fb3eb3935e632fba0703879e1b74f104a9ac218e81f89f",
+      "herdr": "d7bb07bf25a4570e8e14fdc98daf6c5ffef0be8704b9c27c8d5b56175bf4a34a"
+    },
+    "debian": {
+      "chartr": "cac5aa57572d026559fb3eb3935e632fba0703879e1b74f104a9ac218e81f89f",
+      "herdr": "d7bb07bf25a4570e8e14fdc98daf6c5ffef0be8704b9c27c8d5b56175bf4a34a"
+    }
+  }
+}

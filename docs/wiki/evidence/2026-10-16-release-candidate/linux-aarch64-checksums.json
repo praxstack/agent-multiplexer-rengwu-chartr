@@ -1,0 +1,16 @@
+{
+  "architecture": "aarch64",
+  "checksums": [
+    {
+      "file": "chartr-0.3.1-linux-aarch64.tar.gz",
+      "sha256": "dc18b792340d8b33fc895fb286cb8c2e89c0073d3bcaab0016b13e0f14224f8f",
+      "bytes": 69847514
+    },
+    {
+      "file": "chartr_0.3.1_arm64.deb",
+      "sha256": "351a67aad2d139ba8d2cc3582905be9ebcff5815492186f5e12d0061da118e1d",
+      "bytes": 69748020
+    }
+  ],
+  "build_info": "chartr: 0.3.1\ncommit: e915365a68c9770149ba36c05bd7525fd7b91f70\nHerdr: 0.8.2-chartr.5a2dee700eee.identity.9ed02822c877\narchitecture: aarch64\nRust: rustc 1.96.0 (ac68faa20 2026-05-25)\nPRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n"
+}

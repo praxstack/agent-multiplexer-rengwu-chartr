@@ -34,7 +34,7 @@ jobs:
           AUR_SSH_KNOWN_HOSTS: ${{ vars.AUR_SSH_KNOWN_HOSTS }}
         run: |
           if [[ -z "$AUR_SSH_PRIVATE_KEY" || -z "$AUR_SSH_KNOWN_HOSTS" ]]; then
-            echo '::error::Set AUR_SSH_PRIVATE_KEY and AUR_SSH_KNOWN_HOSTS; see docs/releasing.md#aur-publishing.'
+            echo '::error::Set AUR_SSH_PRIVATE_KEY and AUR_SSH_KNOWN_HOSTS; see docs/wiki/development/releasing.md#aur-publishing.'
             exit 1
           fi
 

@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+pacman -Syu --disable-sandbox --noconfirm --needed python xorg-server-xvfb xorg-xauth vulkan-swrast ttf-dejavu
+pacman -U --disable-sandbox --noconfirm /packages/*.pkg.tar.zst
+cd /packages
+sha256sum -c SHA256SUMS-x86_64
+mkdir -p /work/extracted
+tar -xzf chartr-0.3.1-linux-x86_64.tar.gz -C /work/extracted
+python /work/startup.py

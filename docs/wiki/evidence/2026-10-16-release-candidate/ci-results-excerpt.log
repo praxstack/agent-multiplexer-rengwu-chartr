@@ -1,0 +1,71 @@
+Selected result lines from gh run view 38818070198 --log; build chatter omitted.
+macos-15	Check release scripts	2026-10-15T22:35:13.8895330Z Ran 24 tests in 0.827s
+macos-15	Run ./.github/actions/setup-herdr	2026-10-15T22:40:41.0233480Z     Finished `release` profile [optimized] target(s) in 4m 19s
+macos-15	Build and test	2026-10-15T22:48:34.1945190Z     Finished `test` profile [unoptimized] target(s) in 7m 50s
+macos-15	Build and test	2026-10-15T22:48:34.6575570Z test chrome::sidebar_tests::spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel ... ok
+macos-15	Build and test	2026-10-15T22:48:36.1953910Z test result: ok. 313 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 1.73s
+macos-15	Build and test	2026-10-15T22:48:36.2018710Z test result: ok. 0 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:36.2144760Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:36.6241750Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.40s
+macos-15	Build and test	2026-10-15T22:48:37.0646940Z test result: ok. 30 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.43s
+macos-15	Build and test	2026-10-15T22:48:37.2472100Z test result: ok. 36 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+macos-15	Build and test	2026-10-15T22:48:37.2598830Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:37.2902770Z test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:37.3388710Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+macos-15	Build and test	2026-10-15T22:48:37.4959300Z test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+macos-15	Build and test	2026-10-15T22:48:37.5226200Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+macos-15	Build and test	2026-10-15T22:48:37.7020160Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:37.8249260Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:37.9323480Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:38.0233600Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:38.0793140Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:38.6959330Z test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:39.3472830Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.65s
+macos-15	Build and test	2026-10-15T22:48:39.5074040Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-15T22:48:39.5357150Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build the build-time native module example	2026-10-15T22:49:36.9472340Z     Finished `dev` profile [unoptimized] target(s) in 57.03s
+macos-15	Test real terminal sessions	2026-10-15T22:49:38.9770040Z     Finished `test` profile [unoptimized] target(s) in 1.80s
+macos-15	Test real terminal sessions	2026-10-15T22:49:42.2009670Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.17s
+macos-15	Test web plugin bridges and layouts	2026-10-15T22:49:43.7118800Z # tests 10
+macos-15	Test web plugin bridges and layouts	2026-10-15T22:49:43.7119160Z # pass 10
+macos-15	Test web plugin bridges and layouts	2026-10-15T22:49:43.7119310Z # fail 0
+ubuntu-24.04	Check release scripts	2026-10-15T22:35:30.5300232Z Ran 24 tests in 1.639s
+ubuntu-24.04	Run ./.github/actions/setup-herdr	2026-10-15T22:40:22.2004769Z     Finished `release` profile [optimized] target(s) in 4m 17s
+ubuntu-24.04	Build and test	2026-10-15T22:46:14.5932384Z     Finished `test` profile [unoptimized] target(s) in 5m 51s
+ubuntu-24.04	Build and test	2026-10-15T22:46:15.0670683Z test chrome::sidebar_tests::spaces_scroll_under_the_fixed_header_and_fade_from_the_first_pixel ... ok
+ubuntu-24.04	Build and test	2026-10-15T22:46:15.7359474Z test result: ok. 315 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.92s
+ubuntu-24.04	Build and test	2026-10-15T22:46:15.7862805Z test result: ok. 0 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:15.7877708Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:15.8304817Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+ubuntu-24.04	Build and test	2026-10-15T22:46:15.9843847Z test result: ok. 30 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.15s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.0923216Z test result: ok. 36 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.0940252Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.0970978Z test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.1465737Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.1724524Z test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.1764917Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.1977996Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.2410385Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.3128970Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.3793612Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.4146108Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.6118118Z test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.7984578Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.8629591Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-15T22:46:16.8831757Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Test forwarded X11 input-method events	2026-10-15T22:46:19.5756801Z     Finished `test` profile [unoptimized] target(s) in 2.63s
+ubuntu-24.04	Test forwarded X11 input-method events	2026-10-15T22:46:19.6315363Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 22 filtered out; finished in 0.00s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-15T22:46:27.1441989Z     Finished `test` profile [unoptimized] target(s) in 0.68s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-15T22:46:29.3719758Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 317 filtered out; finished in 2.16s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-15T22:46:30.6206003Z     Finished `test` profile [unoptimized] target(s) in 0.68s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-15T22:46:30.7764914Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 317 filtered out; finished in 0.09s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-15T22:46:31.5755379Z     Finished `test` profile [unoptimized] target(s) in 0.68s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-15T22:46:31.8635953Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 317 filtered out; finished in 0.22s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-15T22:46:32.6598956Z     Finished `test` profile [unoptimized] target(s) in 0.68s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-15T22:46:32.8082497Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 317 filtered out; finished in 0.08s
+ubuntu-24.04	Build the build-time native module example	2026-10-15T22:47:17.0248240Z     Finished `dev` profile [unoptimized] target(s) in 44.11s
+ubuntu-24.04	Test real terminal sessions	2026-10-15T22:47:17.7953959Z     Finished `test` profile [unoptimized] target(s) in 0.68s
+ubuntu-24.04	Test real terminal sessions	2026-10-15T22:47:18.4867474Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.65s
+ubuntu-24.04	Test web plugin bridges and layouts	2026-10-15T22:47:19.2619319Z # tests 10
+ubuntu-24.04	Test web plugin bridges and layouts	2026-10-15T22:47:19.2620344Z # pass 10
+ubuntu-24.04	Test web plugin bridges and layouts	2026-10-15T22:47:19.2620845Z # fail 0

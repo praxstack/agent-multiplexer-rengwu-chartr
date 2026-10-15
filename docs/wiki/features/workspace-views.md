@@ -76,6 +76,11 @@ ordinary changes; release requirements remain separate from this advisory workfl
 
 ## Verification history
 
+The [0.3.1 candidate follow-up](../verification/runs/2026-10-16-release-candidate.md)
+at `e915365a` passes the macOS, Ubuntu and Arch/AUR CI matrix and all three
+package builds. Downloaded-package inspection and selected native attention
+checks are recorded separately; full desktop release acceptance remains incomplete.
+
 The [October 16 expectation correction](../verification/runs/2026-10-16-fade-expectations.md)
 preserves the user-confirmed manual fade tuning. The corrected gradient test and
 all 428 exercised workspace tests pass; production rendering is unchanged.

@@ -1,0 +1,5 @@
+{
+  "AUR_SSH_PRIVATE_KEY_present": false,
+  "AUR_SSH_KNOWN_HOSTS_present": false,
+  "scope": "Names and presence only; no values read."
+}

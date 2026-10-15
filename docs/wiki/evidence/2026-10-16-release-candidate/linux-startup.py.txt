@@ -1,0 +1,27 @@
+import os,pathlib,subprocess,tempfile,time,socket,json,signal
+results=[]
+for name,exe in [('installed','/usr/bin/chartr'),('tarball',str(next(pathlib.Path('/work/extracted').rglob('usr/bin/chartr'))))]:
+ root=pathlib.Path(tempfile.mkdtemp(prefix='cp-',dir='/tmp'))
+ for n in ('config','state','data','project'):(root/n).mkdir()
+ env={**os.environ,**{f'XDG_{n.upper()}_HOME':str(root/n) for n in ('config','state','data')},'LIBGL_ALWAYS_SOFTWARE':'1'}
+ with (root/'app.log').open('w') as log:
+  p=subprocess.Popen(['xvfb-run','-a',exe,str(root/'project')],env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+  try:
+   sock=root/'config/chartr/herdr/herdr.sock'
+   for _ in range(200):
+    assert p.poll() is None,(name,p.returncode,(root/'app.log').read_text())
+    if sock.exists():break
+    time.sleep(.1)
+   assert sock.exists(),(name,'no private backend socket',(root/'app.log').read_text())
+   def rpc(method):
+    with socket.socket(socket.AF_UNIX) as s:
+     s.settimeout(5);s.connect(str(sock));s.sendall((json.dumps({'id':'package-check','method':method,'params':{}})+'\n').encode());return json.loads(s.makefile('rb').readline())
+   ping=rpc('ping');assert 'error' not in ping,ping
+   time.sleep(5);assert p.poll() is None,(name,p.returncode,(root/'app.log').read_text())
+   results.append({'variant':name,'executable':exe,'resolved_executable':str(pathlib.Path(exe).resolve()),'private_backend':ping,'startup_log':(root/'app.log').read_text(),'result':'Passed','scope':'Xvfb startup and private backend; no pointer or visual assertions'})
+  finally:
+   os.killpg(p.pid,signal.SIGTERM)
+   try:p.wait(timeout=10)
+   except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL);p.wait()
+pathlib.Path('/work/startup-results.json').write_text(json.dumps(results,indent=2)+'\n')
+print(json.dumps(results,indent=2))

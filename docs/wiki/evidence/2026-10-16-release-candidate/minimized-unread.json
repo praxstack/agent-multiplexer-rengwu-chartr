@@ -1,0 +1,41 @@
+{
+  "working_observed": true,
+  "time": 1792104116.493236,
+  "panes": [
+    {
+      "pane_id": "w1:p1",
+      "terminal_id": "term_65de8ad1346711",
+      "workspace_id": "w1",
+      "agent": "codex",
+      "agent_status": "idle",
+      "display_agent": null
+    },
+    {
+      "pane_id": "w1:p4",
+      "terminal_id": "term_65de8aff2e6ea4",
+      "workspace_id": "w1",
+      "agent": null,
+      "agent_status": "unknown",
+      "display_agent": null
+    }
+  ],
+  "attention": {
+    "version": 2,
+    "terminals": {
+      "term_65de8ad1346711": {
+        "pane_id": "w1:p1",
+        "label": "codex",
+        "activity": "Inactive",
+        "unread": true,
+        "revision": 2
+      },
+      "term_65de8aff2e6ea4": {
+        "pane_id": "w1:p4",
+        "label": "Terminal",
+        "activity": "Unknown",
+        "unread": false,
+        "revision": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "dmg": "chartr-0.3.1-macos-arm64.dmg",
+  "sha256": "244db0e1c957ac9be73f6f4627bfdcbb5dbcdfaef204718aca02502237a350c4",
+  "hdiutil_verify": "Checksumming Protective Master Boot Record (MBR : 0)\u2026\nProtective Master Boot Record (MBR :: verified   CRC32 $492111AB\nChecksumming GPT Header (Primary GPT Header : 1)\u2026\n GPT Header (Primary GPT Header : 1): verified   CRC32 $514224E6\nChecksumming GPT Partition Data (Primary GPT Table : 2)\u2026\nGPT Partition Data (Primary GPT Tabl: verified   CRC32 $0316A457\nChecksumming  (Apple_Free : 3)\u2026\n                    (Apple_Free : 3): verified   CRC32 $00000000\nChecksumming disk image (Apple_HFS : 4)\u2026\n          disk image (Apple_HFS : 4): verified   CRC32 $DF1AAB6B\nChecksumming  (Apple_Free : 5)\u2026\n                    (Apple_Free : 5): verified   CRC32 $00000000\nChecksumming GPT Partition Data (Backup GPT Table : 6)\u2026\nGPT Partition Data (Backup GPT Table: verified   CRC32 $0316A457\nChecksumming GPT Header (Backup GPT Header : 7)\u2026\n  GPT Header (Backup GPT Header : 7): verified   CRC32 $4100C967\nverified   CRC32 $2B55873D\n",
+  "plist": {
+    "CFBundleDevelopmentRegion": "en",
+    "CFBundleDisplayName": "chartr",
+    "CFBundleExecutable": "chartr",
+    "CFBundleIconFile": "chartr.icns",
+    "CFBundleIdentifier": "io.github.rengwu.chartr",
+    "CFBundleInfoDictionaryVersion": "6.0",
+    "CFBundleName": "chartr",
+    "CFBundlePackageType": "APPL",
+    "CFBundleShortVersionString": "0.3.1",
+    "CFBundleVersion": "781",
+    "LSApplicationCategoryType": "public.app-category.developer-tools",
+    "LSMinimumSystemVersion": "11.0",
+    "NSHighResolutionCapable": true,
+    "chartrGitRevision": "e915365a68c9",
+    "chartrReleaseVersion": "0.3.1"
+  },
+  "signature_verify": "--prepared:/private/tmp/chartr-031-dmg-check/chartr.app/Contents/MacOS/herdr\n--validated:/private/tmp/chartr-031-dmg-check/chartr.app/Contents/MacOS/herdr\n/tmp/chartr-031-dmg-check/chartr.app: valid on disk\n/tmp/chartr-031-dmg-check/chartr.app: satisfies its Designated Requirement\n",
+  "signature_details": "Executable=/private/tmp/chartr-031-dmg-check/chartr.app/Contents/MacOS/chartr\nIdentifier=io.github.rengwu.chartr\nFormat=app bundle with Mach-O thin (arm64)\nCodeDirectory v=20400 size=1137584 flags=0x2(adhoc) hashes=35543+3 location=embedded\nVersionPlatform=1\nVersionMin=720896\nVersionSDK=984320\nHash type=sha256 size=32\nCandidateCDHash sha256=e52071d71bb3e2e31e160da0c8f3eaac43345b18\nCandidateCDHashFull sha256=e52071d71bb3e2e31e160da0c8f3eaac43345b188b07c4b66cf75f2251a30cf3\nHash choices=sha256\nCMSDigest=e52071d71bb3e2e31e160da0c8f3eaac43345b188b07c4b66cf75f2251a30cf3\nCMSDigestType=2\nExecutable Segment base=0\nExecutable Segment limit=117047296\nExecutable Segment flags=0x1\nPage size=4096\nCDHash=e52071d71bb3e2e31e160da0c8f3eaac43345b18\nSignature=adhoc\nInfo.plist entries=15\nTeamIdentifier=not set\nSealed Resources version=2 rules=13 files=2\nInternal requirements count=0 size=12\nTotal signatures=1\nChosen signature=1\n",
+  "herdr_version": "herdr 0.8.2-chartr.5a2dee700eee.identity.9ed02822c877",
+  "binary_sha256": {
+    "chartr": "67e39d856b38f466ec408b5bcb2af3afb14d7a19d77ff2095105524b7b2366b8",
+    "herdr": "75e0af7bad3dbe668c8f0c7cbf3b0a631c48dd2e7b7f17291d4bbae075887f40"
+  },
+  "launch": "Not launched under the production bundle ID while the user's personal app is running."
+}

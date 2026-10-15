@@ -1,0 +1,44 @@
+[
+  {
+    "variant": "installed",
+    "executable": "/usr/bin/chartr",
+    "resolved_executable": "/usr/lib/chartr/chartr",
+    "private_backend": {
+      "id": "package-check",
+      "result": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee.identity.9ed02822c877",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      }
+    },
+    "startup_log": "",
+    "result": "Passed",
+    "scope": "Xvfb startup and private backend; no pointer or visual assertions"
+  },
+  {
+    "variant": "tarball",
+    "executable": "/work/extracted/chartr-0.3.1-linux-x86_64/usr/bin/chartr",
+    "resolved_executable": "/work/extracted/chartr-0.3.1-linux-x86_64/usr/lib/chartr/chartr",
+    "private_backend": {
+      "id": "package-check",
+      "result": {
+        "type": "pong",
+        "version": "0.8.2-chartr.5a2dee700eee.identity.9ed02822c877",
+        "protocol": 22,
+        "capabilities": {
+          "live_handoff": true,
+          "detached_server_daemon": false,
+          "endpoint_protocol_generation": 1
+        }
+      }
+    },
+    "startup_log": "",
+    "result": "Passed",
+    "scope": "Xvfb startup and private backend; no pointer or visual assertions"
+  }
+]

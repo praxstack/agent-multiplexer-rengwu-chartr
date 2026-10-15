@@ -1,0 +1,28 @@
+{
+  "instance_pid": 82249,
+  "adjacent_split": {
+    "result": "Passed",
+    "observation": "Codex completion produced unread state while neighboring shell was selected. AX labels exposed unseen agent attention on both Codex tab and its two-tab outer group; screenshot showed blue dots at both locations."
+  },
+  "exact_terminal_focus": {
+    "result": "Passed",
+    "observation": "Selecting Codex in the active test app changed persisted unread from true to false at revision 1. The next completion was allowed to notify again."
+  },
+  "hide_attempt": {
+    "result": "Untested",
+    "observation": "Cmd+H did not hide the app; no unread transition occurred for HIDE_READY. The native app menu was empty. This attempt does not establish hidden-app behavior."
+  },
+  "minimized": {
+    "result": "Passed",
+    "observation": "Minimized using native minimize control with neighboring shell selected. Only Finder was inspected during completion. Private state became unread revision 2; usernoted logged presenting a banner."
+  },
+  "closed_window": {
+    "result": "Passed",
+    "observation": "Closed the disposable window using its native close button. Only Finder was inspected during completion. Private state became unread revision 3. Finder opening the exact bundle restored the same process and split layout with unread state retained."
+  },
+  "banner_and_click": {
+    "result": "Untested",
+    "observation": "Notification permission prompt was inspected and allowed. usernoted logged delivery/presentation, but cua_repl timed out selecting Notification Center for transient and persistent alerts. The test app now has a persistent alert pending with window closed, revision 4; user was asked to click it."
+  },
+  "automation_note": "Several early screenshots lagged the accessibility tree/backend state until native window zoom. Later screenshots showed the updated split and attention dots. No claim of a new product rendering regression is made from this capture discrepancy."
+}

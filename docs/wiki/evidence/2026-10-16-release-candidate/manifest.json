@@ -1,0 +1,43 @@
+{
+  "revision": "e915365a68c9770149ba36c05bd7525fd7b91f70",
+  "version": "0.3.1",
+  "production_fade_unchanged": true,
+  "normal_build": "build-result.json",
+  "native_instance": "native-instance.json",
+  "native_driver": "cua_repl with uniquely registered test bundle; no personal Chartr instance driven",
+  "linux_container": {
+    "name": "chartr-031-package-check",
+    "image": "ubuntu:24.04",
+    "digest": "sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
+    "platform": "linux/arm64"
+  },
+  "live_test_adaptation": "Copies the existing live_session.rs and support/mouse.rs into a minimal Cargo workspace with unchanged chartr-herdr/agent/storage sources. Only sidecar() path changes to /work/herdr, linked to the installed release sidecar. No GPUI source is compiled by this backend-only harness.",
+  "source_sha256": {
+    "crates/chartr/tests/live_session.rs": "bfb0b5550abee267ab795549e05674a10bd3cc647edbb686bbb80cd4e7e99fc7",
+    "crates/chartr/tests/support/mouse.rs": "abd5da830fc7754b1ed8a34e212f45d22e03e778a3448913719f1b8a28095c5a",
+    "crates/chartr/src/components/scrolling_list.rs": "b1935310a79025b881796a3012c025ecd2cc11be44162545eef4477e7f4656be"
+  },
+  "additional_containers": [
+    {
+      "name": "chartr-031-x86-package-check",
+      "image": "ubuntu:24.04",
+      "platform": "linux/amd64",
+      "execution": "OrbStack x86_64 emulation on an arm64 host"
+    },
+    {
+      "name": "chartr-031-arch-package-check",
+      "image": "archlinux:base",
+      "platform": "linux/amd64",
+      "execution": "OrbStack x86_64 emulation on an arm64 host; pacman downloader sandbox disabled only inside this disposable container after its seccomp setup failed. Host/container isolation was not disabled."
+    }
+  ],
+  "post_candidate_product_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "post_candidate_changes": "Documentation/evidence and an AUR setup-error message link only; candidate application/build/package sources unchanged.",
+  "arm64_backend_harness_result": {
+    "passed": 3,
+    "failed": 0,
+    "ignored": 0,
+    "sidecar": "Installed /usr/lib/chartr/herdr from downloaded 0.3.1 ARM64 Debian package",
+    "corrected_setup": "Added serde_json to harness dev-dependencies; product and original test logic unchanged."
+  }
+}

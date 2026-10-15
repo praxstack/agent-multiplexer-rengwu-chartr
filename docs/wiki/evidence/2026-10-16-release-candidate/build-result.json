@@ -1,0 +1,14 @@
+{
+  "command": [
+    "cargo",
+    "build",
+    "-p",
+    "chartr",
+    "--locked"
+  ],
+  "revision": "e915365a68c9770149ba36c05bd7525fd7b91f70",
+  "started_at": 1792103689.0187168,
+  "elapsed_seconds": 16.702174186706543,
+  "exit_code": 0,
+  "binary_sha256": "faf755d5ed2a70673ab9547acecc1d9e5e5e7cb37b09d6cb2cd6a408fe1133d6"
+}

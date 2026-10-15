@@ -26,11 +26,17 @@ locally generated reader.
 - [Release acceptance](verification/acceptance.md) and
   [packaging runbook](development/releasing.md).
 
-The [October 16 release-readiness assessment](verification/runs/2026-10-16-release-readiness.md)
-at `c11b2dc5` is **Failed**: the current fade test disagrees with the implemented
-tuning. The [subsequent expectation correction](verification/runs/2026-10-16-fade-expectations.md)
-preserves the user's manual tuning and passes all 428 workspace tests. Candidate CI/packages and native acceptance coverage remain incomplete;
-release-version preparation and AUR publication configuration are also outstanding.
+The [0.3.1 candidate follow-up](verification/runs/2026-10-16-release-candidate.md)
+at `e915365a` passes the full macOS, Ubuntu and Arch/AUR CI matrix and all three
+package builds. Package inspection and selected native attention checks pass;
+full desktop acceptance, especially native notification clicks, remains incomplete.
+[Release preparation](development/release-0.3.1.md) contains draft notes and
+outstanding gates. No tag or release has been published.
+
+The [initial October 16 assessment](verification/runs/2026-10-16-release-readiness.md)
+remains historical **Failed** evidence. The
+[fade expectation correction](verification/runs/2026-10-16-fade-expectations.md)
+preserves the user's manual rendering values and passes all 428 local workspace tests.
 
 The migration did not build or exercise Chartr. Later execution is recorded in
 dated runs, including the [macOS frame-delivery recheck](verification/runs/2026-10-11-metal-frame-delivery-recheck.md).

@@ -102,6 +102,11 @@ ordinary changes; release requirements remain separate from this advisory workfl
 
 ## Verification history
 
+The [0.3.1 candidate follow-up](../verification/runs/2026-10-16-release-candidate.md)
+at `e915365a` passes the macOS, Ubuntu and Arch/AUR CI matrix and all three
+package builds. Downloaded-package inspection and selected native attention
+checks are recorded separately; full desktop release acceptance remains incomplete.
+
 The [October 16 release-readiness run](../verification/runs/2026-10-16-release-readiness.md)
 at `c11b2dc5` passes all three real-session tests with the exact patched sidecar,
 including direct attach, crash recovery and shell-versus-TUI mouse handling.

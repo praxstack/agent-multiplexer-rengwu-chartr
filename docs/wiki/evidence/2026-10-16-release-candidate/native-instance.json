@@ -1,0 +1,16 @@
+{
+  "root": "/tmp/cr031-mchot24z",
+  "app": "/Users/rengwu/Desktop/Projects/chartr/target/release-verify/Chartr Release Verify.app",
+  "bundle_id": "dev.chartr.releaseverify.oct16",
+  "pid": 82249,
+  "env": {
+    "XDG_CONFIG_HOME": "/tmp/cr031-mchot24z/config",
+    "XDG_STATE_HOME": "/tmp/cr031-mchot24z/state",
+    "XDG_DATA_HOME": "/tmp/cr031-mchot24z/data"
+  },
+  "head": "e915365a68c9770149ba36c05bd7525fd7b91f70",
+  "hashes": {
+    "chartr": "969b1d7016eed1656661442b618d92e411c13cc8a21148b1d6b354614597b494",
+    "herdr": "93ee0fc1f06fbe27e9150e9eeb6afcb7f2bbfdc2ba3efcde28471e5b78e742c3"
+  }
+}

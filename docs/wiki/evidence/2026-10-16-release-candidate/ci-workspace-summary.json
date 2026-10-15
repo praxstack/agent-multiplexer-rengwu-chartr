@@ -1,0 +1,12 @@
+{
+  "macos-15": {
+    "passed": 428,
+    "failed": 0,
+    "ignored": 7
+  },
+  "ubuntu-24.04": {
+    "passed": 430,
+    "failed": 0,
+    "ignored": 9
+  }
+}

@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -qq
+apt-get install -y --no-install-recommends ca-certificates curl build-essential pkg-config python3 xvfb xauth mesa-vulkan-drivers fonts-dejavu-core
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o /tmp/rustup-init.sh
+sh /tmp/rustup-init.sh -y --profile minimal --default-toolchain 1.96.0
+for attempt in $(seq 1 240); do
+    if [ -f /packages/SHA256SUMS-aarch64 ] && (cd /packages && sha256sum -c SHA256SUMS-aarch64 >/dev/null 2>&1); then break; fi
+    sleep 5
+done
+apt-get install -y --no-install-recommends /packages/*.deb
+cd /packages
+sha256sum -c SHA256SUMS-aarch64
+mkdir -p /work/extracted
+tar -xzf chartr-0.3.1-linux-aarch64.tar.gz -C /work/extracted
+cd /work
+ln -sfn /usr/lib/chartr/herdr herdr
+/root/.cargo/bin/cargo test --test live_session -- --ignored --nocapture --test-threads=1
+python3 /work/startup.py

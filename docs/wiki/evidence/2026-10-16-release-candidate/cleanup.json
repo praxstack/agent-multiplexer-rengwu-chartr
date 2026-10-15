@@ -1,0 +1,14 @@
+{
+  "owned_containers_remaining": [],
+  "dmg_detached": true,
+  "native_fixture_retained_for_requested_manual_click": {
+    "pid": 82249,
+    "root": "/tmp/cr031-mchot24z",
+    "app": "target/release-verify/Chartr Release Verify.app",
+    "bundle_id": "dev.chartr.releaseverify.oct16",
+    "window": "closed after controlled completion",
+    "test_bundle_alert_style": "Persistent; changed only for this newly created bundle. Restore Temporary after manual verification."
+  },
+  "regular_app_and_previous_fade_preview": "Not driven or stopped.",
+  "linux_runtime": "Existing OrbStack was started for disposable container checks; images/build caches retained."
+}

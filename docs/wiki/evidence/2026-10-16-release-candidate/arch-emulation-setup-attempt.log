@@ -1,0 +1,16 @@
+Unable to find image 'archlinux:base' locally
+base: Pulling from library/archlinux
+55924c9eac0d: Pulling fs layer
+d2cc54e7adee: Pulling fs layer
+55924c9eac0d: Download complete
+ffb1eb927ce6: Download complete
+c26d6a3ac7f6: Download complete
+d2cc54e7adee: Download complete
+55924c9eac0d: Pull complete
+d2cc54e7adee: Pull complete
+Digest: sha256:3c64b538588416593f69a1aebd2f2ec0f2541b29159f32556fa7def2167147a0
+Status: Downloaded newer image for archlinux:base
+:: Synchronizing package databases...
+error: error restricting syscalls via seccomp: 22!
+error: switching to sandbox user 'alpm' failed!
+error: failed to synchronize all databases (failed to retrieve some files)
