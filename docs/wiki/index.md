@@ -27,11 +27,15 @@ locally generated reader.
   [packaging runbook](development/releasing.md).
 
 The [0.3.1 candidate follow-up](verification/runs/2026-10-16-release-candidate.md)
-at `e915365a` passes the full macOS, Ubuntu and Arch/AUR CI matrix and all three
-package builds. Package inspection and selected native attention checks pass;
-full desktop acceptance, especially native notification clicks, remains incomplete.
+records passing package inspection and selected native attention checks.
+The [desktop follow-up](verification/runs/2026-10-16-release-desktop.md) verifies
+macOS Quit policies and a Linux terminal/Clock journey, and preserves the Linux
+confirmation-clipping failure. The [recheck](verification/runs/2026-10-16-release-desktop-recheck.md)
+tracks its correction and the latest automated gates.
 [Release preparation](development/release-0.3.1.md) contains draft notes and
-outstanding gates. No tag or release has been published.
+remaining acceptance scope; the [checkpoint](journal/2026-10-16-release-preparation.md)
+records the next decision. AUR publication and the manual notification-click
+check are explicitly deferred. No tag or release has been published.
 
 The [initial October 16 assessment](verification/runs/2026-10-16-release-readiness.md)
 remains historical **Failed** evidence. The

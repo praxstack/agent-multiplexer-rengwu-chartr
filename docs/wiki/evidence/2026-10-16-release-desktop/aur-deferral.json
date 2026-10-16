@@ -1,0 +1,8 @@
+{
+  "revision": "78d651e6e12a1d2e3dd58fde1496c978747692fd",
+  "repository_variables": [],
+  "automatic_publishing": "requires AUR_PUBLISH_ENABLED exactly true and a stable published release",
+  "manual_dispatch": "still explicit; retains key and known-host requirements",
+  "inspection": "workflow parsed as YAML; source predicate reviewed; no release was published to exercise its release-event branch",
+  "workflow_sha256": "ab79def251231d8258414485855a20cbc17c76fc21b966d78d6d88797ced09e2"
+}

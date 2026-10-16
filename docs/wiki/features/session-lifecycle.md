@@ -63,6 +63,11 @@ ordinary changes; release requirements remain separate from this advisory workfl
 
 ## Verification history
 
+The [October 16 desktop follow-up](../verification/runs/2026-10-16-release-desktop.md)
+verifies macOS Cmd+Q with default detach and configured termination after adding
+application-wide Hide/Quit actions in `b807e4c3`. Relaunch restores terminal
+identities and unread state. Actual hidden-state monitoring remains unverified.
+
 The [0.3.1 candidate follow-up](../verification/runs/2026-10-16-release-candidate.md)
 at `e915365a` passes the macOS, Ubuntu and Arch/AUR CI matrix and all three
 package builds. Downloaded-package inspection and selected native attention

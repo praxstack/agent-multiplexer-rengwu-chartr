@@ -1,0 +1,14 @@
+{
+  "backend_pid": 82255,
+  "verified_command": "/Users/rengwu/Desktop/Projects/chartr/target/release-verify/Chartr Release Verify.app/Contents/MacOS/herdr server",
+  "terminal_count_before_stop": 0,
+  "backend_exited": true,
+  "notification_style": "Temporary restored through System Settings",
+  "test_app_running": false,
+  "fixture": "/tmp/cr031-mchot24z",
+  "fixture_retained": "diagnostic state only; app and backend stopped",
+  "regular_chartr_and_fade_preview": "untouched",
+  "server_stop": {
+    "type": "ok"
+  }
+}

@@ -1,0 +1,52 @@
+2026-10-16T07:12:52.411212Z  INFO herdr::api::server: api server listening path=/home/verify/.config/chartr/herdr/herdr.sock
+2026-10-16T07:12:52.412835Z  INFO herdr::app: using pane scrollback configuration pane_scrollback_limit_bytes=10000000
+2026-10-16T07:12:52.435685Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-10-16T07:12:52.436053Z  WARN herdr::detect::manifest_update: agent detection manifest update failed: curl failed: No such file or directory (os error 2)
+2026-10-16T07:12:52.436083Z  WARN herdr::logging: update check failed event="update.check.complete" subsystem="update" outcome="error" err="curl failed: No such file or directory (os error 2)"
+2026-10-16T07:12:52.436281Z  INFO herdr::server::headless: client protocol socket listening path=/home/verify/.config/chartr/herdr/herdr-client.sock
+2026-10-16T07:12:52.436339Z  INFO herdr::server::headless::bootstrap: herdr server started api_socket=/home/verify/.config/chartr/herdr/herdr.sock client_socket=/home/verify/.config/chartr/herdr/herdr-client.sock
+2026-10-16T07:12:52.436397Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="server" outcome="started" pid=6794
+2026-10-16T07:13:26.754704Z  INFO herdr::logging: api request received event="api.request.start" subsystem="api" outcome="started" request_id="55" method="workspace.create" changes_ui=true
+2026-10-16T07:13:26.755892Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=1 rows=40 cols=120 scrollback_limit_bytes=10000000
+2026-10-16T07:13:26.765788Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=1 pid=6866
+2026-10-16T07:13:26.767112Z  INFO herdr::logging: workspace created event="workspace.create" subsystem="workspace" outcome="ok" workspace_id="w1" pane_id=1
+2026-10-16T07:13:26.767123Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="w1"
+2026-10-16T07:13:26.767132Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="w1" tab_id="w1:t1"
+2026-10-16T07:13:26.767135Z  INFO herdr::logging: workspace renamed event="workspace.rename" subsystem="workspace" outcome="ok" workspace_id="w1"
+2026-10-16T07:13:26.767862Z  INFO herdr::logging: api request completed event="api.request.complete" subsystem="api" outcome="ok" request_id="55" method="workspace.create"
+2026-10-16T07:13:27.038245Z  INFO herdr::server::headless: direct terminal client connected client_id=1 cols=100 rows=6 cell_width_px=5 cell_height_px=5
+2026-10-16T07:13:27.038908Z  INFO herdr::server::headless: terminal attach client connected client_id=1 cols=100 rows=6 terminal_id=term_65defe68c02301
+2026-10-16T07:13:27.141878Z  INFO herdr::server::headless: client resize client_id=1 cols=103 rows=39 cell_width_px=7 cell_height_px=16 pixel_mouse=true
+2026-10-16T07:13:31.771742Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/home/verify/.config/chartr/herdr/session.json workspaces=1
+2026-10-16T07:17:21.824738Z  INFO herdr::server::headless: client disconnected client_id=1
+2026-10-16T07:18:25.538599Z  INFO herdr::server::headless: direct terminal client connected client_id=2 cols=100 rows=6 cell_width_px=5 cell_height_px=5
+2026-10-16T07:18:25.539038Z  INFO herdr::server::headless: terminal attach client connected client_id=2 cols=100 rows=6 terminal_id=term_65defe68c02301
+2026-10-16T07:18:25.640519Z  INFO herdr::server::headless: client resize client_id=2 cols=103 rows=39 cell_width_px=7 cell_height_px=16 pixel_mouse=true
+2026-10-16T07:24:33.430898Z  INFO herdr::server::headless: client detached client_id=2
+2026-10-16T07:24:33.431858Z  INFO herdr::server::headless: client disconnected client_id=2
+2026-10-16T07:24:34.885941Z  INFO herdr::server::headless: direct terminal client connected client_id=3 cols=100 rows=6 cell_width_px=5 cell_height_px=5
+2026-10-16T07:24:34.886051Z  INFO herdr::server::headless: terminal attach client connected client_id=3 cols=100 rows=6 terminal_id=term_65defe68c02301
+2026-10-16T07:24:34.992000Z  INFO herdr::server::headless: client resize client_id=3 cols=103 rows=39 cell_width_px=7 cell_height_px=16 pixel_mouse=true
+2026-10-16T07:31:59.498916Z  INFO herdr::server::headless: client detached client_id=3
+2026-10-16T07:31:59.499766Z  INFO herdr::server::headless: client disconnected client_id=3
+2026-10-16T07:32:00.580365Z  INFO herdr::server::headless: direct terminal client connected client_id=4 cols=100 rows=6 cell_width_px=5 cell_height_px=5
+2026-10-16T07:32:00.580881Z  INFO herdr::server::headless: terminal attach client connected client_id=4 cols=100 rows=6 terminal_id=term_65defe68c02301
+2026-10-16T07:32:00.583608Z  INFO herdr::server::headless: direct terminal client connected client_id=5 cols=100 rows=6 cell_width_px=5 cell_height_px=5
+2026-10-16T07:32:00.583679Z  INFO herdr::server::headless: terminal attach client connected client_id=5 cols=100 rows=6 terminal_id=term_65defe68c02301
+2026-10-16T07:32:00.585392Z  INFO herdr::server::headless: client disconnected client_id=4
+2026-10-16T07:32:00.681019Z  INFO herdr::server::headless: client resize client_id=5 cols=103 rows=39 cell_width_px=7 cell_height_px=16 pixel_mouse=true
+2026-10-16T07:42:52.459955Z  WARN herdr::detect::manifest_update: agent detection manifest update failed: curl failed: No such file or directory (os error 2)
+2026-10-16T07:42:52.457597Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-10-16T07:42:52.463036Z  WARN herdr::logging: update check failed event="update.check.complete" subsystem="update" outcome="error" err="curl failed: No such file or directory (os error 2)"
+2026-10-16T07:43:20.044832Z  INFO herdr::server::headless: client detached client_id=5
+2026-10-16T07:47:19.569779Z  INFO herdr::server::headless: direct terminal client connected client_id=6 cols=100 rows=6 cell_width_px=5 cell_height_px=5
+2026-10-16T07:47:19.569998Z  INFO herdr::server::headless: terminal attach client connected client_id=6 cols=100 rows=6 terminal_id=term_65defe68c02301
+2026-10-16T07:47:19.675025Z  INFO herdr::server::headless: client resize client_id=6 cols=103 rows=39 cell_width_px=7 cell_height_px=16 pixel_mouse=true
+2026-10-16T07:51:21.651042Z  INFO herdr::server::headless: client detached client_id=6
+2026-10-16T07:51:24.105815Z  INFO herdr::server::headless: direct terminal client connected client_id=7 cols=100 rows=6 cell_width_px=5 cell_height_px=5
+2026-10-16T07:51:24.107816Z  INFO herdr::server::headless: terminal attach client connected client_id=7 cols=100 rows=6 terminal_id=term_65defe68c02301
+2026-10-16T07:51:24.208721Z  INFO herdr::server::headless: client resize client_id=7 cols=103 rows=39 cell_width_px=7 cell_height_px=16 pixel_mouse=true
+2026-10-16T07:52:28.503035Z  INFO herdr::server::headless: client detached client_id=7
+2026-10-16T07:52:29.035827Z  INFO herdr::server::headless: direct terminal client connected client_id=8 cols=100 rows=6 cell_width_px=5 cell_height_px=5
+2026-10-16T07:52:29.036308Z  INFO herdr::server::headless: terminal attach client connected client_id=8 cols=100 rows=6 terminal_id=term_65defe68c02301
+2026-10-16T07:52:29.137722Z  INFO herdr::server::headless: client resize client_id=8 cols=103 rows=39 cell_width_px=7 cell_height_px=16 pixel_mouse=true

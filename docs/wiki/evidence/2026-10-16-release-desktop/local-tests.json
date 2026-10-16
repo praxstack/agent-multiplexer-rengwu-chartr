@@ -1,0 +1,15 @@
+{
+  "head": "b807e4c3ef83bdf8725d5505444e5dd9fedde8bc",
+  "command": "cargo test --workspace --locked --no-fail-fast",
+  "passed": 429,
+  "failed": 0,
+  "ignored": 7,
+  "dirty": true,
+  "source_change_committed_as": "2707f8754fcd88ce617150c0e0e7bbf2cbfab379",
+  "product_patch_sha256": "fc2e875f47d9ab7fd2ae6fff9642e51229b0d9d1bd9a2271a8e71216bba78222",
+  "source_sha256": {
+    "crates/chartr/src/main.rs": "ef1907927fac62a51e03e1904bf328084f67fb8cb163171549e9f423712dd9b8",
+    "crates/chartr/src/components.rs": "dca51bffc7ea1e85852cd52c94f41ae57f5b2b5f41cfa5529bd2a5dc66a78249",
+    "crates/chartr/src/components/prompt.rs": "af4a0dbd14b665354dac098172975e0a6b50c261eae8e880e1ee80bcc86cb011"
+  }
+}

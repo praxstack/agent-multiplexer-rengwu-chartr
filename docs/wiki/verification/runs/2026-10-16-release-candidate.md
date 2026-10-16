@@ -10,6 +10,11 @@ The automated CI and package-build gates pass for **0.3.1**. Full release
 acceptance remains incomplete: native notification clicks and several desktop
 interaction scenarios are unverified. No tag or release has been published.
 
+October 16 follow-up: the [desktop run](2026-10-16-release-desktop.md) and
+[recheck](2026-10-16-release-desktop-recheck.md) supersede the pending-work and
+fixture-cleanup status below. This original candidate's results are preserved.
+The user subsequently deferred AUR publication and the requested manual click.
+
 ## Scope and identity
 
 Follow up the [initial readiness assessment](2026-10-16-release-readiness.md) after
@@ -21,8 +26,10 @@ Candidate: `e915365a68c9770149ba36c05bd7525fd7b91f70`. The normal local build,
 GitHub CI and downloaded packages all identify this revision. The
 [manifest](../../evidence/2026-10-16-release-candidate/manifest.json) records
 source hashes, container environments and the bounded backend-test adaptation.
-Only documentation/evidence and the AUR setup-error documentation link are
-changed after the candidate; application and packaging behavior are unchanged.
+At the close of this original run, only documentation/evidence and the AUR
+setup-error documentation link had changed after the candidate; application and
+packaging behavior were then unchanged. Subsequent product changes are recorded
+in the linked follow-ups.
 
 Affected features: [distribution](../../features/distribution.md)
 (`FEAT-distribution`), [workspace views](../../features/workspace-views.md)

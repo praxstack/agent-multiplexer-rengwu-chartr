@@ -1,0 +1,17 @@
+   Compiling chartr v0.3.1 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 18.62s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`
+     Running unittests src/main.rs (target/debug/deps/chartr-30afb8100b1dee8a)
+
+running 1 test
+test components::prompt::tests::confirmation_wraps_details_and_keeps_actions_reachable ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 314 filtered out; finished in 0.02s
+
+     Running tests/live_session.rs (target/debug/deps/live_session-4bd0358449428736)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+

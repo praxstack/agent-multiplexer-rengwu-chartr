@@ -1,0 +1,56 @@
+Arch and AUR packaging	Test Arch packages and AUR publication	2026-10-16T07:42:06.3931744Z Ran 12 tests in 15.168s
+macos-15	Check release scripts	2026-10-16T07:41:34.1873230Z Ran 24 tests in 1.032s
+macos-15	Build and test	2026-10-16T07:50:22.7609900Z test components::prompt::tests::confirmation_wraps_details_and_keeps_actions_reachable ... ok
+macos-15	Build and test	2026-10-16T07:50:23.9980120Z test result: ok. 314 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 1.45s
+macos-15	Build and test	2026-10-16T07:50:24.0350420Z test result: ok. 0 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:24.0435130Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:24.3439720Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.26s
+macos-15	Build and test	2026-10-16T07:50:24.7754150Z test result: ok. 30 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.42s
+macos-15	Build and test	2026-10-16T07:50:24.9303860Z test result: ok. 36 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+macos-15	Build and test	2026-10-16T07:50:24.9414520Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:24.9642960Z test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:25.0124280Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+macos-15	Build and test	2026-10-16T07:50:25.1357840Z test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+macos-15	Build and test	2026-10-16T07:50:25.1519760Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+macos-15	Build and test	2026-10-16T07:50:25.2809300Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:25.3798090Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:25.4637060Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:25.5370720Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:25.5721860Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:26.1211440Z test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:26.8378910Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.72s
+macos-15	Build and test	2026-10-16T07:50:26.9806570Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Build and test	2026-10-16T07:50:27.0197840Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+macos-15	Test real terminal sessions	2026-10-16T07:51:25.3426770Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.69s
+macos-15	Test web plugin bridges and layouts	2026-10-16T07:51:26.3143380Z # pass 10
+macos-15	Test web plugin bridges and layouts	2026-10-16T07:51:26.3144030Z # fail 0
+ubuntu-24.04	Check release scripts	2026-10-16T07:41:52.3173028Z Ran 24 tests in 1.643s
+ubuntu-24.04	Build and test	2026-10-16T07:47:22.3700398Z test components::prompt::tests::confirmation_wraps_details_and_keeps_actions_reachable ... ok
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.0569449Z test result: ok. 316 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.85s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.0805486Z test result: ok. 0 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.0816813Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.1244477Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.2782088Z test result: ok. 30 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.15s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.3865929Z test result: ok. 36 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.3883139Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.3904621Z test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.4262137Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.4564503Z test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.4614660Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.4807996Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.5163902Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.5735878Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.6330800Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.6639477Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:23.8303443Z test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:24.0284062Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+ubuntu-24.04	Build and test	2026-10-16T07:47:24.0767297Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Build and test	2026-10-16T07:47:24.0940920Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+ubuntu-24.04	Test forwarded X11 input-method events	2026-10-16T07:47:26.6013266Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 22 filtered out; finished in 0.00s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-16T07:47:32.4290949Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 318 filtered out; finished in 1.31s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-16T07:47:33.3460399Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 318 filtered out; finished in 0.07s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-16T07:47:34.2527046Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 318 filtered out; finished in 0.21s
+ubuntu-24.04	Test GTK webview scaling and lifecycle	2026-10-16T07:47:35.0010204Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 318 filtered out; finished in 0.06s
+ubuntu-24.04	Test real terminal sessions	2026-10-16T07:48:11.3001807Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.59s
+ubuntu-24.04	Test web plugin bridges and layouts	2026-10-16T07:48:11.9036688Z # pass 10
+ubuntu-24.04	Test web plugin bridges and layouts	2026-10-16T07:48:11.9036888Z # fail 0

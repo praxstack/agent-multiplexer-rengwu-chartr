@@ -1,0 +1,16 @@
+{
+  "candidate": "78d651e6e12a1d2e3dd58fde1496c978747692fd",
+  "prompt_fix": "2707f8754fcd88ce617150c0e0e7bbf2cbfab379",
+  "platform": "Ubuntu 24.04 arm64/Xvfb/Openbox/software Vulkan",
+  "installed_package": "chartr_0.3.1_arm64.deb",
+  "before_restart_pid": 17185,
+  "after_restart_processes": "17585 /usr/lib/chartr/chartr",
+  "hashes": "92183ec1cec64ae844a7f46f0aa23bd037e0cd549f771c842df0dd645a1edfef  /usr/lib/chartr/chartr\nd7bb07bf25a4570e8e14fdc98daf6c5ffef0be8704b9c27c8d5b56175bf4a34a  /usr/lib/chartr/herdr\n",
+  "clock_settings": {
+    "format": "12"
+  },
+  "clock_install": {
+    "source": "/home/verify/clock",
+    "commit": null
+  }
+}

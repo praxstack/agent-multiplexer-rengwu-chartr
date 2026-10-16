@@ -1,7 +1,7 @@
 ---
 title: Plugin discovery and installation
 section: Features
-updated: 2026-10-05
+updated: 2026-10-16
 basis: Source-reviewed migration baseline
 ---
 # Plugin discovery and installation
@@ -58,6 +58,14 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 16 Linux desktop follow-up](../verification/runs/2026-10-16-release-desktop.md)
+passes local Clock installation, Later/restart activation and a live persisted
+format change, but finds clipped permission text in the fallback confirmation.
+The [prompt recheck](../verification/runs/2026-10-16-release-desktop-recheck.md)
+records the correction using the shared dialog surface, wrapping text and a
+scrollable body, and verifies replacement/restart preserve terminal input and
+Clock data. This does not certify Git installs or external embedded packages.
 
 No current product run was performed for this migration. Earlier
 [research and audits](../archive/research/index.md) remain historical evidence for

@@ -1,0 +1,8 @@
+{
+  "container": "chartr-031-desktop",
+  "container_removed": true,
+  "loopback_noVNC_port": 6081,
+  "test_only_sessions": "removed with disposable container",
+  "host_mounts": "read-only; retained",
+  "browser_window": "dedicated Safari window reused for release-scope handoff; other browser windows untouched"
+}

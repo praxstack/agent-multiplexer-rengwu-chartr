@@ -1,0 +1,40 @@
+    PID    PPID COMMAND
+      1       0 sleep infinity
+   6693       1 Xvfb :99 -screen 0 1280x900x24 -nolisten tcp
+   6694       1 runuser -u verify -- env DISPLAY=:99 dbus-run-session -- openbox-session
+   6695       1 runuser -u verify -- env DISPLAY=:99 xterm -geometry 110x35+10+10
+   6696       1 x11vnc -display :99 -forever -shared -nopw -localhost -rfbport 5900
+   6697       1 /usr/bin/python3 /usr/bin/websockify --web=/usr/share/novnc/ 6080 127.0.0.1:5900
+   6698    6694 dbus-run-session -- openbox-session
+   6699    6695 xterm -geometry 110x35+10+10
+   6700    6698 dbus-daemon --nofork --print-address 4 --session
+   6701    6698 /usr/bin/openbox --startup /usr/lib/aarch64-linux-gnu/openbox-autostart OPENBOX
+   6706    6699 bash
+   6722    6697 /usr/bin/python3 /usr/bin/websockify --web=/usr/share/novnc/ 6080 127.0.0.1:5900
+   6794       1 /usr/lib/chartr/herdr server
+   6866    6794 /bin/bash
+   7785       1 dbus-daemon --session --address=unix:path=/run/user/1001/bus --fork --print-pid
+   8110       1 runuser -u verify -- env DISPLAY=:99 XDG_RUNTIME_DIR=/run/user/1001 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1001/bus XDG_CURRENT_DESKTOP=GNOME /usr/libexec/xdg-desktop-portal-gtk
+   8111       1 [runuser] <defunct>
+   8113    8110 /usr/libexec/xdg-desktop-portal-gtk
+   8122       1 [xdg-document-po] <defunct>
+   8127       1 /usr/libexec/xdg-permission-store
+   8134       1 [fusermount3] <defunct>
+   8135       1 [fusermount3] <defunct>
+   8137       1 [xdg-document-po] <defunct>
+   8143       1 [fusermount3] <defunct>
+   8144       1 [fusermount3] <defunct>
+   8364       1 [herdr] <defunct>
+   8569       1 runuser -u verify -- env DISPLAY=:99 XDG_RUNTIME_DIR=/run/user/1001 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1001/bus XDG_CURRENT_DESKTOP=GNOME /usr/libexec/xdg-desktop-portal --replace
+   8570    8569 /usr/libexec/xdg-desktop-portal --replace
+   8576       1 [xdg-document-po] <defunct>
+   8582       1 [fusermount3] <defunct>
+   8583       1 [fusermount3] <defunct>
+   8882       1 /usr/libexec/dconf-service
+  10606       1 bash -c              while kill -0 "$0" 2>/dev/null; do                 sleep 0.1             done              app_path="$1"             shift             "$app_path" "$@"              9382 /usr/lib/chartr/chartr
+  10618    6706 chartr /home/verify/project
+  10619   10606 /usr/lib/chartr/chartr
+  10757   10618 /usr/lib/chartr/herdr terminal attach term_65defe68c02301 --takeover
+  14909   10619 /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/WebKitNetworkProcess 2 38
+  14911   10619 /usr/lib/aarch64-linux-gnu/webkit2gtk-4.1/WebKitWebProcess 4 43
+  16212       0 ps -eo pid,ppid,args

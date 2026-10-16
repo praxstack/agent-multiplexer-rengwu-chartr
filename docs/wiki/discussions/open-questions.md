@@ -1,12 +1,24 @@
 ---
 title: Open questions
-updated: 2026-10-15
-status: Scope resolved; performance and attention verification gaps remain
+updated: 2026-10-16
+status: Release-scope decision pending; verification gaps remain
 ---
 # Open questions
 
 There are no remaining consequential scope questions from the migration interview.
 Reopen this register if implementation uncovers a material ambiguity.
+
+## Release 0.3.1 deferrals
+
+The user set aside the requested manual notification-click check and deferred
+AUR publication on October 16 because AUR account registration is unavailable.
+These are explicit deferrals, not passing verification or evidence of an AUR
+package. Other desktop acceptance remains in scope; see
+[release preparation](../development/release-0.3.1.md).
+
+Open decision: retain the full desktop matrix as a 0.3.1 blocker, or explicitly
+defer the remaining coverage after the passing focused recheck. This release-scope
+choice has not been accepted yet.
 
 ## Performance verification questions
 
@@ -42,7 +54,10 @@ quit handling. The user approved an isolated native AppKit test route after desk
 startup failed. Automated checks and six native reopen cycles passed, including
 terminal identity/input, saved bounds/layout, existing/minimized-window behavior
 and both quit policies. The reopen issue is resolved for this tested build;
-App Hide remains a separate unverified follow-up.
+App Hide remains a separate unverified follow-up. The
+[October 16 desktop run](../verification/runs/2026-10-16-release-desktop.md) adds
+the missing application menu and shortcuts, and verifies both Cmd+Q policies;
+actual hidden-state monitoring is still not claimed.
 
 ## Agent attention design
 

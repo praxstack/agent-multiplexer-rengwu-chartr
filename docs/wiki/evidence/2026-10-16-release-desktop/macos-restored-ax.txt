@@ -1,0 +1,31 @@
+Window: "", App: Chartr Release Verify.
+0 standard window Secondary Actions: Raise
+	1 container
+		2 row (selectable) Secondary Actions: Pick, Free sessions
+Collapse Free sessions
+New surface
+		3 row (selected) Secondary Actions: Pick, project
+Collapse project
+New surface
+		4 tab (settable, boolean) 2 tabs, unseen agent attention, Value: on
+		5 button
+		6 button New Space
+		7 tab (settable, boolean) codex, unseen agent attention, Value: on
+			8 button
+		9 button
+		10 button New surface
+		11 tab (settable, boolean) zsh, Value: on
+			12 button
+		13 button
+		14 button New surface
+		15 Session list presentation
+			16 radio button (selectable) Tabs, Secondary Actions: Pick
+			17 radio button (selected) Spaces, Secondary Actions: Pick
+		18 button Settings
+	19 close button
+	20 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	21 minimize button
+22 menu bar
+	23 Chartr Release Verify
+
+The focused UI element is 0 standard window Secondary Actions: Raise

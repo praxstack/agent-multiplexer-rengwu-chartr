@@ -1,0 +1,31 @@
+{
+  "image": "sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
+  "container_id": "cd5bce8597c29648e33480a361a157be035f91895c059cc96b41e6b07cba4638",
+  "platform": "linux",
+  "started_at": "2026-10-16T07:04:15.09258783Z",
+  "mounts": [
+    {
+      "source": "/Users/rengwu/Desktop/Projects/chartr/target/release-candidate-0.3.1/linux-aarch64",
+      "destination": "/packages",
+      "read_only": true
+    },
+    {
+      "source": "/Users/rengwu/Desktop/Projects/chartr/examples/plugins/clock",
+      "destination": "/fixtures/clock",
+      "read_only": true
+    }
+  ],
+  "ports": {
+    "6080/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "6081"
+      }
+    ]
+  },
+  "profile": "/home/verify",
+  "display": ":99",
+  "vnc": "loopback host port 6081; 1280x900 Xvfb desktop",
+  "setup": "Openbox, Xvfb, x11vnc, noVNC, GTK portal and an explicit user D-Bus; UI via native Safari control of noVNC",
+  "fixture_plugin": "examples/plugins/clock at e915365a; copied to /home/verify/clock before installing"
+}

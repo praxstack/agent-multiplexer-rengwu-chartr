@@ -1,0 +1,16 @@
+{
+  "revision": "78d651e6e12a1d2e3dd58fde1496c978747692fd",
+  "run": 38868786289,
+  "artifacts": [
+    {
+      "file": "chartr-0.3.1-linux-aarch64.tar.gz",
+      "sha256": "e210b65cc163762e3d66058f92c0609d7000e5131368a1f82df95e5e13f2212f",
+      "result": "Passed"
+    },
+    {
+      "file": "chartr_0.3.1_arm64.deb",
+      "sha256": "b0abc6fffdb7e30a8185f4da942df4ab91d3a0a7d0ce4453da0640b664b9f96c",
+      "result": "Passed"
+    }
+  ]
+}

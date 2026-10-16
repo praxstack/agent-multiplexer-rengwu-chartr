@@ -4,6 +4,17 @@ updated: 2026-10-15
 ---
 # Decisions
 
+## DEC-RELEASE-031-001 — Release version and explicit deferrals
+
+Accepted October 16 in the release-preparation conversation: use **0.3.1**,
+preserve the user's hand-tuned fade implementation and align its tests/docs,
+defer AUR publication while account registration is unavailable, and omit the
+requested manual notification-click check. These are scoped deferrals, not passes
+or a blanket waiver of the [release acceptance matrix](../verification/acceptance.md).
+Automatic AUR publication is opt-in; the [runbook](../development/releasing.md#aur-publishing)
+records the re-enablement path. [Release preparation](../development/release-0.3.1.md)
+tracks evidence and remaining scope.
+
 ## DEC-ATTENTION-005 — Reuse existing detection with best-effort alerts
 
 Accepted October 15 in [questions 15–17](../journal/2026-10-15-grill-1cbbb041-3fb2-41c0-97c7-434cb1dbeff1.md).

@@ -1,0 +1,75 @@
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.405: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.405: The preferred method to match portal implementations to desktop environments is to use the portals.conf(5) configuration file
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.559: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.559: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.559: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.569: Failed to create file chooser proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.569: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.569: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.576: Failed to create app chooser proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.576: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.576: Choosing gtk.portal for org.freedesktop.impl.portal.Print via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.583: Failed to create print proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.583: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.583: Choosing gtk.portal for org.freedesktop.impl.portal.Notification via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.591: Failed to create notification proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.591: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.591: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.598: Failed to create inhibit proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.598: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.598: Choosing gtk.portal for org.freedesktop.impl.portal.Access via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.604: Failed to create access proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.604: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.618: Failed to create access proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.618: No skeleton to export
+[W][30638.927394] pw.conf      | [          conf.c: 1031 try_load_conf()] can't load config client.conf: No such file or directory
+[E][30638.927400] pw.conf      | [          conf.c: 1060 pw_conf_load_conf_for_context()] can't load config client.conf: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.619: Failed connect to PipeWire: Couldn't create PipeWire context
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.619: Choosing gtk.portal for org.freedesktop.impl.portal.Account via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.627: Failed to create account proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.627: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.627: Choosing gtk.portal for org.freedesktop.impl.portal.Email via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.634: Failed to create email proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.634: No skeleton to export
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.634: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher via the deprecated UseIn key
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.641: Failed to create dynamic_launcher proxy: Error calling StartServiceByName for org.freedesktop.impl.portal.desktop.gtk: Process org.freedesktop.impl.portal.desktop.gtk exited with status 1
+
+(/usr/libexec/xdg-desktop-portal:8112): xdg-desktop-portal-WARNING **: 07:16:39.641: No skeleton to export
+
+(xdg-desktop-portal-gtk:8113): dbind-WARNING **: 07:16:40.036: AT-SPI: Error retrieving accessibility bus address: org.freedesktop.DBus.Error.ServiceUnknown: The name org.a11y.Bus was not provided by any .service files
+
+(xdg-desktop-portal-gtk:8113): xdg-desktop-portal-gtk-WARNING **: 07:16:40.039: error: Could not connect: No such file or directory
+

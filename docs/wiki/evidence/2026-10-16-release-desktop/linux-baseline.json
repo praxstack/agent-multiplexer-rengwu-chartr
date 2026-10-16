@@ -1,0 +1,20 @@
+{
+  "candidate": "e915365a68c9770149ba36c05bd7525fd7b91f70",
+  "package": "chartr_0.3.1_arm64.deb",
+  "container": "chartr-031-desktop",
+  "container_id": "cd5bce8597c29648e33480a361a157be035f91895c059cc96b41e6b07cba4638",
+  "platform": "Ubuntu 24.04 arm64; Xvfb :99; Openbox; software Vulkan; GTK portal",
+  "profile": "/home/verify",
+  "actions": [
+    "Created terminal and typed printf marker through noVNC",
+    "Installed repository Clock from /home/verify/clock",
+    "Selected Later, then restart banner",
+    "Opened Clock surface and changed its format to 12-hour"
+  ],
+  "notes": [
+    "A confirmation prompt clipped the declared permissions (product failure).",
+    "Missing user D-Bus/portal in the initial container was repaired before installation (fixture setup).",
+    "Two Chartr processes were observed after restart: one parented by the restart helper, one by the original interactive shell. Terminal restoration at that point is inconclusive; the isolated fixture is reset before the new package recheck."
+  ],
+  "binary_hashes": "cac5aa57572d026559fb3eb3935e632fba0703879e1b74f104a9ac218e81f89f  /usr/lib/chartr/chartr\nd7bb07bf25a4570e8e14fdc98daf6c5ffef0be8704b9c27c8d5b56175bf4a34a  /usr/lib/chartr/herdr\n"
+}

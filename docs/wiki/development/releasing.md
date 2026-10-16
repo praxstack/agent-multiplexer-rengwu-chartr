@@ -93,7 +93,10 @@ available. Only `PKGBUILD` and `.SRCINFO` go into the AUR bundle.
 ## AUR publishing
 
 The [Publish AUR workflow](https://github.com/rengwu/chartr/blob/main/.github/workflows/aur.yml) updates `chartr-bin`
-when a **stable GitHub release is published**. Creating a draft, pushing a tag,
+when a **stable GitHub release is published** and repository variable
+`AUR_PUBLISH_ENABLED` is `true`. Automatic publication is otherwise skipped;
+manual dispatch remains available and still requires valid credentials.
+Creating a draft, pushing a tag,
 or publishing an RC does not update AUR. Every x86_64 build still includes an
 AUR recipe bundle for inspection or manual testing.
 
@@ -115,10 +118,13 @@ One-time setup:
    Actions **variable** `AUR_SSH_KNOWN_HOSTS`. Compare the host-key fingerprint
    against the [AUR authentication documentation](https://wiki.archlinux.org/title/AUR_submission_guidelines#Authentication)
    before accepting it. The workflow requires strict host-key checking.
-5. Merge the workflow into `main` before tagging the first release that should
-   include AUR artifacts. Publish that release from its draft in the GitHub UI.
+5. Set the repository variable `AUR_PUBLISH_ENABLED` to `true` only when account
+   access and both SSH settings are ready. Leave it unset or `false` to defer
+   automatic AUR publication without blocking GitHub releases. Merge the workflow
+   into `main` before publishing the first release that should update AUR.
 
-Missing publishing configuration fails with an explicit setup error; it does
+For enabled or manually dispatched publication, missing configuration fails with
+an explicit setup error; it does
 not report a successful AUR publication. AUR receives packaging files only.
 GitHub continues to host the binaries and checksums. The first successful push
 creates the AUR package if it does not already exist.

@@ -31,7 +31,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 - Current release targets are Apple silicon macOS and native Linux x86_64/ARM64. Windows is deferred; Linux uses X11/XWayland and the documented system dependencies.
 - Linux formats reuse one release compilation per architecture; x86_64 additionally produces Arch/AUR artifacts. Tag/version matching, checksums and draft releases remain part of packaging.
 - macOS DMGs are ad-hoc signed and unnotarized. The local development bundle identifier differs from the production identifier.
-- AUR publication automation is configured in the repository for published stable releases. Its existence is not evidence that credentials are configured or the package is currently published.
+- AUR publication automation is opt-in for published stable releases through `AUR_PUBLISH_ENABLED=true`. Manual dispatch still validates credentials and the published recipe. The user deferred AUR setup on October 16 because account registration is unavailable; GitHub packages remain independent.
 - Chartr pins its Rust/Zed/Herdr inputs; there is no app frontend build or plugin compilation during installation.
 
 ## Verification recipe
@@ -57,6 +57,11 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 16 desktop recheck](../verification/runs/2026-10-16-release-desktop-recheck.md)
+tracks the latest fixes and packages. AUR publication is explicitly deferred;
+automatic stable-release publication now requires `AUR_PUBLISH_ENABLED=true`.
+GitHub package production remains independent.
 
 The [0.3.1 candidate follow-up](../verification/runs/2026-10-16-release-candidate.md)
 at `e915365a` passes the macOS, Ubuntu and Arch/AUR CI matrix and all three
