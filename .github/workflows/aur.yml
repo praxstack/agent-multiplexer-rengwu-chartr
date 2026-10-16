@@ -21,7 +21,8 @@ jobs:
   publish:
     if: >-
       github.repository == 'rengwu/chartr' &&
-      (github.event_name == 'workflow_dispatch' || !github.event.release.prerelease)
+      (github.event_name == 'workflow_dispatch' ||
+       (vars.AUR_PUBLISH_ENABLED == 'true' && !github.event.release.prerelease))
     runs-on: ubuntu-24.04
     container: archlinux:base-devel
     defaults:
