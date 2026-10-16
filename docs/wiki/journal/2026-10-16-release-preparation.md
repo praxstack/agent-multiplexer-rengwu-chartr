@@ -2,7 +2,7 @@
 title: Version 0.3.1 release preparation checkpoint
 section: Journal
 updated: 2026-10-16
-status: Ready under accepted verification scope
+status: Published after accepted verification scope
 ---
 # Version 0.3.1 release preparation checkpoint
 
@@ -49,3 +49,19 @@ The records-only checkpoint `99969893` also passed both CI and package workflows
 This answer requires documentation updates and wiki validation, not another
 product-test cycle. Tagging and publication were not part of the readiness
 question and have not been performed.
+
+## Publication after explicit request
+
+The user subsequently requested, “lets do a release.” Annotated tag `v0.3.1`
+was pushed at `eebe2b22767d6565e86f3e12bb6185c71999533a`, whose CI and branch
+package builds had passed. The tag workflow passed on all three platforms and
+created the draft. All seven payloads and three checksum files were inspected,
+the prepared notes were applied, and
+[v0.3.1](https://github.com/rengwu/chartr/releases/tag/v0.3.1) was published as
+latest stable at 12:42:55 UTC on October 16.
+
+The [publication run](../verification/runs/2026-10-16-release-publication.md)
+records exact asset digests, package metadata, public download checks and the
+correctly skipped AUR workflow. Existing verification deferrals and historical
+run outcomes are unchanged. The macOS image was detached after inspection;
+personal app instances were not used.

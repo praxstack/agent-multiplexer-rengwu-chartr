@@ -2,13 +2,18 @@
 title: Release 0.3.1 preparation
 section: Development
 updated: 2026-10-16
-status: Ready under accepted verification scope
+status: Published
 ---
 # Release 0.3.1 preparation
 
-The user selected **0.3.1** on October 16. Version preparation is committed at
-`e915365a68c9770149ba36c05bd7525fd7b91f70`; no tag or published release has been
-created.
+The user selected **0.3.1** on October 16. Version preparation was committed at
+`e915365a68c9770149ba36c05bd7525fd7b91f70`.
+[Chartr v0.3.1](https://github.com/rengwu/chartr/releases/tag/v0.3.1) is now
+published as the latest stable release, tagged at
+`eebe2b22767d6565e86f3e12bb6185c71999533a`.
+The [publication run](../verification/runs/2026-10-16-release-publication.md)
+records passing tag builds, asset inspection and public download checks. AUR
+publication was correctly skipped and remains deferred.
 
 **Readiness is settled.** In the [release-scope answer](../journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md),
 the user accepted the completed focused verification and deferred the remaining
@@ -31,7 +36,11 @@ input and Clock-setting persistence. Earlier candidate evidence remains below.
 The subsequent records-only revision `999698930603346ddf8dbb07b5765a98a8b2ec6f`
 also passed [CI](https://github.com/rengwu/chartr/actions/runs/38870507068) and
 [all package builds](https://github.com/rengwu/chartr/actions/runs/38870507012).
-The readiness-decision update changes documentation only.
+The final readiness-decision revision `eebe2b22767d6565e86f3e12bb6185c71999533a`
+also passed [CI](https://github.com/rengwu/chartr/actions/runs/38880883098) and
+[all package builds](https://github.com/rengwu/chartr/actions/runs/38880883188).
+The subsequent [tag workflow](https://github.com/rengwu/chartr/actions/runs/38900807140)
+built and assembled the published release from that exact revision.
 
 - [CI](https://github.com/rengwu/chartr/actions/runs/38818070198): passed for the
   candidate, including macOS, Ubuntu and Arch/AUR checks.
@@ -103,6 +112,7 @@ remains open.
 - The release contains no external native plugin payloads. Plugins are installed
   from their own distributions.
 
-The accepted readiness scope is satisfied. Creating the version tag, verifying
-the resulting draft assets and publishing remain separate steps in the
-[packaging runbook](releasing.md); none has been performed by this readiness check.
+The notes above were prepared during readiness review. After the user requested
+release, tagging, draft asset verification and publication were completed under
+the [packaging runbook](releasing.md), as recorded in the separate
+[publication run](../verification/runs/2026-10-16-release-publication.md).

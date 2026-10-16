@@ -1,0 +1,81 @@
+[
+  {
+    "command": [
+      "hdiutil",
+      "verify",
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/assets/chartr-0.3.1-macos-arm64.dmg"
+    ],
+    "exit_code": 0,
+    "output": "Checksumming Protective Master Boot Record (MBR : 0)\u2026\nProtective Master Boot Record (MBR :: verified   CRC32 $0654698F\nChecksumming GPT Header (Primary GPT Header : 1)\u2026\n GPT Header (Primary GPT Header : 1): verified   CRC32 $441617FB\nChecksumming GPT Partition Data (Primary GPT Table : 2)\u2026\nGPT Partition Data (Primary GPT Tabl: verified   CRC32 $785717D5\nChecksumming  (Apple_Free : 3)\u2026\n                    (Apple_Free : 3): verified   CRC32 $00000000\nChecksumming disk image (Apple_HFS : 4)\u2026\n          disk image (Apple_HFS : 4): verified   CRC32 $C1F0FF61\nChecksumming  (Apple_Free : 5)\u2026\n                    (Apple_Free : 5): verified   CRC32 $00000000\nChecksumming GPT Partition Data (Backup GPT Table : 6)\u2026\nGPT Partition Data (Backup GPT Table: verified   CRC32 $785717D5\nChecksumming GPT Header (Backup GPT Header : 7)\u2026\n  GPT Header (Backup GPT Header : 7): verified   CRC32 $B0204F24\nverified   CRC32 $C1700F64\nhdiutil: verify: checksum of \"/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/assets/chartr-0.3.1-macos-arm64.dmg\" is VALID\n"
+  },
+  {
+    "command": [
+      "hdiutil",
+      "attach",
+      "-readonly",
+      "-nobrowse",
+      "-noautoopen",
+      "-mountpoint",
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount",
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/assets/chartr-0.3.1-macos-arm64.dmg"
+    ],
+    "exit_code": 0,
+    "output": "expected   CRC32 $C1700F64\nhdiutil: WARNING: 'hdiutil attach -readonly -nobrowse -mountpoint ...' is deprecated. Please use 'diskutil image attach --readOnly --mountOptions nobrowse --mountPoint ...' instead.\n/dev/disk8          \tGUID_partition_scheme          \t\n/dev/disk8s1        \tApple_HFS                      \t/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount\n"
+  },
+  {
+    "command": [
+      "codesign",
+      "--verify",
+      "--deep",
+      "--strict",
+      "--verbose=2",
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app"
+    ],
+    "exit_code": 0,
+    "output": "--prepared:/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app/Contents/MacOS/herdr\n--validated:/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app/Contents/MacOS/herdr\n/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app: valid on disk\n/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app: satisfies its Designated Requirement\n"
+  },
+  {
+    "command": [
+      "codesign",
+      "-dvv",
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app"
+    ],
+    "exit_code": 0,
+    "output": "Executable=/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app/Contents/MacOS/chartr\nIdentifier=io.github.rengwu.chartr\nFormat=app bundle with Mach-O thin (arm64)\nCodeDirectory v=20400 size=1137840 flags=0x2(adhoc) hashes=35551+3 location=embedded\nSignature=adhoc\nInfo.plist entries=15\nTeamIdentifier=not set\nSealed Resources version=2 rules=13 files=2\nInternal requirements count=0 size=12\nTotal signatures=1\nChosen signature=1\n"
+  },
+  {
+    "command": [
+      "lipo",
+      "-archs",
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app/Contents/MacOS/chartr"
+    ],
+    "exit_code": 0,
+    "output": "arm64\n"
+  },
+  {
+    "command": [
+      "lipo",
+      "-archs",
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app/Contents/MacOS/herdr"
+    ],
+    "exit_code": 0,
+    "output": "arm64\n"
+  },
+  {
+    "command": [
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount/chartr.app/Contents/MacOS/herdr",
+      "--version"
+    ],
+    "exit_code": 0,
+    "output": "herdr 0.8.2-chartr.5a2dee700eee.identity.9ed02822c877\n"
+  },
+  {
+    "command": [
+      "hdiutil",
+      "detach",
+      "/Users/rengwu/Desktop/Projects/chartr/target/release-publish-0.3.1/mount"
+    ],
+    "exit_code": 0,
+    "output": "hdiutil: WARNING: 'hdiutil detach ...' is deprecated. Please use 'diskutil eject ...' instead.\n\"disk8\" ejected.\n"
+  }
+]

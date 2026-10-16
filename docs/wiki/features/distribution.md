@@ -50,6 +50,12 @@ run if this recipe is exercised; source inspection alone is not a pass.
 
 ## Coverage and limitations
 
+The [October 16 publication run](../verification/runs/2026-10-16-release-publication.md)
+records the published v0.3.1 release at `eebe2b22767d`, passing tag builds,
+downloaded artifact inspection and public asset availability. The release is
+latest stable; AUR publication was skipped under the accepted deferral. This
+does not expand the accepted focused desktop verification scope.
+
 No package was built, installed, published or downloaded during migration. Source configuration does not establish current external release or AUR availability; public status claims were not recertified.
 
 The [release matrix](../verification/acceptance.md) retains broader cross-feature,

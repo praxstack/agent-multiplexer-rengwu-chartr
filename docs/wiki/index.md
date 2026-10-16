@@ -32,12 +32,15 @@ The [desktop follow-up](verification/runs/2026-10-16-release-desktop.md) verifie
 macOS Quit policies and a Linux terminal/Clock journey, and preserves the Linux
 confirmation-clipping failure. The [recheck](verification/runs/2026-10-16-release-desktop-recheck.md)
 tracks its correction and the latest automated gates.
-[Release preparation](development/release-0.3.1.md) records **ready under the
-accepted verification scope**. The [submitted answer](journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md)
+[Release preparation](development/release-0.3.1.md) records the accepted readiness
+scope. The [submitted answer](journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md)
 accepts focused verification and defers the remaining matrix for 0.3.1;
 the [checkpoint](journal/2026-10-16-release-preparation.md) records that outcome.
 AUR publication and the manual notification-click check remain deferred.
-No tag or release has been published.
+[Chartr v0.3.1](https://github.com/rengwu/chartr/releases/tag/v0.3.1) is published
+as the latest stable release. The [publication run](verification/runs/2026-10-16-release-publication.md)
+records passing tag builds, asset/checksum inspection, public downloads and the
+skipped AUR publication.
 
 The [initial October 16 assessment](verification/runs/2026-10-16-release-readiness.md)
 remains historical **Failed** evidence. The
