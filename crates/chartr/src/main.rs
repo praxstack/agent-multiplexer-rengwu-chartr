@@ -15,6 +15,8 @@ mod agent_icons;
 #[path = "../../../plugins/agent/src/lib.rs"]
 mod agent_plugin;
 mod app;
+#[cfg(target_os = "macos")]
+mod application_menu;
 mod assets;
 mod attention;
 mod chrome;
@@ -115,6 +117,8 @@ fn main() {
         // settings file for the `theme_settings` crate to read one from.
         fonts::install(settings.resolved(), cx);
         actions::init(&keymap, cx);
+        #[cfg(target_os = "macos")]
+        application_menu::init(cx);
         text_input::init(cx);
         prompts_plugin::init(cx);
         settings_window::init(&keymap, cx);
