@@ -32,10 +32,12 @@ The [desktop follow-up](verification/runs/2026-10-16-release-desktop.md) verifie
 macOS Quit policies and a Linux terminal/Clock journey, and preserves the Linux
 confirmation-clipping failure. The [recheck](verification/runs/2026-10-16-release-desktop-recheck.md)
 tracks its correction and the latest automated gates.
-[Release preparation](development/release-0.3.1.md) contains draft notes and
-remaining acceptance scope; the [checkpoint](journal/2026-10-16-release-preparation.md)
-records the next decision. AUR publication and the manual notification-click
-check are explicitly deferred. No tag or release has been published.
+[Release preparation](development/release-0.3.1.md) records **ready under the
+accepted verification scope**. The [submitted answer](journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md)
+accepts focused verification and defers the remaining matrix for 0.3.1;
+the [checkpoint](journal/2026-10-16-release-preparation.md) records that outcome.
+AUR publication and the manual notification-click check remain deferred.
+No tag or release has been published.
 
 The [initial October 16 assessment](verification/runs/2026-10-16-release-readiness.md)
 remains historical **Failed** evidence. The

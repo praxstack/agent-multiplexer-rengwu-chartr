@@ -62,8 +62,13 @@ Native notification click/stale-target interaction, actual macOS hidden-state
 monitoring, physical input/GPU/accessibility coverage, application-menu launching,
 Arch interactive desktop journeys and the complete visual/plugin matrix remain
 outside this pass. The [release preparation page](../../development/release-0.3.1.md#remaining-release-judgment)
-keeps those remaining gates explicit. AUR and the requested manual click are the
-only accepted deferrals so far.
+keeps those remaining gates explicit. At this run’s close, AUR and the requested
+manual click were the only accepted deferrals.
+
+Subsequent October 16 decision: the user [accepted the focused verification and
+deferred the remaining matrix for 0.3.1](../../journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md).
+That resolves release readiness; it does not change this run's measured scope or
+turn the unverified scenarios above into passes.
 
 The disposable Linux container is stopped and removed after preserving evidence;
 see [cleanup](../../evidence/2026-10-16-release-desktop/linux-cleanup.json).

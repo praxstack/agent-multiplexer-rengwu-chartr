@@ -1,7 +1,7 @@
 ---
 title: Open questions
 updated: 2026-10-16
-status: Release-scope decision pending; verification gaps remain
+status: Release scope resolved; deferred verification remains
 ---
 # Open questions
 
@@ -13,12 +13,14 @@ Reopen this register if implementation uncovers a material ambiguity.
 The user set aside the requested manual notification-click check and deferred
 AUR publication on October 16 because AUR account registration is unavailable.
 These are explicit deferrals, not passing verification or evidence of an AUR
-package. Other desktop acceptance remains in scope; see
-[release preparation](../development/release-0.3.1.md).
+package.
 
-Open decision: retain the full desktop matrix as a 0.3.1 blocker, or explicitly
-defer the remaining coverage after the passing focused recheck. This release-scope
-choice has not been accepted yet.
+The [submitted release-readiness answer](../journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md)
+also accepts the focused verification and defers the remaining matrix for 0.3.1.
+[DEC-RELEASE-031-002](../decisions/index.md#dec-release-031-002-focused-verification-is-sufficient-for-0-3-1)
+resolves the release-scope question. [Release preparation](../development/release-0.3.1.md#remaining-release-judgment)
+retains the unverified coverage as follow-up. These gaps no longer block 0.3.1
+readiness; no remaining readiness decision requires another interview.
 
 ## Performance verification questions
 

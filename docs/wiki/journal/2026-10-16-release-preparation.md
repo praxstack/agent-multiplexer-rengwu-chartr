@@ -2,7 +2,7 @@
 title: Version 0.3.1 release preparation checkpoint
 section: Journal
 updated: 2026-10-16
-status: Release-scope decision pending
+status: Ready under accepted verification scope
 ---
 # Version 0.3.1 release preparation checkpoint
 
@@ -25,14 +25,27 @@ Clock data. Latest macOS/Ubuntu/Arch CI and all three package builds passed.
 Local workspace tests: 429 passed, zero failed, seven ignored. Wiki structure
 checks are recorded separately from product behavior.
 
-The [draft release notes and remaining scope](../development/release-0.3.1.md)
-are ready for review. Physical input/GPU/accessibility, full visual/plugin
+Before the release-scope answer, the [draft notes and remaining scope](../development/release-0.3.1.md)
+were ready for review. Physical input/GPU/accessibility, full visual/plugin
 coverage, actual hidden-state monitoring and additional desktop journeys remain
-incomplete under the existing acceptance matrix. Deciding whether to defer those
-checks for this patch release is the next consequential user choice. No tag,
+incomplete under the existing acceptance matrix. Whether to defer those checks
+for this patch release was the outstanding user choice. No tag,
 draft release or publication has been created.
 
 Disposable desktop fixtures are stopped; the unique macOS notification setting
 is restored. Personal Chartr instances and unrelated browser windows remain
-untouched. Continue from the release-scope answer rather than repeating completed
-checks or asking again about AUR/the requested manual click.
+untouched.
+
+## Accepted release-scope answer
+
+The user selected **Use focused verification; defer the remaining matrix for
+0.3.1** in the [submitted form](2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md).
+[DEC-RELEASE-031-002](../decisions/index.md#dec-release-031-002-focused-verification-is-sufficient-for-0-3-1)
+records the interpretation: the readiness scope is satisfied, while deferred
+coverage remains explicitly unverified follow-up. Earlier report outcomes are
+unchanged, and future releases retain the baseline matrix.
+
+The records-only checkpoint `99969893` also passed both CI and package workflows.
+This answer requires documentation updates and wiki validation, not another
+product-test cycle. Tagging and publication were not part of the readiness
+question and have not been performed.

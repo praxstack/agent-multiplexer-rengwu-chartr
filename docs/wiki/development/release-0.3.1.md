@@ -2,13 +2,18 @@
 title: Release 0.3.1 preparation
 section: Development
 updated: 2026-10-16
-status: Corrections verified; release-scope decision pending
+status: Ready under accepted verification scope
 ---
 # Release 0.3.1 preparation
 
 The user selected **0.3.1** on October 16. Version preparation is committed at
 `e915365a68c9770149ba36c05bd7525fd7b91f70`; no tag or published release has been
 created.
+
+**Readiness is settled.** In the [release-scope answer](../journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md),
+the user accepted the completed focused verification and deferred the remaining
+matrix for 0.3.1. [DEC-RELEASE-031-002](../decisions/index.md#dec-release-031-002-focused-verification-is-sufficient-for-0-3-1)
+records this release-specific decision. Deferred checks remain unverified.
 
 The [initial readiness assessment](../verification/runs/2026-10-16-release-readiness.md)
 records the original gaps. The [fade expectation correction](../verification/runs/2026-10-16-fade-expectations.md)
@@ -22,6 +27,11 @@ Its [CI](https://github.com/rengwu/chartr/actions/runs/38868786358) and
 passed. The [correction recheck](../verification/runs/2026-10-16-release-desktop-recheck.md)
 passes packaged Linux permission disclosure, replacement, restart, terminal
 input and Clock-setting persistence. Earlier candidate evidence remains below.
+
+The subsequent records-only revision `999698930603346ddf8dbb07b5765a98a8b2ec6f`
+also passed [CI](https://github.com/rengwu/chartr/actions/runs/38870507068) and
+[all package builds](https://github.com/rengwu/chartr/actions/runs/38870507012).
+The readiness-decision update changes documentation only.
 
 - [CI](https://github.com/rengwu/chartr/actions/runs/38818070198): passed for the
   candidate, including macOS, Ubuntu and Arch/AUR checks.
@@ -39,13 +49,15 @@ input and Clock-setting persistence. Earlier candidate evidence remains below.
   leave it unset until account access and both SSH settings are ready. GitHub
   release packages and the tested AUR recipe remain available independently.
 - The user also deferred the requested manual notification-click check. It
-  remains unverified; this deferral does not waive other desktop acceptance.
+  remains unverified. The later release-scope answer separately defers the
+  remaining desktop matrix for 0.3.1.
 
 ## Remaining release judgment
 
-The [acceptance matrix](../verification/acceptance.md) requires broader desktop
-coverage than the focused checks completed here. The explicit AUR/manual-click
-deferrals do not settle this remaining scope:
+Resolved October 16: the user chose **Use focused verification; defer the
+remaining matrix for 0.3.1**. The [acceptance matrix](../verification/acceptance.md)
+remains the broader baseline. The following coverage is retained as follow-up,
+not a blocker for this release and not a passing verification claim:
 
 | Area | Evidence and remaining limit |
 | --- | --- |
@@ -55,8 +67,9 @@ deferrals do not settle this remaining scope:
 | Plugins | Local Clock install/settings journey exercised; full Git/network error, native embedded and cross-plugin journeys remain incomplete |
 | Notifications | Delivery and unread-state checks exist; native banner/click/stale-target interaction is not certified; the requested manual click is explicitly deferred |
 
-A release-scope decision is still needed before treating these outstanding checks
-as deferrals for 0.3.1. Until then, the recorded release status stays incomplete.
+This decision applies to 0.3.1; it does not waive these checks for future releases
+or change historical Failed/Untested outcomes. No further readiness-scope question
+remains open.
 
 ## Draft release notes
 
@@ -90,5 +103,6 @@ as deferrals for 0.3.1. Until then, the recorded release status stays incomplete
 - The release contains no external native plugin payloads. Plugins are installed
   from their own distributions.
 
-Publish only after the remaining [acceptance](../verification/acceptance.md)
-gates are resolved and the [packaging runbook](releasing.md) is followed.
+The accepted readiness scope is satisfied. Creating the version tag, verifying
+the resulting draft assets and publishing remain separate steps in the
+[packaging runbook](releasing.md); none has been performed by this readiness check.

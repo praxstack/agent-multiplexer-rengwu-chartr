@@ -1,7 +1,7 @@
 ---
 title: Release acceptance
 section: Verification
-updated: 2026-10-08
+updated: 2026-10-16
 recipe: Unvalidated
 ---
 # Release acceptance
@@ -12,6 +12,13 @@ complements each feature's bounded recipe. It describes checks to perform, not
 results. **No chartr acceptance scenario was executed during the documentation
 migration.** Use [shared setup](setup.md) for isolation, build identity, evidence
 and cleanup. Dated [audits](../archive/research/index.md) retain their original limits.
+
+**0.3.1 scope decision, October 16:** the user accepted the completed focused
+verification and deferred the remaining matrix for this release. See
+[DEC-RELEASE-031-002](../decisions/index.md#dec-release-031-002-focused-verification-is-sufficient-for-0-3-1)
+and the [retained coverage gaps](../development/release-0.3.1.md#remaining-release-judgment).
+This exception does not mark unexecuted checks passed or alter the baseline below
+for future releases.
 
 As of 2026-10-08, Chats is disabled. Scenarios below that require the Inbox UI
 are retained for reference and are inactive until it is re-enabled. Current view

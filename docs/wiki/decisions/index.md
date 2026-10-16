@@ -1,8 +1,23 @@
 ---
 title: Decisions
-updated: 2026-10-15
+updated: 2026-10-16
 ---
 # Decisions
+
+## DEC-RELEASE-031-002 — Focused verification is sufficient for 0.3.1
+
+Accepted October 16 in the [release-readiness answer](../journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7a6c037454a4.md):
+use the completed focused verification and defer the remaining matrix for 0.3.1.
+The observed macOS menu and Linux confirmation defects are corrected; local
+tests, platform CI, package builds and the selected desktop recheck pass.
+The [release preparation page](../development/release-0.3.1.md#remaining-release-judgment)
+lists the retained gaps, including hidden-state monitoring, physical input/GPU
+and accessibility, broader desktop/visual journeys and plugin variants.
+
+Those gaps remain unverified follow-up rather than 0.3.1 readiness blockers.
+Historical Failed/Untested outcomes remain intact. This is a release-specific
+scope decision, not a permanent change to the acceptance matrix or a publication
+action. The AUR and manual-click deferrals in DEC-RELEASE-031-001 still apply.
 
 ## DEC-RELEASE-031-001 — Release version and explicit deferrals
 
@@ -11,6 +26,7 @@ preserve the user's hand-tuned fade implementation and align its tests/docs,
 defer AUR publication while account registration is unavailable, and omit the
 requested manual notification-click check. These are scoped deferrals, not passes
 or a blanket waiver of the [release acceptance matrix](../verification/acceptance.md).
+The later DEC-RELEASE-031-002 separately resolves the remaining 0.3.1 coverage.
 Automatic AUR publication is opt-in; the [runbook](../development/releasing.md#aur-publishing)
 records the re-enablement path. [Release preparation](../development/release-0.3.1.md)
 tracks evidence and remaining scope.
