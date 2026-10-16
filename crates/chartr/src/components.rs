@@ -4,6 +4,8 @@ mod form;
 mod list_sorter;
 mod modal;
 mod popup;
+#[cfg(any(target_os = "linux", test))]
+mod prompt;
 mod scrolling_list;
 mod selection;
 
@@ -11,6 +13,8 @@ pub use form::{FORM_CONTROL_SIZE, form_button, form_picker, form_row, input_fiel
 pub use list_sorter::{ListSorter, SortAxis};
 pub use modal::open_native_modal;
 pub use popup::{ContextMenu, PopupMenu, popup_right_click_menu};
+#[cfg(target_os = "linux")]
+pub use prompt::init as init_prompts;
 pub use selection::{
     SegmentedControl, SegmentedControlOption, SelectionRowBackgrounds, selection_list,
     selection_row,

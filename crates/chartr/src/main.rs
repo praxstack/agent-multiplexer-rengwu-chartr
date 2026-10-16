@@ -116,6 +116,8 @@ fn main() {
         // Zed's components read their font through this, and chartr has no
         // settings file for the `theme_settings` crate to read one from.
         fonts::install(settings.resolved(), cx);
+        #[cfg(target_os = "linux")]
+        components::init_prompts(cx);
         actions::init(&keymap, cx);
         #[cfg(target_os = "macos")]
         application_menu::init(cx);
