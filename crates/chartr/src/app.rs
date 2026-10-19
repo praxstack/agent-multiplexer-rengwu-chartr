@@ -48,7 +48,7 @@ use ui::{
 use crate::{
     actions,
     chrome::{self, Action, DraggedItem, Entry, SpaceEntries},
-    components::{ContextMenu, PopupMenu, SegmentedControl, SegmentedControlOption},
+    components::{ContextMenu, PopupMenu},
     fonts::{Fonts, UI_LABEL_DEFAULT, UI_LABEL_SMALL, UI_TEXT_DEFAULT},
     item::{PluginItem, PluginView},
     mode::Mode,
@@ -124,9 +124,6 @@ enum PaletteCommand {
     NewSurface,
     NewSurfacePane,
     Ungroup,
-    SidebarMode,
-    TabbedMode,
-    CycleViewMode,
     ToggleStatusBar,
     NewSpace,
     CloseSpace,
@@ -158,15 +155,12 @@ enum RenameKind {
 }
 
 impl PaletteCommand {
-    const ALL: [(Self, &'static str, &'static str); 30] = [
+    const ALL: [(Self, &'static str, &'static str); 27] = [
         (Self::NewTerminal, "Workspace: New Terminal", "Ctrl+~"),
         (Self::NewTerminalPane, "Workspace: New terminal pane", ""),
         (Self::NewSurface, "Workspace: New surface tab", ""),
         (Self::NewSurfacePane, "Workspace: New surface pane", ""),
         (Self::Ungroup, "Workspace: Ungroup current group", ""),
-        (Self::SidebarMode, "Workspace: Switch to Spaces view", ""),
-        (Self::TabbedMode, "Workspace: Switch to Tabs view", ""),
-        (Self::CycleViewMode, "Workspace: Cycle view modes", ""),
         (Self::ToggleStatusBar, "Workspace: Toggle status bar", ""),
         (Self::NewSpace, "Workspace: Open new space", ""),
         (Self::CloseSpace, "Workspace: Close current space", ""),
@@ -836,8 +830,6 @@ impl WorkspaceWindow {
                     self.collapsed_spaces.insert(space);
                 }
             }
-            Action::SwitchToTabs => self.settings_set_mode(Mode::Tabs, cx),
-            Action::SwitchToSidebar => self.settings_set_mode(Mode::Sidebar, cx),
             Action::OpenSettings => self.open_settings(window, cx),
             Action::NewSpace => self.pick_a_folder(window, cx),
             Action::New => {

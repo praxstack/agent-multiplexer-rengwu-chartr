@@ -1,7 +1,7 @@
 # Inbox
 
-**Chats is disabled as of 2026-10-08.** The view selector, Settings, command
-palette, and view-cycling shortcut offer only Tabs and Spaces. Saved Inbox or
+**Chats is disabled as of 2026-10-08.** Choose Tabs or Spaces only through
+Settings → General → View mode. Saved Inbox or
 Conversations view preferences reopen in Spaces. The former Chats shortcut and
 custom `workspace.conversation_mode` bindings are inactive; their stored settings
 and existing history remain intact. Launch agents through the Agent surface.

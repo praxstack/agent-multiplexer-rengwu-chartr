@@ -508,8 +508,6 @@ pub enum Action {
     RenameSpace { space: EntityId },
     OpenSpaceFolder { space: EntityId },
     LocateSpace { space: EntityId },
-    SwitchToTabs,
-    SwitchToSidebar,
     NewSpace,
     NewInSpace { space: EntityId },
     NewPluginPaneInSpace { space: EntityId },

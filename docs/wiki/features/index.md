@@ -14,7 +14,7 @@ no chartr product tests were run during the documentation migration. The
 | --- | --- | --- |
 | [Spaces and folder ownership](spaces.md) | `FEAT-spaces` | Open a folder through the space controls or the folder argument at launch |
 | [Tabs, groups and pane layout](panes.md) | `FEAT-panes` | Create terminals or surfaces with the outer or pane-local add controls |
-| [Views, chrome and navigation](workspace-views.md) | `FEAT-workspace-views` | Use the Tabs / Spaces selector, the sidebar, title-bar controls, and command palette |
+| [Views, chrome and navigation](workspace-views.md) | `FEAT-workspace-views` | Select Tabs / Spaces in Settings; use the sidebar, title-bar controls and command palette |
 | [Terminal interaction and search](terminals.md) | `FEAT-terminals` | Use + to create a terminal |
 | [Session lifecycle, recovery and persistence](session-lifecycle.md) | `FEAT-session-lifecycle` | Close an item/group/space, quit/reopen the app, or use the Problems menu and terminal recovery actions |
 | [Settings, themes and keybindings](settings.md) | `FEAT-settings` | Open the single Settings window with the gear, command palette or Cmd/Ctrl+, |

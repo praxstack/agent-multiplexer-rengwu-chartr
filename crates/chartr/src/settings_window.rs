@@ -356,18 +356,6 @@ impl SettingsWindow {
         );
     }
 
-    fn set_show_view_mode_picker(&mut self, show: bool, cx: &mut Context<Self>) {
-        self.update_settings(
-            |content| {
-                content.general.get_or_insert_with(GeneralContent::default).show_view_mode_picker =
-                    Some(show);
-            },
-            false,
-            false,
-            cx,
-        );
-    }
-
     fn set_theme_mode(&mut self, mode: ThemeMode, cx: &mut Context<Self>) {
         self.update_settings(
             move |content| {

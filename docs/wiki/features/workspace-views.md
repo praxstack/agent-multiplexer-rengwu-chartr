@@ -1,7 +1,7 @@
 ---
 title: Views, chrome and navigation
 section: Features
-updated: 2026-10-16
+updated: 2026-10-18
 basis: Source-reviewed migration baseline
 ---
 # Views, chrome and navigation
@@ -23,7 +23,8 @@ Legacy story references: 27, 29, 30, 34, 73, 80, 89. See the [complete crosswalk
 
 ## Entry points and prerequisites
 
-Use the Tabs / Spaces selector, the sidebar, title-bar controls, and command palette. Settings and Hotkeys expose view actions.
+Choose Tabs or Spaces in Settings → General → View mode. The sidebar, title-bar
+controls and command palette continue to expose their other workspace actions.
 
 Use [shared setup](../verification/setup.md) and a disposable profile/project for
 stateful recipes. Related areas are linked from the [feature index](index.md).
@@ -43,8 +44,8 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 - Tabs on macOS places its space picker beside the traffic lights. Spaces has no title-bar space picker.
 - Add/surface controls follow tabs while they fit and remain reachable when tabs overflow. Surface pickers show enabled surfaces and their icons/descriptions.
 - Native Settings remains in front when opened, including while the gear tooltip is active. Geometry, sidebar width and mode persist.
-- Cycle view modes (Cmd+~ on macOS, Ctrl+Alt+~ on Linux) alternates between Tabs and Spaces.
-- Chats is disabled by the accepted 2026-10-08 UI change: selectors, Settings, the command palette and Hotkeys offer only the two enabled views. Saved `inbox` or `conversations` preferences fall back to Spaces, while history and stored legacy shortcut entries remain intact. Legacy Chats shortcuts are inactive.
+- View mode is switchable only in Settings (accepted 2026-10-18). The title-header Tabs/Spaces picker, its hide/show preference, direct mode commands and cycle-view command/shortcuts are removed. Old stored shortcut entries remain intact but inactive and no longer reserve their keys.
+- Chats is disabled by the accepted 2026-10-08 UI change. Settings offers only Tabs and Spaces. Saved `inbox` or `conversations` preferences fall back to Spaces, while history and stored legacy shortcut entries remain intact. Legacy Chats shortcuts are inactive.
 - Scrolling and view switching must remain responsive on battery with Low Power Mode enabled. Reduced rendering throughput must not monopolize input dispatch; this requirement was confirmed by the user on 2026-10-10.
 - Sidebar scroll thumbs are translucent, with stronger hover and drag emphasis. They remain visible while the pointer is in the list or a thumb drag is active, then fade out over 800 ms on exit/release outside. Re-entry reveals them immediately; background content changes do not reveal them. Reduced motion skips the fade. This is the accepted October 15 scrollbar treatment.
 
@@ -53,11 +54,11 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 **Unvalidated recipe — not executed during this migration.** Complete shared
 setup first; use actual UI entry points and observe underlying state where relevant.
 
-1. Keep a running disposable terminal and a split group; switch Tabs → Spaces → Tabs. Expect the same terminal and restored pane arrangement.
+1. Keep a running disposable terminal and a split group; switch Tabs → Spaces → Tabs in Settings → General → View mode. Expect the same terminal and restored pane arrangement. The window title header has no mode picker.
 2. Resize to 700×900 and 1100×720, overflow tabs, and open the surface chooser in wide/narrow panes. Expect reachable controls and scrolling without duplicated bars.
 3. Open Settings using the gear and platform shortcut while hovering the gear; expect Settings to retain focus. Repeat with a web pane visible.
-4. Change mode/sidebar width, relaunch, and inspect the same state. Exercise the current cycle-view binding and its Hotkeys entry.
-5. Restore a disposable profile saved in Chats (`inbox` or legacy `conversations`). Expect Spaces, with existing spaces, pane layout and history retained. Confirm Chats is absent from both selectors, the command palette and Hotkeys, and its old shortcut cannot enter the disabled view.
+4. Change mode/sidebar width, relaunch, and inspect the same state. Confirm direct mode and cycle-view actions are absent from the command palette and Hotkeys, and old custom bindings cannot change modes.
+5. Restore a disposable profile saved in Chats (`inbox` or legacy `conversations`). Expect Spaces, with existing spaces, pane layout and history retained. Confirm Chats is absent from the Settings selector, the command palette and Hotkeys, and its old shortcut cannot enter the disabled view.
 6. On macOS, repeat sidebar scrolling and view switching on battery with Low Power Mode both enabled and disabled, then on AC and across a live power-source transition. Expect responsive input in each condition; record frame waits and input latency separately from CPU utilization.
 7. Keep an empty space beside a populated space. Click an inactive heading to switch spaces without changing its expansion. Use the active heading or either chevron to collapse/expand: the empty space stays header-only without shifting its neighbor, while the populated space hides/restores its rows. Expect visible separation between spaces, including during drag sorting. The add button must not toggle or drag its space.
 8. Overflow the sidebar and scroll its first 1–30 px: cards should move behind the stationary Spaces header and fade there, without clipping at the header’s bottom. Scroll with the pointer over the header; its add button should remain clickable without triggering a covered card. Return to the top and expect a fully visible first card. Hover the list and thumb, then leave the container. Expect translucent normal/hover/drag colors and a smooth 800 ms exit fade. Re-enter midway to restore visibility immediately; drag beyond the container and release to start the fade. Keep the pointer outside during content changes and expect no reveal. Repeat with reduced motion (immediate hide) and a fitting list (no thumb).

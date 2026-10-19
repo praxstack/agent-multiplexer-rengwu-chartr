@@ -98,6 +98,10 @@ impl Render for WorkspaceWindow {
         // fade to distance so interrupted slides and reduced motion stay in sync.
         let edge_distance = (sidebar_width * chrome_visibility.sidebar / 32.).clamp(0., 1.);
         let left_border_opacity = edge_distance * edge_distance * (3. - 2. * edge_distance);
+        let has_pane_headers = self.mode != Mode::Inbox
+            && self.active.as_ref().is_some_and(|space| {
+                space.read(cx).workspace_tabs().active_tab().is_some_and(|tab| tab.is_grouped())
+            });
         let workspace = v_flex()
             .id("mode-workspace")
             .relative()
@@ -106,9 +110,10 @@ impl Render for WorkspaceWindow {
             .h_full()
             .overflow_hidden()
             .bg(workspace_background)
-            // Keep the top frame and reserve the left divider's pixel throughout
-            // the fade so terminal content never shifts when the border vanishes.
-            .border_t_1()
+            // Pane tabs draw their own top edge, leaving the trailing controls
+            // open to the window background. Headerless content keeps its frame.
+            .when(!has_pane_headers, |workspace| workspace.border_t_1())
+            // Reserve the divider's pixel throughout its fade to avoid shifting content.
             .pl(px(1.))
             .border_color(cx.theme().colors().border)
             .child(
@@ -141,16 +146,7 @@ impl Render for WorkspaceWindow {
                 let controls = (!cfg!(any(target_os = "macos", target_os = "linux"))).then(|| {
                     (
                         self.visible_space_switcher(1., window, cx),
-                        self.chrome_end_controls(
-                            emit.clone(),
-                            error_notices.clone(),
-                            window.viewport_size().width
-                                - px(window_chrome::SPACE_SWITCHER_MAX_WIDTH)
-                                - chrome::ItemTab::min_width(true, cx)
-                                - window.rem_size() * 5.,
-                            window,
-                            cx,
-                        ),
+                        self.chrome_end_controls(emit.clone(), error_notices.clone(), cx),
                     )
                 });
                 slot.child(
@@ -192,13 +188,7 @@ impl Render for WorkspaceWindow {
                 let controls = (!cfg!(any(target_os = "macos", target_os = "linux"))).then(|| {
                     (
                         gpui::Empty.into_any_element(),
-                        self.chrome_end_controls(
-                            emit.clone(),
-                            error_notices.clone(),
-                            px(sidebar_width) - window.rem_size(),
-                            window,
-                            cx,
-                        ),
+                        self.chrome_end_controls(emit.clone(), error_notices.clone(), cx),
                     )
                 });
                 // Both pages keep their full width while sliding through the
@@ -382,15 +372,6 @@ impl Render for WorkspaceWindow {
             }))
             .on_action(cx.listener(|this, _: &actions::workspace::ToggleStatusBar, _, cx| {
                 this.toggle_status_bar(cx);
-            }))
-            .on_action(cx.listener(|this, _: &actions::workspace::SidebarMode, _, cx| {
-                this.settings_set_mode(Mode::Sidebar, cx)
-            }))
-            .on_action(cx.listener(|this, _: &actions::workspace::TabbedMode, _, cx| {
-                this.settings_set_mode(Mode::Tabs, cx)
-            }))
-            .on_action(cx.listener(|this, _: &actions::workspace::CycleViewMode, _, cx| {
-                this.settings_set_mode(this.mode.next(), cx)
             }))
             .on_action(cx.listener(|this, _: &actions::workspace::NewSpace, window, cx| {
                 this.act(Action::NewSpace, window, cx)

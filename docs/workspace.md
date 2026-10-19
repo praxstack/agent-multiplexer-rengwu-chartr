@@ -47,10 +47,11 @@ to the sidebar's X axis, continues tracking vertically outside the sidebar,
 autoscrolls at the list edges, and settles into the closest legal slot at release.
 Space order survives relaunch.
 
-The title-bar selector and Settings offer **Tabs** and **Spaces**. Cycle view
-modes alternates between them. **Chats** is disabled, including its command and
-shortcut; saved Chats preferences reopen in Spaces. Existing conversation history
-is retained. See [Inbox](conversations.md) for the retained history reference.
+Choose **Tabs** or **Spaces** in **Settings → General → View mode**. View modes
+are switchable only in Settings; the title-bar picker, mode commands and mode
+shortcuts are removed. **Chats** is disabled; saved Chats preferences reopen in
+Spaces. Existing conversation history is retained. See [Inbox](conversations.md)
+for the retained history reference.
 
 Terminal titles follow Herdr's live view of the PTY, as in chartr-rs: a detected
 agent wins, otherwise the non-shell foreground process is shown, and an idle

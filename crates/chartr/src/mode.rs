@@ -29,13 +29,6 @@ impl Mode {
             mode => mode,
         }
     }
-
-    pub fn next(self) -> Self {
-        match self {
-            Self::Tabs => Self::Sidebar,
-            Self::Sidebar | Self::Inbox => Self::Tabs,
-        }
-    }
 }
 
 const TRANSITION_DURATION: Duration = Duration::from_millis(500);
@@ -337,17 +330,5 @@ mod inbox_migration_tests {
     fn conversations_preferences_migrate_to_inbox() {
         assert_eq!(serde_json::from_str::<Mode>("\"conversations\"").unwrap(), Mode::Inbox);
         assert_eq!(serde_json::to_string(&Mode::Inbox).unwrap(), "\"inbox\"");
-    }
-
-    #[test]
-    fn cycling_only_visits_enabled_views() {
-        for mode in [Mode::Tabs, Mode::Sidebar, Mode::Inbox] {
-            let first = mode.next();
-            let second = first.next();
-            assert_ne!(first, Mode::Inbox);
-            assert_ne!(second, Mode::Inbox);
-            assert_ne!(first, second);
-            assert_eq!(second, mode.available());
-        }
     }
 }

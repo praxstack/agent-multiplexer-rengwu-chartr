@@ -19,9 +19,6 @@ pub enum KeymapAction {
     NewSurface,
     NewSurfacePane,
     Ungroup,
-    SidebarMode,
-    TabbedMode,
-    CycleViewMode,
     NewSpace,
     CloseSpace,
     CloseAllSessions,
@@ -40,16 +37,13 @@ pub enum KeymapAction {
 }
 
 impl KeymapAction {
-    pub const ALL: [Self; 24] = [
+    pub const ALL: [Self; 21] = [
         Self::CloseItem,
         Self::NewTerminal,
         Self::NewTerminalPane,
         Self::NewSurface,
         Self::NewSurfacePane,
         Self::Ungroup,
-        Self::SidebarMode,
-        Self::TabbedMode,
-        Self::CycleViewMode,
         Self::NewSpace,
         Self::CloseSpace,
         Self::CloseAllSessions,
@@ -75,9 +69,6 @@ impl KeymapAction {
             Self::NewSurface => "workspace.new_surface",
             Self::NewSurfacePane => "workspace.new_surface_pane",
             Self::Ungroup => "workspace.ungroup",
-            Self::SidebarMode => "workspace.sidebar_mode",
-            Self::TabbedMode => "workspace.tabbed_mode",
-            Self::CycleViewMode => "workspace.cycle_view_mode",
             Self::NewSpace => "workspace.new_space",
             Self::CloseSpace => "workspace.close_space",
             Self::CloseAllSessions => "workspace.close_all_sessions",
@@ -104,9 +95,6 @@ impl KeymapAction {
             Self::NewSurface => "New surface tab",
             Self::NewSurfacePane => "New surface pane",
             Self::Ungroup => "Ungroup current group",
-            Self::SidebarMode => "Switch to Spaces view",
-            Self::TabbedMode => "Switch to Tabs view",
-            Self::CycleViewMode => "Cycle view modes",
             Self::NewSpace => "Open new space",
             Self::CloseSpace => "Close current space",
             Self::CloseAllSessions => "Close all sessions",
@@ -137,9 +125,6 @@ impl KeymapAction {
             Self::NewSurface => "cmd-n",
             Self::NewSurfacePane => "cmd-shift-n",
             Self::Ungroup => "cmd-shift-g",
-            Self::SidebarMode => "cmd-@",
-            Self::TabbedMode => "cmd-!",
-            Self::CycleViewMode => "cmd-~",
             Self::NewSpace => "cmd-o",
             Self::CloseSpace => "cmd-shift-w",
             Self::CloseAllSessions => "",
@@ -165,10 +150,6 @@ impl KeymapAction {
             Self::NewSurface => "ctrl-n",
             Self::NewSurfacePane => "ctrl-shift-n",
             Self::Ungroup => "ctrl-shift-g",
-            Self::SidebarMode => "ctrl-@",
-            Self::TabbedMode => "ctrl-!",
-            // Ctrl+~ already opens a terminal on Linux.
-            Self::CycleViewMode => "ctrl-alt-~",
             Self::NewSpace => "ctrl-o",
             Self::CloseSpace => "ctrl-shift-w",
             Self::CloseAllSessions => "",
@@ -402,19 +383,24 @@ mod tests {
     }
 
     #[test]
-    fn disabled_chats_shortcuts_are_preserved_without_reserving_the_key() {
+    fn retired_view_shortcuts_are_preserved_without_reserving_the_key() {
         let temp = tempfile::tempdir().unwrap();
         let file = temp.path().join(KEYMAP_FILE);
-        fs::write(&file, "[bindings]\n\"workspace.conversation_mode\" = \"ctrl-alt-z\"\n").unwrap();
-        let mut store = KeymapStore::load(&file);
-        assert!(store.problem().is_none());
-        assert!(
-            KeymapAction::ALL.iter().all(|action| action.id() != "workspace.conversation_mode")
-        );
-        store.set(KeymapAction::TabbedMode, "ctrl-alt-z".into()).unwrap();
-        let loaded = KeymapStore::load(&file);
-        assert_eq!(loaded.key(KeymapAction::TabbedMode), "ctrl-alt-z");
-        assert_eq!(loaded.content.bindings["workspace.conversation_mode"], "ctrl-alt-z");
+        for id in [
+            "workspace.conversation_mode",
+            "workspace.sidebar_mode",
+            "workspace.tabbed_mode",
+            "workspace.cycle_view_mode",
+        ] {
+            fs::write(&file, format!("[bindings]\n\"{id}\" = \"ctrl-alt-z\"\n")).unwrap();
+            let mut store = KeymapStore::load(&file);
+            assert!(store.problem().is_none());
+            assert!(KeymapAction::ALL.iter().all(|action| action.id() != id));
+            store.set(KeymapAction::NewSpace, "ctrl-alt-z".into()).unwrap();
+            let loaded = KeymapStore::load(&file);
+            assert_eq!(loaded.key(KeymapAction::NewSpace), "ctrl-alt-z");
+            assert_eq!(loaded.content.bindings[id], "ctrl-alt-z");
+        }
     }
 
     #[test]

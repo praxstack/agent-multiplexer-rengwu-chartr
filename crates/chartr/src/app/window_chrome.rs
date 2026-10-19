@@ -32,34 +32,16 @@ pub(super) fn chrome_controls_width(
         .width
 }
 
-fn prioritized_title_visibility(
-    wants_picker: bool,
-    full_width: Pixels,
-    compact_width: Pixels,
-    available_width: Pixels,
-) -> (bool, bool) {
-    if wants_picker {
-        (
-            full_width <= available_width,
-            full_width + px(TITLE_BRAND_RESERVED_WIDTH) <= available_width,
-        )
-    } else {
-        (false, compact_width + px(TITLE_BRAND_RESERVED_WIDTH) <= available_width)
-    }
-}
-
 impl WorkspaceWindow {
-    fn chrome_end_controls_content(
+    pub(super) fn chrome_end_controls(
         &self,
         on: chrome::Emit,
         notices: Vec<ErrorNotice>,
-        show_picker: bool,
         cx: &Context<Self>,
     ) -> AnyElement {
         h_flex()
             .flex_none()
             .gap_1()
-            .when(show_picker, |controls| controls.child(self.presentation_toggle(on.clone())))
             .when(!notices.is_empty(), |controls| {
                 controls.child(self.error_menu(notices.clone(), cx))
             })
@@ -85,20 +67,7 @@ impl WorkspaceWindow {
                 .child(Label::new("chartr").size(UI_LABEL_DEFAULT).color(Color::Muted))
                 .into_any_element()
         };
-        let reserved_width = chrome_controls_width(brand(), window, cx)
-            + window.rem_size() * 1.5
-            + if visibility.tabs > 0. {
-                px(SPACE_SWITCHER_MAX_WIDTH) + window.rem_size() * 0.5
-            } else {
-                px(0.)
-            };
-        let controls = self.chrome_end_controls(
-            on,
-            notices,
-            window.viewport_size().width - reserved_width,
-            window,
-            cx,
-        );
+        let controls = self.chrome_end_controls(on, notices, cx);
         // Reserve and paint the bar behind the body so sliding tabs can overflow
         // into it. Paint only the controls afterward, above the fading tab strip
         // and its outgoing input blocker, without an opaque foreground surface.
@@ -383,23 +352,6 @@ impl WorkspaceWindow {
             .into_any_element()
     }
 
-    pub(super) fn chrome_end_controls(
-        &self,
-        on: chrome::Emit,
-        notices: Vec<ErrorNotice>,
-        available_width: Pixels,
-        window: &mut Window,
-        cx: &mut Context<Self>,
-    ) -> AnyElement {
-        let show_picker = self.settings.resolved().show_view_mode_picker
-            && chrome_controls_width(
-                self.chrome_end_controls_content(on.clone(), notices.clone(), true, cx),
-                window,
-                cx,
-            ) <= available_width;
-        self.chrome_end_controls_content(on, notices, show_picker, cx)
-    }
-
     pub(super) fn title_bar_end_controls(
         &self,
         on: chrome::Emit,
@@ -408,51 +360,13 @@ impl WorkspaceWindow {
         window: &mut Window,
         cx: &mut Context<Self>,
     ) -> (AnyElement, bool) {
-        let wants_picker = self.settings.resolved().show_view_mode_picker;
-        let full_width = wants_picker
-            .then(|| {
-                chrome_controls_width(
-                    self.chrome_end_controls_content(on.clone(), notices.clone(), true, cx),
-                    window,
-                    cx,
-                )
-            })
-            .unwrap_or_default();
-        let compact_width = (!wants_picker)
-            .then(|| {
-                chrome_controls_width(
-                    self.chrome_end_controls_content(on.clone(), notices.clone(), false, cx),
-                    window,
-                    cx,
-                )
-            })
-            .unwrap_or_default();
-        let (show_picker, show_brand) =
-            prioritized_title_visibility(wants_picker, full_width, compact_width, available_width);
-        (self.chrome_end_controls_content(on, notices, show_picker, cx), show_brand)
-    }
-
-    fn presentation_toggle(&self, on: chrome::Emit) -> AnyElement {
-        let use_sidebar = on.clone();
-        let use_tabs = on;
-        SegmentedControl::new(
-            "Session list presentation",
-            [
-                SegmentedControlOption::new(
-                    "presentation-tabs",
-                    "Tabs",
-                    self.mode == Mode::Tabs,
-                    move |_, window, cx| use_tabs(Action::SwitchToTabs, window, cx),
-                ),
-                SegmentedControlOption::new(
-                    "presentation-sidebar",
-                    "Spaces",
-                    self.mode == Mode::Sidebar,
-                    move |_, window, cx| use_sidebar(Action::SwitchToSidebar, window, cx),
-                ),
-            ],
-        )
-        .into_any_element()
+        let controls_width = chrome_controls_width(
+            self.chrome_end_controls(on.clone(), notices.clone(), cx),
+            window,
+            cx,
+        );
+        let show_brand = controls_width + px(TITLE_BRAND_RESERVED_WIDTH) <= available_width;
+        (self.chrome_end_controls(on, notices, cx), show_brand)
     }
 
     pub(super) fn settings_button(&self, on: chrome::Emit) -> AnyElement {
@@ -603,94 +517,5 @@ impl WorkspaceWindow {
             chrome::NewItemKind::Plugin,
             button,
         )
-    }
-}
-
-#[cfg(test)]
-mod responsive_controls_tests {
-    use super::*;
-    use gpui::TestAppContext;
-
-    #[test]
-    fn brand_yields_before_the_view_picker() {
-        let full = px(300.);
-        let compact = px(32.);
-        let brand = px(TITLE_BRAND_RESERVED_WIDTH);
-
-        assert_eq!(prioritized_title_visibility(true, full, compact, full + brand), (true, true));
-        assert_eq!(
-            prioritized_title_visibility(true, full, compact, full + brand - px(1.)),
-            (true, false)
-        );
-        assert_eq!(
-            prioritized_title_visibility(true, full, compact, full - px(1.)),
-            (false, false)
-        );
-        assert_eq!(
-            prioritized_title_visibility(false, full, compact, compact + brand),
-            (false, true)
-        );
-    }
-
-    struct Harness {
-        width: Pixels,
-        rem_size: Pixels,
-    }
-
-    impl Render for Harness {
-        fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
-            window.set_rem_size(self.rem_size);
-            let controls = |picker| {
-                h_flex()
-                    .flex_none()
-                    .gap_1()
-                    .when(picker, |row| {
-                        row.child(div().debug_selector(|| "VIEW_PICKER".into()).child(
-                            SegmentedControl::new(
-                                "Session list presentation",
-                                ["Tabs", "Spaces"].map(|label| {
-                                    SegmentedControlOption::new(
-                                        label,
-                                        label,
-                                        label == "Tabs",
-                                        |_, _, _| {},
-                                    )
-                                }),
-                            ),
-                        ))
-                    })
-                    .child(
-                        IconButton::new("settings", IconName::Settings).icon_size(IconSize::Small),
-                    )
-                    .into_any_element()
-            };
-            let width = chrome_controls_width(controls(true), window, cx);
-            div().w(self.width).child(controls(width <= self.width))
-        }
-    }
-
-    #[gpui::test]
-    fn picker_hides_and_returns_as_available_width_and_scale_change(cx: &mut TestAppContext) {
-        cx.update(|cx| {
-            ::settings::init(cx);
-            theme::init(theme::LoadThemes::JustBase, cx);
-            crate::fonts::install(&crate::settings::ResolvedSettings::default(), cx);
-        });
-        let (view, cx) = cx.add_window_view(|_, _| Harness { width: px(300.), rem_size: px(14.) });
-        for (width, rem_size, visible) in [
-            (300., 14., true),
-            (80., 14., false),
-            (300., 14., true),
-            (300., 42., false),
-            (300., 14., true),
-        ] {
-            view.update(cx, |view, cx| {
-                view.width = px(width);
-                view.rem_size = px(rem_size);
-                cx.notify();
-            });
-            cx.run_until_parked();
-            assert_eq!(cx.debug_bounds("VIEW_PICKER").is_some(), visible);
-        }
     }
 }

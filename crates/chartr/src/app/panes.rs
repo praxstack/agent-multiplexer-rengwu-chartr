@@ -281,6 +281,24 @@ impl WorkspaceWindow {
                                 window,
                                 cx,
                             ))
+                            .when(
+                                show_pane_headers
+                                    && axis.axis == PaneAxisDirection::Vertical
+                                    && index > 0,
+                                |child| {
+                                    // Paint the full divider above the lower pane's
+                                    // background, on the same pixel as its tab edge.
+                                    child.mt(px(-1.)).child(
+                                        div()
+                                            .absolute()
+                                            .top_0()
+                                            .left_0()
+                                            .right_0()
+                                            .h(px(1.))
+                                            .bg(cx.theme().colors().border),
+                                    )
+                                },
+                            )
                             .when(index + 1 < member_count, |child| {
                                 child.child(pane_resize_handle(divider, axis.axis))
                             })
@@ -575,6 +593,8 @@ impl WorkspaceWindow {
     ) -> AnyElement {
         let close = weak.clone();
         TabBar::new(format!("workspace-tab-{}-pane-{}-empty", tab_id.get(), pane_id.get()))
+            .height(ui::Tab::container_height(cx) + px(1.))
+            .background(cx.theme().colors().panel_background)
             .child(self.pane_new_item_cell(tab_id, pane_id, weak, cx))
             .child(div().h_full().flex_grow_1())
             .end_child(
@@ -735,6 +755,10 @@ impl WorkspaceWindow {
                 .id(format!("pane-{}-tab-list", pane_id.get()))
                 .min_w_0()
                 .flex_shrink_1()
+                // The frame rises around actual tabs, then returns to the
+                // tab bar's bottom edge beneath the controls and empty space.
+                .border_t_1()
+                .border_color(cx.theme().colors().border)
                 .overflow_x_scroll(),
             SortAxis::Horizontal,
             gpui::rems(0.),
@@ -778,6 +802,8 @@ impl WorkspaceWindow {
                 });
             });
         TabBar::new(format!("workspace-tab-{}-pane-{}-tabs", tab_id.get(), pane_id.get()))
+            .height(ui::Tab::container_height(cx) + px(1.))
+            .background(cx.theme().colors().panel_background)
             .child(
                 sorted_tabs
                     .drag_lane(drag_lane, self.pane_new_item_cell(tab_id, pane_id, weak, cx)),

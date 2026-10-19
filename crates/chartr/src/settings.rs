@@ -68,7 +68,6 @@ pub struct ResolvedSettings {
     pub terminate_sessions_on_exit: bool,
     pub middle_click_closes_tab: bool,
     pub middle_click_closes_sidebar_tab: bool,
-    pub show_view_mode_picker: bool,
     pub show_status_bar: bool,
     pub reduce_motion: bool,
     pub theme_mode: ThemeMode,
@@ -89,7 +88,6 @@ impl Default for ResolvedSettings {
             terminate_sessions_on_exit: false,
             middle_click_closes_tab: true,
             middle_click_closes_sidebar_tab: true,
-            show_view_mode_picker: true,
             show_status_bar: false,
             reduce_motion: false,
             theme_mode: ThemeMode::Fixed,
@@ -154,8 +152,6 @@ pub struct GeneralContent {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub middle_click_closes_sidebar_tab: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub show_view_mode_picker: Option<bool>,
-    #[serde(skip_serializing_if = "Option::is_none")]
     pub show_status_bar: Option<bool>,
     #[serde(flatten)]
     extra: toml::Table,
@@ -209,9 +205,6 @@ impl SettingsContent {
             middle_click_closes_sidebar_tab: general
                 .and_then(|content| content.middle_click_closes_sidebar_tab)
                 .unwrap_or(defaults.middle_click_closes_sidebar_tab),
-            show_view_mode_picker: general
-                .and_then(|content| content.show_view_mode_picker)
-                .unwrap_or(defaults.show_view_mode_picker),
             show_status_bar: general
                 .and_then(|content| content.show_status_bar)
                 .unwrap_or(defaults.show_status_bar),
@@ -416,6 +409,10 @@ struct ThemePalette {
     quiet: u32,
     terminal_foreground: u32,
 }
+
+// Inactive pane tabs need only a slight surface tint; full card colors make
+// them compete with the active tab, especially in higher-contrast themes.
+const INACTIVE_TAB_TINT_OPACITY: f32 = 0.25;
 
 const THEME_PALETTES: [ThemePalette; 13] = [
     ThemePalette::new(
@@ -643,7 +640,7 @@ const THEME_PALETTES: [ThemePalette; 13] = [
         Appearance::Dark,
         0x1f1f1f,
         0x181818,
-        0x2b2b2b,
+        0x464646,
         0xcccccc,
         0x9d9d9d,
         0x313131,
@@ -868,7 +865,7 @@ fn catalog_theme(source: &Theme, palette: ThemePalette) -> Theme {
     colors.title_bar_inactive_background = card;
     colors.toolbar_background = sidebar;
     colors.tab_bar_background = card;
-    colors.tab_inactive_background = card;
+    colors.tab_inactive_background = surface.blend(card.opacity(INACTIVE_TAB_TINT_OPACITY));
     colors.tab_active_background = surface;
     colors.panel_background = sidebar;
     colors.panel_focused_border = ring;
@@ -928,6 +925,9 @@ fn chartr_dark(source: &Theme) -> Theme {
     colors.pane_group_border = border;
     colors.panel_indent_guide = border_variant;
     colors.scrollbar_track_border = border_variant;
+    colors.tab_inactive_background = colors
+        .tab_active_background
+        .blend(colors.tab_inactive_background.opacity(INACTIVE_TAB_TINT_OPACITY));
     dark
 }
 
@@ -985,7 +985,7 @@ fn chartr_light(dark: &Theme) -> Theme {
     colors.title_bar_inactive_background = raised;
     colors.toolbar_background = surface;
     colors.tab_bar_background = raised;
-    colors.tab_inactive_background = raised;
+    colors.tab_inactive_background = surface.blend(raised.opacity(INACTIVE_TAB_TINT_OPACITY));
     colors.tab_active_background = surface;
     colors.panel_background = surface;
     colors.editor_background = surface;

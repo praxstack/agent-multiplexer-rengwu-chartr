@@ -1,7 +1,7 @@
 ---
 title: Settings, themes and keybindings
 section: Features
-updated: 2026-10-05
+updated: 2026-10-19
 basis: Source-reviewed migration baseline
 ---
 # Settings, themes and keybindings
@@ -31,6 +31,9 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 ## Expected outcomes
 
 - Settings are user-global, persisted atomically and applied live where supported. Reopening focuses the existing window; closing Settings does not close an underlying terminal.
+- General → View mode is the only control for switching Tabs/Spaces (accepted 2026-10-18). The title-header picker and its hide/show setting are removed. Existing `show_view_mode_picker` values are preserved as unknown settings and have no effect.
+- Inactive pane tabs use a subtle background across all 15 built-in themes: 25% of the former inactive/card tint blended over the active pane surface. This reduces their visual emphasis while retaining theme hue and a slight distinction from the active tab (accepted 2026-10-19).
+- VSCode Dark Modern uses neutral `#464646` structural borders, raised from `#2b2b2b` so pane dividers and tab outlines remain visible against its dark surfaces (accepted 2026-10-19).
 - Defaults are chartr Dark, IBM Plex Sans and IBM Plex Mono; theme mode/pairs, fonts, UI/terminal scale and reduced motion are configurable.
 - Hotkeys stores sparse overrides and rejects conflicts in the shared context. Unset actions retain platform defaults.
 - Plugins contribute settings lazily. Skill sources and Saved Prompts are settings-only; restart-bound changes disclose their requirement.
