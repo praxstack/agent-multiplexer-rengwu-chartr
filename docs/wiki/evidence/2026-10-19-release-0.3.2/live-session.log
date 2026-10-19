@@ -1,0 +1,20 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   Compiling chartr-agent v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-agent)
+   Compiling chartr-plugin v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-plugin)
+   Compiling chartr-herdr v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-herdr)
+   Compiling chartr-conversations v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-conversations)
+   Compiling chartr-plugin-host v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-plugin-host)
+   Compiling chartr v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 18.98s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 2`
+     Running tests/live_session.rs (target/debug/deps/live_session-7ac6e700ba50f9c3)
+
+running 3 tests
+test a_broken_backend_recovers_without_resurrecting_dead_sessions ... ok
+test a_created_session_has_a_native_direct_attach_target ... ok
+test mouse::shell_selection_does_not_capture_mouse_but_tui_gestures_still_arrive ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.56s
+

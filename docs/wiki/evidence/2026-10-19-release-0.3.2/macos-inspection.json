@@ -1,0 +1,35 @@
+{
+  "dmg": "target/chartr-0.3.2-local.dmg",
+  "sha256": "8009f8ad0857115f7cb0b2dbf4a08e8f3ca4be85711a679a24c00de824e3bcd9",
+  "checksum_verified": true,
+  "signature_verified": true,
+  "application_launched": false,
+  "info": {
+    "CFBundleDevelopmentRegion": "en",
+    "CFBundleDisplayName": "chartr",
+    "CFBundleExecutable": "chartr",
+    "CFBundleIconFile": "chartr.icns",
+    "CFBundleIdentifier": "dev.chartr.dev",
+    "CFBundleInfoDictionaryVersion": "6.0",
+    "CFBundleName": "chartr",
+    "CFBundlePackageType": "APPL",
+    "CFBundleShortVersionString": "0.3.2",
+    "CFBundleVersion": "790",
+    "LSApplicationCategoryType": "public.app-category.developer-tools",
+    "LSMinimumSystemVersion": "11.0",
+    "NSHighResolutionCapable": true,
+    "chartrGitRevision": "0fa2a31341db",
+    "chartrReleaseVersion": "0.3.2"
+  },
+  "binaries": {
+    "chartr": {
+      "sha256": "9f535da9f2570daf2cac1a1b28c28d155f65154a3ebbd0573ec9ce51991f4c85",
+      "architecture": "arm64"
+    },
+    "herdr": {
+      "sha256": "7522198978ac86f68e9971e12a61d86a55cadab70950f554c39fded82d772680",
+      "architecture": "arm64"
+    }
+  },
+  "mount_detached": true
+}

@@ -1,0 +1,49 @@
+building chartr 0.3.2 (0fa2a31341db)
+   Compiling ui v0.1.0 (/Users/rengwu/Desktop/Projects/chartr/vendor/zed-platform/ui)
+   Compiling chartr-agent v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-agent)
+   Compiling chartr-storage v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-storage)
+   Compiling chartr v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr)
+   Compiling chartr-conversations v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-conversations)
+   Compiling chartr-herdr v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-herdr)
+   Compiling markdown v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling ui_input v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling chartr-plugin v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-plugin)
+   Compiling project v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling chartr-plugin-host v0.3.2 (/Users/rengwu/Desktop/Projects/chartr/crates/chartr-plugin-host)
+   Compiling agent_settings v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling workspace v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling breadcrumbs v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling editor v0.1.0 (https://github.com/zed-industries/zed.git?rev=1ea16c1ab9dd6d36649e002dc60995634da04daf#1ea16c1a)
+   Compiling terminal_view v0.1.0 (/Users/rengwu/Desktop/Projects/chartr/vendor/zed-terminal-view)
+      Timing report saved to /Users/rengwu/Desktop/Projects/chartr/target/cargo-timings/cargo-timing-20261019T071801967Z-fcf9c4467b3f0fc0.html
+    Finished `release` profile [optimized] target(s) in 2m 54s
+warning: the following packages contain code that will be rejected by a future version of Rust: block v0.1.6
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`
+/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/image/chartr.app/Contents/Info.plist: OK
+/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/image/chartr.app/Contents/MacOS/herdr: replacing existing signature
+/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/image/chartr.app/Contents/MacOS/chartr: replacing existing signature
+/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/image/chartr.app: replacing existing signature
+--prepared:/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/image/chartr.app/Contents/MacOS/herdr
+--validated:/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/image/chartr.app/Contents/MacOS/herdr
+/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/image/chartr.app: valid on disk
+/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/image/chartr.app: satisfies its Designated Requirement
+Checksumming Protective Master Boot Record (MBR : 0)…
+Protective Master Boot Record (MBR :: verified   CRC32 $917AC9B1
+Checksumming GPT Header (Primary GPT Header : 1)…
+ GPT Header (Primary GPT Header : 1): verified   CRC32 $78BDC83F
+Checksumming GPT Partition Data (Primary GPT Table : 2)…
+GPT Partition Data (Primary GPT Tabl: verified   CRC32 $E3F03515
+Checksumming  (Apple_Free : 3)…
+                    (Apple_Free : 3): verified   CRC32 $00000000
+Checksumming disk image (Apple_HFS : 4)…
+          disk image (Apple_HFS : 4): verified   CRC32 $D135D08A
+Checksumming  (Apple_Free : 5)…
+                    (Apple_Free : 5): verified   CRC32 $00000000
+Checksumming GPT Partition Data (Backup GPT Table : 6)…
+GPT Partition Data (Backup GPT Table: verified   CRC32 $E3F03515
+Checksumming GPT Header (Backup GPT Header : 7)…
+  GPT Header (Backup GPT Header : 7): verified   CRC32 $57AFFCAE
+verified   CRC32 $5A2DE3E6
+hdiutil: verify: checksum of "/Users/rengwu/Desktop/Projects/chartr/target/dev-dmg-stage.8BanB8/chartr.dmg" is VALID
+built /Users/rengwu/Desktop/Projects/chartr/target/chartr-0.3.2-local.dmg
+checksum: /Users/rengwu/Desktop/Projects/chartr/target/chartr-0.3.2-local.dmg.sha256

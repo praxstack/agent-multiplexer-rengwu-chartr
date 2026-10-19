@@ -1,0 +1,19 @@
+{
+  "candidate_revision": "4afea26f5bd2fc168675e0b58aa731324c1bea1f",
+  "matches_tested_source_manifest": true,
+  "checked_files": 327,
+  "rust_results": {
+    "workspace": {
+      "passed": 433,
+      "failed": 0,
+      "ignored": 7
+    },
+    "live-session": {
+      "passed": 3,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "aur_publish_enabled": false,
+  "aur_variable_present": false
+}

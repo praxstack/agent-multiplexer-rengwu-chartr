@@ -1,7 +1,7 @@
 ---
 title: Installation, packages and release boundaries
 section: Features
-updated: 2026-10-16
+updated: 2026-10-19
 basis: Source-reviewed migration baseline
 ---
 # Installation, packages and release boundaries
@@ -63,6 +63,11 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 19 0.3.2 preparation](../verification/runs/2026-10-19-release-0.3.2.md)
+records passing local tests, the macOS/Ubuntu/Arch CI matrix and all shipping
+package builds for candidate `4afea26f`. Native notifications are explicitly
+deferred; the complete native acceptance matrix remains unverified.
 
 The [October 16 desktop recheck](../verification/runs/2026-10-16-release-desktop-recheck.md)
 tracks the latest fixes and packages. AUR publication is explicitly deferred;

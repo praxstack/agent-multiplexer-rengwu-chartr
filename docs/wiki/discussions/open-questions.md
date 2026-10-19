@@ -8,6 +8,15 @@ status: Release scope resolved; deferred verification remains
 There are no remaining consequential scope questions from the migration interview.
 Reopen this register if implementation uncovers a material ambiguity.
 
+## Release 0.3.2 acceptance scope
+
+[Preparation](../development/release-0.3.2.md) has passing local automated checks,
+macOS/Ubuntu/Arch CI, all shipping package builds and downloaded-package inspection.
+Notification testing and AUR publication remain explicitly deferred. The broader
+native desktop matrix remains unverified. The user has not yet selected a 0.3.2
+exception to that matrix; the earlier focused-verification choice applied only
+to 0.3.1. This is the remaining readiness judgment, not a failing automated gate.
+
 ## Notification preview source
 
 Resolved October 19 by the [submitted answer](../journal/2026-10-19-grill-fb098581-9bb9-448d-87d2-391b21a21ae7.md):

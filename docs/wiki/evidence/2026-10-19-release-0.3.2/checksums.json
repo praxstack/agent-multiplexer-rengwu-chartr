@@ -1,0 +1,37 @@
+[
+  {
+    "file": "chartr-0.3.2-linux-aarch64.tar.gz",
+    "sha256": "85b7ec2b90bf71a196ef960de8989fa87a55ac976310c42ba9ec001ee144b030",
+    "verified": true
+  },
+  {
+    "file": "chartr_0.3.2_arm64.deb",
+    "sha256": "5651cb762bb7ad5efbaf827d4bb96929c93a96b9751f40483a3e76212e815c5c",
+    "verified": true
+  },
+  {
+    "file": "chartr-0.3.2-linux-x86_64.tar.gz",
+    "sha256": "bd97e67821c43881fd4ad80e2f137e0adf82e78937825166856d5a977baf8068",
+    "verified": true
+  },
+  {
+    "file": "chartr_0.3.2_amd64.deb",
+    "sha256": "d65984675a772f3cf8fe045f09f459a392cac8e5f3d9c18419e70219bfbdd363",
+    "verified": true
+  },
+  {
+    "file": "chartr-bin-0.3.2-1-x86_64.pkg.tar.zst",
+    "sha256": "ac702af599f25e5dfdb4ea180c68fc13393b8838010aa75d278a7898bf7a7882",
+    "verified": true
+  },
+  {
+    "file": "chartr-0.3.2-aur.tar.gz",
+    "sha256": "a6754665e29d55d007383dd849d9af1707217dfc5cce32817b2339371f5cb126",
+    "verified": true
+  },
+  {
+    "file": "chartr-0.3.2-macos-arm64.dmg",
+    "sha256": "abf53e3a8696148bd8b410d33ff93955a187cb73c30b190fe828797af5d1cbf5",
+    "verified": true
+  }
+]

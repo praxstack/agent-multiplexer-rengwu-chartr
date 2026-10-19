@@ -1,0 +1,36 @@
+[
+  {
+    "name": "format",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "scripts",
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "javascript",
+    "command": [
+      "node",
+      "--test",
+      "crates/chartr/tests/plugin_bridge.cjs",
+      "plugins/wayfinder/tests/layout.test.mjs"
+    ],
+    "exit_code": 0
+  }
+]

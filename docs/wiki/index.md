@@ -1,6 +1,6 @@
 ---
 title: Chartr development wiki
-updated: 2026-10-16
+updated: 2026-10-19
 ---
 # Chartr development wiki
 
@@ -20,6 +20,12 @@ locally generated reader.
   and [open questions](discussions/open-questions.md).
 
 ## Verification and releases
+
+[0.3.2 preparation](development/release-0.3.2.md) covers the Settings-only view
+switcher, pane/tab styling and notification context changes. Its
+[candidate checks](verification/runs/2026-10-19-release-0.3.2.md) record passing
+local/platform gates and package inspection, explicit notification/AUR deferrals,
+and the remaining judgment about broader native acceptance coverage.
 
 - [Shared setup](verification/setup.md): exact build identity, instance isolation,
   fixtures, available tests and cleanup.
@@ -64,6 +70,9 @@ recorded snapshots.
   coverage remain unverified. [Setup attempts](verification/runs/2026-10-15-lean-attention-attempts.md)
   and the [October 14 strict implementation](verification/runs/2026-10-14-agent-attention.md)
   remain historical evidence.
+  The October 19 [notification-context decision](decisions/index.md#dec-attention-006-space-context-and-supported-log-response-previews)
+  adds space/agent titles and supported-log reply previews with generic fallback;
+  native appearance for this change remains unverified.
 - [Last-window reopen implementation](verification/runs/2026-10-12-window-reopen.md):
   window restoration and shutdown ownership corrected; automated checks and
   native reopen/session/quit checks pass. The unchanged-build failure is preserved.

@@ -1,7 +1,7 @@
 ---
 title: Release acceptance
 section: Verification
-updated: 2026-10-16
+updated: 2026-10-19
 recipe: Unvalidated
 ---
 # Release acceptance
@@ -181,16 +181,17 @@ including after detach/reattach and window resize. Reject any duplicate input,
 stale viewport, focus loss, or interaction that works only in one pane shape.
 
 In Tabbed mode, confirm the space picker sits in the macOS title bar immediately
-after the traffic lights. At the far-right corner in both chrome modes, confirm the
-`Tabs` / `Spaces` segmented control reflects and changes the presentation,
-and the adjacent gear button opens Settings without the workspace reclaiming
-window focus. With a web or native plugin pane visible, test clicking the gear
+after the traffic lights. View switching is available only in Settings → General:
+confirm no `Tabs` / `Spaces` switcher appears in the title bar and the retired
+view-switching commands/shortcuts do not change the presentation. At the far-right
+corner in both chrome modes, confirm the gear button opens Settings without the
+workspace reclaiming window focus. With a web or native plugin pane visible, test clicking the gear
 both before its tooltip appears and while the tooltip is already visible. Leave
 the pointer over the gear and wait at least one second: Settings must stay in
 front and no workspace tooltip should appear over it. Repeat with `Cmd/Ctrl+,`
 while the gear is hovered, including when Settings is already open. Switching
-presentation updates immediately and survives relaunch.
-On platforms with a native system title bar, confirm both controls retain
+presentation in Settings updates immediately and survives relaunch.
+On platforms with a native system title bar, confirm the remaining controls retain
 their in-app chrome positions.
 
 In tabbed mode, the `+` and adjacent surface controls follow the last outer tab

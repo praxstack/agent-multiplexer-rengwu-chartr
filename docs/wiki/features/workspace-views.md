@@ -1,7 +1,7 @@
 ---
 title: Views, chrome and navigation
 section: Features
-updated: 2026-10-18
+updated: 2026-10-19
 basis: Source-reviewed migration baseline
 ---
 # Views, chrome and navigation
@@ -76,6 +76,11 @@ platform, theme, pointer and accessibility coverage. Choose a bounded subset for
 ordinary changes; release requirements remain separate from this advisory workflow.
 
 ## Verification history
+
+The [October 19 0.3.2 preparation](../verification/runs/2026-10-19-release-0.3.2.md)
+records passing local tests, the macOS/Ubuntu/Arch CI matrix and all shipping
+package builds for candidate `4afea26f`. Native notifications are explicitly
+deferred; the complete native acceptance matrix remains unverified.
 
 The [0.3.1 candidate follow-up](../verification/runs/2026-10-16-release-candidate.md)
 at `e915365a` passes the macOS, Ubuntu and Arch/AUR CI matrix and all three
