@@ -2,7 +2,7 @@
 title: Release 0.3.2 preparation
 section: Development
 updated: 2026-10-19
-status: Candidate prepared; release acceptance scope pending
+status: Prepared; focused verification accepted
 ---
 # Release 0.3.2 preparation
 
@@ -34,7 +34,14 @@ The candidate macOS DMG matches the exact source revision, production bundle ID,
 version and architectures; its signature and checksum pass. Both inspected macOS
 volumes were detached without launching Chartr.
 
-## Deferrals and remaining gates
+## Accepted readiness scope
+
+The user [accepted focused verification for 0.3.2](../journal/2026-10-19-grill-b6498bc2-33e5-46be-9664-08769eb2c378.md)
+on October 19 and deferred the remaining desktop matrix.
+[DEC-RELEASE-032-001](../decisions/index.md#dec-release-032-001-focused-verification-is-sufficient-for-0-3-2)
+settles the final readiness judgment for this candidate. The completed automated
+and package checks are sufficient under that release-specific scope; unexecuted
+coverage remains unverified, and the run's aggregate **Untested** is unchanged.
 
 - **Notification testing is explicitly deferred until the next release** at the
   user's request after the [shared-profile local bundle incident](../discussions/agent-attention.md#local-bundle-attempt-and-user-deferral).
@@ -43,17 +50,15 @@ volumes were detached without launching Chartr.
 - **AUR publication remains deferred** while account registration is unavailable.
   Keep automatic publication disabled. Package/recipe tests still apply.
 - The broader [release acceptance matrix](../verification/acceptance.md) remains
-  applicable. The 0.3.1 focused-verification exception was release-specific;
-  it is not silently extended to 0.3.2. Physical input/accessibility, the complete
-  native visual/plugin matrix and installed Linux desktop journeys are not newly
-  verified by local unit tests or package inspection.
+  the baseline for future releases. For 0.3.2, physical input/accessibility, the
+  complete native visual/plugin matrix and installed Linux desktop journeys are
+  deferred follow-up. Local unit tests and package inspection do not verify them.
 - Candidate macOS/Ubuntu/Arch CI and macOS/Linux package builds pass for the
   prepared source. Final tagging and publication remain a separate release step.
 
-**Remaining readiness choice:** accept the completed focused checks for 0.3.2
-and retain the broader desktop matrix as unverified follow-up, or complete that
-matrix before publication. Focused acceptance is a proposal, not yet an accepted
-0.3.2 exception. Existing notification and AUR deferrals are already settled.
+Preparation is complete with no remaining readiness question. Tagging and GitHub
+publication have not been performed; their release procedure and final artifact
+checks remain separate from this preparation record.
 
 ## Draft release notes
 

@@ -12,10 +12,13 @@ Reopen this register if implementation uncovers a material ambiguity.
 
 [Preparation](../development/release-0.3.2.md) has passing local automated checks,
 macOS/Ubuntu/Arch CI, all shipping package builds and downloaded-package inspection.
-Notification testing and AUR publication remain explicitly deferred. The broader
-native desktop matrix remains unverified. The user has not yet selected a 0.3.2
-exception to that matrix; the earlier focused-verification choice applied only
-to 0.3.1. This is the remaining readiness judgment, not a failing automated gate.
+Resolved October 19 by the [submitted answer](../journal/2026-10-19-grill-b6498bc2-33e5-46be-9664-08769eb2c378.md):
+accept focused verification for 0.3.2 and defer the remaining desktop matrix.
+[DEC-RELEASE-032-001](../decisions/index.md#dec-release-032-001-focused-verification-is-sufficient-for-0-3-2)
+records this release-specific exception. Notification testing and AUR publication
+remain explicitly deferred. The broader native desktop matrix remains unverified
+follow-up, not a 0.3.2 readiness blocker. No readiness question remains; tagging
+and publication are separate from preparation.
 
 ## Notification preview source
 

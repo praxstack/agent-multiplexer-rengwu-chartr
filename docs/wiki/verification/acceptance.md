@@ -13,6 +13,13 @@ results. **No chartr acceptance scenario was executed during the documentation
 migration.** Use [shared setup](setup.md) for isolation, build identity, evidence
 and cleanup. Dated [audits](../archive/research/index.md) retain their original limits.
 
+**0.3.2 scope decision, October 19:** the user accepted the completed focused
+verification and deferred the remaining desktop matrix for this release. See
+[DEC-RELEASE-032-001](../decisions/index.md#dec-release-032-001-focused-verification-is-sufficient-for-0-3-2)
+and the [accepted readiness scope](../development/release-0.3.2.md#accepted-readiness-scope).
+Notification testing and AUR publication remain deferred. This exception leaves
+unexecuted checks unverified and preserves the baseline below for future releases.
+
 **0.3.1 scope decision, October 16:** the user accepted the completed focused
 verification and deferred the remaining matrix for this release. See
 [DEC-RELEASE-031-002](../decisions/index.md#dec-release-031-002-focused-verification-is-sufficient-for-0-3-1)

@@ -67,7 +67,10 @@ ordinary changes; release requirements remain separate from this advisory workfl
 The [October 19 0.3.2 preparation](../verification/runs/2026-10-19-release-0.3.2.md)
 records passing local tests, the macOS/Ubuntu/Arch CI matrix and all shipping
 package builds for candidate `4afea26f`. Native notifications are explicitly
-deferred; the complete native acceptance matrix remains unverified.
+deferred; the complete native acceptance matrix remains unverified. The user
+[accepted this focused verification scope for 0.3.2](../decisions/index.md#dec-release-032-001-focused-verification-is-sufficient-for-0-3-2)
+and deferred the remaining desktop matrix. Preparation is complete without a tag
+or publication.
 
 The [October 16 desktop recheck](../verification/runs/2026-10-16-release-desktop-recheck.md)
 tracks the latest fixes and packages. AUR publication is explicitly deferred;

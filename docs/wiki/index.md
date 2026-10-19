@@ -24,8 +24,10 @@ locally generated reader.
 [0.3.2 preparation](development/release-0.3.2.md) covers the Settings-only view
 switcher, pane/tab styling and notification context changes. Its
 [candidate checks](verification/runs/2026-10-19-release-0.3.2.md) record passing
-local/platform gates and package inspection, explicit notification/AUR deferrals,
-and the remaining judgment about broader native acceptance coverage.
+local/platform gates and package inspection. The user
+[accepted focused verification for 0.3.2](decisions/index.md#dec-release-032-001-focused-verification-is-sufficient-for-0-3-2)
+and deferred the remaining desktop matrix. Notification testing and AUR publication
+remain deferred. Preparation is complete; tagging and publication have not occurred.
 
 - [Shared setup](verification/setup.md): exact build identity, instance isolation,
   fixtures, available tests and cleanup.

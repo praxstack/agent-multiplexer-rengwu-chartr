@@ -4,6 +4,22 @@ updated: 2026-10-19
 ---
 # Decisions
 
+## DEC-RELEASE-032-001 — Focused verification is sufficient for 0.3.2
+
+Accepted October 19 in the [release-readiness answer](../journal/2026-10-19-grill-b6498bc2-33e5-46be-9664-08769eb2c378.md):
+accept the completed focused verification for 0.3.2 and defer the remaining
+desktop matrix. Candidate `4afea26f` passes local tests, macOS/Ubuntu/Arch CI,
+all shipping package builds and downloaded-package inspection. The
+[preparation record](../development/release-0.3.2.md#accepted-readiness-scope)
+retains visual/layout, physical input, accessibility, full plugin journeys and
+installed Linux desktop coverage as unverified follow-up.
+
+Notification testing and AUR publication remain explicitly deferred. No
+consequential readiness question remains for this candidate. This is a
+release-specific scope decision, not a permanent change to the acceptance matrix
+or a publication action. Historical outcomes, including the candidate run's
+aggregate **Untested**, remain unchanged.
+
 ## DEC-ATTENTION-006 — Space context and supported-log response previews
 
 Accepted October 19 in the [notification-context answer](../journal/2026-10-19-grill-fb098581-9bb9-448d-87d2-391b21a21ae7.md).
