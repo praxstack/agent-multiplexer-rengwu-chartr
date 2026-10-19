@@ -1,7 +1,7 @@
 ---
 title: Verification setup
 section: Verification
-updated: 2026-10-15
+updated: 2026-10-19
 recipe: Unvalidated
 ---
 # Verification setup
@@ -102,6 +102,14 @@ already-running exact bundle through Finder can activate it after its process an
 profile have been verified. Never let a UI helper launch a stopped test bundle
 without re-establishing isolation. Record the signed executable's hash; ad hoc
 signing changes its bytes. Do not replace the installed app for these checks.
+
+**A different app name or bundle identifier does not isolate the profile or Herdr
+sessions.** The [October 19 local-bundle attempt](../discussions/agent-attention.md#local-bundle-attempt-and-user-deferral)
+supplied a bare launch command without XDG isolation; the user reports session
+takeover requiring manual restart/resume. That command is not a valid isolated
+test recipe. The same explicit profile isolation is required when handing a test
+launch command to the user. Further notification testing is deferred to the next
+release at the user's request.
 
 The [October 15 setup attempts](runs/2026-10-15-lean-attention-attempts.md) add two
 practical checks. Build the normal app **after** test compilation before copying

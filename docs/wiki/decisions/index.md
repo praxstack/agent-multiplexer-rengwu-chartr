@@ -1,8 +1,19 @@
 ---
 title: Decisions
-updated: 2026-10-16
+updated: 2026-10-19
 ---
 # Decisions
+
+## DEC-ATTENTION-006 — Space context and supported-log response previews
+
+Accepted October 19 in the [notification-context answer](../journal/2026-10-19-grill-fb098581-9bb9-448d-87d2-391b21a21ae7.md).
+Include the owning space and agent in the notification title. Use a shortened
+first-line response preview when a supported agent log provides a current reply;
+otherwise retain “Agent may need your attention.” The user selected supported
+logs with a generic fallback, rather than terminal-text guessing or deferring
+previews. This changes presentation, not DEC-ATTENTION-005's detection, unread,
+focus or notification-click policy. The [feature record](../features/panes.md#notification-content)
+defines the implemented limits and selected verification.
 
 ## DEC-RELEASE-031-002 — Focused verification is sufficient for 0.3.1
 

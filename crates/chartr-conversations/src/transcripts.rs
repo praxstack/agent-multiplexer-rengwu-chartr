@@ -31,6 +31,18 @@ pub struct ProviderPaths {
 }
 
 impl ProviderPaths {
+    /// Read the latest complete assistant reply after the most recent user
+    /// message. Never substitute an earlier turn when the current one has no
+    /// reply. This uses the same identity checks and limits as conversation history.
+    pub fn latest_reply(
+        &self,
+        provider: Provider,
+        native: &NativeSession,
+    ) -> Result<Option<String>> {
+        let transcript = Reader::default().read(provider, native, self)?;
+        Ok(latest_reply(&transcript.messages).map(str::to_owned))
+    }
+
     /// Locate the original log for an external editor, without parsing or truncating it.
     pub fn session_log(&self, provider: Provider, native: &NativeSession) -> Result<PathBuf> {
         validate_native_id(&native.id)?;
@@ -132,6 +144,12 @@ impl ProviderPaths {
         .to_string_lossy()
         .into_owned()
     }
+}
+
+fn latest_reply(messages: &[Message]) -> Option<&str> {
+    let user = messages.iter().rposition(|message| message.role == Role::User)?;
+    let reply = messages[user + 1..].iter().rfind(|message| message.role == Role::Assistant)?;
+    (reply.complete && !reply.text.trim().is_empty()).then_some(reply.text.as_str())
 }
 
 fn environment_path(name: &str, fallback: PathBuf, home: &Path) -> PathBuf {
@@ -776,6 +794,62 @@ mod tests {
     fn codex_uses_response_items_not_duplicate_event_messages() {
         let data = "{\"type\":\"session_meta\",\"payload\":{\"id\":\"c\"}}\n{\"type\":\"response_item\",\"payload\":{\"role\":\"assistant\",\"content\":[{\"type\":\"output_text\",\"text\":\"Done\"}]}}\n{\"type\":\"event_msg\",\"payload\":{\"type\":\"agent_message\",\"message\":\"Done\"}}\n";
         assert_eq!(parse_jsonl(data.as_bytes(), Provider::Codex, "c").unwrap().messages.len(), 1);
+    }
+
+    #[test]
+    fn reply_preview_uses_the_latest_reply_in_the_current_codex_turn() {
+        let root = tempfile::tempdir().unwrap();
+        let paths = log_paths(root.path());
+        fs::create_dir_all(paths.codex.join("sessions")).unwrap();
+        let path = paths.codex.join("sessions/rollout-2026-10-19-c.jsonl");
+        let native = NativeSession { id: "c".into(), path: None };
+        let records = [
+            json!({"type":"session_meta","payload":{"id":"c"}}),
+            json!({"type":"event_msg","payload":{"type":"user_message","message":"Fix the bug"}}),
+            json!({"type":"response_item","payload":{"role":"assistant","channel":"commentary","content":[{"type":"output_text","text":"Investigating"}]}}),
+            json!({"type":"response_item","payload":{"role":"assistant","channel":"final","content":[{"type":"output_text","text":"Fixed it.\nTests pass."}]}}),
+            json!({"type":"event_msg","payload":{"type":"agent_message","message":"Duplicate text"}}),
+        ].into_iter().map(|value| value.to_string()).collect::<Vec<_>>().join("\n");
+        fs::write(&path, &records).unwrap();
+        assert_eq!(
+            paths.latest_reply(Provider::Codex, &native).unwrap().as_deref(),
+            Some("Fixed it.\nTests pass.")
+        );
+        fs::write(
+            &path,
+            format!(
+                "{records}\n{}",
+                json!({"type":"event_msg","payload":{"type":"user_message","message":"Next task"}})
+            ),
+        )
+        .unwrap();
+        assert_eq!(paths.latest_reply(Provider::Codex, &native).unwrap(), None);
+        assert_eq!(paths.latest_reply(Provider::Cursor, &native).unwrap(), None);
+        fs::write(&path, records.replace("\"id\":\"c\"", "\"id\":\"wrong\"")).unwrap();
+        assert!(paths.latest_reply(Provider::Codex, &native).is_err());
+    }
+
+    #[test]
+    fn unfinished_or_blank_reply_does_not_expose_the_previous_reply() {
+        let mut messages = vec![
+            Message { id: "u".into(), role: Role::User, text: "Question".into(), complete: true },
+            Message {
+                id: "a".into(),
+                role: Role::Assistant,
+                text: "Old progress".into(),
+                complete: true,
+            },
+            Message {
+                id: "b".into(),
+                role: Role::Assistant,
+                text: "Streaming".into(),
+                complete: false,
+            },
+        ];
+        assert_eq!(latest_reply(&messages), None);
+        messages[2].complete = true;
+        messages[2].text = "  \n".into();
+        assert_eq!(latest_reply(&messages), None);
     }
 
     #[test]

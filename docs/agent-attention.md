@@ -14,6 +14,14 @@ including when you are working in another Chartr tab. A later state transition
 can notify again after that visit. Repeated updates while unread do not notify.
 Clicking a current notification opens its originating terminal.
 
+Notification titles include the owning space and agent, such as `chartr · Codex`.
+If the space is unavailable, Chartr uses the working folder's name when known.
+The body previews the first non-empty line of the latest logged assistant reply
+after the most recent user message, shortened to 160 characters plus an ellipsis.
+This requires a recognized native agent session and a supported, readable log.
+Missing replies, unsupported logs and slow reads fall back to “Agent may need
+your attention.” Chartr does not scrape terminal text for previews.
+
 Chartr must remain running to monitor terminals, including when hidden, minimized,
 or without an open window. Unread dots survive resumed work, app relaunch against
 a surviving backend, and live backend handoff. Relaunch and reconnect establish a
@@ -30,7 +38,7 @@ for every CLI. Ordinary shells and build/test commands do not trigger attention.
 Chartr reads activity about once a second. Short transitions between reads, work
 during disconnection, and repeated requests that stay blocked can be missed.
 Unknown states do not imply completion. Detection can mistake cancellation or an
-unfamiliar screen for inactivity, so notifications use neutral wording.
+unfamiliar screen for inactivity. A response preview does not certify the outcome.
 
 ## Desktop delivery
 

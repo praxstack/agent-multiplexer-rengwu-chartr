@@ -1,7 +1,7 @@
 //! App-owned effects: one activity poll, persistent unread state and native delivery.
 
 use std::{
-    collections::HashSet,
+    collections::{HashMap, HashSet},
     sync::{Arc, Mutex},
     time::Duration,
 };
@@ -9,7 +9,7 @@ use std::{
 use chartr_herdr::control::{Client, Session};
 use gpui::{App, AppContext as _, Context, Entity, Global, SystemNotification, Task};
 
-use super::{Model, Target};
+use super::{Model, Target, content};
 use crate::persistence::{self, StateStore};
 
 struct GlobalService(Entity<Service>);
@@ -23,6 +23,7 @@ struct Writer {
 
 pub(crate) struct Service {
     model: Model,
+    sessions: HashMap<String, Session>,
     writer: Option<Arc<Mutex<Writer>>>,
     revision: u64,
     connected: bool,
@@ -52,6 +53,7 @@ pub fn init(cx: &mut App) {
     };
     let attention_entity = cx.new(|_| Service {
         model,
+        sessions: HashMap::new(),
         writer,
         revision: 0,
         connected: false,
@@ -183,6 +185,7 @@ impl Service {
             .collect();
         let previous: Vec<_> =
             self.model.terminals.keys().filter_map(|id| self.model.target(id)).collect();
+        self.sessions = sessions.iter().map(|s| (s.terminal.0.clone(), s.clone())).collect();
         let change = self.model.apply(sessions, !self.connected, &focused);
         self.connected = true;
         for target in previous {
@@ -194,18 +197,67 @@ impl Service {
             cx.defer(super::retry_navigation);
         }
         for target in change.notify {
-            let Some(terminal) = self.model.resolve(&target) else { continue };
-            cx.show_system_notification(SystemNotification {
-                tag: tag(&target).into(),
-                title: terminal.label.clone().into(),
-                body: "Agent may need your attention".into(),
-                actions: Vec::new(),
-            });
+            self.prepare_notification(target, cx);
         }
         if change.changed {
             self.save(cx);
             cx.notify();
         }
+    }
+
+    fn prepare_notification(&self, target: Target, cx: &mut Context<Self>) {
+        let Some(session) = self.sessions.get(&target.terminal_id).cloned() else { return };
+        let space = live_space(&session, cx);
+        let fallback_title = content::title(&session, space.as_deref());
+        let source = session.clone();
+        let writer = self.writer.clone();
+        let executor = cx.background_executor().clone();
+        let (title_tx, mut title_rx) = futures::channel::oneshot::channel();
+        let read = executor.spawn(async move {
+            let space = space.or_else(|| {
+                let saved = writer?.lock().ok()?.store.load().ok()?;
+                content::saved_space(&saved, &source)
+            });
+            // Retain resolved space context even if the transcript read times out.
+            let _ = title_tx.send(content::title(&source, space.as_deref()));
+            content::preview(&source, &chartr_conversations::ProviderPaths::from_environment())
+        });
+        cx.spawn(async move |this, cx| {
+            // Missing or slow history must never prevent the attention alert.
+            let body =
+                match futures::future::select(read, executor.timer(Duration::from_secs(2))).await {
+                    futures::future::Either::Left((content, _)) => content,
+                    futures::future::Either::Right(_) => None,
+                };
+            let title = title_rx.try_recv().ok().flatten().unwrap_or(fallback_title);
+            let _ = this.update(cx, |service, cx| {
+                let Some(current) = service.notification_session(&target, &session) else { return };
+                let title = live_space(current, cx)
+                    .map(|space| content::title(current, Some(&space)))
+                    .unwrap_or(title);
+                // The unread episode survives resumed work, but its old reply
+                // must not describe the new activity.
+                let body =
+                    body.filter(|_| super::Activity::of(current) == super::Activity::of(&session));
+                cx.show_system_notification(SystemNotification {
+                    tag: tag(&target).into(),
+                    title: title.into(),
+                    body: body.unwrap_or_else(|| content::FALLBACK_BODY.into()).into(),
+                    actions: Vec::new(),
+                });
+            });
+        })
+        .detach();
+    }
+
+    fn notification_session(&self, target: &Target, source: &Session) -> Option<&Session> {
+        if !self.connected || self.model.resolve(target).is_none() {
+            return None;
+        }
+        self.sessions.get(&target.terminal_id).filter(|current| {
+            current.agent == source.agent
+                && (source.agent_session.is_none() || current.agent_session == source.agent_session)
+        })
     }
 
     fn save(&mut self, cx: &mut Context<Self>) {
@@ -241,6 +293,16 @@ impl Service {
     }
 }
 
+fn live_space(session: &Session, cx: &mut App) -> Option<String> {
+    cx.windows().into_iter().find_map(|window| {
+        window
+            .downcast::<crate::app::WorkspaceWindow>()?
+            .update(cx, |workspace, _, cx| workspace.attention_space(&session.id, cx))
+            .ok()
+            .flatten()
+    })
+}
+
 fn save(writer: Arc<Mutex<Writer>>, revision: u64, json: &str) -> anyhow::Result<()> {
     let mut writer =
         writer.lock().map_err(|_| anyhow::anyhow!("attention writer lock poisoned"))?;
@@ -259,6 +321,46 @@ fn tag(target: &Target) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use chartr_herdr::control::SessionStatus;
+
+    #[test]
+    fn delayed_notification_cannot_outlive_acknowledgment_replacement_or_disconnect() {
+        let source = super::super::tests::session(SessionStatus::Blocked);
+        let mut service = Service {
+            model: Model::default(),
+            sessions: HashMap::from([(source.terminal.0.clone(), source.clone())]),
+            writer: None,
+            revision: 0,
+            connected: true,
+            monitor: None,
+            pending_navigation: None,
+            pending_save: None,
+        };
+        let mut initial = source.clone();
+        initial.status = SessionStatus::Working;
+        service.model.apply(vec![initial], true, &HashSet::new());
+        let target =
+            service.model.apply(vec![source.clone()], false, &HashSet::new()).notify.remove(0);
+        assert!(service.notification_session(&target, &source).is_some());
+        service.connected = false;
+        assert!(service.notification_session(&target, &source).is_none());
+        service.connected = true;
+        service.sessions.get_mut(&source.terminal.0).unwrap().agent = Some("claude".into());
+        assert!(service.notification_session(&target, &source).is_none());
+        service.sessions.insert(source.terminal.0.clone(), source.clone());
+        service.model.acknowledge(&target);
+        assert!(service.notification_session(&target, &source).is_none());
+        let mut working = source.clone();
+        working.status = SessionStatus::Working;
+        service.model.apply(vec![working], false, &HashSet::new());
+        let next =
+            service.model.apply(vec![source.clone()], false, &HashSet::new()).notify.remove(0);
+        assert!(service.notification_session(&target, &source).is_none());
+        assert!(service.notification_session(&next, &source).is_some());
+        service.model.apply(Vec::new(), false, &HashSet::new());
+        assert!(service.notification_session(&next, &source).is_none());
+    }
+
     #[test]
     fn failed_attention_write_can_retry_and_old_tasks_cannot_overwrite_flush() {
         let dir = tempfile::tempdir().unwrap();

@@ -600,6 +600,13 @@ impl WorkspaceWindow {
         self.active.as_ref()
     }
 
+    pub(crate) fn attention_space(&self, pane: &chartr_herdr::PaneId, cx: &App) -> Option<String> {
+        self.spaces.iter().find_map(|space| {
+            let space = space.read(cx);
+            space.owns_session(pane).then(|| space.name().to_owned())
+        })
+    }
+
     pub(crate) fn focused_attention_terminal(&self, window: &Window, cx: &App) -> Option<String> {
         if !window.is_window_active() {
             return None;

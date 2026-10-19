@@ -1,7 +1,7 @@
 ---
 title: Agent attention and notifications
 section: Discussions
-updated: 2026-10-15
+updated: 2026-10-19
 status: Best-effort simplification implemented; selected Codex checks passed
 ---
 # Agent attention and notifications
@@ -12,6 +12,44 @@ investigation and validation. After the readiness discussion, the user's
 October 13 instruction to continue with work-until-grill authorized implementation.
 Question 14 resolved the backend distribution choice: carry a tracked Herdr patch
 in Chartr. The October 15 simplification below replaces that first implementation.
+
+## Notification context — October 19
+
+The user requested the project/space in the title and a shortened first response
+line in the body. In the [submitted form](../journal/2026-10-19-grill-fb098581-9bb9-448d-87d2-391b21a21ae7.md),
+they chose supported logs with a generic fallback when no current reply is
+available. [DEC-ATTENTION-006](../decisions/index.md#dec-attention-006-space-context-and-supported-log-response-previews)
+records that accepted choice. No terminal-text guessing is selected.
+
+The working tree implements this through the existing conversation readers,
+background reads and live/persisted space ownership. The [feature record](../features/panes.md#notification-content)
+defines truncation, fallback and stale-result handling. Detection and unread
+semantics remain those accepted October 15. Fixture-based automated checks are
+separate from native banner appearance, which remains unverified for this change.
+
+October 19 automated verification passed `cargo test -p chartr -p chartr-conversations --locked`
+(348 passed, six environment-dependent tests ignored). After the final timeout/title
+handling change, all 11 attention tests passed again. `cargo build -p chartr --locked`,
+formatting, diff checks and wiki build/freshness checks also passed. These results
+cover the local working tree, including the preceding unreleased UI changes;
+they do not establish native banner appearance or click navigation.
+
+### Local bundle attempt and user deferral
+
+The assistant prepared `target/notification-dev/chartr Local.app` with bundle ID
+`dev.chartr.notificationdev`, then supplied a bare executable launch command
+without isolated XDG directories. A separate bundle identifier does not isolate
+Chartr's profile or Herdr namespace; that launch instruction reused the user's
+normal environment and was unsuitable for an isolated test.
+
+The user reports that opening it took over their existing Herdr sessions and
+required restarting and resuming sessions one by one. This is a user-reported
+session disruption, not a conclusively observed notification result. The exact
+takeover mechanism has not been investigated. On October 19 the user explicitly
+deferred further notification testing until the next release. Native banners,
+preview appearance and click navigation remain unverified; earlier automated
+passes are unchanged. No further app launch or session manipulation was performed
+in response to that deferral.
 
 ## Accepted simplification — October 15
 

@@ -1,12 +1,23 @@
 ---
 title: Open questions
-updated: 2026-10-16
+updated: 2026-10-19
 status: Release scope resolved; deferred verification remains
 ---
 # Open questions
 
 There are no remaining consequential scope questions from the migration interview.
 Reopen this register if implementation uncovers a material ambiguity.
+
+## Notification preview source
+
+Resolved October 19 by the [submitted answer](../journal/2026-10-19-grill-fb098581-9bb9-448d-87d2-391b21a21ae7.md):
+use supported logs and a generic fallback, with no terminal-text guessing.
+[DEC-ATTENTION-006](../decisions/index.md#dec-attention-006-space-context-and-supported-log-response-previews)
+records the choice. No additional product decision is pending for this change.
+On October 19 the user deferred notification testing until the next release after
+reporting session disruption from the supplied shared-profile local bundle launch.
+The [attempt and deferral](agent-attention.md#local-bundle-attempt-and-user-deferral)
+remain inconclusive for native notification behavior, not a passing verification.
 
 ## Release 0.3.1 deferrals
 

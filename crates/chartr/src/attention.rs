@@ -7,6 +7,7 @@ use serde::{Deserialize, Serialize};
 
 const VERSION: u32 = 2;
 
+mod content;
 mod service;
 pub(crate) use service::service;
 pub use service::{acknowledge, connect, init, retry_navigation, unread};
@@ -156,7 +157,7 @@ mod tests {
     use super::*;
     use chartr_herdr::{PaneId, TerminalId, WorkspaceId};
 
-    fn session(status: SessionStatus) -> Session {
+    pub(super) fn session(status: SessionStatus) -> Session {
         Session {
             id: PaneId("pane".into()),
             terminal: TerminalId("terminal".into()),

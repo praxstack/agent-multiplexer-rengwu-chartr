@@ -1,7 +1,7 @@
 ---
 title: Tabs, groups and pane layout
 section: Features
-updated: 2026-10-15
+updated: 2026-10-19
 basis: Source-reviewed migration baseline
 ---
 # Tabs, groups and pane layout
@@ -34,6 +34,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 - Split edges, center drops, tab insertion and trailing-strip append preserve item identity. Escape cancels dragging; empty source panes/groups collapse as appropriate.
 - Terminals move without cloning. Only opt-in plugins clone with the platform modifier. Cross-space item movement is absent.
 - Joining moves items without killing their sessions. Layout, split ratios, active pane/item and group names persist. Bulk group close is scoped to that group's descendants.
+- Pane tab bars use the window title-header background behind the add controls and unused strip. The top border follows the actual tabs, then steps down to the content edge beneath the remaining strip; empty panes have no raised tab frame. Vertically stacked panes retain a full-width divider, painted above the lower header background and overlapping its tab-frame edge by 1 px so the boundary stays a single line (accepted appearance changes, 2026-10-19).
 
 ## Verification recipe
 
@@ -71,6 +72,36 @@ coverage follows existing upstream detection, including Codex. The backend patch
 now only preserves terminal identity through handoff. The prototype's unreleased
 version-1 attention storage is reset; version 2 restores its own unread state.
 
+### Notification content
+
+[DEC-ATTENTION-006](../decisions/index.md#dec-attention-006-space-context-and-supported-log-response-previews)
+adds space and response context on October 19. Titles use `Space name · Agent`.
+Live terminal ownership takes precedence over the working directory; without an
+open window, saved terminal ownership supplies the space name. If ownership is
+unavailable, use the working folder's name when known, otherwise the agent alone.
+
+The body uses the first non-empty line of the latest complete logged assistant
+message after the most recent user message. Limit it to 160 Unicode graphemes,
+adding an ellipsis only when shortened. Use existing history readers and their
+native-identity checks; do not scrape terminal screens or add outcome detectors.
+Missing identity, unsupported/unreadable history, no reply after the last prompt,
+or a two-second read timeout retains “Agent may need your attention.” A prompt
+with no reply must not show a response from before that prompt. This is a preview
+of logged text, not proof of completion or the wording of an approval request.
+
+Reads run off the UI thread without blocking activity polling. Delayed results
+must still address the same unread episode and native agent session; visiting,
+closing or replacing the target invalidates stale results. Resumed activity keeps
+the unread policy but uses the generic body when the observed activity changed.
+Title context already resolved before a slow history read is retained on timeout.
+
+Selected automated checks cover title/ownership fallback, first-line and Unicode
+truncation, real-format Codex/Pi fixtures, wrong/missing native identities, current
+prompt without a reply, and stale delivery eligibility. Native banner appearance
+and click navigation remain unverified for this content change. Following a
+[disruptive shared-profile test attempt](../discussions/agent-attention.md#local-bundle-attempt-and-user-deferral),
+the user deferred notification testing until the next release on October 19.
+
 ### Bounded attention recipe
 
 Use a fresh explicitly isolated packaged app and an installed supported agent.
@@ -81,6 +112,13 @@ Repeat with an adjacent split and enclosing group, then with the app inactive,
 minimized and without windows. Relaunch with unread attention: the dot should
 return without another banner. Close or replace the origin before clicking an
 old notice: no unrelated terminal should open.
+
+For notification content, name the fixture space differently from the terminal's
+current directory. Complete a response in an identified, supported agent session
+while another terminal is focused. Expect the owning space and agent in the title
+and the first response line in the body. Repeat without a readable log and with an
+approval before any reply: expect the generic body. Repeat with the window closed
+to check persisted ownership. These native content scenarios remain unexecuted.
 
 The recheck below identifies which portions were executed. Unexecuted portions
 of this recipe remain unvalidated.
