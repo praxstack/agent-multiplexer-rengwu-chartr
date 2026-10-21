@@ -1,7 +1,7 @@
 ---
 title: Tabs, groups and pane layout
 section: Features
-updated: 2026-10-19
+updated: 2026-10-22
 basis: Source-reviewed migration baseline
 ---
 # Tabs, groups and pane layout
@@ -35,6 +35,7 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 - Terminals move without cloning. Only opt-in plugins clone with the platform modifier. Cross-space item movement is absent.
 - Joining moves items without killing their sessions. Layout, split ratios, active pane/item and group names persist. Bulk group close is scoped to that group's descendants.
 - Pane tab bars use the window title-header background behind the add controls and unused strip. The top border follows the actual tabs, then steps down to the content edge beneath the remaining strip; empty panes have no raised tab frame. Vertically stacked panes retain a full-width divider, painted above the lower header background and overlapping its tab-frame edge by 1 px so the boundary stays a single line (accepted appearance changes, 2026-10-19).
+- The main pane area, including its pane-local tab strip and internal splits, sits inside one rounded frame with a 4 px right and bottom outer inset, no top or left outer inset, a 12 px corner radius and a 1 px theme-colored border. The outer gap and rounded corner cutouts use the same panel background as the surrounding title bar and sidebar. The outer frame supplies a continuous top edge, overlapping the first tab row's border; internal split dividers keep their single-line boundaries. The sidebar remains outside this frame (accepted appearance change, 2026-10-21; inset, radius and surrounding background refined, 2026-10-22).
 
 ## Verification recipe
 

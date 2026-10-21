@@ -2,6 +2,9 @@
 
 use super::*;
 
+const WORKSPACE_INSET: f32 = 4.;
+const WORKSPACE_RADIUS: f32 = 12.;
+
 impl Render for WorkspaceWindow {
     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
         let ui_font = Fonts::setup_ui(window, cx);
@@ -45,9 +48,14 @@ impl Render for WorkspaceWindow {
         let chrome_entries: &[Entry] = &entries;
         let new_item = self.new_item_button(cx);
         let new_plugin_pane = self.new_plugin_pane_button(cx);
-        let (background, text, workspace_background) = {
+        let (background, text, workspace_background, chrome_background) = {
             let colors = cx.theme().colors();
-            (colors.background, colors.text, colors.editor_background)
+            (
+                colors.background,
+                colors.text,
+                colors.editor_background,
+                colors.background.blend(colors.panel_background),
+            )
         };
 
         let on_action =
@@ -94,10 +102,6 @@ impl Render for WorkspaceWindow {
             })
             .unzip();
 
-        // Dissolve the left divider as it meets the native window edge. Tie the
-        // fade to distance so interrupted slides and reduced motion stay in sync.
-        let edge_distance = (sidebar_width * chrome_visibility.sidebar / 32.).clamp(0., 1.);
-        let left_border_opacity = edge_distance * edge_distance * (3. - 2. * edge_distance);
         let has_pane_headers = self.mode != Mode::Inbox
             && self.active.as_ref().is_some_and(|space| {
                 space.read(cx).workspace_tabs().active_tab().is_some_and(|tab| tab.is_grouped())
@@ -108,29 +112,37 @@ impl Render for WorkspaceWindow {
             .flex_1()
             .min_w_0()
             .h_full()
-            .overflow_hidden()
-            .bg(workspace_background)
-            // Pane tabs draw their own top edge, leaving the trailing controls
-            // open to the window background. Headerless content keeps its frame.
-            .when(!has_pane_headers, |workspace| workspace.border_t_1())
-            // Reserve the divider's pixel throughout its fade to avoid shifting content.
-            .pl(px(1.))
-            .border_color(cx.theme().colors().border)
+            .pr(px(WORKSPACE_INSET))
+            .pb(px(WORKSPACE_INSET))
+            .bg(chrome_background)
             .child(
-                div().absolute().left_0().top_0().bottom_0().w(px(1.)).bg(cx
-                    .theme()
-                    .colors()
-                    .border
-                    .opacity(left_border_opacity)),
-            )
-            .child(if self.mode == Mode::Inbox {
-                self.conversations.clone().into_any_element()
-            } else {
-                self.workspace_pane(window, cx)
-            })
-            .when(self.mode == Mode::Inbox, |workspace| {
-                workspace.children(self.terminal_search_overlay(cx))
-            });
+                v_flex()
+                    .relative()
+                    .size_full()
+                    .min_w_0()
+                    .min_h_0()
+                    .p_px()
+                    .rounded(px(WORKSPACE_RADIUS))
+                    .overflow_hidden()
+                    .bg(workspace_background)
+                    .child(
+                        v_flex()
+                            .flex_1()
+                            .min_w_0()
+                            .min_h_0()
+                            // Collapse the first tab row's top edge onto the frame.
+                            .when(has_pane_headers, |content| content.mt(px(-1.)))
+                            .child(if self.mode == Mode::Inbox {
+                                self.conversations.clone().into_any_element()
+                            } else {
+                                self.workspace_pane(window, cx)
+                            })
+                            .when(self.mode == Mode::Inbox, |content| {
+                                content.children(self.terminal_search_overlay(cx))
+                            }),
+                    )
+                    .child(workspace_frame(chrome_background, cx.theme().colors().border)),
+            );
 
         let tab_height = chrome::tabs::height(cx);
         // Keep one layout and one workspace subtree throughout the transition.
@@ -438,4 +450,33 @@ impl Render for WorkspaceWindow {
             .children(app_bar_foreground)
             .children(rename)
     }
+}
+
+fn workspace_frame(background: gpui::Hsla, border: gpui::Hsla) -> impl IntoElement {
+    gpui::canvas(
+        |_, _, _| {},
+        move |bounds, _, window, _| {
+            let radius =
+                px(WORKSPACE_RADIUS).min(bounds.size.width / 2.).min(bounds.size.height / 2.);
+            // GPUI overflow masks are rectangular. Paint the outside of the
+            // rounded frame over child backgrounds before drawing its outline.
+            // The expanded border's inner edge is exactly the desired curve.
+            window.with_content_mask(Some(gpui::ContentMask { bounds }), |window| {
+                window.paint_quad(gpui::quad(
+                    bounds.dilate(radius),
+                    radius * 2.,
+                    gpui::transparent_black(),
+                    radius,
+                    background,
+                    gpui::BorderStyle::default(),
+                ));
+                window.paint_quad(
+                    gpui::outline(bounds, border, gpui::BorderStyle::default())
+                        .corner_radii(radius),
+                );
+            });
+        },
+    )
+    .absolute()
+    .inset_0()
 }
