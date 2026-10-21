@@ -2,6 +2,8 @@
 
 These guides describe the current Rust working tree. Start with
 [Installation](installation.md) and [Getting started](getting-started.md).
+Download the latest stable release, [v0.3.2](https://github.com/rengwu/chartr/releases/tag/v0.3.2),
+for macOS and Linux.
 
 ## Current guides
 

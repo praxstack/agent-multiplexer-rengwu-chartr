@@ -1,7 +1,7 @@
 # Installation
 
-The [v0.3.0 release](https://github.com/rengwu/chartr/releases/tag/v0.3.0)
-provides stable packages for the Rust rewrite.
+The [v0.3.2 release](https://github.com/rengwu/chartr/releases/tag/v0.3.2)
+provides the latest stable packages for macOS and Linux.
 The [v0.2.4 downloads](https://github.com/rengwu/chartr/releases/tag/v0.2.4) remain
 available for the legacy Go/Svelte app. You can also build a
 [development DMG](wiki/development/releasing.md#macos-development-dmg) locally on macOS.
@@ -15,7 +15,7 @@ available for the legacy Go/Svelte app. You can also build a
 ## Arch Linux / Omarchy
 
 Download the x86_64 `.pkg.tar.zst` from the
-[release page](https://github.com/rengwu/chartr/releases) and install it with:
+[v0.3.2 release page](https://github.com/rengwu/chartr/releases/tag/v0.3.2) and install it with:
 
 ```sh
 sudo pacman -U ./chartr-*.pkg.tar.zst
@@ -86,7 +86,7 @@ No frontend build is needed. The bundled web surfaces ship with their assets.
 
 ## macOS release packages
 
-Download the `macos-arm64.dmg` for Apple silicon from the release page,
+Download the [v0.3.2 Apple silicon DMG](https://github.com/rengwu/chartr/releases/download/v0.3.2/chartr-0.3.2-macos-arm64.dmg),
 open the disk image, and drag `chartr.app` to Applications. `v0.3.0-rc.1` also
 includes a `macos-x86_64.dmg` for Intel; this is the final candidate with Intel
 packages. Subsequent macOS releases target Apple silicon only.
@@ -96,6 +96,9 @@ opening the app, review the download source and use **System Settings → Privac
 & Security → Open Anyway** after attempting to open it.
 
 ## Linux release packages
+
+Download the [v0.3.2 Linux packages](https://github.com/rengwu/chartr/releases/tag/v0.3.2)
+for your architecture and package manager.
 
 The [release workflow](../.github/workflows/release.yml) builds native
 x86_64 and ARM64 binaries on Ubuntu 24.04. Each build produces a `.tar.gz` and

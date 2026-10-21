@@ -1,6 +1,6 @@
 # Getting started
 
-Build and launch chartr using the [installation guide](installation.md), then
+Install and launch chartr using the [installation guide](installation.md), then
 set up your workspace:
 
 1. **Open a space.** Add a project folder, or use Free sessions for a shell
