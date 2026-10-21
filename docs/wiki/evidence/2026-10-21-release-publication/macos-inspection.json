@@ -1,0 +1,35 @@
+{
+  "info": {
+    "CFBundleDevelopmentRegion": "en",
+    "CFBundleDisplayName": "chartr",
+    "CFBundleExecutable": "chartr",
+    "CFBundleIconFile": "chartr.icns",
+    "CFBundleIdentifier": "io.github.rengwu.chartr",
+    "CFBundleInfoDictionaryVersion": "6.0",
+    "CFBundleName": "chartr",
+    "CFBundlePackageType": "APPL",
+    "CFBundleShortVersionString": "0.3.2",
+    "CFBundleVersion": "793",
+    "LSApplicationCategoryType": "public.app-category.developer-tools",
+    "LSMinimumSystemVersion": "11.0",
+    "NSHighResolutionCapable": true,
+    "chartrGitRevision": "204e9a7985ac",
+    "chartrReleaseVersion": "0.3.2"
+  },
+  "binaries": {
+    "chartr": {
+      "sha256": "950c8040de4c60ec57d8c4fad4e3d510fd7e92db1070e87ed7bb1e6417b8917a",
+      "architecture": "arm64"
+    },
+    "herdr": {
+      "sha256": "75e0af7bad3dbe668c8f0c7cbf3b0a631c48dd2e7b7f17291d4bbae075887f40",
+      "architecture": "arm64"
+    }
+  },
+  "herdr_version": "herdr 0.8.2-chartr.5a2dee700eee.identity.9ed02822c877",
+  "dmg_verified": true,
+  "signature_verified": true,
+  "ad_hoc_signed": true,
+  "gui_launched": false,
+  "dmg_detached": true
+}

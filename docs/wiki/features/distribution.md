@@ -1,7 +1,7 @@
 ---
 title: Installation, packages and release boundaries
 section: Features
-updated: 2026-10-19
+updated: 2026-10-21
 basis: Source-reviewed migration baseline
 ---
 # Installation, packages and release boundaries
@@ -50,8 +50,8 @@ run if this recipe is exercised; source inspection alone is not a pass.
 
 ## Coverage and limitations
 
-The [October 16 publication run](../verification/runs/2026-10-16-release-publication.md)
-records the published v0.3.1 release at `eebe2b22767d`, passing tag builds,
+The [October 21 publication run](../verification/runs/2026-10-21-release-publication.md)
+records the published v0.3.2 release at `204e9a7985ac`, passing tag builds,
 downloaded artifact inspection and public asset availability. The release is
 latest stable; AUR publication was skipped under the accepted deferral. This
 does not expand the accepted focused desktop verification scope.
@@ -64,13 +64,19 @@ ordinary changes; release requirements remain separate from this advisory workfl
 
 ## Verification history
 
+The [October 21 publication](../verification/runs/2026-10-21-release-publication.md)
+records passing tag builds, all ten downloaded asset digests, Linux/macOS package
+inspection, latest stable publication, all public asset URLs and the skipped AUR
+workflow. The earlier [0.3.1 publication](../verification/runs/2026-10-16-release-publication.md)
+retains its own evidence and limits.
+
 The [October 19 0.3.2 preparation](../verification/runs/2026-10-19-release-0.3.2.md)
 records passing local tests, the macOS/Ubuntu/Arch CI matrix and all shipping
 package builds for candidate `4afea26f`. Native notifications are explicitly
 deferred; the complete native acceptance matrix remains unverified. The user
 [accepted this focused verification scope for 0.3.2](../decisions/index.md#dec-release-032-001-focused-verification-is-sufficient-for-0-3-2)
-and deferred the remaining desktop matrix. Preparation is complete without a tag
-or publication.
+and deferred the remaining desktop matrix. The later publication run above covers
+tagging and release distribution separately.
 
 The [October 16 desktop recheck](../verification/runs/2026-10-16-release-desktop-recheck.md)
 tracks the latest fixes and packages. AUR publication is explicitly deferred;

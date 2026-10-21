@@ -1,0 +1,22 @@
+## Changes
+
+- Simplified the window header: switch between Tabs and Spaces in
+  **Settings → General → View mode**. The header picker and view-switching
+  commands/shortcuts have been removed.
+- Refined pane tab styling with window-matching backgrounds behind controls,
+  single-line dividers between stacked panes, subtler inactive tabs across themes,
+  and clearer VSCode Dark Modern borders.
+- Added context to agent notifications: titles identify the owning space and
+  agent; supported agent logs supply a shortened first-line reply preview.
+  Unavailable previews retain “Agent may need your attention.”
+
+## Downloads and known limits
+
+- macOS: Apple silicon. The app is ad-hoc signed and **not notarized**.
+- Linux: x86_64 and ARM64 tarballs and Debian packages, built on Ubuntu 24.04.
+  X11/XWayland, a working Vulkan driver, GTK 3 and WebKitGTK 4.1 are required.
+  Arch binary packaging is x86_64 only; AUR publication remains deferred.
+- Agent alerts remain best effort. Response previews require a recognized native
+  session and a supported, readable log; they do not certify successful completion.
+- Native notification appearance/click testing for these changes remains deferred.
+- External native plugin payloads are distributed separately.

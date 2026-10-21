@@ -1,0 +1,42 @@
+import concurrent.futures, hashlib, json, subprocess
+from pathlib import Path
+
+root = Path(__file__).resolve().parent
+draft = json.loads((root / 'draft-reviewed.json').read_text())
+published = json.loads((root / 'published.json').read_text())
+latest = json.loads((root / 'latest.json').read_text())
+assert draft['draft'] and not draft['prerelease']
+assert not published['draft'] and not published['prerelease']
+assert published['id'] == draft['id'] == latest['id']
+assert published['tag_name'] == latest['tag_name'] == 'v0.3.2'
+assert published['body'] == draft['body'] == (root / 'release-notes.md').read_text()
+def identities(release):
+    return {a['name']: (a['id'], a['size'], a['digest']) for a in release['assets']}
+assert identities(draft) == identities(published)
+assert len(published['assets']) == 10
+(root / 'public-checksums').mkdir(exist_ok=True)
+
+def check(asset):
+    name, url = asset['name'], asset['browser_download_url']
+    assert url == 'https://github.com/rengwu/chartr/releases/download/v0.3.2/' + name
+    checksum = name.startswith('SHA256SUMS-') or name.endswith('.sha256')
+    args = ['curl', '--fail', '--silent', '--show-error', '--location', '--retry', '3', '--max-time', '90']
+    if checksum:
+        destination = root / 'public-checksums' / name
+        args += ['--output', str(destination)]
+    else:
+        args += ['--head', '--output', '/dev/null']
+    status = int(subprocess.check_output(args + ['--write-out', '%{http_code}', url], text=True))
+    assert status == 200, (name, status)
+    receipt = {'name': name, 'url': url, 'status': status, 'method': 'GET' if checksum else 'HEAD', 'authenticated': False}
+    if checksum:
+        digest = hashlib.sha256(destination.read_bytes()).hexdigest()
+        assert asset['digest'] == 'sha256:' + digest
+        assert destination.read_bytes() == (root / 'assets' / name).read_bytes()
+        receipt['digest_verified'] = True
+    return receipt
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+    checks = list(executor.map(check, published['assets']))
+(root / 'public-downloads.json').write_text(json.dumps(checks, indent=2) + '\n')
+print('Verified latest stable release, unchanged asset identities and all ten public download URLs.')

@@ -1,0 +1,78 @@
+{
+  "tag": "v0.3.2",
+  "commit": "204e9a7985ac2944c1478b21602e6ca541226ae3",
+  "asset_count": 10,
+  "payloads_verified": 7,
+  "assets": [
+    {
+      "name": "chartr-0.3.2-aur.tar.gz",
+      "size": 1131,
+      "sha256": "51759ebeeb560ce78fdc42e4af67bcd94cc4631059eab687368e0c1143aeac20",
+      "manifest_verified": true,
+      "github_digest_verified": true
+    },
+    {
+      "name": "chartr-0.3.2-linux-aarch64.tar.gz",
+      "size": 69884090,
+      "sha256": "3c397b6117d8542ac7ad5aa6078fb01dbccb1dc7bfa6918d4b9e699ec6dc2d5e",
+      "manifest_verified": true,
+      "github_digest_verified": true
+    },
+    {
+      "name": "chartr-0.3.2-linux-x86_64.tar.gz",
+      "size": 75554277,
+      "sha256": "7b02e5ed2174d85019339967366af16d3d1dd615991afd925fb34366921d3b68",
+      "manifest_verified": true,
+      "github_digest_verified": true
+    },
+    {
+      "name": "chartr-0.3.2-macos-arm64.dmg",
+      "size": 72730905,
+      "sha256": "d7a87c1d173cc603b2438ffac3298a9b05c5e6d428493d896002cd198af28055",
+      "manifest_verified": true,
+      "github_digest_verified": true
+    },
+    {
+      "name": "chartr-0.3.2-macos-arm64.dmg.sha256",
+      "size": 95,
+      "sha256": "453c8306f7a092d5805d90a7532753a63b919e3df04a15af2aff819bcb92de3f",
+      "manifest_verified": false,
+      "github_digest_verified": true
+    },
+    {
+      "name": "chartr-bin-0.3.2-1-x86_64.pkg.tar.zst",
+      "size": 62580144,
+      "sha256": "b03a80b2def7eec69f9ed3ef54def5ab0dea52111c3893892d48da5d60b6eef6",
+      "manifest_verified": true,
+      "github_digest_verified": true
+    },
+    {
+      "name": "chartr_0.3.2_amd64.deb",
+      "size": 75456100,
+      "sha256": "fa80ce96ecb7a6ca4097ed23774a1b904bfffba9069e7ba4109297772bf49a51",
+      "manifest_verified": true,
+      "github_digest_verified": true
+    },
+    {
+      "name": "chartr_0.3.2_arm64.deb",
+      "size": 69777762,
+      "sha256": "934b8198ebb51f31438e16827c8d44e8c0426ea3fb4bc8c6166a0449ef7f142e",
+      "manifest_verified": true,
+      "github_digest_verified": true
+    },
+    {
+      "name": "SHA256SUMS-aarch64",
+      "size": 189,
+      "sha256": "7f2ec614d6d218252cde786e95c087ae73dd780eb5af2efeddd616b25e45a34a",
+      "manifest_verified": false,
+      "github_digest_verified": true
+    },
+    {
+      "name": "SHA256SUMS-x86_64",
+      "size": 382,
+      "sha256": "f1a417daf9005f89a8022fc43a77aa57b6d28591e24b2615201197365731cd61",
+      "manifest_verified": false,
+      "github_digest_verified": true
+    }
+  ]
+}

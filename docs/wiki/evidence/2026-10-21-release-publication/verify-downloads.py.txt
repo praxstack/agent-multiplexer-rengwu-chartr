@@ -1,0 +1,42 @@
+import hashlib, json, re
+from pathlib import Path
+root = Path(__file__).resolve().parent
+assets = root / "assets"
+metadata = json.loads((root / "draft.json").read_text())
+api = json.loads((root / "draft-api.json").read_text())
+api_digests = {x["name"]: x["digest"] for x in api["assets"]}
+expected = {
+    "SHA256SUMS-aarch64", "SHA256SUMS-x86_64",
+    "chartr-0.3.2-macos-arm64.dmg", "chartr-0.3.2-macos-arm64.dmg.sha256",
+    "chartr-0.3.2-linux-aarch64.tar.gz", "chartr-0.3.2-linux-x86_64.tar.gz",
+    "chartr_0.3.2_arm64.deb", "chartr_0.3.2_amd64.deb",
+    "chartr-bin-0.3.2-1-x86_64.pkg.tar.zst", "chartr-0.3.2-aur.tar.gz",
+}
+assert metadata["isDraft"] and not metadata["isPrerelease"]
+assert metadata["tagName"] == "v0.3.2"
+assert {x["name"] for x in metadata["assets"]} == expected
+assert {x.name for x in assets.iterdir()} == expected
+checksums = {}
+for name in sorted(expected):
+    if name.startswith("SHA256SUMS") or name.endswith(".sha256"):
+        for line in (assets / name).read_text().splitlines():
+            digest, file = line.split(maxsplit=1)
+            file = file.lstrip("*")
+            assert re.fullmatch(r"[0-9a-f]{64}", digest)
+            assert file in expected and file not in checksums
+            checksums[file] = digest
+assert len(checksums) == 7
+receipts = []
+for item in metadata["assets"]:
+    path = assets / item["name"]
+    digest = hashlib.file_digest(path.open("rb"), "sha256").hexdigest()
+    assert path.stat().st_size == item["size"]
+    assert api_digests[path.name] == "sha256:" + digest, path.name
+    if path.name in checksums:
+        assert digest == checksums[path.name], path.name
+    receipts.append({"name": path.name, "size": path.stat().st_size,
+                     "sha256": digest, "manifest_verified": path.name in checksums, "github_digest_verified": True})
+result = {"tag": "v0.3.2", "commit": "204e9a7985ac2944c1478b21602e6ca541226ae3",
+          "asset_count": len(receipts), "payloads_verified": len(checksums), "assets": receipts}
+(root / "checksums.json").write_text(json.dumps(result, indent=2) + "\n")
+print(json.dumps(result, indent=2))

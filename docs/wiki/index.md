@@ -1,6 +1,6 @@
 ---
 title: Chartr development wiki
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 # Chartr development wiki
 
@@ -27,7 +27,10 @@ switcher, pane/tab styling and notification context changes. Its
 local/platform gates and package inspection. The user
 [accepted focused verification for 0.3.2](decisions/index.md#dec-release-032-001-focused-verification-is-sufficient-for-0-3-2)
 and deferred the remaining desktop matrix. Notification testing and AUR publication
-remain deferred. Preparation is complete; tagging and publication have not occurred.
+remain deferred. [Chartr v0.3.2](https://github.com/rengwu/chartr/releases/tag/v0.3.2)
+is published as the latest stable release. The [publication run](verification/runs/2026-10-21-release-publication.md)
+records passing tag builds, package/checksum inspection, public downloads and the
+skipped AUR publication.
 
 - [Shared setup](verification/setup.md): exact build identity, instance isolation,
   fixtures, available tests and cleanup.
@@ -45,8 +48,8 @@ scope. The [submitted answer](journal/2026-10-16-grill-37e45122-ab5c-4350-82ff-7
 accepts focused verification and defers the remaining matrix for 0.3.1;
 the [checkpoint](journal/2026-10-16-release-preparation.md) records that outcome.
 AUR publication and the manual notification-click check remain deferred.
-[Chartr v0.3.1](https://github.com/rengwu/chartr/releases/tag/v0.3.1) is published
-as the latest stable release. The [publication run](verification/runs/2026-10-16-release-publication.md)
+[Chartr v0.3.1](https://github.com/rengwu/chartr/releases/tag/v0.3.1) was published
+on October 16. Its [publication run](verification/runs/2026-10-16-release-publication.md)
 records passing tag builds, asset/checksum inspection, public downloads and the
 skipped AUR publication.
 

@@ -1,0 +1,39 @@
+import hashlib, json, plistlib, subprocess
+from pathlib import Path
+root=Path(__file__).resolve().parent
+dmg=root/'assets/chartr-0.3.2-macos-arm64.dmg'
+mount=root/'mount'
+mount.mkdir(exist_ok=True)
+logs=[]
+def run(args):
+ p=subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+ logs.append({'command':args, 'exit_code':p.returncode, 'output':p.stdout})
+ p.check_returncode()
+ return p.stdout
+run(['hdiutil','verify',str(dmg)])
+run(['hdiutil','attach','-readonly','-nobrowse','-noautoopen','-mountpoint',str(mount),str(dmg)])
+try:
+ app=mount/'chartr.app'
+ info=plistlib.loads((app/'Contents/Info.plist').read_bytes())
+ assert info['CFBundleIdentifier']=='io.github.rengwu.chartr'
+ assert info['CFBundleShortVersionString']=='0.3.2'
+ assert info['chartrReleaseVersion']=='0.3.2'
+ assert info['chartrGitRevision']=='204e9a7985ac'
+ run(['codesign','--verify','--deep','--strict','--verbose=2',str(app)])
+ signature=run(['codesign','-dvv',str(app)])
+ assert 'Signature=adhoc' in signature
+ binaries={}
+ for name in ['chartr','herdr']:
+  path=app/'Contents/MacOS'/name
+  arch=run(['lipo','-archs',str(path)]).strip()
+  assert arch=='arm64'
+  binaries[name]={'sha256':hashlib.file_digest(path.open('rb'),'sha256').hexdigest(),'architecture':arch}
+ herdr=run([str(app/'Contents/MacOS/herdr'),'--version']).strip()
+ assert herdr=='herdr 0.8.2-chartr.5a2dee700eee.identity.9ed02822c877'
+ receipt={'info':info,'binaries':binaries,'herdr_version':herdr,'dmg_verified':True,'signature_verified':True,'ad_hoc_signed':True,'gui_launched':False}
+finally:
+ run(['hdiutil','detach',str(mount)])
+ (root/'macos-inspection-log.json').write_text(json.dumps(logs,indent=2)+'\n')
+receipt['dmg_detached']=True
+(root/'macos-inspection.json').write_text(json.dumps(receipt,indent=2)+'\n')
+print(json.dumps(receipt,indent=2))

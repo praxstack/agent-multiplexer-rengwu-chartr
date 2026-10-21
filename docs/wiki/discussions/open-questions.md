@@ -1,6 +1,6 @@
 ---
 title: Open questions
-updated: 2026-10-19
+updated: 2026-10-21
 status: Release scope resolved; deferred verification remains
 ---
 # Open questions
@@ -17,8 +17,9 @@ accept focused verification for 0.3.2 and defer the remaining desktop matrix.
 [DEC-RELEASE-032-001](../decisions/index.md#dec-release-032-001-focused-verification-is-sufficient-for-0-3-2)
 records this release-specific exception. Notification testing and AUR publication
 remain explicitly deferred. The broader native desktop matrix remains unverified
-follow-up, not a 0.3.2 readiness blocker. No readiness question remains; tagging
-and publication are separate from preparation.
+follow-up, not a 0.3.2 readiness blocker. No readiness question remains. The user
+requested publication on October 21; the [publication run](../verification/runs/2026-10-21-release-publication.md)
+records the completed release without changing these deferrals.
 
 ## Notification preview source
 

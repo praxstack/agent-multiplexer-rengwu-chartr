@@ -1,0 +1,13 @@
+{
+  "version": "0.3.2",
+  "commit": "204e9a7985ac2944c1478b21602e6ca541226ae3",
+  "tag": "v0.3.2",
+  "tag_object": "02eed3744f5f70da1758a5962ade6d88cb914416",
+  "clean_at_tag": true,
+  "product_tree_matches_verified_candidate": "4afea26f5bd2fc168675e0b58aa731324c1bea1f",
+  "inspector_host": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "aur_publish_enabled": false,
+  "aur_variable_present": false,
+  "source_ci": "https://github.com/rengwu/chartr/actions/runs/39217418048",
+  "tag_workflow": "https://github.com/rengwu/chartr/actions/runs/39584417229"
+}

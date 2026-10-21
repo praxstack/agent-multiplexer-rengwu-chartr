@@ -1,14 +1,19 @@
 ---
 title: Release 0.3.2 preparation
 section: Development
-updated: 2026-10-19
-status: Prepared; focused verification accepted
+updated: 2026-10-21
+status: Published
 ---
 # Release 0.3.2 preparation
 
 The user requested preparation of **0.3.2** on October 19. The workspace version
-and both Cargo lockfiles now agree. The preparation branch is `release/0.3.2`;
-no release tag or GitHub publication has been created.
+and both Cargo lockfiles agree. The preparation branch was `release/0.3.2`.
+On October 21 the user requested publication; main was fast-forwarded and
+annotated tag `v0.3.2` created at `204e9a7985ac`.
+[Chartr v0.3.2](https://github.com/rengwu/chartr/releases/tag/v0.3.2) is now the
+latest stable release. The [publication run](../verification/runs/2026-10-21-release-publication.md)
+records passing tag builds, package/checksum inspection, public downloads and
+the skipped AUR publication.
 
 ## Scope since 0.3.1
 
@@ -54,13 +59,12 @@ coverage remains unverified, and the run's aggregate **Untested** is unchanged.
   complete native visual/plugin matrix and installed Linux desktop journeys are
   deferred follow-up. Local unit tests and package inspection do not verify them.
 - Candidate macOS/Ubuntu/Arch CI and macOS/Linux package builds pass for the
-  prepared source. Final tagging and publication remain a separate release step.
+  prepared source. The separately authorized publication step is complete.
 
-Preparation is complete with no remaining readiness question. Tagging and GitHub
-publication have not been performed; their release procedure and final artifact
-checks remain separate from this preparation record.
+Preparation and publication are complete. The release-specific acceptance scope
+and retained verification gaps are unchanged by successful package publication.
 
-## Draft release notes
+## Published release notes
 
 ### Changes
 
