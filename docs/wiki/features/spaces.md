@@ -1,7 +1,7 @@
 ---
 title: Spaces and folder ownership
 section: Features
-updated: 2026-10-16
+updated: 2026-10-22
 basis: Source-reviewed migration baseline
 ---
 # Spaces and folder ownership
@@ -35,6 +35,8 @@ stateful recipes. Related areas are linked from the [feature index](index.md).
 - While reordering a session in Spaces or an outer tab in Tabs, the carried item has an opaque rounded background within its existing bounds, with no broad wrapper shadow. Its size, outer margins and selection state stay unchanged; the list still reserves its destination slot (accepted drag appearance correction, 2026-10-16).
 
 - Clicking an inactive space heading activates that space and its current item without changing its expanded/collapsed state. Clicking the active heading toggles expansion; the chevron toggles expansion independently for either space. Heading hover does not change its background (accepted interaction update, 2026-10-15).
+
+- Space titles use medium-weight text at 11 px at the default interface scale, with a color 75% of the way from the theme's normal text color toward its muted text color, to distinguish them from session labels (accepted appearance change, 2026-10-22).
 
 - Each space has a very subtle, slightly rounded backdrop around its heading and visible sessions. The active space has slightly stronger contrast. This uses the existing theme palette with no added border. Session rows have explicit outer margins of 4 px on the left and 6 px on the right, outside their backgrounds and borders. Their leading icon has 3 px beyond the normal compact row padding. Space cards have an additional 2 px outer right margin and 2 px below the last visible session (accepted UI changes, 2026-10-15).
 

@@ -17,6 +17,8 @@ use crate::settings::{SettingsStore, sidebar_theme_colors};
 
 /// Keep the space gap shared by layout and drag-sort animation.
 pub(crate) const CARD_GAP: Rems = Rems(0.5);
+// Slightly smaller than session labels, while following the interface scale.
+const SPACE_TITLE_SIZE: LabelSize = LabelSize::Custom(Rems(11. / 14.));
 pub type SpaceSorter = crate::components::ListSorter<EntityId>;
 
 pub fn render(
@@ -133,7 +135,10 @@ pub fn render(
                     )
                     .child(
                         Label::new(space.name.clone())
-                            .size(UI_LABEL_DEFAULT)
+                            .size(SPACE_TITLE_SIZE)
+                            .color(Color::Custom(
+                                colors.text.blend(colors.text_muted.opacity(0.75)),
+                            ))
                             .weight(gpui::FontWeight::MEDIUM)
                             .truncate(),
                     ),
